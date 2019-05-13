@@ -18,7 +18,7 @@
     <body>
       <div id="app">
         <div class="container">
-            <main-page> <main-page/>
+            <router-view></router-view>
         </div>
       </div>
 
