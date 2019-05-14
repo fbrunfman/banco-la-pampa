@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Empleado;
+use App\Pregunta;
 use Illuminate\Http\Request;
 
-class EmpleadoController extends Controller
+class PreguntaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +14,14 @@ class EmpleadoController extends Controller
      */
     public function index(Request $request)
     {
-        $empleados = Empleado::all();
+        $preguntas = Pregunta::with('respuestas')->get();
 
-        if ($request->exists('equipo')) {
-            $equipo = $request->query('equipo');
-            $empleados = $empleados->where('equipo', '=', $equipo);
-        } 
-
-        if ($request->exists('capitan')) {
-            $capitan = $request->query('capitan');
-            $empleados = $empleados->where('capitan', '=', $capitan);
+        if ($request->exists('mes')) {
+            $mes = $request->query('mes');
+            $preguntas = $empleados->where('mes', '=', $mes);
         }
 
-        return response()->json($empleados);
+        return response()->json($preguntas);
     }
 
     /**
@@ -53,30 +48,21 @@ class EmpleadoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Empleado  $empleado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleado $empleado)
+    public function show($id)
     {
-        if (!$empleado) {
-            return response()->json([
-            'codigo' => 404, 
-            'data' => 'No encontrado'
-        ]);
-        }
-        return response()->json([
-            'codigo' => 200, 
-            'data' => $empleado
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Empleado  $empleado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleado $empleado)
+    public function edit($id)
     {
         //
     }
@@ -85,10 +71,10 @@ class EmpleadoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Empleado  $empleado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -96,10 +82,10 @@ class EmpleadoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Empleado  $empleado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empleado $empleado)
+    public function destroy($id)
     {
         //
     }

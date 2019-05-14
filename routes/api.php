@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('empleados', 'EmpleadoController');
+Route::resource('preguntas', 'PreguntaController');
