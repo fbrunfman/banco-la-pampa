@@ -1773,10 +1773,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
   computed: {
-    welcome: function welcome() {
-      return this.$store.getters.welcome;
+    empleado: function empleado() {
+      return this.$store.state.empleado;
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -37206,7 +37207,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("h2", [_vm._v(_vm._s(_vm.welcome))]), _vm._v(" "), _c("router-view")],
+    [
+      _c("h2", [_vm._v(_vm._s(_vm.empleado.nombre))]),
+      _vm._v(" "),
+      _c("router-view")
+    ],
     1
   )
 }
@@ -53571,12 +53576,24 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
-    welcome: 'Hola!'
-  },
-  getters: {
-    welcome: function welcome(state) {
-      return state.welcome;
+    empleado: {
+      nombre: 'federico'
     }
+  },
+  mutations: {
+    empleado: function (_empleado) {
+      function empleado(_x, _x2) {
+        return _empleado.apply(this, arguments);
+      }
+
+      empleado.toString = function () {
+        return _empleado.toString();
+      };
+
+      return empleado;
+    }(function (state, empleados) {
+      state.empleados = empleado;
+    })
   }
 });
 

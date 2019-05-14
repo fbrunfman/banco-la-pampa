@@ -1,10 +1,12 @@
 export default {
     state: {
-        welcome: 'Hola!'
+        empleado: {
+            nombre: 'federico'
+        }
     },
-    getters: {
-        welcome (state) {
-            return state.welcome
+    mutations: {
+        empleado (state, empleados) {
+            state.empleados = empleado
         }
     }
 }

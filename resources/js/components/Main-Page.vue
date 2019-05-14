@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{welcome}}</h2>
+    <h2>{{empleado.nombre}}</h2>
     <router-view></router-view>
   </div>
 </template>
@@ -9,9 +9,12 @@
 export default {
   name: 'home',
   computed: {
-    welcome(){
-      return this.$store.getters.welcome
+    empleado(){
+      return this.$store.state.empleado
     }
+  },
+  mounted() {
+
   }
 }
 </script>
