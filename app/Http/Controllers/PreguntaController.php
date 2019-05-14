@@ -18,7 +18,7 @@ class PreguntaController extends Controller
 
         if ($request->exists('mes')) {
             $mes = $request->query('mes');
-            $preguntas = $empleados->where('mes', '=', $mes);
+            $preguntas = $preguntas->where('mes', '=', $mes);
         }
 
         return response()->json($preguntas);
