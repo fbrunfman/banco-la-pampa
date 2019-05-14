@@ -7,6 +7,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +23,17 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+/* Vue.component('main-page', require('./components/Main-Page.vue').default); */
+
+const routes = [
+    { path: '/', component: require('./components/Main-Page.vue').default },
+    { path: '/bingo', component: require('./components/Bingo').default },
+    { path: '/anecdotario', component: require('./components/Anecdotario.vue').default },
+    { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default },
+    { path: '/tu-foto-cuenta', component: require('./components/Tu-Foto-Cuenta.vue').default },
+    { path: '/login', component: require('./components/Login.vue').default }
+  ]
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +41,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const router = new VueRouter({
+    routes
+  })
+
 const app = new Vue({
-    el: '#app',
-});
+    router,
+
+}).$mount('#app');
