@@ -8,10 +8,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
+import StoreData from './store'
 
 Vue.use(VueRouter)
+Vue.use(Vuex)
 
-
+const store = new Vuex.Store(StoreData)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -24,10 +27,9 @@ Vue.use(VueRouter)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 
-/* Vue.component('main-page', require('./components/Main-Page.vue').default); */
+Vue.component('main-page', require('./components/Main-Page.vue').default);
 
 const routes = [
-    { path: '/', component: require('./components/Main-Page.vue').default },
     { path: '/bingo', component: require('./components/Bingo').default },
     { path: '/anecdotario', component: require('./components/Anecdotario.vue').default },
     { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default },
@@ -47,5 +49,5 @@ const router = new VueRouter({
 
 const app = new Vue({
     router,
-
+    store
 }).$mount('#app');
