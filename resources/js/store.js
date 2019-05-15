@@ -3,7 +3,8 @@ export default {
         empleado: {
             nombre: 'federico'
         },
-        login: false
+        login: false,
+        paginaPrincipal: true
     },
     mutations: {
         empleado (state, empleados) {
@@ -11,6 +12,10 @@ export default {
         },
         login (state, login) {
             state.login = login
+        },
+        paginaPrincipal (state, paginaPrincipal) {
+            state.paginaPrincipal = paginaPrincipal
         }
+
     }
 }

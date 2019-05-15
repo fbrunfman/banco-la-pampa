@@ -9,6 +9,7 @@ export default {
     name: 'Anecdotario',
     mounted () {
         this.$store.commit('login', false)
+        this.$store.commit('paginaPrincipal', false)
     }
 }
 </script>
