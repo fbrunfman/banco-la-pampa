@@ -240,5 +240,47 @@ export default {
     }
 }
 
+input[type="radio"] {
+    background-color: #ddd;
+    background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),
+                      -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.8),
+                0 0 0 1px hsla(0,0%,0%,.6),
+                0 2px 3px hsla(0,0%,0%,.6),
+                0 4px 3px hsla(0,0%,0%,.4),
+                0 6px 6px hsla(0,0%,0%,.2),
+                0 10px 6px hsla(0,0%,0%,.2);
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-right: 20px;
+    position: relative;
+    width: 20px;
+    -webkit-appearance: none;
+}
+input[type="radio"]:after {
+    background-color: rgb(179, 176, 176);
+    border-radius: 25px;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
+                0 1px 1px hsla(0,0%,100%,.8);
+    content: '';
+    display: block;
+    height: 12px;
+    left: 4px;
+    position: relative;
+    top: 4px;
+    width: 12px;
+}
+input[type="radio"]:checked:after {
+    background-color: rgb(36, 177, 26);
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
+                inset 0 2px 2px hsla(0,0%,100%,.4),
+                0 1px 1px hsla(0,0%,100%,.8),
+                0 0 2px 2px hsla(0,70%,70%,.4);
+}
+
+
+
 
 </style>
