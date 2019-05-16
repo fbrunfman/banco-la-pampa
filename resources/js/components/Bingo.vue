@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor">
+    <div class="contenedor mt-3">
         <div class="max-container no-gutters">
             <div class="main-banner">
                 <img src="./img/bingo.jpg" class="main-foto" alt="" srcset="">
@@ -58,7 +58,7 @@
 
 <script>
 export default {
-    name: 'Anecdotario',
+    name: 'Bingo',
     mounted () {
         this.$store.commit('login', false)
         this.$store.commit('paginaPrincipal', false)
@@ -87,13 +87,17 @@ export default {
 .protagonistas-titulo {
     background-color: gainsboro;
     color: #009e00;
+    box-shadow: 2px 2px 8px #313131;
 }
 
 .protagonista-foto img {
     max-width: 260px;
+    box-shadow: 2px 2px 16px rgb(15, 15, 15);
+    border-radius: 8px;
 }
 
 .semana-texto{
+    box-shadow: 2px 2px 6px #8c8a8a;
     background-color: gainsboro;
 }
 </style>

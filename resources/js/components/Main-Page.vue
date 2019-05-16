@@ -17,14 +17,16 @@
                         <div class="collapse navbar-collapse" id="collapse_target">
                             <ul class="navbar-nav">
                                 <router-link to="bingo">
-                                <li class="nav-item">
-                                    <a class="nav-link" href=""><strong>EL BINGO DE LOS PROTAGONISTAS</strong> </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href=""><strong>EL BINGO DE LOS PROTAGONISTAS</strong> </a>
+                                    </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <li class="nav-item">
-                                    <a class="nav-link" href=""> <strong>TRIVIA 60 ANIVERSARIO</strong></a>
-                                </li>
+                                <router-link to="trivia">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href=""> <strong>TRIVIA 60 ANIVERSARIO</strong></a>
+                                    </li>
+                                </router-link>
                                 <div class="separador mx-1"/>
                                 <li class="nav-item">
                                     <a class="nav-link" href=""><strong>ANECDOTARIO</strong></a>
@@ -221,9 +223,9 @@ export default {
             return this.$store.state.paginaPrincipal
         }
     },
-    mounted() {
+ /*    mounted() {
           this.$store.commit('paginaPrincipal', true)
-    },
+    }, */
     methods: {
         cambiarPagina() {
             this.$store.commit('paginaPrincipal', true)

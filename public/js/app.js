@@ -179,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Anecdotario',
+  name: 'Bingo',
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
@@ -488,6 +488,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
   data: function data() {
@@ -513,9 +515,10 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.paginaPrincipal;
     }
   },
-  mounted: function mounted() {
-    this.$store.commit('paginaPrincipal', true);
-  },
+
+  /*    mounted() {
+           this.$store.commit('paginaPrincipal', true)
+     }, */
   methods: {
     cambiarPagina: function cambiarPagina() {
       this.$store.commit('paginaPrincipal', true);
@@ -557,6 +560,206 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Trivia.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Trivia',
+  mounted: function mounted() {
+    this.$store.commit('login', false);
+    this.$store.commit('paginaPrincipal', false);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Tu-Foto-Cuenta.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Tu-Foto-Cuenta.vue?vue&type=script&lang=js& ***!
@@ -593,7 +796,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-be4da558] {\n  width: 100vw;\n}\n.copete[data-v-be4da558] {\n  display: grid;\n}\n.copete a[data-v-be4da558] {\n  color: #efb607;\n}\n.copete-titulo[data-v-be4da558] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-be4da558] {\n  background-color: gainsboro;\n  color: #009e00;\n}\n.protagonista-foto img[data-v-be4da558] {\n  max-width: 260px;\n}\n.semana-texto[data-v-be4da558] {\n  background-color: gainsboro;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-be4da558] {\n  width: 100vw;\n}\n.copete[data-v-be4da558] {\n  display: grid;\n}\n.copete a[data-v-be4da558] {\n  color: #efb607;\n}\n.copete-titulo[data-v-be4da558] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-be4da558] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-be4da558] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-be4da558] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}", ""]);
 
 // exports
 
@@ -632,6 +835,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  height: 5vh;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 290px;\n  height: 450px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 288px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 632px;\n  height: 450px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #4747ad;\n  color: white;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 185px;\n  width: 632px;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n}\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-pregunta[data-v-2f3251a4] {\n  max-width: 639px;\n  background-color: #2eb92e;\n  color: white;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 40px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 24px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n}", ""]);
 
 // exports
 
@@ -1221,6 +1443,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Main-Page.vue?vue&type=style&index=0&id=13672230&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Main-Page.vue?vue&type=style&index=0&id=13672230&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -2605,7 +2857,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "contenedor" },
+    { staticClass: "contenedor mt-3" },
     [
       _vm._m(0),
       _vm._v(" "),
@@ -3042,6 +3294,25 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "separador mx-1" }),
                               _vm._v(" "),
+                              _c("router-link", { attrs: { to: "trivia" } }, [
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "" }
+                                    },
+                                    [
+                                      _c("strong", [
+                                        _vm._v("TRIVIA 60 ANIVERSARIO")
+                                      ])
+                                    ]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "separador mx-1" }),
+                              _vm._v(" "),
                               _vm._m(1),
                               _vm._v(" "),
                               _c("div", { staticClass: "separador mx-1" }),
@@ -3050,11 +3321,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "separador mx-1" }),
                               _vm._v(" "),
-                              _vm._m(3),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "separador mx-1" }),
-                              _vm._v(" "),
-                              _vm._m(4)
+                              _vm._m(3)
                             ],
                             1
                           )
@@ -3137,11 +3404,11 @@ var render = function() {
                         on: { click: _vm.selectBingo }
                       },
                       [
+                        _vm._m(4),
+                        _vm._v(" "),
                         _vm._m(5),
                         _vm._v(" "),
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _vm._m(7)
+                        _vm._m(6)
                       ]
                     ),
                     _vm._v(" "),
@@ -3152,11 +3419,11 @@ var render = function() {
                         on: { click: _vm.selectTrivia }
                       },
                       [
+                        _vm._m(7),
+                        _vm._v(" "),
                         _vm._m(8),
                         _vm._v(" "),
-                        _vm._m(9),
-                        _vm._v(" "),
-                        _vm._m(10)
+                        _vm._m(9)
                       ]
                     ),
                     _vm._v(" "),
@@ -3167,11 +3434,11 @@ var render = function() {
                         on: { click: _vm.selectAnecdotario }
                       },
                       [
+                        _vm._m(10),
+                        _vm._v(" "),
                         _vm._m(11),
                         _vm._v(" "),
-                        _vm._m(12),
-                        _vm._v(" "),
-                        _vm._m(13)
+                        _vm._m(12)
                       ]
                     ),
                     _vm._v(" "),
@@ -3182,11 +3449,11 @@ var render = function() {
                         on: { click: _vm.selectCuenta }
                       },
                       [
+                        _vm._m(13),
+                        _vm._v(" "),
                         _vm._m(14),
                         _vm._v(" "),
-                        _vm._m(15),
-                        _vm._v(" "),
-                        _vm._m(16)
+                        _vm._m(15)
                       ]
                     )
                   ]
@@ -3202,9 +3469,9 @@ var render = function() {
                 { staticClass: "row no-gutters justify-content-center" },
                 [
                   _c("div", { staticClass: "banner-novedad mx-4 my-2" }, [
-                    _vm._m(17),
+                    _vm._m(16),
                     _vm._v(" "),
-                    _vm._m(18),
+                    _vm._m(17),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -3243,17 +3510,17 @@ var render = function() {
                             staticClass: "collapse",
                             attrs: { id: "collapseExample1" }
                           },
-                          [_vm._m(19)]
+                          [_vm._m(18)]
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(20)
+                    _vm._m(19)
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "banner-novedad mx-4 my-2" }, [
-                    _vm._m(21),
+                    _vm._m(20),
                     _vm._v(" "),
-                    _vm._m(22),
+                    _vm._m(21),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -3292,11 +3559,11 @@ var render = function() {
                             staticClass: "collapse",
                             attrs: { id: "collapseExample" }
                           },
-                          [_vm._m(23)]
+                          [_vm._m(22)]
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(24)
+                    _vm._m(23)
                   ])
                 ]
               )
@@ -3321,16 +3588,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "" } }, [
-        _c("strong", [_vm._v("TRIVIA 60 ANIVERSARIO")])
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -3585,6 +3842,713 @@ var staticRenderFns = [
         _vm._v(
           " Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis."
         )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contenedor" }, [
+      _c("div", { staticClass: "inner-container no-gutters" }, [
+        _c("div", { staticClass: "titulo-trivia mt-3" }, [
+          _c("img", {
+            attrs: { src: __webpack_require__(/*! ./img/trivia2.jpg */ "./resources/js/components/img/trivia2.jpg"), alt: "", srcset: "" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "copete p-5" }, [
+          _c("h2", { staticClass: "copete-pregunta mb-3" }, [
+            _vm._v("Cuanto sabes sobre el banco?")
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "copete-texto" }, [
+            _vm._v(
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "trivia-body" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "trivia-uno p-4 inner-container no-gutters d-flex justify-content-center"
+            },
+            [
+              _c("div", { staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
+                      },
+                      [
+                        _c("div", { staticClass: "pregunta-texto" }, [
+                          _c("span", { staticClass: "texto-trivia" }, [
+                            _vm._v(
+                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "respuestas-body" }, [
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            name: "pregunta1",
+                            value: "option1",
+                            id: "pregunta1_2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_2" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option2",
+                            name: "pregunta1",
+                            id: "pregunta1_3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_3" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option3",
+                            name: "pregunta1",
+                            id: "pregunta1_4"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_4" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
+            },
+            [
+              _c("div", { staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
+                      },
+                      [
+                        _c("div", { staticClass: "pregunta-texto" }, [
+                          _c("span", { staticClass: "texto-trivia" }, [
+                            _vm._v(
+                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "respuestas-body" }, [
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            name: "pregunta1",
+                            value: "option1",
+                            id: "pregunta1_2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_2" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option2",
+                            name: "pregunta1",
+                            id: "pregunta1_3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_3" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option3",
+                            name: "pregunta1",
+                            id: "pregunta1_4"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_4" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
+            },
+            [
+              _c("div", { staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
+                      },
+                      [
+                        _c("div", { staticClass: "pregunta-texto" }, [
+                          _c("span", { staticClass: "texto-trivia" }, [
+                            _vm._v(
+                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "respuestas-body" }, [
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            name: "pregunta1",
+                            value: "option1",
+                            id: "pregunta1_2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_2" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option2",
+                            name: "pregunta1",
+                            id: "pregunta1_3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_3" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option3",
+                            name: "pregunta1",
+                            id: "pregunta1_4"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_4" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
+            },
+            [
+              _c("div", { staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
+                      },
+                      [
+                        _c("div", { staticClass: "pregunta-texto" }, [
+                          _c("span", { staticClass: "texto-trivia" }, [
+                            _vm._v(
+                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "respuestas-body" }, [
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            name: "pregunta1",
+                            value: "option1",
+                            id: "pregunta1_2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_2" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option2",
+                            name: "pregunta1",
+                            id: "pregunta1_3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_3" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option3",
+                            name: "pregunta1",
+                            id: "pregunta1_4"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_4" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
+            },
+            [
+              _c("div", { staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
+                      },
+                      [
+                        _c("div", { staticClass: "pregunta-texto" }, [
+                          _c("span", { staticClass: "texto-trivia" }, [
+                            _vm._v(
+                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "respuestas-body" }, [
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            name: "pregunta1",
+                            value: "option1",
+                            id: "pregunta1_2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_2" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option2",
+                            name: "pregunta1",
+                            id: "pregunta1_3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_3" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option3",
+                            name: "pregunta1",
+                            id: "pregunta1_4"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_4" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
+            },
+            [
+              _c("div", { staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
+                      },
+                      [
+                        _c("div", { staticClass: "pregunta-texto" }, [
+                          _c("span", { staticClass: "texto-trivia" }, [
+                            _vm._v(
+                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "respuestas-body" }, [
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            name: "pregunta1",
+                            value: "option1",
+                            id: "pregunta1_2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_2" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option2",
+                            name: "pregunta1",
+                            id: "pregunta1_3"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_3" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-check my-4" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            value: "option3",
+                            name: "pregunta1",
+                            id: "pregunta1_4"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "pregunta1_4" }
+                          },
+                          [_vm._v("Que olor tiene la sal?")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "enviar text-center mb-5" }, [
+            _c("button", { staticClass: "btn btn-success text-center" }, [
+              _vm._v("Enviar respuestas!")
+            ])
+          ])
+        ])
       ])
     ])
   }
@@ -19483,6 +20447,9 @@ var routes = [{
   path: '/bingo',
   component: __webpack_require__(/*! ./components/Bingo */ "./resources/js/components/Bingo.vue")["default"]
 }, {
+  path: '/trivia',
+  component: __webpack_require__(/*! ./components/Trivia */ "./resources/js/components/Trivia.vue")["default"]
+}, {
   path: '/anecdotario',
   component: __webpack_require__(/*! ./components/Anecdotario.vue */ "./resources/js/components/Anecdotario.vue")["default"]
 }, {
@@ -19910,6 +20877,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Trivia.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Trivia.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Trivia_vue_vue_type_template_id_2f3251a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Trivia.vue?vue&type=template&id=2f3251a4&scoped=true& */ "./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true&");
+/* harmony import */ var _Trivia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Trivia.vue?vue&type=script&lang=js& */ "./resources/js/components/Trivia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& */ "./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Trivia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Trivia_vue_vue_type_template_id_2f3251a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Trivia_vue_vue_type_template_id_2f3251a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2f3251a4",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Trivia.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Trivia.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Trivia.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Trivia.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_style_index_0_id_2f3251a4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_template_id_2f3251a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Trivia.vue?vue&type=template&id=2f3251a4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_template_id_2f3251a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Trivia_vue_vue_type_template_id_2f3251a4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Tu-Foto-Cuenta.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/Tu-Foto-Cuenta.vue ***!
@@ -20064,6 +21118,17 @@ module.exports = "/images/protagonista.jpg?f84e16facb3b8f9a4b2a0da32f18004c";
 /***/ (function(module, exports) {
 
 module.exports = "/images/trivia.jpg?af2464e34080e17a8436aeec84cb598b";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/trivia2.jpg":
+/*!*************************************************!*\
+  !*** ./resources/js/components/img/trivia2.jpg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/trivia2.jpg?34cb2af492bd1fd6fd6dc89c9d24f998";
 
 /***/ }),
 
