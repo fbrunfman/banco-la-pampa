@@ -61,7 +61,7 @@
         </div>
         <div class="banners my-5 d-flex justify-content-center">
             <div class="inner-container no-gutters">
-                <div class="row no-gutters">
+                <div class="row no-gutters justify-content-center">
                     <div class="banner mx-4 my-2" @click="selectBingo">
                         <div class="banner-titulo-bingo">
                             <h3>El bingo de los protagonistas</h3>
@@ -129,10 +129,63 @@
                 </div>
             </div>
         </div>
-        <div class="nodevades">
-            <div class="banner-novedad">
-                <h2>hola</h2>
+        <div class="nodevades justify-content-center">
+          <div class="inner-container no-gutters">
+            <div class="row no-gutters justify-content-center">
+              <div class="banner-novedad mx-4 my-2">
+                <div class="titulo-novedad p-3">
+                    <h3>Novedades:</h3>
+                    <h5>Titulo novedad uno</h5>
+                </div>
+                <div class="novedad-img">
+                     <img class="imagen-novedad" src="./img/anecdota.jpg" alt="" srcset="">
+                </div>
+                 <div class="d-flex justify-content-center p-4">
+                    <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                        <span v-if="verMasUno">Ver +</span>
+                        <span v-if="verMasUno === false">Esconder</span>
+                    </button>
+                </div>
+                <div v-if="collapseOnUno" class="collapse" id="collapseExample1">
+                    <div class="banner-body p-3">
+                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                    </div>
+                </div>
+                 <div class="banner-body no-collapse  p-3">
+                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                </div>
+                <!-- <div class="boton-sumar justify-content-end mr-2">
+                    <span class="sumar">+</span>
+                </div> -->
+              </div>
+              <div class="banner-novedad mx-4 my-2">
+                <div class="titulo-novedad p-3">
+                    <h3>Novedades:</h3>
+                    <h5>Titulo novedad uno</h5>
+                </div>
+                <div class="novedad-img">
+                     <img class="imagen-novedad" src="./img/anecdota.jpg" alt="" srcset="">
+                </div>
+                <div class="d-flex justify-content-center p-4">
+                    <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <span v-if="verMas">Ver +</span>
+                        <span v-if="verMas === false">Esconder</span>
+                    </button>
+                </div>
+                <div v-if="collapseOn" class="collapse" id="collapseExample">
+                    <div class="banner-body p-3">
+                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                    </div>
+                </div>
+                 <div class="banner-body no-collapse  p-3">
+                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                </div>
+               <!--  <div class="boton-sumar  justify-content-end mr-2">
+                    <span class="sumar">+</span>
+                </div> -->
+              </div>
             </div>
+          </div>
         </div>
     </div>
     <div>
@@ -151,6 +204,10 @@ export default {
             trivia: false,
             anecdotario: false,
             cuenta: false,
+            collapseOn: false,
+            collapseOnUno: false,
+            verMas: true,
+            verMasUno: true
         }
     },
     computed: {
@@ -193,7 +250,15 @@ export default {
             this.bingo = false
             this.anecdotario = false
             this.trivia = false
-            this.cuenta = true
+            this.cuenta = trueactivarCollapseactivarCollapse
+        },
+        activarCollapse() {
+            this.collapseOn = !this.collapseOn
+            this.verMas = !this.verMas
+        },
+         activarCollapseUno() {
+            this.collapseOnUno = !this.collapseOnUno
+            this.verMasUno = !this.verMasUno
         }
 
     }
@@ -237,13 +302,6 @@ h6 {
 
 nav ul li a {
     color: #626262;
-}
-
-@media (max-width: 767px) {
-    .separador {
-        border: none;
-        height: 8px !important;
-    }
 }
 
 .main-foto img {
@@ -303,5 +361,44 @@ nav ul li a {
     overflow-x: hidden;
 }
 
+.banner-novedad {
+    width: 632px;
+    height: 450px;
+    border-radius: 15px 60px 15px 60px;
+    background-color: rgb(212, 212, 212);
+    box-shadow: 2px 2px 16px #292727;
+}
+
+.titulo-novedad {
+    background-color: #4747ad;
+    color: white;
+    border-radius: 15px 60px 0px 0;
+}
+
+.imagen-novedad {
+  height: 185px;
+  width: 632px;
+}
+
+@media (max-width: 767px) {
+    .separador {
+        border: none;
+        height: 8px !important;
+    }
+
+    .banner-novedad {
+        width: 290px;
+        height: auto;
+    }
+
+    .imagen-novedad {
+        width: 290px;
+    }
+
+    .no-collapse {
+        display: none;
+    }
+
+}
 
 </style>
