@@ -28,14 +28,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->string('legajo')->unique();
+            $table->string('apellido_nombre');
+            $table->string('funcion');
             $table->string('area');
-            $table->string('sucursal');
+            $table->string('locacion');
+            $table->string('correo');
+            $table->string('password');
             $table->integer('equipo');
-            $table->boolean('capitan');
+            $table->boolean('capitan')->nullable();
         });
     }
 
