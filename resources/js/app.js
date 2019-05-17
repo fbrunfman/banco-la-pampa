@@ -4,7 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
@@ -31,6 +30,7 @@ Vue.component('main-page', require('./components/Main-Page.vue').default);
 
 const routes = [
     { path: '/bingo', component: require('./components/Bingo').default },
+    { path: '/trivia', component: require('./components/Trivia').default },
     { path: '/anecdotario', component: require('./components/Anecdotario.vue').default },
     { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default },
     { path: '/tu-foto-cuenta', component: require('./components/Tu-Foto-Cuenta.vue').default },
