@@ -26,6 +26,11 @@ class EmpleadoController extends Controller
             $empleados = $empleados->where('capitan', '=', $capitan);
         }
 
+        if ($request->exists('dni')) {
+            $dni = $request->query('dni');
+            $empleados = $empleados->where('dni', '=', $dni);
+        }
+
         return response()->json($empleados);
     }
 

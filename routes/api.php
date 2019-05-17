@@ -13,5 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('empleados', 'EmpleadoController');
+Route::post('/login', 'AuthController@login')->name('login');
+Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
+
 Route::resource('preguntas', 'PreguntaController');
