@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'dni', 'password', 'area', 'sucursal', 'equipo', 'capitan'
+        'legajo', 'apellido_nombre', 'funcion', 'area', 'locacion', 'correo', 'password', 'equipo', 'capitan'
     ];
 
     /**
@@ -29,17 +29,11 @@ class User extends Authenticatable
         'password'
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public $timestamps = false;
+
 
     public function findForPassport($username)
     {
-        return $this->where('username', $username)->first();
+        return $this->where('legajo', $username)->first();
     }
 }
