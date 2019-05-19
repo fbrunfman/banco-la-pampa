@@ -40,6 +40,6 @@ class User extends Authenticatable
 
     public function findForPassport($username)
     {
-        return $this->where('dni', $username)->first();
+        return $this->where('username', $username)->first();
     }
 }

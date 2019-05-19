@@ -3,13 +3,18 @@
     <div v-if="login === false" class="contenedor-main">
         <div class="header"/>
         <div class="inner-container">
-            <div class="row botones no-gutters">
-                <div class="col-xl-3 col-12 logo " @click="cambiarPagina">
-                    <router-link to="/">
-                        <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
-                    </router-link>
+            <div class="row botones no-gutters d-flex justify-content-between">
+                <div class="col-xl-3 col-12 logo d-flex flex-row justify-content-between " @click="cambiarPagina">
+                    <div>
+                        <router-link to="/">
+                            <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
+                        </router-link>
+                    </div>
+                    <div class="icono-logout-min d-flex align-items-center mr-2" @click="logout">
+                        <img src="./img/logout.png" alt="" srcset="">
+                    </div>
                 </div>
-                <div class="col-xl-9 col-12 d-flex align-items-center justify-content-center nav-bar">
+                <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
                     <nav class="navbar navbar-expand-md sticky-top navbar-light">
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
                             <span class="navbar-toggler-icon"></span>
@@ -28,9 +33,11 @@
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <li class="nav-item">
-                                    <a class="nav-link" href=""><strong>ANECDOTARIO</strong></a>
-                                </li>
+                                <router-link to="anecdotario">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href=""><strong>ANECDOTARIO</strong></a>
+                                    </li>
+                                </router-link>
                                 <div class="separador mx-1"/>
                                 <li class="nav-item">
                                     <a class="nav-link" href=""> <strong>  TU FOTO CUENTA</strong></a>
@@ -42,6 +49,9 @@
                             </ul>
                         </div>
                     </nav>
+                </div>
+                <div class="col-xl-1 icono-logout d-flex align-items-center" @click="logout">
+                    <img src="./img/logout.png" alt="" srcset="">
                 </div>
             </div>
         </div>
@@ -261,6 +271,14 @@ export default {
          activarCollapseUno() {
             this.collapseOnUno = !this.collapseOnUno
             this.verMasUno = !this.verMasUno
+        },
+        logout() {
+            console.log('holaaa');
+            this.$store.dispatch('destroyToken')
+             .then(response => {
+                this.$router.push('/login')
+                 this.$store.commit('login', false)
+            })
         }
 
     }
@@ -382,6 +400,21 @@ nav ul li a {
   width: 632px;
 }
 
+.icono-logout {
+    background-color:  #ffc23a;
+
+    img {
+        width: 40px;
+    }
+}
+
+.icono-logout-min {
+    img {
+        display: none;
+        width: 40px;
+    }
+}
+
 @media (max-width: 767px) {
     .separador {
         border: none;
@@ -399,6 +432,20 @@ nav ul li a {
 
     .no-collapse {
         display: none;
+    }
+
+}
+
+@media (max-width: 1199px) {
+    .icono-logout {
+        img {
+            display: none;
+        }
+    }
+    .icono-logout-min {
+        img {
+            display: block;
+        }
     }
 
 }
