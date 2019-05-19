@@ -1991,7 +1991,7 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.$store.commit('login', false);
-      });
+      })["catch"](alert('El usuario o la contrasena son incorrectos'));
     }
   }
 });
@@ -5171,7 +5171,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control col-10",
-                      attrs: { type: "text", name: "apellido" },
+                      attrs: { type: "text", name: "apellido", required: "" },
                       domProps: { value: _vm.username },
                       on: {
                         input: function($event) {
@@ -5201,7 +5201,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control col-10",
-                      attrs: { type: "text", name: "dni" },
+                      attrs: { type: "text", name: "dni", required: "" },
                       domProps: { value: _vm.password },
                       on: {
                         input: function($event) {

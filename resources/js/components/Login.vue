@@ -16,13 +16,13 @@
                                 <span class="mt-3 mr-4 col-10">APELLIDO</span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
-                                <input type="text" name="apellido"  class="form-control col-10" v-model="username">
+                                <input type="text" name="apellido"  class="form-control col-10" v-model="username" required>
                             </div>
                             <div class="d-flex justify-content-center">
                                 <span class="mt-3 mr-4 col-10">DNI</span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
-                                <input type="text" name="dni"  class="form-control col-10" v-model="password">
+                                <input type="text" name="dni"  class="form-control col-10" v-model="password" required>
                             </div>
                             <div class="text-right boton-ingresar contenedor-boton">
                                 <button class="btn btn-success my-4 col-lg-4" type="submit">INGRESAR</button>
@@ -59,6 +59,9 @@ export default {
                 this.$router.push({ name: '/'})
                  this.$store.commit('login', false)
             })
+            .catch(
+                alert('El usuario o la contrasena son incorrectos')
+            )
         }
     }
 }
