@@ -56,12 +56,9 @@ export default {
                 password: this.password
             })
             .then(response => {
-                this.$router.push({ name: '/'})
+                this.$router.push('/')
                  this.$store.commit('login', false)
             })
-            .catch(
-                alert('El usuario o la contrasena son incorrectos')
-            )
         }
     }
 }

@@ -11,7 +11,7 @@
                         </router-link>
                     </div>
                     <div class="icono-logout-min d-flex align-items-center mr-2" @click="logout">
-                        <img src="./img/logout.png" alt="" srcset="">
+                        <img src="./img/logout2.png" alt="" srcset="">
                     </div>
                 </div>
                 <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
@@ -51,7 +51,7 @@
                     </nav>
                 </div>
                 <div class="col-xl-1 icono-logout d-flex align-items-center" @click="logout">
-                    <img src="./img/logout.png" alt="" srcset="">
+                    <img src="./img/logout2.png" alt="" srcset="">
                 </div>
             </div>
         </div>
@@ -402,9 +402,13 @@ nav ul li a {
 
 .icono-logout {
     background-color:  #ffc23a;
-
+        :hover {
+            box-shadow: 2px 2px 8px rgb(194, 194, 194);
+        }
     img {
         width: 40px;
+        border-radius: 50%;
+        cursor: pointer;
     }
 }
 
@@ -412,6 +416,10 @@ nav ul li a {
     img {
         display: none;
         width: 40px;
+        cursor: pointer;
+        :hover {
+            opacity: 0.8;
+        }
     }
 }
 
