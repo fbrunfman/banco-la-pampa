@@ -4,15 +4,26 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DataController extends Controller
 {
     public function subirDataEmpleados(Request $request)
     {
-    	$upload = $request->file('upload-file');
+        set_time_limit(0);
+        $username = $request->username;
+        $password = $request->password;
+
+        if (!($username == env('CSV_USUARIO') && $password == env('CSV_PASS'))) {
+            return;
+        }
+
+    	$upload = $request->file('archivo');
     	$filePath = $upload->getRealPath();
     	$file = fopen($filePath, 'r');
     	$data = fgetcsv($file, 0, ';');
+
+        $counter = 0;
 
     	while ($data) {
     		$septimo = preg_split('/\r/', $data[7]);
@@ -40,9 +51,13 @@ class DataController extends Controller
     		$empleado->area = $area;
     		$empleado->locacion = $locacion;
     		$empleado->correo = $correo;
-    		$empleado->password = $fechaIngreso;
+    		$empleado->password = Hash::make($fechaIngreso);
 
     		$empleado->save();
+
+            $counter++;
+
+            echo $counter . '-';
     	}
     }
 }
