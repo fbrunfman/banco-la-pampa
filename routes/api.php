@@ -19,3 +19,4 @@ Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
 Route::resource('preguntas', 'PreguntaController');
 
 Route::post('/subir-data-empleados', 'DataController@subirDataEmpleados');
+Route::post('/subir-archivos', 'DataController@subirArchivos');

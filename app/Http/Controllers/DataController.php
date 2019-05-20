@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Archivo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -67,17 +68,39 @@ class DataController extends Controller
         $password = $request->password;
 
         if (!($username == env('ADMIN_USUARIO') && $password == env('ADMIN_PASS'))) {
-            return;
+            return 'Error de autenticación';
         }
 
         $seccion = $request->seccion;
+
+        if (is_null($seccion)) {
+            return 'El campo sección es requerido';
+        }
+
+        $subidoPor = $request->subido_por;
+
+        if (is_null($subidoPor)) {
+            return 'El campo subido por es requerido';
+        }
 
         if($request->hasfile('archivo')) { 
 
           $archivo = $request->file('archivo');
           $extension = $archivo->getClientOriginalExtension();
           $nombre = time() . '.' . $extension;
-          $file->move('archivos/', $filename);
+          $archivo->move('archivos/', $nombre);
+
+          $archivoGuardado = new Archivo();
+
+          $archivoGuardado->nombre = $nombre;
+          $archivoGuardado->ubicacion = 'archivos';
+          $archivoGuardado->seccion_id = $seccion;
+          $archivoGuardado->subido_por = $subidoPor;
+
+
+          $archivoGuardado->save();
+
+          return 'Archivo guardado correctamente';
 
         } else {
             return 'No se encontró ningún archivo';

@@ -17,8 +17,15 @@ class CreateArchivosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('ubicacion');
-            $table->string('seccion');
+            $table->unsignedBigInteger('seccion_id');
+            $table->unsignedBigInteger('subido_por');
             $table->integer('likes')->default(0);
+
+            $table->foreign('seccion_id')
+                ->references('id')->on('secciones');
+
+            $table->foreign('subido_por')
+                ->references('id')->on('users');
         });
     }
 
