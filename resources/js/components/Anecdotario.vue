@@ -19,7 +19,7 @@
                     <div class="contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2" v-for="i in 9" :key="i">
                         <div class="">
                             <div class="protagonista-foto">
-                                <iframe width="400" height="295"
+                                <iframe width="300" height="255"
                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                                 </iframe>
                             </div>
@@ -28,7 +28,7 @@
                                     <div class="nombre"><span>Jose Perez</span></div>
                                     <div class="sucursal"><span>SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX</span></div>
                                 </div>
-                                <div class="icono-like d-flex flex-row align-items-center">
+                                <div class="icono-like d-flex flex-row align-items-center ml-2">
                                     <img class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png">
                                     <h6>20</h6>
                                 </div>
@@ -87,7 +87,11 @@ export default {
 }
 
 .like {
-    width: 33px;
+    width: 22px;
     cursor: pointer;
+}
+
+.info-video {
+    font-size: 11px;
 }
 </style>
