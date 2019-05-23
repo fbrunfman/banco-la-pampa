@@ -17,7 +17,10 @@ Route::post('/login', 'AuthController@login')->name('login');
 Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
 
 Route::resource('preguntas', 'PreguntaController');
+Route::post('/guardar-puntaje', 'PreguntaController@guardarPuntaje');
 
 Route::post('/subir-data-empleados', 'DataController@subirDataEmpleados');
 Route::post('/subir-archivos', 'DataController@subirArchivos');
-Route::post('/guardar-puntaje', 'PreguntaController@guardarPuntaje');
+
+Route::get('/archivos', 'ArchivoController@index');
+Route::post('/like', 'ArchivoController@like');
