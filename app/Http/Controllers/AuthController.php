@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,14 @@ class AuthController extends Controller
             'post'
         );
         $response = Route::dispatch($tokenRequest);
+
+        $json = (array) json_decode($response->getContent());
+        if ($json['access_token']) {
+            $user = User::where('correo', $username)->first();
+            unset($user->password);
+            $json['usuario'] = $user;
+        }
+        $response->setContent(json_encode($json));
 
         return $response;
     }
