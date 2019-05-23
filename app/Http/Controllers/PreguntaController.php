@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Puntaje;
 use App\Pregunta;
 use Illuminate\Http\Request;
 
@@ -18,75 +19,25 @@ class PreguntaController extends Controller
 
         if ($request->exists('mes')) {
             $mes = $request->query('mes');
-            $preguntas = $preguntas->where('mes', '=', $mes);
+            $preguntas = $preguntas->where('mes', $mes);
+            if ($request->exists('hecha')) {
+                $equipo_id = $request->query('hecha');
+                $puntaje = Puntaje::where([['equipo_id', $equipo_id], ['mes', $mes]])->first();
+                $preguntas['hecha'] = !is_null($puntaje);
+            }
         }
 
         return response()->json($preguntas);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function guardarPuntaje(Request $request)
     {
-        //
-    }
+        $puntaje = new Puntaje();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $puntaje->equipo_id = $request->equipo_id;
+        $puntaje->mes = $request->mes;
+        $puntaje->puntaje = $request->puntaje;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json($puntaje->save());
     }
 }

@@ -18,6 +18,8 @@ class CreatePuntajesTable extends Migration
             $table->integer('equipo_id');
             $table->integer('mes');
             $table->integer('puntaje');
+
+            $table->index(['equipo_id', 'mes']);
         });
     }
 

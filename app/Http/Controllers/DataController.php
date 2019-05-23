@@ -75,39 +75,52 @@ class DataController extends Controller
             return 'Error de autenticación';
         }
 
-        $seccion = $request->seccion;
-
-        if (is_null($seccion)) {
-            return 'El campo sección es requerido';
-        }
-
         $subidoPor = $request->subido_por;
 
         if (is_null($subidoPor)) {
             return 'El campo subido por es requerido';
         }
 
-        if($request->hasfile('archivo')) { 
+        $seccion = $request->seccion;
 
-          $archivo = $request->file('archivo');
-          $extension = $archivo->getClientOriginalExtension();
-          $nombre = time() . '.' . $extension;
-          $archivo->move('archivos/', $nombre);
+        if (is_null($seccion)) {
+            return 'El campo sección es requerido';
+        } else if ($seccion == 1) {
+            $archivoGuardado = new Archivo();
 
-          $archivoGuardado = new Archivo();
-
-          $archivoGuardado->nombre = $nombre;
-          $archivoGuardado->ubicacion = 'archivos';
-          $archivoGuardado->seccion_id = $seccion;
-          $archivoGuardado->subido_por = $subidoPor;
+            $archivoGuardado->nombre = $request->link;
+            $archivoGuardado->ubicacion = '-';
+            $archivoGuardado->seccion_id = $seccion;
+            $archivoGuardado->subido_por = $subidoPor;
 
 
-          $archivoGuardado->save();
+            $archivoGuardado->save();
 
-          return 'Archivo guardado correctamente';
+            return 'Archivo guardado correctamente';
 
         } else {
-            return 'No se encontró ningún archivo';
+            if($request->hasfile('archivo') && $seccion != 1) { 
+
+              $archivo = $request->file('archivo');
+              $extension = $archivo->getClientOriginalExtension();
+              $nombre = time() . '.' . $extension;
+              $archivo->move('archivos/', $nombre);
+
+              $archivoGuardado = new Archivo();
+
+              $archivoGuardado->nombre = $nombre;
+              $archivoGuardado->ubicacion = 'archivos';
+              $archivoGuardado->seccion_id = $seccion;
+              $archivoGuardado->subido_por = $subidoPor;
+
+
+              $archivoGuardado->save();
+
+              return 'Archivo guardado correctamente';
+
+            } else {
+                return 'No se encontró ningún archivo';
+            }
         }
 
     }

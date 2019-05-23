@@ -20,3 +20,4 @@ Route::resource('preguntas', 'PreguntaController');
 
 Route::post('/subir-data-empleados', 'DataController@subirDataEmpleados');
 Route::post('/subir-archivos', 'DataController@subirArchivos');
+Route::post('/guardar-puntaje', 'PreguntaController@guardarPuntaje');
