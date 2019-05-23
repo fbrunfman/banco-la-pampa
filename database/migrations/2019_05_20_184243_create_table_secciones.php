@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePuntajesTable extends Migration
+class CreateTableSecciones extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreatePuntajesTable extends Migration
      */
     public function up()
     {
-        Schema::create('puntajes', function (Blueprint $table) {
+        Schema::create('secciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('equipo_id');
-            $table->integer('mes');
-            $table->integer('puntaje');
-
-            $table->index(['equipo_id', 'mes']);
+            $table->string('nombre');
         });
     }
 
@@ -30,6 +26,6 @@ class CreatePuntajesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puntajes');
+        Schema::dropIfExists('secciones');
     }
 }

@@ -12,7 +12,7 @@ class Puntaje extends Model
      * @var array
      */
     protected $fillable = [
-        'equipo_id', 'puntaje', 'mes'
+        'equipo_id', 'mes', 'puntaje'
     ];
 
     protected $table = 'puntajes';
