@@ -309,7 +309,8 @@ export default {
 }
 
 .nav-bar {
-    background-color: #ffc23a
+    background-color: #ffc23a;
+    font-size: 14px;
 }
 
 .header {
@@ -424,7 +425,7 @@ nav ul li a {
             box-shadow: 2px 2px 8px rgb(194, 194, 194);
         }
     img {
-        width: 40px;
+        width: 30px;
         border-radius: 50%;
         cursor: pointer;
     }
@@ -433,7 +434,7 @@ nav ul li a {
 .icono-logout-min {
     img {
         display: none;
-        width: 40px;
+        width: 25px;
         cursor: pointer;
         :hover {
             opacity: 0.8;

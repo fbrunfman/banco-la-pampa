@@ -19,7 +19,7 @@
                     <div class="contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2" v-for="i in 9" :key="i">
                         <div class="">
                             <div class="protagonista-foto" @click="selectImg(i)">
-                                <img src="./img/cuenta2.jpg" alt="" srcset="">
+                                <img src="./img/cuenta2.jpg" alt="" srcset=""  data-toggle="modal" data-target="#exampleModalCenter">
                             </div>
                             <div class="info-video d-flex justify-content-between mr-5">
                                 <div class="protagonista-info text-left ml-5">
@@ -32,22 +32,56 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="./img/cuenta2.jpg" class="imagen-click" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="foto-max">
-            <div class="img-max">
-                <img src="./img/cuenta2.jpg" alt="" srcset="">
-            </div>
-            <div class="info-video d-flex justify-content-between mr-5">
-                <div class="protagonista-info text-left ml-5">
-                    <div class="nombre"><span>Jose Perez</span></div>
-                    <div class="sucursal"><span>SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX</span></div>
-                </div>
-                <div class="icono-like d-flex flex-row align-items-center">
-                    <img class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png">
-                    <h6>20</h6>
+        <div class="protagonistas-titulo p-3">
+            <h3> <strong>Fotos de semanas anteriores</strong></h3>
+        </div>
+        <div class="protagonistas-titulo-anterior p-3 mt-4"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <h5> <strong>Semana 20/05 </strong></h5>
+        </div>
+        <div class="collapse contenedor-protagonistas"  id="collapseExample">
+            <div class="protagonistas-fotos p-3 ">
+                <div class="inner-container no-gutters">
+                    <div class="row no-gutters">
+                        <div class="contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2" v-for="i in 9" :key="i">
+                            <div class="">
+                                <div class="protagonista-foto" @click="selectImg(i)">
+                                    <img src="./img/cuenta2.jpg" alt="" srcset=""  data-toggle="modal" data-target="#exampleModalCenter">
+                                </div>
+                                <div class="info-video d-flex justify-content-between mr-5">
+                                    <div class="protagonista-info text-left ml-5">
+                                        <div class="nombre"><span>Jose Perez</span></div>
+                                        <div class="sucursal"><span>SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX</span></div>
+                                    </div>
+                                    <div class="icono-like d-flex flex-row align-items-center">
+                                        <img class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png">
+                                        <h6>20</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img src="./img/cuenta2.jpg" class="imagen-click" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,6 +116,10 @@ export default {
     }
 }
 
+.info-video {
+    font-size: 12px;
+}
+
 .copete-titulo {
     font-weight: bold;
     color: #efb607;
@@ -89,12 +127,12 @@ export default {
 
 .protagonistas-titulo {
     background-color: gainsboro;
-    color: #009e00;
+    color: #2db72d;
     box-shadow: 2px 2px 8px #313131;
 }
 
 .protagonista-foto img {
-    max-width: 391px;
+    max-width: 280px;
     box-shadow: 2px 2px 16px rgb(15, 15, 15);
     border-radius: 8px;
 }
@@ -105,7 +143,17 @@ export default {
 }
 
 .like {
-    width: 33px;
+    width: 23px;
     cursor: pointer;
+}
+
+.modal-content {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.imagen-click {
+    cursor: pointer;
+    width: 100%;
 }
 </style>
