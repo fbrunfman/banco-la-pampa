@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Archivo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,32 +27,36 @@ class DataController extends Controller
         $counter = 0;
 
     	while ($data) {
-    		$septimo = preg_split('/\r/', $data[7]);
+    		$noveno = preg_split('/\r/', $data[9]);
 
     		$equipo = $data[0];
     		$legajo = $data[1];
-    		$apellidoNombre = $data[2];
-    		$funcion = $data[3];
-    		$area = $data[4];
-    		$locacion = $data[5];
-    		$correo = $data[6];
-    		$fechaIngreso = $septimo[0];
+    		$apellido = $data[2];
+            $nombre = $data[3];
+            $apodo = $data[4];
+    		$funcion = $data[5];
+    		$area = $data[6];
+    		$locacion = $data[7];
+    		$correo = $data[8];
+    		$fechaIngreso = $noveno[0];
 
-    		$data = array_slice($data, 8);
+    		$data = array_slice($data, 10);
 
-    		if (count($septimo) == 2) {
-    			array_unshift($data, $septimo[1]);
+    		if (count($noveno) == 2) {
+    			array_unshift($data, $noveno[1]);
     		}
 
     		$empleado = new User();
     		$empleado->equipo = $equipo;
-    		$empleado->legajo = $legajo;
-    		$empleado->apellido_nombre = $apellidoNombre;
+    		$empleado->legajo = Hash::make($legajo);
+    		$empleado->apellido = $apellido;
+            $empleado->nombre = $nombre;
+            $empleado->apodo = $apodo;
     		$empleado->funcion = $funcion;
     		$empleado->area = $area;
     		$empleado->locacion = $locacion;
     		$empleado->correo = $correo;
-    		$empleado->password = Hash::make($fechaIngreso);
+    		$empleado->fecha_de_ingreso = $fechaIngreso;
 
     		$empleado->save();
 
@@ -60,4 +65,64 @@ class DataController extends Controller
             echo $counter . '-';
     	}
     }
+
+    public function subirArchivos(Request $request)
+    {
+        $username = $request->username;
+        $password = $request->password;
+
+        if (!($username == env('ADMIN_USUARIO') && $password == env('ADMIN_PASS'))) {
+            return 'Error de autenticación';
+        }
+
+        $subidoPor = $request->subido_por;
+
+        if (is_null($subidoPor)) {
+            return 'El campo subido por es requerido';
+        }
+
+        $seccion = $request->seccion;
+
+        if (is_null($seccion)) {
+            return 'El campo sección es requerido';
+        } else if ($seccion == 1) {
+            $archivoGuardado = new Archivo();
+
+            $archivoGuardado->nombre = $request->link;
+            $archivoGuardado->ubicacion = '-';
+            $archivoGuardado->seccion_id = $seccion;
+            $archivoGuardado->subido_por = $subidoPor;
+
+
+            $archivoGuardado->save();
+
+            return 'Archivo guardado correctamente';
+
+        } else {
+            if($request->hasfile('archivo') && $seccion != 1) { 
+
+              $archivo = $request->file('archivo');
+              $extension = $archivo->getClientOriginalExtension();
+              $nombre = time() . '.' . $extension;
+              $archivo->move('archivos/', $nombre);
+
+              $archivoGuardado = new Archivo();
+
+              $archivoGuardado->nombre = $nombre;
+              $archivoGuardado->ubicacion = 'archivos';
+              $archivoGuardado->seccion_id = $seccion;
+              $archivoGuardado->subido_por = $subidoPor;
+
+
+              $archivoGuardado->save();
+
+              return 'Archivo guardado correctamente';
+
+            } else {
+                return 'No se encontró ningún archivo';
+            }
+        }
+
+    }
+
 }
