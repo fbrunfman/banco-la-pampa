@@ -30,7 +30,7 @@ class DataController extends Controller
     		$noveno = preg_split('/\r/', $data[9]);
 
     		$equipo = $data[0];
-    		$legajo = $data[1];
+    		$password = $data[1];
     		$apellido = $data[2];
             $nombre = $data[3];
             $apodo = $data[4];
@@ -48,7 +48,7 @@ class DataController extends Controller
 
     		$empleado = new User();
     		$empleado->equipo = $equipo;
-    		$empleado->legajo = Hash::make($legajo);
+    		$empleado->password = Hash::make($password);
     		$empleado->apellido = $apellido;
             $empleado->nombre = $nombre;
             $empleado->apodo = $apodo;
@@ -81,6 +81,8 @@ class DataController extends Controller
             return 'El campo subido por es requerido';
         }
 
+        $mes = $request->mes;
+
         $seccion = $request->seccion;
 
         if (is_null($seccion)) {
@@ -92,6 +94,7 @@ class DataController extends Controller
             $archivoGuardado->ubicacion = '-';
             $archivoGuardado->seccion_id = $seccion;
             $archivoGuardado->subido_por = $subidoPor;
+            $archivoGuardado->mes = $mes;
 
 
             $archivoGuardado->save();

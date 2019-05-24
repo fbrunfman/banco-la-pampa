@@ -21,6 +21,7 @@ class AuthController extends Controller
             'client_secret' => env('API_CLIENT_SECRET')
         ]);
 
+
         $tokenRequest = Request::create(
             env('APP_URL').'/oauth/token',
             'post'
@@ -28,7 +29,7 @@ class AuthController extends Controller
         $response = Route::dispatch($tokenRequest);
 
         $json = (array) json_decode($response->getContent());
-        if ($json['access_token']) {
+        if (array_key_exists('access_token', $json)) {
             $user = User::where('correo', $username)->first();
             unset($user->password);
             $json['usuario'] = $user;
@@ -43,6 +44,9 @@ class AuthController extends Controller
     		$token->delete();
     	});
 
-    	return response()->json('Log out exitoso.');
+    	return response()->json([
+            'message' => 'Log out exitoso.',
+            'code' => 200
+        ]);
     }
 }
