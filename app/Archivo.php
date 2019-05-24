@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Archivo extends Model
 {
     protected $fillable = [
-        'nombre', 'ubicacion', 'seccion', 'likes'
+        'nombre', 'ubicacion', 'mes', 'seccion_id', 'likes'
     ];
 
     protected $table = 'archivos';

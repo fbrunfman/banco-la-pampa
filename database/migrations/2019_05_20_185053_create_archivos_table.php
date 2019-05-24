@@ -17,7 +17,7 @@ class CreateArchivosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('ubicacion');
-            $table->integer('mes');
+            $table->integer('mes')->nullable();
             $table->unsignedBigInteger('seccion_id');
             $table->unsignedBigInteger('subido_por');
             $table->integer('likes')->default(0);
