@@ -10,8 +10,8 @@
                             <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
                         </router-link>
                     </div>
-                    <div class="icono-logout-min d-flex align-items-center mr-2" @click="logout">
-                        <img src="./img/logout2.png" alt="" srcset="">
+                    <div class="icono-logout-min d-flex align-items-center mr-2" >
+                        <img src="./img/logout2.png" alt="" srcset="" @click="logout">
                     </div>
                 </div>
                 <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
@@ -50,8 +50,8 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col-xl-1 icono-logout d-flex align-items-center" @click="logout">
-                    <img src="./img/logout2.png" alt="" srcset="">
+                <div class="col-xl-1 icono-logout d-flex align-items-center" >
+                    <img src="./img/logout2.png" alt="" srcset="" @click="logout">
                 </div>
             </div>
         </div>

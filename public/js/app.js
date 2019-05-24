@@ -5352,8 +5352,7 @@ var render = function() {
                       "div",
                       {
                         staticClass:
-                          "icono-logout-min d-flex align-items-center mr-2",
-                        on: { click: _vm.logout }
+                          "icono-logout-min d-flex align-items-center mr-2"
                       },
                       [
                         _c("img", {
@@ -5361,7 +5360,8 @@ var render = function() {
                             src: __webpack_require__(/*! ./img/logout2.png */ "./resources/js/components/img/logout2.png"),
                             alt: "",
                             srcset: ""
-                          }
+                          },
+                          on: { click: _vm.logout }
                         })
                       ]
                     )
@@ -5473,8 +5473,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "col-xl-1 icono-logout d-flex align-items-center",
-                    on: { click: _vm.logout }
+                      "col-xl-1 icono-logout d-flex align-items-center"
                   },
                   [
                     _c("img", {
@@ -5482,7 +5481,8 @@ var render = function() {
                         src: __webpack_require__(/*! ./img/logout2.png */ "./resources/js/components/img/logout2.png"),
                         alt: "",
                         srcset: ""
-                      }
+                      },
+                      on: { click: _vm.logout }
                     })
                   ]
                 )
