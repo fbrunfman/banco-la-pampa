@@ -248,11 +248,16 @@ export default {
         },
         paginaPrincipal() {
             return this.$store.state.paginaPrincipal
+        },
+        token() {
+            return this.$store.state.token
         }
     },
- /*    mounted() {
-          this.$store.commit('paginaPrincipal', true)
-    }, */
+    mounted() {
+          if (this.token === null) {
+              this.$router.push('/login')
+          }
+    },
     methods: {
         cambiarPagina() {
             this.$store.commit('paginaPrincipal', true)

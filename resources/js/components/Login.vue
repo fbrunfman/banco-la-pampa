@@ -13,13 +13,13 @@
                     <div class="login-form">
                         <form @submit.prevent="login" class="formulario-body d-flex flex-column" ref="formulario">
                             <div class="d-flex justify-content-center">
-                                <span class="mt-3 mr-4 col-10">APELLIDO</span>
+                                <span class="mt-3 mr-4 col-10">MAIL</span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
                                 <input type="text" name="apellido"  class="form-control col-10" v-model="username" required>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <span class="mt-3 mr-4 col-10">DNI</span>
+                                <span class="mt-3 mr-4 col-10">LEGAJO</span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
                                 <input type="text" name="dni"  class="form-control col-10" v-model="password" required>
@@ -58,6 +58,7 @@ export default {
             .then(response => {
                 this.$router.push('/')
                  this.$store.commit('login', false)
+                 this.$store.commit('infoEmpleado', response.data.usuario)
             })
         }
     }

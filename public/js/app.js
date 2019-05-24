@@ -1989,6 +1989,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push('/');
 
         _this.$store.commit('login', false);
+
+        _this.$store.commit('infoEmpleado', response.data.usuario);
       });
     }
   }
@@ -2214,14 +2216,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
   data: function data() {
     return {
-      bingo: false,
-      trivia: false,
-      anecdotario: false,
-      cuenta: false,
       collapseOn: false,
       collapseOnUno: false,
       verMas: true,
@@ -2237,12 +2256,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     paginaPrincipal: function paginaPrincipal() {
       return this.$store.state.paginaPrincipal;
+    },
+    token: function token() {
+      return this.$store.state.token;
     }
   },
-
-  /*    mounted() {
-           this.$store.commit('paginaPrincipal', true)
-     }, */
+  mounted: function mounted() {
+    if (this.token === null) {
+      this.$router.push('/login');
+    }
+  },
   methods: {
     cambiarPagina: function cambiarPagina() {
       this.$store.commit('paginaPrincipal', true);
@@ -2303,6 +2326,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2484,11 +2509,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Trivia',
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
+    this.traerPreguntas();
+  },
+  computed: {
+    infoEmpleado: function infoEmpleado() {
+      return this.$store.state.infoEmpleado;
+    }
+  },
+  methods: {
+    traerPreguntas: function traerPreguntas() {
+      var url = '/api/preguntas?mes=' + 1
+      /* se harcodea el mes*/
+      + '&hecha=' + this.infoEmpleado.equipo;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        console.log('todo bien');
+      });
+    }
   }
 });
 
@@ -2503,6 +2545,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2584,7 +2660,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 33px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 11px;\n}", ""]);
 
 // exports
 
@@ -2641,7 +2717,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  height: 5vh;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 290px;\n  height: 450px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 288px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 632px;\n  height: 450px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #4747ad;\n  color: white;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 185px;\n  width: 632px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 40px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 40px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  height: 5vh;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}", ""]);
 
 // exports
 
@@ -2679,7 +2755,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-08787490] {\n  width: 100vw;\n}\n.copete[data-v-08787490] {\n  display: grid;\n}\n.copete a[data-v-08787490] {\n  color: #efb607;\n}\n.copete-titulo[data-v-08787490] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-08787490] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-08787490] {\n  max-width: 391px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-08787490] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-08787490] {\n  width: 33px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-08787490] {\n  width: 100vw;\n}\n.copete[data-v-08787490] {\n  display: grid;\n}\n.copete a[data-v-08787490] {\n  color: #efb607;\n}\n.info-video[data-v-08787490] {\n  font-size: 12px;\n}\n.copete-titulo[data-v-08787490] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-08787490] {\n  background-color: gainsboro;\n  color: #2db72d;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-08787490] {\n  max-width: 280px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-08787490] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-08787490] {\n  width: 23px;\n  cursor: pointer;\n}\n.modal-content[data-v-08787490] {\n  background-color: transparent !important;\n  border: none !important;\n}\n.imagen-click[data-v-08787490] {\n  cursor: pointer;\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -4845,8 +4921,8 @@ var staticRenderFns = [
       _c("div", { staticClass: "protagonista-foto" }, [
         _c("iframe", {
           attrs: {
-            width: "400",
-            height: "295",
+            width: "300",
+            height: "255",
             src: "https://www.youtube.com/embed/tgbNymZ7vqY"
           }
         })
@@ -4870,7 +4946,9 @@ var staticRenderFns = [
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "icono-like d-flex flex-row align-items-center" },
+            {
+              staticClass: "icono-like d-flex flex-row align-items-center ml-2"
+            },
             [
               _c("img", {
                 staticClass: "like mr-2",
@@ -5258,7 +5336,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("APELLIDO")])
+      _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("MAIL")])
     ])
   },
   function() {
@@ -5266,7 +5344,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("DNI")])
+      _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("LEGAJO")])
     ])
   },
   function() {
@@ -5400,7 +5478,7 @@ var render = function() {
                                     _c(
                                       "a",
                                       {
-                                        staticClass: "nav-link",
+                                        staticClass: "nav-link text-center",
                                         attrs: { href: "" }
                                       },
                                       [
@@ -5421,7 +5499,7 @@ var render = function() {
                                     _c(
                                       "a",
                                       {
-                                        staticClass: "nav-link",
+                                        staticClass: "nav-link text-center",
                                         attrs: { href: "" }
                                       },
                                       [
@@ -5443,7 +5521,7 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
-                                          staticClass: "nav-link",
+                                          staticClass: "nav-link text-center",
                                           attrs: { href: "" }
                                         },
                                         [_c("strong", [_vm._v("ANECDOTARIO")])]
@@ -5494,129 +5572,9 @@ var render = function() {
     _vm._v(" "),
     _vm.paginaPrincipal && _vm.login === false
       ? _c("div", [
-          _c("div", { staticClass: "fotos" }, [
-            _vm.bingo
-              ? _c("div", { staticClass: "main-foto" }, [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ./img/bingo-2.jpg */ "./resources/js/components/img/bingo-2.jpg"),
-                      alt: "",
-                      srcset: ""
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.trivia
-              ? _c("div", { staticClass: "main-foto" }, [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ./img/bingo.jpg */ "./resources/js/components/img/bingo.jpg"),
-                      alt: "",
-                      srcset: ""
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.anecdotario
-              ? _c("div", { staticClass: "main-foto" }, [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ./img/bingo-2.jpg */ "./resources/js/components/img/bingo-2.jpg"),
-                      alt: "",
-                      srcset: ""
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.cuenta
-              ? _c("div", { staticClass: "main-foto" }, [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ./img/bingo-2.jpg */ "./resources/js/components/img/bingo-2.jpg"),
-                      alt: "",
-                      srcset: ""
-                    }
-                  })
-                ])
-              : _vm._e()
-          ]),
+          _vm._m(3),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "banners my-5 d-flex justify-content-center" },
-            [
-              _c("div", { staticClass: "inner-container no-gutters" }, [
-                _c(
-                  "div",
-                  { staticClass: "row no-gutters justify-content-center" },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "banner mx-4 my-2",
-                        on: { click: _vm.selectBingo }
-                      },
-                      [
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _vm._m(5)
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "banner mx-4 my-2",
-                        on: { click: _vm.selectTrivia }
-                      },
-                      [
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _vm._m(7),
-                        _vm._v(" "),
-                        _vm._m(8)
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "banner mx-4 my-2",
-                        on: { click: _vm.selectAnecdotario }
-                      },
-                      [
-                        _vm._m(9),
-                        _vm._v(" "),
-                        _vm._m(10),
-                        _vm._v(" "),
-                        _vm._m(11)
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "banner mx-4 my-2",
-                        on: { click: _vm.selectCuenta }
-                      },
-                      [
-                        _vm._m(12),
-                        _vm._v(" "),
-                        _vm._m(13),
-                        _vm._v(" "),
-                        _vm._m(14)
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ]
-          ),
+          _vm._m(4),
           _vm._v(" "),
           _c("div", { staticClass: "nodevades justify-content-center" }, [
             _c("div", { staticClass: "inner-container no-gutters" }, [
@@ -5625,13 +5583,16 @@ var render = function() {
                 { staticClass: "row no-gutters justify-content-center" },
                 [
                   _c("div", { staticClass: "banner-novedad mx-4 my-2" }, [
-                    _vm._m(15),
+                    _vm._m(5),
                     _vm._v(" "),
-                    _vm._m(16),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "d-flex justify-content-center p-4" },
+                      {
+                        staticClass:
+                          "d-flex justify-content-center p-4 d-md-none"
+                      },
                       [
                         _c(
                           "button",
@@ -5666,21 +5627,24 @@ var render = function() {
                             staticClass: "collapse",
                             attrs: { id: "collapseExample1" }
                           },
-                          [_vm._m(17)]
+                          [_vm._m(7)]
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(18)
+                    _vm._m(8)
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "banner-novedad mx-4 my-2" }, [
-                    _vm._m(19),
+                    _vm._m(9),
                     _vm._v(" "),
-                    _vm._m(20),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "d-flex justify-content-center p-4" },
+                      {
+                        staticClass:
+                          "d-flex justify-content-center p-4 d-md-none"
+                      },
                       [
                         _c(
                           "button",
@@ -5715,11 +5679,11 @@ var render = function() {
                             staticClass: "collapse",
                             attrs: { id: "collapseExample" }
                           },
-                          [_vm._m(21)]
+                          [_vm._m(11)]
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(22)
+                    _vm._m(12)
                   ])
                 ]
               )
@@ -5750,7 +5714,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "" } }, [
+      _c("a", { staticClass: "nav-link text-center", attrs: { href: "" } }, [
         _c("strong", [_vm._v("  TU FOTO CUENTA")])
       ])
     ])
@@ -5760,7 +5724,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "" } }, [
+      _c("a", { staticClass: "nav-link text-center", attrs: { href: "" } }, [
         _c("strong", [_vm._v("CONCURSO SELFIE")])
       ])
     ])
@@ -5769,137 +5733,218 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-titulo-bingo" }, [
-      _c("h3", [_vm._v("El bingo de los protagonistas")])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "carousel slide",
+        attrs: { id: "carouselExampleControls", "data-ride": "carousel" }
+      },
+      [
+        _c("div", { staticClass: "carousel-inner main-foto" }, [
+          _c("div", { staticClass: "carousel-item active" }, [
+            _c("img", {
+              attrs: { src: __webpack_require__(/*! ./img/bingo-2.jpg */ "./resources/js/components/img/bingo-2.jpg"), alt: "", srcset: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "carousel-item" }, [
+            _c("img", {
+              attrs: { src: __webpack_require__(/*! ./img/bingo-2.jpg */ "./resources/js/components/img/bingo-2.jpg"), alt: "", srcset: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "carousel-item" }, [
+            _c("img", {
+              attrs: { src: __webpack_require__(/*! ./img/bingo-2.jpg */ "./resources/js/components/img/bingo-2.jpg"), alt: "", srcset: "" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "carousel-control-prev",
+            attrs: {
+              href: "#carouselExampleControls",
+              role: "button",
+              "data-slide": "prev"
+            }
+          },
+          [
+            _c("span", {
+              staticClass: "carousel-control-prev-icon",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "sr-only" }, [_vm._v("Anterior")])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "carousel-control-next",
+            attrs: {
+              href: "#carouselExampleControls",
+              role: "button",
+              "data-slide": "next"
+            }
+          },
+          [
+            _c("span", {
+              staticClass: "carousel-control-next-icon",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "sr-only" }, [_vm._v("Siguiente")])
+          ]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-img" }, [
-      _c("img", {
-        attrs: { src: __webpack_require__(/*! ./img/bingo-3.jpg */ "./resources/js/components/img/bingo-3.jpg"), alt: "", srcset: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fondo-banner" }, [
-      _c("div", { staticClass: "banner-body p-3" }, [
-        _c("h5", [_vm._v("Conoce a los protagonistas de la semana")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "boton-sumar d-flex justify-content-end mr-2" },
-        [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-titulo-trivia" }, [
-      _c("h3", [_vm._v("Trivia "), _c("br"), _vm._v(" 60 Aniversario")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-img" }, [
-      _c("img", {
-        attrs: { src: __webpack_require__(/*! ./img/trivia.jpg */ "./resources/js/components/img/trivia.jpg"), alt: "", srcset: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fondo-banner" }, [
-      _c("div", { staticClass: "banner-body p-3" }, [
-        _c("h5", [_vm._v("Conoce a los protagonistas de la semana")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "boton-sumar d-flex justify-content-end mr-2" },
-        [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-titulo-anecdotario" }, [
-      _c("h3", [_vm._v("Anecdotario")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-img" }, [
-      _c("img", {
-        attrs: { src: __webpack_require__(/*! ./img/anecdota.jpg */ "./resources/js/components/img/anecdota.jpg"), alt: "", srcset: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fondo-banner" }, [
-      _c("div", { staticClass: "banner-body p-3" }, [
-        _c("h5", [_vm._v("Conoce a los protagonistas de la semana")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "boton-sumar d-flex justify-content-end mr-2" },
-        [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-titulo-cuenta" }, [
-      _c("h3", [_vm._v("Tu foto cuenta")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-img" }, [
-      _c("img", {
-        attrs: { src: __webpack_require__(/*! ./img/foto.jpg */ "./resources/js/components/img/foto.jpg"), alt: "", srcset: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fondo-banner" }, [
-      _c("div", { staticClass: "banner-body p-3" }, [
-        _c("h5", [_vm._v("Conoce a los protagonistas de la semana")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "boton-sumar d-flex justify-content-end mr-2" },
-        [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "banners my-5 d-flex justify-content-center" },
+      [
+        _c("div", { staticClass: "inner-container no-gutters" }, [
+          _c("div", { staticClass: "row no-gutters justify-content-center" }, [
+            _c("div", { staticClass: "banner mx-4 my-2" }, [
+              _c("div", { staticClass: "banner-titulo-bingo" }, [
+                _c("h3", [_vm._v("El bingo de los protagonistas")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "banner-img" }, [
+                _c("img", {
+                  attrs: {
+                    src: __webpack_require__(/*! ./img/bingo-3.jpg */ "./resources/js/components/img/bingo-3.jpg"),
+                    alt: "",
+                    srcset: ""
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "fondo-banner" }, [
+                _c("div", { staticClass: "banner-body p-3" }, [
+                  _c("h5", [_vm._v("Conoce a los protagonistas de la semana")])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "boton-sumar d-flex justify-content-end mr-2"
+                  },
+                  [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "banner mx-4 my-2" }, [
+              _c("div", { staticClass: "banner-titulo-trivia" }, [
+                _c("h3", [
+                  _vm._v("Trivia "),
+                  _c("br"),
+                  _vm._v(" 60 Aniversario")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "banner-img" }, [
+                _c("img", {
+                  attrs: {
+                    src: __webpack_require__(/*! ./img/trivia.jpg */ "./resources/js/components/img/trivia.jpg"),
+                    alt: "",
+                    srcset: ""
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "fondo-banner" }, [
+                _c("div", { staticClass: "banner-body p-3" }, [
+                  _c("h5", [
+                    _vm._v(
+                      "  Demostrá cuánto sabés del banco con tus compañeros y ganá un premio!"
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "boton-sumar d-flex justify-content-end mr-2"
+                  },
+                  [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "banner mx-4 my-2" }, [
+              _c("div", { staticClass: "banner-titulo-anecdotario" }, [
+                _c("h3", [_vm._v("Anecdotario")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "banner-img" }, [
+                _c("img", {
+                  attrs: {
+                    src: __webpack_require__(/*! ./img/anecdota.jpg */ "./resources/js/components/img/anecdota.jpg"),
+                    alt: "",
+                    srcset: ""
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "fondo-banner" }, [
+                _c("div", { staticClass: "banner-body p-3" }, [
+                  _c("h5", [
+                    _vm._v("Contanos tu anécdota más divertida en un video")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "boton-sumar d-flex justify-content-end mr-2"
+                  },
+                  [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "banner mx-4 my-2" }, [
+              _c("div", { staticClass: "banner-titulo-cuenta" }, [
+                _c("h3", [_vm._v("Tu foto cuenta")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "banner-img" }, [
+                _c("img", {
+                  attrs: { src: __webpack_require__(/*! ./img/foto.jpg */ "./resources/js/components/img/foto.jpg"), alt: "", srcset: "" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "fondo-banner" }, [
+                _c("div", { staticClass: "banner-body p-3" }, [
+                  _c("h5", [
+                    _vm._v(
+                      "Envianos una foto significativa por estos 60 años de historia"
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "boton-sumar d-flex justify-content-end mr-2"
+                  },
+                  [_c("span", { staticClass: "sumar" }, [_vm._v("+")])]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -6757,14 +6802,18 @@ var render = function() {
                         attrs: {
                           src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
                           alt: "",
-                          srcset: ""
+                          srcset: "",
+                          "data-toggle": "modal",
+                          "data-target": "#exampleModalCenter"
                         }
                       })
                     ]
                   ),
                   _vm._v(" "),
                   _vm._m(3, true)
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(4, true)
               ]
             )
           }),
@@ -6773,7 +6822,68 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(5),
+    _vm._v(" "),
+    _vm._m(6),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "collapse contenedor-protagonistas",
+        attrs: { id: "collapseExample" }
+      },
+      [
+        _c("div", { staticClass: "protagonistas-fotos p-3 " }, [
+          _c("div", { staticClass: "inner-container no-gutters" }, [
+            _c(
+              "div",
+              { staticClass: "row no-gutters" },
+              _vm._l(9, function(i) {
+                return _c(
+                  "div",
+                  {
+                    key: i,
+                    staticClass:
+                      "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2"
+                  },
+                  [
+                    _c("div", {}, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "protagonista-foto",
+                          on: {
+                            click: function($event) {
+                              return _vm.selectImg(i)
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
+                              alt: "",
+                              srcset: "",
+                              "data-toggle": "modal",
+                              "data-target": "#exampleModalCenter"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(7, true)
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(8, true)
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -6864,46 +6974,150 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "foto-max" }, [
-      _c("div", { staticClass: "img-max" }, [
-        _c("img", {
-          attrs: { src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"), alt: "", srcset: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "info-video d-flex justify-content-between mr-5" },
-        [
-          _c("div", { staticClass: "protagonista-info text-left ml-5" }, [
-            _c("div", { staticClass: "nombre" }, [
-              _c("span", [_vm._v("Jose Perez")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sucursal" }, [
-              _c("span", [
-                _vm._v("SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX")
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("img", {
+                  staticClass: "imagen-click",
+                  attrs: {
+                    src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
+                    alt: "",
+                    srcset: "",
+                    "data-toggle": "modal",
+                    "data-target": "#exampleModalCenter"
+                  }
+                })
               ])
             ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
+      _c("h3", [_c("strong", [_vm._v("Fotos de semanas anteriores")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "protagonistas-titulo-anterior p-3 mt-4",
+        attrs: {
+          "data-toggle": "collapse",
+          "data-target": "#collapseExample",
+          "aria-expanded": "false",
+          "aria-controls": "collapseExample"
+        }
+      },
+      [_c("h5", [_c("strong", [_vm._v("Semana 20/05 ")])])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "info-video d-flex justify-content-between mr-5" },
+      [
+        _c("div", { staticClass: "protagonista-info text-left ml-5" }, [
+          _c("div", { staticClass: "nombre" }, [
+            _c("span", [_vm._v("Jose Perez")])
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "icono-like d-flex flex-row align-items-center" },
-            [
-              _c("img", {
-                staticClass: "like mr-2",
-                attrs: {
-                  src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                }
-              }),
-              _vm._v(" "),
-              _c("h6", [_vm._v("20")])
-            ]
-          )
-        ]
-      )
-    ])
+          _c("div", { staticClass: "sucursal" }, [
+            _c("span", [
+              _vm._v("SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "icono-like d-flex flex-row align-items-center" },
+          [
+            _c("img", {
+              staticClass: "like mr-2",
+              attrs: {
+                src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("h6", [_vm._v("20")])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("img", {
+                  staticClass: "imagen-click",
+                  attrs: {
+                    src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
+                    alt: "",
+                    srcset: "",
+                    "data-toggle": "modal",
+                    "data-target": "#exampleModalCenter"
+                  }
+                })
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -23615,6 +23829,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     login: false,
     paginaPrincipal: true,
+    infoEmpleado: '',
     token: localStorage.getItem('access_token') || null
   },
   mutations: {
@@ -23631,6 +23846,9 @@ __webpack_require__.r(__webpack_exports__);
     }(function (state, empleados) {
       state.empleados = empleado;
     }),
+    infoEmpleado: function infoEmpleado(state, _infoEmpleado) {
+      state.infoEmpleado = _infoEmpleado;
+    },
     login: function login(state, _login) {
       state.login = _login;
     },

@@ -180,11 +180,29 @@
 </template>
 
 <script>
+import Axios from "axios";
+
 export default {
     name: 'Trivia',
     mounted () {
         this.$store.commit('login', false)
         this.$store.commit('paginaPrincipal', false)
+        this.traerPreguntas()
+    },
+    computed: {
+        infoEmpleado() {
+            return this.$store.state.infoEmpleado
+        }
+    },
+    methods: {
+        traerPreguntas() {
+            var url = '/api/preguntas?mes=' + 1 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
+            Axios.get(url)
+                    .then(response => {
+                        console.log('todo bien');
+
+                    })
+        }
     }
 }
 </script>
