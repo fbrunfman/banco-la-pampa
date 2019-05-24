@@ -24,17 +24,20 @@ const store = new Vuex.Store(StoreData)
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+import Vue from 'vue'
+import VueLazyLoad from 'vue-lazyload'
 
+Vue.use(VueLazyLoad)
 
 Vue.component('main-page', require('./components/Main-Page.vue').default);
 
 const routes = [
-    { path: '/bingo', component: require('./components/Bingo').default },
-    { path: '/trivia', component: require('./components/Trivia').default },
-    { path: '/anecdotario', component: require('./components/Anecdotario.vue').default },
-    { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default },
-    { path: '/tu-foto-cuenta', component: require('./components/Tu-Foto-Cuenta.vue').default },
-    { path: '/login', component: require('./components/Login.vue').default }
+    { path: '/bingo', component: require('./components/Bingo').default, meta: {requiresAuth: true} },
+    { path: '/trivia', component: require('./components/Trivia').default, meta: {requiresAuth: true} },
+    { path: '/anecdotario', component: require('./components/Anecdotario.vue').default, meta: {requiresAuth: true} },
+    { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default, meta: {requiresAuth: true} },
+    { path: '/tu-foto-cuenta', component: require('./components/Tu-Foto-Cuenta.vue').default, meta: {requiresAuth: true} },
+    { path: '/login', component: require('./components/Login.vue').default, meta: {requiresVisitor: true} }
   ]
 
 /**
@@ -43,9 +46,40 @@ const routes = [
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+
 const router = new VueRouter({
     routes
   })
+
+  router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      // this route requires auth, check if logged in
+      // if not, redirect to login page.
+      if (!store.getters.loggedIn) {
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath }
+        })
+      } else {
+        next()
+      }
+    }    else if (to.matched.some(record => record.meta.requiresVisitor)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (store.getters.loggedIn) {
+          next({
+            path: '/',
+            query: { redirect: to.fullPath }
+          })
+        } else {
+          next()
+        }
+      } {
+      next() // make sure to always call next()!
+    }
+  })
+
 
 const app = new Vue({
     router,

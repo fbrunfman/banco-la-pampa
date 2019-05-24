@@ -3,13 +3,18 @@
     <div v-if="login === false" class="contenedor-main">
         <div class="header"/>
         <div class="inner-container">
-            <div class="row botones no-gutters">
-                <div class="col-xl-3 col-12 logo " @click="cambiarPagina">
-                    <router-link to="/">
-                        <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
-                    </router-link>
+            <div class="row botones no-gutters d-flex justify-content-between">
+                <div class="col-xl-3 col-12 logo d-flex flex-row justify-content-between " @click="cambiarPagina">
+                    <div>
+                        <router-link to="/">
+                            <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
+                        </router-link>
+                    </div>
+                    <div class="icono-logout-min d-flex align-items-center mr-2" >
+                        <img src="./img/logout2.png" alt="" srcset="" @click="logout">
+                    </div>
                 </div>
-                <div class="col-xl-9 col-12 d-flex align-items-center justify-content-center nav-bar">
+                <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
                     <nav class="navbar navbar-expand-md sticky-top navbar-light">
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
                             <span class="navbar-toggler-icon"></span>
@@ -18,36 +23,41 @@
                             <ul class="navbar-nav">
                                 <router-link to="bingo">
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""><strong>EL BINGO DE LOS PROTAGONISTAS</strong> </a>
+                                        <a class="nav-link text-center" href=""><strong>EL BINGO DE LOS PROTAGONISTAS</strong> </a>
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
                                 <router-link to="trivia">
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""> <strong>TRIVIA 60 ANIVERSARIO</strong></a>
+                                        <a class="nav-link text-center" href=""> <strong>TRIVIA 60 ANIVERSARIO</strong></a>
+                                    </li>
+                                </router-link>
+                                <div class="separador mx-1"/>
+                                <router-link to="anecdotario">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-center" href=""><strong>ANECDOTARIO</strong></a>
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
                                 <li class="nav-item">
-                                    <a class="nav-link" href=""><strong>ANECDOTARIO</strong></a>
+                                    <a class="nav-link text-center" href=""> <strong>  TU FOTO CUENTA</strong></a>
                                 </li>
                                 <div class="separador mx-1"/>
                                 <li class="nav-item">
-                                    <a class="nav-link" href=""> <strong>  TU FOTO CUENTA</strong></a>
-                                </li>
-                                <div class="separador mx-1"/>
-                                <li class="nav-item">
-                                    <a class="nav-link" href=""> <strong>CONCURSO SELFIE</strong> </a>
+                                    <a class="nav-link text-center" href=""> <strong>CONCURSO SELFIE</strong> </a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
+                <div class="col-xl-1 icono-logout d-flex align-items-center" >
+                    <img src="./img/logout2.png" alt="" srcset="" @click="logout">
+                </div>
             </div>
         </div>
     </div>
     <div v-if="paginaPrincipal && login === false ">
-        <div class="fotos">
+<!--         <div class="fotos">
             <div class="main-foto" v-if="bingo">
                 <img src="./img/bingo-2.jpg" alt="" srcset="">
             </div>
@@ -60,11 +70,32 @@
             <div class="main-foto" v-if="cuenta">
                 <img src="./img/bingo-2.jpg" alt="" srcset="">
             </div>
+        </div> -->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner main-foto">
+                <div class="carousel-item active">
+                 <img src="./img/bingo-2.jpg" alt="" srcset="">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/bingo-2.jpg" alt="" srcset="">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/bingo-2.jpg" alt="" srcset="">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
         </div>
         <div class="banners my-5 d-flex justify-content-center">
             <div class="inner-container no-gutters">
                 <div class="row no-gutters justify-content-center">
-                    <div class="banner mx-4 my-2" @click="selectBingo">
+                    <div class="banner mx-4 my-2">
                         <div class="banner-titulo-bingo">
                             <h3>El bingo de los protagonistas</h3>
                         </div>
@@ -80,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="banner mx-4 my-2" @click="selectTrivia">
+                    <div class="banner mx-4 my-2">
                         <div class="banner-titulo-trivia"  >
                             <h3>Trivia <br> 60 Aniversario</h3>
                         </div>
@@ -89,14 +120,14 @@
                         </div>
                         <div class="fondo-banner">
                             <div class="banner-body p-3">
-                                <h5>Conoce a los protagonistas de la semana</h5>
+                                <h5>  Demostrá cuánto sabés del banco con tus compañeros y ganá un premio!</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
                                 <span class="sumar">+</span>
                             </div>
                         </div>
                     </div>
-                     <div class="banner mx-4 my-2"  @click="selectAnecdotario">
+                     <div class="banner mx-4 my-2">
                         <div class="banner-titulo-anecdotario">
                             <h3>Anecdotario</h3>
                         </div>
@@ -105,14 +136,14 @@
                         </div>
                         <div class="fondo-banner">
                             <div class="banner-body p-3">
-                                <h5>Conoce a los protagonistas de la semana</h5>
+                                <h5>Contanos tu anécdota más divertida en un video</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
                                 <span class="sumar">+</span>
                             </div>
                         </div>
                     </div>
-                     <div class="banner mx-4 my-2"  @click="selectCuenta">
+                     <div class="banner mx-4 my-2">
                         <div class="banner-titulo-cuenta">
                             <h3>Tu foto cuenta</h3>
                         </div>
@@ -121,7 +152,7 @@
                         </div>
                         <div class="fondo-banner">
                             <div class="banner-body p-3">
-                                <h5>Conoce a los protagonistas de la semana</h5>
+                                <h5>Envianos una foto significativa por estos 60 años de historia</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
                                 <span class="sumar">+</span>
@@ -142,7 +173,7 @@
                 <div class="novedad-img">
                      <img class="imagen-novedad" src="./img/anecdota.jpg" alt="" srcset="">
                 </div>
-                 <div class="d-flex justify-content-center p-4">
+                 <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
                         <span v-if="verMasUno">Ver +</span>
                         <span v-if="verMasUno === false">Esconder</span>
@@ -168,7 +199,7 @@
                 <div class="novedad-img">
                      <img class="imagen-novedad" src="./img/anecdota.jpg" alt="" srcset="">
                 </div>
-                <div class="d-flex justify-content-center p-4">
+                <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         <span v-if="verMas">Ver +</span>
                         <span v-if="verMas === false">Esconder</span>
@@ -202,10 +233,6 @@ export default {
     name: 'home',
     data() {
         return {
-            bingo: false,
-            trivia: false,
-            anecdotario: false,
-            cuenta: false,
             collapseOn: false,
             collapseOnUno: false,
             verMas: true,
@@ -261,6 +288,14 @@ export default {
          activarCollapseUno() {
             this.collapseOnUno = !this.collapseOnUno
             this.verMasUno = !this.verMasUno
+        },
+        logout() {
+            console.log('holaaa');
+            this.$store.dispatch('destroyToken')
+             .then(response => {
+                this.$router.push('/login')
+                 this.$store.commit('login', false)
+            })
         }
 
     }
@@ -274,7 +309,8 @@ export default {
 }
 
 .nav-bar {
-    background-color: #ffc23a
+    background-color: #ffc23a;
+    font-size: 14px;
 }
 
 .header {
@@ -312,12 +348,12 @@ nav ul li a {
 
 .banner {
 
-    width: 290px;
-    height: 450px;
+    width: 250px;
+    height: 415px;
     background-color: rgb(212, 212, 212);
     box-shadow: 2px 2px 16px #292727;
     img {
-        width: 288px;
+        width: 248px;
     }
     border-radius: 15px 60px 15px 60px;
 }
@@ -326,6 +362,8 @@ nav ul li a {
     font-size: 38px;
     color: #ffc23a;
     text-shadow: 2px 2px 2px #888888;
+    position: relative;
+    bottom: 48px;
 }
 
 .banner-titulo-bingo {
@@ -364,22 +402,44 @@ nav ul li a {
 }
 
 .banner-novedad {
-    width: 632px;
-    height: 450px;
+    width: 592px;
+    height: 370px;
     border-radius: 15px 60px 15px 60px;
-    background-color: rgb(212, 212, 212);
+    background-color: #d4d4d4;
     box-shadow: 2px 2px 16px #292727;
 }
 
 .titulo-novedad {
-    background-color: #4747ad;
-    color: white;
+    background-color: #ece5d9;
     border-radius: 15px 60px 0px 0;
 }
 
 .imagen-novedad {
-  height: 185px;
-  width: 632px;
+  height: 145px;
+  width: 592px;
+}
+
+.icono-logout {
+    background-color:  #ffc23a;
+        :hover {
+            box-shadow: 2px 2px 8px rgb(194, 194, 194);
+        }
+    img {
+        width: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.icono-logout-min {
+    img {
+        display: none;
+        width: 25px;
+        cursor: pointer;
+        :hover {
+            opacity: 0.8;
+        }
+    }
 }
 
 @media (max-width: 767px) {
@@ -401,6 +461,30 @@ nav ul li a {
         display: none;
     }
 
+}
+
+@media (max-width: 1199px) {
+    .icono-logout {
+        img {
+            display: none;
+        }
+    }
+    .icono-logout-min {
+        img {
+            display: block;
+        }
+    }
+
+}
+
+.carousel-controls{
+ position:relative;
+  width:300px;
+  margin:0 auto;
+}
+
+.carousel-indicators{
+   top:0px;
 }
 
 </style>

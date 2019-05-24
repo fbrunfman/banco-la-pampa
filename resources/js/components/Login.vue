@@ -11,21 +11,21 @@
                         <h3 class="ml-4 text-white mt-2"> <strong>LOGIN</strong> </h3>
                     </div>
                     <div class="login-form">
-                        <form @submit.prevent class="formulario-body d-flex flex-column" ref="formulario">
+                        <form @submit.prevent="login" class="formulario-body d-flex flex-column" ref="formulario">
                             <div class="d-flex justify-content-center">
                                 <span class="mt-3 mr-4 col-10">APELLIDO</span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
-                                <input type="text" name="apellido"  class="form-control col-10">
+                                <input type="text" name="apellido"  class="form-control col-10" v-model="username" required>
                             </div>
                             <div class="d-flex justify-content-center">
                                 <span class="mt-3 mr-4 col-10">DNI</span>
                             </div>
                             <div class="d-flex justify-content-center mt-2">
-                                <input type="text" name="dni"  class="form-control col-10">
+                                <input type="text" name="dni"  class="form-control col-10" v-model="password" required>
                             </div>
                             <div class="text-right boton-ingresar contenedor-boton">
-                                <button class="btn btn-success my-4 col-lg-4" @click="logearse">INGRESAR</button>
+                                <button class="btn btn-success my-4 col-lg-4" type="submit">INGRESAR</button>
                             </div>
                         </form>
                     </div>
@@ -40,21 +40,25 @@
 import { log } from 'util';
 export default {
     name: 'Login',
+    data() {
+        return {
+            username: '',
+            password: ''
+        }
+    },
     mounted () {
         this.$store.commit('login', true)
     },
     methods: {
-        logearse () {
-            var datos = new FormData(this.$refs.formulario)
-            var url = '/api/empleados/login'
-            axios.post(url, datos)
-                .then( resp => {
-                    console.log('logeado');
-
-                })
-                .catch((error) => {
-                    console.log('Axios', error);
-                })
+        login () {
+            this.$store.dispatch('retrieveToken', {
+                username: this.username,
+                password: this.password
+            })
+            .then(response => {
+                this.$router.push('/')
+                 this.$store.commit('login', false)
+            })
         }
     }
 }
