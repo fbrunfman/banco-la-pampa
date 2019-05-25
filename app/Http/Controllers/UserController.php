@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Validator;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,18 +14,19 @@ class UserController extends Controller
 	public function admin_credential_rules(array $data)
 	{
 	  $messages = [
-	    'current-password.required' => 'Please enter current password',
-	    'password.required' => 'Please enter password',
+	    'password-actual.required' => 'Por favor, ingrese su contraseña actual',
+	    'password.required' => 'Por favor, ingrese la nueva contraseña',
 	  ];
 
 	  $validator = Validator::make($data, [
-	    'current-password' => 'required',
+	    'password-actual' => 'required',
 	    'password' => 'required|same:password',
-	    'password_confirmation' => 'required|same:password',     
+	    'confirma-password' => 'required|same:password',     
 	  ], $messages);
 
 	  return $validator;
 	}  
+
     public function postCredentials(Request $request)
 	{
 	  if(Auth::Check())
@@ -36,7 +40,7 @@ class UserController extends Controller
 	    else
 	    {  
 	      $current_password = Auth::User()->password;           
-	      if(Hash::check($request_data['current-password'], $current_password))
+	      if(Hash::check($request_data['password-actual'], $current_password))
 	      {           
 	        $user_id = Auth::User()->id;                       
 	        $obj_user = User::find($user_id);
@@ -46,7 +50,7 @@ class UserController extends Controller
 	      }
 	      else
 	      {           
-	        $error = array('current-password' => 'Please enter correct current password');
+	        $error = array('password-actual' => 'Por favor, ingresa la correcta contraseña actual');
 	        return response()->json(array('error' => $error), 400);   
 	      }
 	    }        

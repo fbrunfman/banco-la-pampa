@@ -17,13 +17,13 @@ class AuthController extends Controller
             'username' => $username,
             'password' => $password,
             'grant_type' => 'password',
-            'client_id' => env('API_CLIENT_ID'),
-            'client_secret' => env('API_CLIENT_SECRET')
+            'client_id' => config('logging.api_client_id'),
+            'client_secret' => config('logging.api_client_secret')
         ]);
 
 
         $tokenRequest = Request::create(
-            env('APP_URL').'/oauth/token',
+            config('app.url').'/oauth/token',
             'post'
         );
         $response = Route::dispatch($tokenRequest);
