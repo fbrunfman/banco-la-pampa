@@ -59,6 +59,7 @@ export default {
                 this.$router.push('/')
                  this.$store.commit('login', false)
                  this.$store.commit('infoEmpleado', response.data.usuario)
+                 localStorage.setItem('infoEmpleado', JSON.stringify(response.data.usuario))
             })
         }
     }

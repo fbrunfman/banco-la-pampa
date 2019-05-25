@@ -1806,6 +1806,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Anecdotario',
   mounted: function mounted() {
@@ -1991,6 +1992,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.$store.commit('login', false);
 
         _this.$store.commit('infoEmpleado', response.data.usuario);
+
+        localStorage.setItem('infoEmpleado', JSON.stringify(response.data.usuario));
       });
     }
   }
@@ -2237,6 +2240,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
   data: function data() {
@@ -2248,8 +2255,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    empleado: function empleado() {
-      return this.$store.state.empleado;
+    infoEmpleado: function infoEmpleado() {
+      return this.$store.state.infoEmpleado;
     },
     login: function login() {
       return this.$store.state.login;
@@ -2265,6 +2272,8 @@ __webpack_require__.r(__webpack_exports__);
     if (this.token === null) {
       this.$router.push('/login');
     }
+
+    this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')));
   },
   methods: {
     cambiarPagina: function cambiarPagina() {
@@ -2328,145 +2337,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2510,24 +2382,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Trivia',
+  data: function data() {
+    return {
+      preguntas: [],
+      userResponses: [],
+      respuestasCorrectas: '',
+      ocultarTrivia: false
+    };
+  },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
-    this.traerPreguntas();
   },
   computed: {
     infoEmpleado: function infoEmpleado() {
       return this.$store.state.infoEmpleado;
     }
   },
+  watch: {
+    infoEmpleado: function infoEmpleado() {
+      this.traerPreguntas();
+    }
+  },
   methods: {
     traerPreguntas: function traerPreguntas() {
+      var _this = this;
+
       var url = '/api/preguntas?mes=' + 1
       /* se harcodea el mes*/
       + '&hecha=' + this.infoEmpleado.equipo;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        _this.preguntas = response.data;
+
+        if (_this.preguntas.hecha === true) {
+          _this.ocultarTrivia = true;
+        }
+      });
+    },
+    enviarRespuestas: function enviarRespuestas() {
+      delete this.preguntas.hecha;
+      var counter = 0;
+      console.log(this.preguntas[0].respuestas);
+
+      for (var i = 0; i < Object.values(this.preguntas).length; i++) {
+        var resps = this.preguntas[i].respuestas;
+
+        if (resps.filter(function (respuesta) {
+          return respuesta.es_correcta == 1;
+        })[0].id == this.userResponses[i]) {
+          counter++;
+        }
+      }
+
+      this.respuestasCorrectas = counter;
+      var url = '/api/guardar-puntaje';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
+        equipo_id: this.infoEmpleado.equipo,
+        mes: 1,
+        //se harcodea el mes en curso\
+        puntaje: this.respuestasCorrectas
+      }).then(function (response) {
         console.log('todo bien');
       });
     }
@@ -2660,7 +2577,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 11px;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 13px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.bloque-video[data-v-002e034c] {\n  display: grid;\n  grid-template-columns: 298px;\n}", ""]);
 
 // exports
 
@@ -2717,7 +2634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  height: 5vh;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}", ""]);
 
 // exports
 
@@ -2736,7 +2653,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-pregunta[data-v-2f3251a4] {\n  max-width: 639px;\n  background-color: #2eb92e;\n  color: white;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 40px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 24px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 40px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 24px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -4917,7 +4834,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", {}, [
+    return _c("div", { staticClass: "bloque-video" }, [
       _c("div", { staticClass: "protagonista-foto" }, [
         _c("iframe", {
           attrs: {
@@ -4928,40 +4845,39 @@ var staticRenderFns = [
         })
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "info-video d-flex justify-content-between mr-5" },
-        [
-          _c("div", { staticClass: "protagonista-info text-left ml-5" }, [
-            _c("div", { staticClass: "nombre" }, [
-              _c("span", [_vm._v("Jose Perez")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sucursal" }, [
-              _c("span", [
-                _vm._v("SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX")
-              ])
-            ])
+      _c("div", { staticClass: "info-video d-flex justify-content-between" }, [
+        _c("div", { staticClass: "protagonista-info text-left ml-2" }, [
+          _c("div", { staticClass: "nombre" }, [
+            _c("span", [_vm._v("Jose Perez")])
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "icono-like d-flex flex-row align-items-center ml-2"
-            },
-            [
-              _c("img", {
-                staticClass: "like mr-2",
-                attrs: {
-                  src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                }
-              }),
-              _vm._v(" "),
-              _c("h6", [_vm._v("20")])
-            ]
-          )
-        ]
-      )
+          _c("div", { staticClass: "sucursal" }, [
+            _c("span", [_vm._v("SUCURSAL XasdadasdasdXX")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "sucursal" }, [
+            _c("span", [_vm._v("Area XasdadasdasdXX")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "icono-like d-flex flex-row align-items-center ml-2 mr-2"
+          },
+          [
+            _c("img", {
+              staticClass: "like mr-2",
+              attrs: {
+                src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticStyle: { "font-size": "16px" } }, [_vm._v("20")])
+          ]
+        )
+      ])
     ])
   }
 ]
@@ -5391,7 +5307,16 @@ var render = function() {
   return _c("div", { staticClass: "contenedor" }, [
     _vm.login === false
       ? _c("div", { staticClass: "contenedor-main" }, [
-          _c("div", { staticClass: "header" }),
+          _c("div", { staticClass: "header d-flex justify-content-center" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "nombre-usuario text-center btn btn-outline-warning my-1"
+              },
+              [_vm._v(" Bienvenido " + _vm._s(_vm.infoEmpleado.nombre) + " ")]
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "inner-container" }, [
             _c(
@@ -6058,688 +5983,180 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "contenedor" }, [
+    _c(
+      "div",
+      { staticClass: "inner-container no-gutters" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._l(Object.values(_vm.preguntas), function(pregunta, i) {
+          return _c(
+            "div",
+            { key: i, staticClass: "trivia-body", class: "trivia-body-" + i },
+            [
+              _vm.ocultarTrivia == false
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4"
+                    },
+                    [
+                      _c("div", { staticClass: "row no-gutters" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "contenedor-general d-flex justify-content-center  align-items-center p-3",
+                                class: "contenedor-pregunta-" + i
+                              },
+                              [
+                                _c("div", { staticClass: "pregunta-texto" }, [
+                                  _c("span", { staticClass: "texto-trivia" }, [
+                                    _vm._v(_vm._s(pregunta.pregunta))
+                                  ])
+                                ])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "respuestas-body" },
+                              _vm._l(pregunta.respuestas, function(
+                                respuesta,
+                                j
+                              ) {
+                                return _c(
+                                  "div",
+                                  { key: j, staticClass: "form-check my-4" },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.userResponses[i],
+                                          expression: "userResponses[i]"
+                                        }
+                                      ],
+                                      attrs: {
+                                        type: "radio",
+                                        name: "respuesta" + i,
+                                        id: "pregunta" + j
+                                      },
+                                      domProps: {
+                                        value: respuesta.id,
+                                        checked: _vm._q(
+                                          _vm.userResponses[i],
+                                          respuesta.id
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.userResponses,
+                                            i,
+                                            respuesta.id
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: { for: "pregunta" + j }
+                                      },
+                                      [_vm._v(_vm._s(respuesta.respuesta))]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e()
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _vm.ocultarTrivia == true
+          ? _c("div", { staticClass: "alert alert-warning text-center" }, [
+              _c("div", { staticClass: "h2" }, [
+                _vm._v(
+                  "Hola " +
+                    _vm._s(_vm.infoEmpleado.nombre) +
+                    ", un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!"
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.ocultarTrivia == false
+          ? _c("div", { staticClass: "enviar text-center mb-5" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success text-center",
+                  on: { click: _vm.enviarRespuestas }
+                },
+                [_vm._v("Enviar respuestas!")]
+              )
+            ])
+          : _vm._e()
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contenedor" }, [
-      _c("div", { staticClass: "inner-container no-gutters" }, [
-        _c("div", { staticClass: "titulo-trivia mt-3" }, [
-          _c("img", {
-            attrs: { src: __webpack_require__(/*! ./img/trivia2.jpg */ "./resources/js/components/img/trivia2.jpg"), alt: "", srcset: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "copete p-5" }, [
-          _c("h2", { staticClass: "copete-pregunta mb-3" }, [
-            _vm._v("Cuanto sabes sobre el banco?")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "copete-texto" }, [
-            _vm._v(
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?"
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "trivia-body" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "trivia-uno p-4 inner-container no-gutters d-flex justify-content-center"
-            },
-            [
-              _c("div", { staticClass: "row no-gutters" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
-                      },
-                      [
-                        _c("div", { staticClass: "pregunta-texto" }, [
-                          _c("span", { staticClass: "texto-trivia" }, [
-                            _vm._v(
-                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
-                            )
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "respuestas-body" }, [
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "pregunta1",
-                            value: "option1",
-                            id: "pregunta1_2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_2" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option2",
-                            name: "pregunta1",
-                            id: "pregunta1_3"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_3" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option3",
-                            name: "pregunta1",
-                            id: "pregunta1_4"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_4" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
-            },
-            [
-              _c("div", { staticClass: "row no-gutters" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
-                      },
-                      [
-                        _c("div", { staticClass: "pregunta-texto" }, [
-                          _c("span", { staticClass: "texto-trivia" }, [
-                            _vm._v(
-                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
-                            )
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "respuestas-body" }, [
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "pregunta1",
-                            value: "option1",
-                            id: "pregunta1_2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_2" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option2",
-                            name: "pregunta1",
-                            id: "pregunta1_3"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_3" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option3",
-                            name: "pregunta1",
-                            id: "pregunta1_4"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_4" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
-            },
-            [
-              _c("div", { staticClass: "row no-gutters" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
-                      },
-                      [
-                        _c("div", { staticClass: "pregunta-texto" }, [
-                          _c("span", { staticClass: "texto-trivia" }, [
-                            _vm._v(
-                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
-                            )
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "respuestas-body" }, [
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "pregunta1",
-                            value: "option1",
-                            id: "pregunta1_2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_2" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option2",
-                            name: "pregunta1",
-                            id: "pregunta1_3"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_3" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option3",
-                            name: "pregunta1",
-                            id: "pregunta1_4"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_4" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
-            },
-            [
-              _c("div", { staticClass: "row no-gutters" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
-                      },
-                      [
-                        _c("div", { staticClass: "pregunta-texto" }, [
-                          _c("span", { staticClass: "texto-trivia" }, [
-                            _vm._v(
-                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
-                            )
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "respuestas-body" }, [
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "pregunta1",
-                            value: "option1",
-                            id: "pregunta1_2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_2" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option2",
-                            name: "pregunta1",
-                            id: "pregunta1_3"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_3" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option3",
-                            name: "pregunta1",
-                            id: "pregunta1_4"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_4" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
-            },
-            [
-              _c("div", { staticClass: "row no-gutters" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
-                      },
-                      [
-                        _c("div", { staticClass: "pregunta-texto" }, [
-                          _c("span", { staticClass: "texto-trivia" }, [
-                            _vm._v(
-                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
-                            )
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "respuestas-body" }, [
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "pregunta1",
-                            value: "option1",
-                            id: "pregunta1_2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_2" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option2",
-                            name: "pregunta1",
-                            id: "pregunta1_3"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_3" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option3",
-                            name: "pregunta1",
-                            id: "pregunta1_4"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_4" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center"
-            },
-            [
-              _c("div", { staticClass: "row no-gutters" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "contenedor-pregunta  d-flex justify-content-center  align-items-center p-3"
-                      },
-                      [
-                        _c("div", { staticClass: "pregunta-texto" }, [
-                          _c("span", { staticClass: "texto-trivia" }, [
-                            _vm._v(
-                              "1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?"
-                            )
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "respuestas-body" }, [
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "pregunta1",
-                            value: "option1",
-                            id: "pregunta1_2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_2" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option2",
-                            name: "pregunta1",
-                            id: "pregunta1_3"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_3" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-check my-4" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            value: "option3",
-                            name: "pregunta1",
-                            id: "pregunta1_4"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label",
-                            attrs: { for: "pregunta1_4" }
-                          },
-                          [_vm._v("Que olor tiene la sal?")]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "enviar text-center mb-5" }, [
-            _c("button", { staticClass: "btn btn-success text-center" }, [
-              _vm._v("Enviar respuestas!")
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "titulo-trivia mt-3" }, [
+      _c("img", {
+        attrs: { src: __webpack_require__(/*! ./img/trivia2.jpg */ "./resources/js/components/img/trivia2.jpg"), alt: "", srcset: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "copete p-5" }, [
+      _c("h2", { staticClass: "copete-pregunta mb-3" }, [
+        _vm._v("Cuanto sabes sobre el banco?")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "copete-texto" }, [
+        _vm._v(
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?"
+        )
       ])
     ])
   }
@@ -22972,6 +22389,11 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_2__["default"]);
+/* store.subscribe((mutation, state) => {
+	// Store the state object as a JSON string
+	localStorage.setItem('store', JSON.stringify(state));
+}); */
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

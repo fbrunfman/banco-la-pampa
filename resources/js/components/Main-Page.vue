@@ -1,7 +1,9 @@
 <template>
   <div class="contenedor">
     <div v-if="login === false" class="contenedor-main">
-        <div class="header"/>
+        <div class="header d-flex justify-content-center">
+            <div class="nombre-usuario text-center btn btn-outline-warning my-1"> Bienvenido {{infoEmpleado.nombre}} </div>
+        </div>
         <div class="inner-container">
             <div class="row botones no-gutters d-flex justify-content-between">
                 <div class="col-xl-3 col-12 logo d-flex flex-row justify-content-between " @click="cambiarPagina">
@@ -14,6 +16,7 @@
                         <img src="./img/logout2.png" alt="" srcset="" @click="logout">
                     </div>
                 </div>
+
                 <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
                     <nav class="navbar navbar-expand-md sticky-top navbar-light">
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
@@ -52,6 +55,7 @@
                 </div>
                 <div class="col-xl-1 icono-logout d-flex align-items-center" >
                     <img src="./img/logout2.png" alt="" srcset="" @click="logout">
+
                 </div>
             </div>
         </div>
@@ -240,8 +244,8 @@ export default {
         }
     },
     computed: {
-        empleado(){
-            return this.$store.state.empleado
+        infoEmpleado(){
+            return this.$store.state.infoEmpleado
         },
         login() {
             return this.$store.state.login
@@ -257,6 +261,7 @@ export default {
           if (this.token === null) {
               this.$router.push('/login')
           }
+          this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')))
     },
     methods: {
         cambiarPagina() {
@@ -320,7 +325,6 @@ export default {
 
 .header {
     background-color: rgb(80, 80, 80);
-    height: 5vh;
     left: 0;
     right: 0;
     margin: auto;
@@ -447,6 +451,7 @@ nav ul li a {
     }
 }
 
+
 @media (max-width: 767px) {
     .separador {
         border: none;
@@ -464,6 +469,8 @@ nav ul li a {
 
     .no-collapse {
         display: none;
+        background-color: #ffe4e4;
+        border-radius: 15px;
     }
 
 }
@@ -490,6 +497,11 @@ nav ul li a {
 
 .carousel-indicators{
    top:0px;
+}
+
+.nombre-usuario {
+       color: white;
+    font-size: 28px;
 }
 
 </style>

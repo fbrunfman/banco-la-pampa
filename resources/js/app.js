@@ -14,6 +14,13 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 const store = new Vuex.Store(StoreData)
+
+/* store.subscribe((mutation, state) => {
+	// Store the state object as a JSON string
+	localStorage.setItem('store', JSON.stringify(state));
+}); */
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

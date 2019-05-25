@@ -8,172 +8,33 @@
                 <h2 class="copete-pregunta mb-3">Cuanto sabes sobre el banco?</h2>
                 <span class="copete-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?</span>
             </div>
-            <div class="trivia-body">
-                <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center">
+            <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
+                <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false">
                     <div class="row no-gutters">
                         <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
-                            <div class="contenedor-pregunta  d-flex justify-content-center  align-items-center p-3">
+                            <div class="contenedor-general d-flex justify-content-center  align-items-center p-3" :class="'contenedor-pregunta-' + i">
                                 <div class="pregunta-texto">
-                                    <span class="texto-trivia">1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?</span>
+                                    <span class="texto-trivia">{{pregunta.pregunta}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center">
+                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                            >
                             <div class="respuestas-body">
-                                <div class="form-check my-4">
-                                    <input type="radio" name="pregunta1" value="option1" id="pregunta1_2" >
-                                    <label class="form-check-label" for="pregunta1_2">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option2" name="pregunta1" id="pregunta1_3" >
-                                    <label class="form-check-label" for="pregunta1_3">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option3"  name="pregunta1" id="pregunta1_4" >
-                                    <label class="form-check-label" for="pregunta1_4">Que olor tiene la sal?</label>
+                                <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
+                                    <input v-model="userResponses[i]" type="radio" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" >
+                                    <label class="form-check-label" :for="'pregunta' + j">{{respuesta.respuesta}}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
-                            <div class="contenedor-pregunta  d-flex justify-content-center  align-items-center p-3">
-                                <div class="pregunta-texto">
-                                    <span class="texto-trivia">1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center">
-                            <div class="respuestas-body">
-                                <div class="form-check my-4">
-                                    <input type="radio" name="pregunta1" value="option1" id="pregunta1_2" >
-                                    <label class="form-check-label" for="pregunta1_2">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option2" name="pregunta1" id="pregunta1_3" >
-                                    <label class="form-check-label" for="pregunta1_3">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option3"  name="pregunta1" id="pregunta1_4" >
-                                    <label class="form-check-label" for="pregunta1_4">Que olor tiene la sal?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
-                            <div class="contenedor-pregunta  d-flex justify-content-center  align-items-center p-3">
-                                <div class="pregunta-texto">
-                                    <span class="texto-trivia">1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center">
-                            <div class="respuestas-body">
-                                <div class="form-check my-4">
-                                    <input type="radio" name="pregunta1" value="option1" id="pregunta1_2" >
-                                    <label class="form-check-label" for="pregunta1_2">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option2" name="pregunta1" id="pregunta1_3" >
-                                    <label class="form-check-label" for="pregunta1_3">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option3"  name="pregunta1" id="pregunta1_4" >
-                                    <label class="form-check-label" for="pregunta1_4">Que olor tiene la sal?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
-                            <div class="contenedor-pregunta  d-flex justify-content-center  align-items-center p-3">
-                                <div class="pregunta-texto">
-                                    <span class="texto-trivia">1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center">
-                            <div class="respuestas-body">
-                                <div class="form-check my-4">
-                                    <input type="radio" name="pregunta1" value="option1" id="pregunta1_2" >
-                                    <label class="form-check-label" for="pregunta1_2">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option2" name="pregunta1" id="pregunta1_3" >
-                                    <label class="form-check-label" for="pregunta1_3">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option3"  name="pregunta1" id="pregunta1_4" >
-                                    <label class="form-check-label" for="pregunta1_4">Que olor tiene la sal?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
-                            <div class="contenedor-pregunta  d-flex justify-content-center  align-items-center p-3">
-                                <div class="pregunta-texto">
-                                    <span class="texto-trivia">1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center">
-                            <div class="respuestas-body">
-                                <div class="form-check my-4">
-                                    <input type="radio" name="pregunta1" value="option1" id="pregunta1_2" >
-                                    <label class="form-check-label" for="pregunta1_2">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option2" name="pregunta1" id="pregunta1_3" >
-                                    <label class="form-check-label" for="pregunta1_3">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option3"  name="pregunta1" id="pregunta1_4" >
-                                    <label class="form-check-label" for="pregunta1_4">Que olor tiene la sal?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="trivia-uno  my-4 p-4 inner-container no-gutters d-flex justify-content-center">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
-                            <div class="contenedor-pregunta  d-flex justify-content-center  align-items-center p-3">
-                                <div class="pregunta-texto">
-                                    <span class="texto-trivia">1- CUAL ES LA PRIMER SUCURSAL QUE INAGURO EL BANCO?</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center">
-                            <div class="respuestas-body">
-                                <div class="form-check my-4">
-                                    <input type="radio" name="pregunta1" value="option1" id="pregunta1_2" >
-                                    <label class="form-check-label" for="pregunta1_2">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option2" name="pregunta1" id="pregunta1_3" >
-                                    <label class="form-check-label" for="pregunta1_3">Que olor tiene la sal?</label>
-                                </div>
-                                <div class="form-check my-4">
-                                    <input type="radio" value="option3"  name="pregunta1" id="pregunta1_4" >
-                                    <label class="form-check-label" for="pregunta1_4">Que olor tiene la sal?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="enviar text-center mb-5">
-                    <button class="btn btn-success text-center">Enviar respuestas!</button>
-                </div>
+            </div>
+            <div class="alert alert-warning text-center" v-if="ocultarTrivia == true">
+                <div class="h2">Hola {{infoEmpleado.nombre}}, un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!</div>
+            </div>
+            <div class="enviar text-center mb-5" v-if="ocultarTrivia == false">
+                <button @click="enviarRespuestas" class="btn btn-success text-center">Enviar respuestas!</button>
             </div>
         </div>
     </div>
@@ -181,17 +42,31 @@
 
 <script>
 import Axios from "axios";
+import { log } from 'util';
 
 export default {
     name: 'Trivia',
+    data() {
+        return {
+            preguntas: [],
+            userResponses: [],
+            respuestasCorrectas: '',
+            ocultarTrivia: false
+        }
+    },
     mounted () {
         this.$store.commit('login', false)
         this.$store.commit('paginaPrincipal', false)
-        this.traerPreguntas()
+
     },
     computed: {
         infoEmpleado() {
             return this.$store.state.infoEmpleado
+        }
+    },
+    watch: {
+        infoEmpleado() {
+            this.traerPreguntas()
         }
     },
     methods: {
@@ -199,9 +74,36 @@ export default {
             var url = '/api/preguntas?mes=' + 1 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
             Axios.get(url)
                     .then(response => {
-                        console.log('todo bien');
-
+                        this.preguntas = response.data
+                        if (this.preguntas.hecha === true) {
+                            this.ocultarTrivia = true
+                        }
                     })
+        },
+        enviarRespuestas() {
+            delete this.preguntas.hecha
+            var counter = 0
+            console.log(this.preguntas[0].respuestas);
+
+            for (var i = 0; i < Object.values(this.preguntas).length; i++) {
+                var resps = this.preguntas[i].respuestas
+                if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
+                    counter++
+                }
+
+            }
+            this.respuestasCorrectas = counter
+            var url = '/api/guardar-puntaje'
+            Axios.post(url, {
+                equipo_id: this.infoEmpleado.equipo,
+                mes: 1, //se harcodea el mes en curso\
+                puntaje: this.respuestasCorrectas
+            })
+            .then(response => {
+                console.log('todo bien');
+
+            })
+
         }
     }
 }
@@ -217,13 +119,48 @@ export default {
     color: #efb607;
 }
 
-.contenedor-pregunta {
-    max-width: 639px;
-    background-color: #2eb92e;
-    color: white;
+.contenedor-general {
+    width: 384px;
+    max-width: 384px;
+    min-width: 384px;
     height: 370px;
     border-radius: 15px 60px 15px 60px;
     box-shadow: 2px 2px 16px #2b2a2a;
+}
+
+.contenedor-pregunta-0 {
+    background-color: #2eb92e;
+    color: white;
+
+}
+
+.contenedor-pregunta-1 {
+    background-color: #f2be00;
+    color: white;
+}
+
+.contenedor-pregunta-2 {
+    background-color: #7a8baa;
+    color: white;
+}
+
+.contenedor-pregunta-3 {
+    background-color: #5e5b51;
+    color: white;
+}
+
+.contenedor-pregunta-4 {
+    background-color: #ecdda5
+
+}
+
+.contenedor-pregunta-5 {
+    background-color: #e44737;
+    color: white;
+}
+
+.trivia-body-6 {
+    display: none;
 }
 
 .texto-trivia {
@@ -246,7 +183,8 @@ export default {
 @media (max-width: 700px) {
     .contenedor-pregunta {
         max-width: 350px;
-          height: 250px;
+        min-width: 350px;
+        height: 250px;
     }
     .texto-trivia {
         font-size: 24px;
@@ -255,6 +193,12 @@ export default {
 
     .enviar button {
     font-size: 22px;
+    }
+    .contenedor-general {
+    min-width: 244px;
+    max-width: 356px;
+    width: 266px;
+    height: 227px;
     }
 }
 
