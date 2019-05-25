@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::post('/login', 'AuthController@login')->name('login');
 Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
+Route::middleware('auth:api')->post('/post-credentials', 'UserController@postCredentials');
 
 Route::resource('preguntas', 'PreguntaController');
 Route::post('/guardar-puntaje', 'PreguntaController@guardarPuntaje');
