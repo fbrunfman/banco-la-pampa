@@ -2396,6 +2396,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
+    this.traerPreguntas();
   },
   computed: {
     infoEmpleado: function infoEmpleado() {
