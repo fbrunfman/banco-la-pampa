@@ -1,7 +1,10 @@
 <template>
   <div class="contenedor">
     <div v-if="login === false" class="contenedor-main">
-        <div class="header"/>
+        <div class="header d-flex justify-content-center">
+            <div class="nombre-usuario text-center btn btn-outline-warning my-1"> Hola {{infoEmpleado.nombre}} </div>
+
+        </div>
         <div class="inner-container">
             <div class="row botones no-gutters d-flex justify-content-between">
                 <div class="col-xl-3 col-12 logo d-flex flex-row justify-content-between " @click="cambiarPagina">
@@ -11,9 +14,11 @@
                         </router-link>
                     </div>
                     <div class="icono-logout-min d-flex align-items-center mr-2" >
-                        <img src="./img/logout2.png" alt="" srcset="" @click="logout">
+                        <img src="./img/logout3.png" alt="" srcset="" @click="logout">
+                        <img class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                     </div>
                 </div>
+
                 <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
                     <nav class="navbar navbar-expand-md sticky-top navbar-light">
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
@@ -21,7 +26,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="collapse_target">
                             <ul class="navbar-nav">
-                                <router-link to="bingo">
+                                <router-link to="proximamente">
                                     <li class="nav-item">
                                         <a class="nav-link text-center" href=""><strong>EL BINGO DE LOS PROTAGONISTAS</strong> </a>
                                     </li>
@@ -33,30 +38,35 @@
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <router-link to="anecdotario">
+                                <router-link to="proximamente">
                                     <li class="nav-item">
                                         <a class="nav-link text-center" href=""><strong>ANECDOTARIO</strong></a>
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <li class="nav-item">
-                                    <a class="nav-link text-center" href=""> <strong>  TU FOTO CUENTA</strong></a>
-                                </li>
+                                <router-link to="proximamente">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-center" href=""> <strong>  TU FOTO CUENTA</strong></a>
+                                    </li>
+                                </router-link>
                                 <div class="separador mx-1"/>
-                                <li class="nav-item">
-                                    <a class="nav-link text-center" href=""> <strong>CONCURSO SELFIE</strong> </a>
-                                </li>
+                                <router-link to="proximamente">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-center" href=""> <strong>CONCURSO SELFIE</strong> </a>
+                                    </li>
+                                </router-link>
                             </ul>
                         </div>
                     </nav>
                 </div>
                 <div class="col-xl-1 icono-logout d-flex align-items-center" >
-                    <img src="./img/logout2.png" alt="" srcset="" @click="logout">
+                    <img src="./img/logout3.png" alt="" srcset="" @click="logout">
+                    <img  class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                 </div>
             </div>
         </div>
     </div>
-    <div v-if="paginaPrincipal && login === false ">
+    <div v-if="login === false && paginaPrincipal === true">
 <!--         <div class="fotos">
             <div class="main-foto" v-if="bingo">
                 <img src="./img/bingo-2.jpg" alt="" srcset="">
@@ -71,16 +81,22 @@
                 <img src="./img/bingo-2.jpg" alt="" srcset="">
             </div>
         </div> -->
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
                  <img src="./img/bingo-2.jpg" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/bingo-2.jpg" alt="" srcset="">
+                  <img src="./img/header-cuenta.jpeg" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/bingo-2.jpg" alt="" srcset="">
+                  <img src="./img/header-selfie.jpeg" alt="" srcset="">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/header-anecdotario.jpeg" alt="" srcset="">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/header-trivia.jpeg" alt="" srcset="">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -107,7 +123,8 @@
                                 <h5>Conoce a los protagonistas de la semana</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
-                                <span class="sumar">+</span>
+
+                                <span class="sumar" @click="irBingo">+</span>
                             </div>
                         </div>
                     </div>
@@ -123,7 +140,7 @@
                                 <h5>  Demostrá cuánto sabés del banco con tus compañeros y ganá un premio!</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
-                                <span class="sumar">+</span>
+                                <span class="sumar" @click="irTrivia">+</span>
                             </div>
                         </div>
                     </div>
@@ -139,7 +156,7 @@
                                 <h5>Contanos tu anécdota más divertida en un video</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
-                                <span class="sumar">+</span>
+                                <span class="sumar" @click="irAnecdotario">+</span>
                             </div>
                         </div>
                     </div>
@@ -155,7 +172,7 @@
                                 <h5>Envianos una foto significativa por estos 60 años de historia</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
-                                <span class="sumar">+</span>
+                                <span class="sumar" @click="irCuenta">+</span>
                             </div>
                         </div>
                     </div>
@@ -168,10 +185,10 @@
               <div class="banner-novedad mx-4 my-2">
                 <div class="titulo-novedad p-3">
                     <h3>Novedades:</h3>
-                    <h5>Titulo novedad uno</h5>
+                    <h5>Se larga el sitio 60 Aniversario Banco De La Pampa</h5>
                 </div>
                 <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/anecdota.jpg" alt="" srcset="">
+                     <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
                 </div>
                  <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
@@ -197,7 +214,7 @@
                     <h5>Titulo novedad uno</h5>
                 </div>
                 <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/anecdota.jpg" alt="" srcset="">
+                     <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
                 </div>
                 <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -221,6 +238,29 @@
           </div>
         </div>
     </div>
+        <form @submit.prevent ref="formulario">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Cambiar la contrasena</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contrasena actual (legajo)" required>
+                            <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contrasena" required>
+                            <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contrasena" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contrasena</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     <div>
     <router-view></router-view>
     </div>
@@ -229,6 +269,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
     name: 'home',
     data() {
@@ -240,46 +281,28 @@ export default {
         }
     },
     computed: {
-        empleado(){
-            return this.$store.state.empleado
+        infoEmpleado(){
+            return this.$store.state.infoEmpleado
         },
         login() {
             return this.$store.state.login
         },
         paginaPrincipal() {
             return this.$store.state.paginaPrincipal
+        },
+        token() {
+            return this.$store.state.token
         }
     },
- /*    mounted() {
-          this.$store.commit('paginaPrincipal', true)
-    }, */
+    mounted() {
+          if (this.token === null) {
+              this.$router.push('/login')
+          }
+          this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')))
+    },
     methods: {
         cambiarPagina() {
             this.$store.commit('paginaPrincipal', true)
-        },
-        selectBingo() {
-            this.bingo = true
-            this.anecdotario = false
-            this.trivia = false
-            this.cuenta = false
-        },
-        selectTrivia() {
-            this.bingo = false
-            this.anecdotario = false
-            this.trivia = true
-            this.cuenta = false
-        },
-        selectAnecdotario() {
-            this.bingo = false
-            this.anecdotario = true
-            this.trivia = false
-            this.cuenta = false
-        },
-        selectCuenta() {
-            this.bingo = false
-            this.anecdotario = false
-            this.trivia = false
-            this.cuenta = trueactivarCollapseactivarCollapse
         },
         activarCollapse() {
             this.collapseOn = !this.collapseOn
@@ -296,7 +319,26 @@ export default {
                 this.$router.push('/login')
                  this.$store.commit('login', false)
             })
-        }
+        },
+        cambiarPassword() {
+             var datos = new FormData(this.$refs.formulario)
+             Axios.post('/api/post-credentials', datos)
+                .then(response => {
+                   console.log('todo bien');
+                })
+        },
+        irBingo() {
+            this.$router.push('/proximamente')
+        },
+        irTrivia() {
+            this.$router.push('/trivia')
+        },
+        irAnecdotario() {
+            this.$router.push('/proximamente')
+        },
+        irCuenta() {
+            this.$router.push('/proximamente')
+        },
 
     }
 }
@@ -315,7 +357,6 @@ export default {
 
 .header {
     background-color: rgb(80, 80, 80);
-    height: 5vh;
     left: 0;
     right: 0;
     margin: auto;
@@ -364,6 +405,7 @@ nav ul li a {
     text-shadow: 2px 2px 2px #888888;
     position: relative;
     bottom: 48px;
+    cursor: pointer;
 }
 
 .banner-titulo-bingo {
@@ -426,7 +468,6 @@ nav ul li a {
         }
     img {
         width: 30px;
-        border-radius: 50%;
         cursor: pointer;
     }
 }
@@ -441,6 +482,7 @@ nav ul li a {
         }
     }
 }
+
 
 @media (max-width: 767px) {
     .separador {
@@ -459,6 +501,8 @@ nav ul li a {
 
     .no-collapse {
         display: none;
+        background-color: #ffe4e4;
+        border-radius: 15px;
     }
 
 }
@@ -485,6 +529,11 @@ nav ul li a {
 
 .carousel-indicators{
    top:0px;
+}
+
+.nombre-usuario {
+       color: white;
+    font-size: 28px;
 }
 
 </style>

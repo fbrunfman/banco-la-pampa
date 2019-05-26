@@ -2,16 +2,14 @@ import Axios from "axios";
 
 export default {
     state: {
-        empleado: {
-            nombre: 'federico'
-        },
         login: false,
         paginaPrincipal: true,
+        infoEmpleado: '',
         token: localStorage.getItem('access_token') || null
     },
     mutations: {
-        empleado (state, empleados) {
-            state.empleados = empleado
+        infoEmpleado (state, infoEmpleado) {
+            state.infoEmpleado = infoEmpleado
         },
         login (state, login) {
             state.login = login
@@ -60,6 +58,9 @@ export default {
                     context.commit('retrieveToken', token)
                     resolve(response)
                     /* console.log(response); */
+                })
+                .catch((error) => {
+                    alert('Usuario o contrasena incorrectos')
                 })
             })
         }

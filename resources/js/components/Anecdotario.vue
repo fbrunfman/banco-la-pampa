@@ -17,20 +17,21 @@
             <div class="inner-container no-gutters">
                 <div class="row no-gutters">
                     <div class="contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2" v-for="i in 9" :key="i">
-                        <div class="">
+                        <div class="bloque-video">
                             <div class="protagonista-foto">
                                 <iframe width="300" height="255"
                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                                 </iframe>
                             </div>
-                            <div class="info-video d-flex justify-content-between mr-5">
-                                <div class="protagonista-info text-left ml-5">
+                            <div class="info-video d-flex justify-content-between">
+                                <div class="protagonista-info text-left ml-2">
                                     <div class="nombre"><span>Jose Perez</span></div>
-                                    <div class="sucursal"><span>SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX</span></div>
+                                    <div class="sucursal"><span>SUCURSAL XasdadasdasdXX</span></div>
+                                    <div class="sucursal"><span>Area XasdadasdasdXX</span></div>
                                 </div>
-                                <div class="icono-like d-flex flex-row align-items-center ml-2">
+                                <div class="icono-like d-flex flex-row align-items-center ml-2 mr-2">
                                     <img class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png">
-                                    <h6>20</h6>
+                                    <span style="font-size: 16px;">20</span>
                                 </div>
                             </div>
                         </div>
@@ -92,6 +93,14 @@ export default {
 }
 
 .info-video {
-    font-size: 11px;
+    font-size: 13px;
+    background-color: #e7b912;
+    color: white;
+    box-shadow: 2px 2px 8px grey;
+}
+
+.bloque-video {
+    display: grid;
+    grid-template-columns: 298px;
 }
 </style>
