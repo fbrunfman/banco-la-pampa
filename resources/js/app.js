@@ -9,9 +9,13 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import StoreData from './store'
+import VueSweetalert2 from 'vue-sweetalert2';
+
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(VueSweetalert2);
+
 
 const store = new Vuex.Store(StoreData)
 
@@ -44,6 +48,7 @@ const routes = [
     { path: '/anecdotario', component: require('./components/Anecdotario.vue').default, meta: {requiresAuth: true} },
     { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default, meta: {requiresAuth: true} },
     { path: '/tu-foto-cuenta', component: require('./components/Tu-Foto-Cuenta.vue').default, meta: {requiresAuth: true} },
+    { path: '/proximamente', component: require('./components/Proximamente').default, meta: {requiresAuth: true} },
     { path: '/login', component: require('./components/Login.vue').default, meta: {requiresVisitor: true} }
   ]
 

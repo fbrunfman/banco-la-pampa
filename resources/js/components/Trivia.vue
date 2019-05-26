@@ -22,7 +22,7 @@
                             >
                             <div class="respuestas-body">
                                 <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
-                                    <input v-model="userResponses[i]" type="radio" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" >
+                                    <input v-model="userResponses[i]" type="radio" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" required>
                                     <label class="form-check-label" :for="'pregunta' + j">{{respuesta.respuesta}}</label>
                                 </div>
                             </div>
@@ -101,8 +101,9 @@ export default {
                 puntaje: this.respuestasCorrectas
             })
             .then(response => {
-                console.log('todo bien');
-
+                this.$swal('Tus respuestas fueron enviadas exitosamente')
+                this.$store.commit('paginaPrincipal', true)
+                this.$router.push('/')
             })
 
         }
