@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex justify-content-center">
-        <img src="./img/proximamente.png" alt="" srcset="">
+        <img src="./img/proximamente-compressor.png" alt="" srcset="">
     </div>
 </template>
 
@@ -13,3 +13,16 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+
+
+@media (max-width: 1200px) {
+    img {
+        width: 244px;
+        height: 250px;
+    }
+}
+
+</style>
+

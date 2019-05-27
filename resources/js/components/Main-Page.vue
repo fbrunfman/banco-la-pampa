@@ -2,7 +2,7 @@
   <div class="contenedor">
     <div v-if="login === false" class="contenedor-main">
         <div class="header d-flex justify-content-center">
-            <div class="nombre-usuario text-center btn btn-outline-warning my-1"> Hola {{infoEmpleado.nombre}} </div>
+            <div class="nombre-usuario text-center btn btn-outline-warning my-1"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
 
         </div>
         <div class="inner-container">
@@ -13,7 +13,7 @@
                             <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
                         </router-link>
                     </div>
-                    <div class="icono-logout-min d-flex align-items-center mr-2" >
+                    <div class="icono-logout-min d-flex align-items-center mr-5" >
                         <img src="./img/logout3.png" alt="" srcset="" @click="logout">
                         <img class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                     </div>
@@ -81,10 +81,10 @@
                 <img src="./img/bingo-2.jpg" alt="" srcset="">
             </div>
         </div> -->
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
-                 <img src="./img/bingo-2.jpg" alt="" srcset="">
+                 <img src="./img/bingo-2-compressor.jpg" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
                   <img src="./img/header-cuenta.jpeg" alt="" srcset="">
@@ -249,7 +249,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contrasena actual (legajo)" required>
+                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contrasena actual" required>
                             <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contrasena" required>
                             <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contrasena" required>
                         </div>
@@ -295,10 +295,19 @@ export default {
         }
     },
     mounted() {
-          if (this.token === null) {
-              this.$router.push('/login')
-          }
-          this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')))
+        this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')))
+        if (this.$store.state.token === null) {
+            this.$router.push('/login')
+            this.$store.commit('paginaPrincipal', false)
+            this.$store.commit('login', true)
+
+        }
+        if (this.$route.fullPath === '/login') {
+            this.$store.commit('paginaPrincipal', false)
+            this.$store.commit('login', true)
+            this.$router.push('/login')
+        }
+
     },
     methods: {
         cambiarPagina() {
@@ -322,7 +331,11 @@ export default {
         },
         cambiarPassword() {
              var datos = new FormData(this.$refs.formulario)
-             Axios.post('/api/post-credentials', datos)
+             Axios.post('/api/post-credentials', datos, {
+                 headers: {
+                     'Authorization': 'Bearer ' + this.token
+                 }
+             })
                 .then(response => {
                    console.log('todo bien');
                 })
@@ -518,6 +531,9 @@ nav ul li a {
             display: block;
         }
     }
+    .nombre-usuario {
+        font-size: 16px !important;
+    }
 
 }
 
@@ -532,8 +548,9 @@ nav ul li a {
 }
 
 .nombre-usuario {
-       color: white;
+    color: white;
     font-size: 28px;
+
 }
 
 </style>

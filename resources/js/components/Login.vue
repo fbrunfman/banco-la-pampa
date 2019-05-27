@@ -31,7 +31,6 @@
                     </div>
                 </div>
             </div>
-            <div class="footer"/>
         </div>
     </div>
 </template>
@@ -120,8 +119,8 @@ export default {
 
 @media (max-width: 600px) {
     .logo img {
-        width: 291PX;
-        height: 92px;
+        width: 280px;
+        height: 78px;
     }
 
     .footer {
