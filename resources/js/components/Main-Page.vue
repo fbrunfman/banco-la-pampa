@@ -277,7 +277,8 @@ export default {
             collapseOn: false,
             collapseOnUno: false,
             verMas: true,
-            verMasUno: true
+            verMasUno: true,
+            modal: false
         }
     },
     computed: {
@@ -330,6 +331,7 @@ export default {
             })
         },
         cambiarPassword() {
+
              var datos = new FormData(this.$refs.formulario)
              Axios.post('/api/post-credentials', datos, {
                  headers: {
@@ -337,7 +339,11 @@ export default {
                  }
              })
                 .then(response => {
-                   console.log('todo bien');
+                   this.$swal('Se cambió la contraseña exitósamente')
+
+                })
+                .catch((error) => {
+                    this.$swal('Error al cambiar la contraseña')
                 })
         },
         irBingo() {
@@ -518,6 +524,24 @@ nav ul li a {
         border-radius: 15px;
     }
 
+    .logo img {
+        width: 270px;
+    }
+    .icono-logout-min {
+        img {
+            display: block;
+            width: 24px;
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+    .icono-logout-min {
+        img {
+            width: 18px;
+        }
+    }
 }
 
 @media (max-width: 1199px) {
@@ -529,6 +553,7 @@ nav ul li a {
     .icono-logout-min {
         img {
             display: block;
+
         }
     }
     .nombre-usuario {

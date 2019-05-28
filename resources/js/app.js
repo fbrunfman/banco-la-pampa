@@ -12,9 +12,14 @@ import StoreData from './store'
 import VueSweetalert2 from 'vue-sweetalert2';
 
 
+const options = {
+    confirm: '#41b882',
+    cancel: '#ff7674'
+  }
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
-Vue.use(VueSweetalert2);
+Vue.use(VueSweetalert2, options);
 
 
 const store = new Vuex.Store(StoreData)

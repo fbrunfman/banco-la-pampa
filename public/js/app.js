@@ -2291,7 +2291,8 @@ __webpack_require__.r(__webpack_exports__);
       collapseOn: false,
       collapseOnUno: false,
       verMas: true,
-      verMasUno: true
+      verMasUno: true,
+      modal: false
     };
   },
   computed: {
@@ -2346,13 +2347,17 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     cambiarPassword: function cambiarPassword() {
+      var _this2 = this;
+
       var datos = new FormData(this.$refs.formulario);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/post-credentials', datos, {
         headers: {
           'Authorization': 'Bearer ' + this.token
         }
       }).then(function (response) {
-        console.log('todo bien');
+        _this2.$swal('Se cambió la contraseña exitósamente');
+      })["catch"](function (error) {
+        _this2.$swal('Error al cambiar la contraseña');
       });
     },
     irBingo: function irBingo() {
@@ -2452,6 +2457,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2461,7 +2469,8 @@ __webpack_require__.r(__webpack_exports__);
       preguntas: [],
       userResponses: [],
       respuestasCorrectas: '',
-      ocultarTrivia: false
+      ocultarTrivia: false,
+      mostrarTrivia: false
     };
   },
   mounted: function mounted() {
@@ -2493,6 +2502,9 @@ __webpack_require__.r(__webpack_exports__);
           _this.ocultarTrivia = true;
         }
       });
+    },
+    showTrivia: function showTrivia() {
+      this.mostrarTrivia = true;
     },
     enviarRespuestas: function enviarRespuestas() {
       var _this2 = this;
@@ -2712,7 +2724,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 24px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}", ""]);
 
 // exports
 
@@ -2750,7 +2762,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 40px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 24px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 40px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 24px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -6520,12 +6532,29 @@ var render = function() {
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
+        _vm.mostrarTrivia === false
+          ? _c(
+              "div",
+              { staticClass: "comenzar-trivia d-flex justify-content-center" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-success boton-comenzar",
+                    on: { click: _vm.showTrivia }
+                  },
+                  [_vm._v(" ¡Comenzar trivia ahora!")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
         _vm._l(Object.values(_vm.preguntas), function(pregunta, i) {
           return _c(
             "div",
             { key: i, staticClass: "trivia-body", class: "trivia-body-" + i },
             [
-              _vm.ocultarTrivia == false
+              _vm.ocultarTrivia == false && _vm.mostrarTrivia
                 ? _c(
                     "div",
                     {
@@ -6645,7 +6674,7 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _vm.ocultarTrivia == false
+        _vm.ocultarTrivia == false && _vm.mostrarTrivia
           ? _c("div", { staticClass: "enviar text-center mb-5" }, [
               _c(
                 "button",
@@ -22963,9 +22992,13 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
+var options = {
+  confirm: '#41b882',
+  cancel: '#ff7674'
+};
 vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["default"], options);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_2__["default"]);
 /* store.subscribe((mutation, state) => {
 	// Store the state object as a JSON string
@@ -23503,15 +23536,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/Proximamente.vue ***!
   \**************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Proximamente_vue_vue_type_template_id_c8ee1200_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Proximamente.vue?vue&type=template&id=c8ee1200&scoped=true& */ "./resources/js/components/Proximamente.vue?vue&type=template&id=c8ee1200&scoped=true&");
 /* harmony import */ var _Proximamente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Proximamente.vue?vue&type=script&lang=js& */ "./resources/js/components/Proximamente.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Proximamente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Proximamente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Proximamente_vue_vue_type_style_index_0_id_c8ee1200_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Proximamente.vue?vue&type=style&index=0&id=c8ee1200&lang=scss&scoped=true& */ "./resources/js/components/Proximamente.vue?vue&type=style&index=0&id=c8ee1200&lang=scss&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Proximamente_vue_vue_type_style_index_0_id_c8ee1200_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Proximamente.vue?vue&type=style&index=0&id=c8ee1200&lang=scss&scoped=true& */ "./resources/js/components/Proximamente.vue?vue&type=style&index=0&id=c8ee1200&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -23543,7 +23575,7 @@ component.options.__file = "resources/js/components/Proximamente.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/components/Proximamente.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

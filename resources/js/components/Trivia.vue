@@ -8,8 +8,11 @@
                 <h2 class="copete-pregunta mb-3">Cuanto sabes sobre el banco?</h2>
                 <span class="copete-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?</span>
             </div>
+            <div class="comenzar-trivia d-flex justify-content-center" v-if="mostrarTrivia === false">
+                <div class="btn btn-success boton-comenzar" @click="showTrivia"> ¡Comenzar trivia ahora!</div>
+            </div>
             <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
-                <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false">
+                <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
                     <div class="row no-gutters">
                         <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
                             <div class="contenedor-general d-flex justify-content-center  align-items-center p-3" :class="'contenedor-pregunta-' + i">
@@ -33,7 +36,7 @@
             <div class="alert alert-warning text-center" v-if="ocultarTrivia == true">
                 <div class="h2">Hola {{infoEmpleado.nombre}}, un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!</div>
             </div>
-            <div class="enviar text-center mb-5" v-if="ocultarTrivia == false">
+            <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
                 <button @click="enviarRespuestas" class="btn btn-success text-center">Enviar respuestas!</button>
             </div>
         </div>
@@ -51,7 +54,8 @@ export default {
             preguntas: [],
             userResponses: [],
             respuestasCorrectas: '',
-            ocultarTrivia: false
+            ocultarTrivia: false,
+            mostrarTrivia: false
         }
     },
     mounted () {
@@ -80,6 +84,9 @@ export default {
                             this.ocultarTrivia = true
                         }
                     })
+        },
+        showTrivia() {
+            this.mostrarTrivia = true
         },
         enviarRespuestas() {
             delete this.preguntas.hecha
@@ -134,6 +141,11 @@ export default {
     background-color: #2eb92e;
     color: white;
 
+}
+
+.boton-comenzar {
+    font-size: 32px;
+    cursor: pointer;
 }
 
 .contenedor-pregunta-1 {
