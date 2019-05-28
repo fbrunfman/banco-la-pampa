@@ -1966,13 +1966,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Login',
   data: function data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      cargando: false
     };
   },
   mounted: function mounted() {
@@ -1982,10 +1988,13 @@ __webpack_require__.r(__webpack_exports__);
     login: function login() {
       var _this = this;
 
+      this.cargando = true;
       this.$store.dispatch('retrieveToken', {
         username: this.username,
         password: this.password
       }).then(function (response) {
+        _this.cargando = false;
+
         _this.$router.push('/');
 
         _this.$store.commit('login', false);
@@ -2283,6 +2292,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
@@ -2292,7 +2309,9 @@ __webpack_require__.r(__webpack_exports__);
       collapseOnUno: false,
       verMas: true,
       verMasUno: true,
-      modal: false
+      modal: false,
+      cargando: false,
+      cargando2: false
     };
   },
   computed: {
@@ -2339,16 +2358,22 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       var _this = this;
 
+      this.cargando2 = true;
       console.log('holaaa');
       this.$store.dispatch('destroyToken').then(function (response) {
+        _this.cargando2 = false;
+
         _this.$router.push('/login');
 
         _this.$store.commit('login', false);
+      })["catch"](function (error) {
+        _this.cargando2 = false;
       });
     },
     cambiarPassword: function cambiarPassword() {
       var _this2 = this;
 
+      this.cargando = true;
       var datos = new FormData(this.$refs.formulario);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/post-credentials', datos, {
         headers: {
@@ -2356,8 +2381,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this2.$swal('Se cambió la contraseña exitósamente');
+
+        _this2.cargando = false;
       })["catch"](function (error) {
         _this2.$swal('Error al cambiar la contraseña');
+
+        _this2.cargando = false;
       });
     },
     irBingo: function irBingo() {
@@ -2705,7 +2734,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".login-body[data-v-6bdc8b8e] {\n  padding: 0;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.header[data-v-6bdc8b8e] {\n  width: 65%;\n  background-color: #ffba20;\n  height: 5vh;\n  position: fixed;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #ad9999;\n}\n.footer[data-v-6bdc8b8e] {\n  width: 65%;\n  left: 0;\n  right: 0;\n  background-color: #000000;\n  height: 5vh;\n  position: fixed;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  bottom: 0;\n  box-shadow: 2px 2px 16px #000000;\n}\n.header-login[data-v-6bdc8b8e] {\n  height: 7vh;\n  background-color: #ffba20;\n}\n.logo img[data-v-6bdc8b8e] {\n  width: 720px;\n  height: 199px;\n}\n@media (max-width: 600px) {\n.logo img[data-v-6bdc8b8e] {\n    width: 280px;\n    height: 78px;\n}\n.footer[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.header[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.contenedor-boton[data-v-6bdc8b8e] {\n    margin-left: 45px;\n}\n}\n.login[data-v-6bdc8b8e] {\n  width: 555px;\n  height: 315px;\n  background-color: #e3e3e6;\n  max-width: 100%;\n  max-height: 100%;\n  margin-top: 40px !important;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #d2d2d2;\n  border-radius: 5px;\n}\n@media (max-width: 600px) {\n.login[data-v-6bdc8b8e] {\n    width: 252px;\n    height: 288px;\n    overflow: hidden;\n}\n}\n.page[data-v-6bdc8b8e] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.boton-ingresar[data-v-6bdc8b8e] {\n  margin-right: 47px;\n  margin-bottom: 0;\n}\n.boton-ingresar button[data-v-6bdc8b8e] {\n  margin-bottom: 0 !important;\n}", ""]);
+exports.push([module.i, ".login-body[data-v-6bdc8b8e] {\n  padding: 0;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.header[data-v-6bdc8b8e] {\n  width: 65%;\n  background-color: #ffba20;\n  height: 5vh;\n  position: fixed;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #ad9999;\n}\n.footer[data-v-6bdc8b8e] {\n  width: 65%;\n  left: 0;\n  right: 0;\n  background-color: #000000;\n  height: 5vh;\n  position: fixed;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  bottom: 0;\n  box-shadow: 2px 2px 16px #000000;\n}\n.header-login[data-v-6bdc8b8e] {\n  height: 7vh;\n  background-color: #ffba20;\n}\n.logo img[data-v-6bdc8b8e] {\n  width: 720px;\n  height: 199px;\n}\n@media (max-width: 600px) {\n.logo img[data-v-6bdc8b8e] {\n    width: 280px;\n    height: 78px;\n}\n.footer[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.header[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.contenedor-boton[data-v-6bdc8b8e] {\n    margin-left: 45px;\n}\n}\n.login[data-v-6bdc8b8e] {\n  width: 555px;\n  height: 315px;\n  background-color: #e3e3e6;\n  max-width: 100%;\n  max-height: 100%;\n  margin-top: 40px !important;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: hidden;\n  box-shadow: 2px 2px 16px #d2d2d2;\n  border-radius: 5px;\n}\n@media (max-width: 600px) {\n.login[data-v-6bdc8b8e] {\n    width: 252px;\n    height: 288px;\n    overflow: hidden;\n}\n}\n.page[data-v-6bdc8b8e] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.boton-ingresar[data-v-6bdc8b8e] {\n  margin-right: 47px;\n  margin-bottom: 0;\n}\n.boton-ingresar button[data-v-6bdc8b8e] {\n  margin-bottom: 0 !important;\n}", ""]);
 
 // exports
 
@@ -2724,7 +2753,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 24px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 24px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}", ""]);
 
 // exports
 
@@ -5406,7 +5435,46 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm.cargando == false
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "text-right boton-ingresar contenedor-boton"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success my-4 col-lg-4",
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("INGRESAR")]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "loading d-flex justify-content-center mt-3" },
+                  [
+                    _vm.cargando
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "spinner-border text-warning",
+                            attrs: { role: "status" }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("Loading...")
+                            ])
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                )
               ]
             )
           ])
@@ -5459,25 +5527,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "d-flex justify-content-center" }, [
       _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("LEGAJO")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right boton-ingresar contenedor-boton" },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success my-4 col-lg-4",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("INGRESAR")]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -5554,32 +5603,56 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
+                    _vm.cargando2 == false
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "icono-logout-min d-flex align-items-center mr-5"
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src: __webpack_require__(/*! ./img/logout3.png */ "./resources/js/components/img/logout3.png"),
+                                alt: "",
+                                srcset: ""
+                              },
+                              on: { click: _vm.logout }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              staticClass: "ml-2",
+                              attrs: {
+                                src: __webpack_require__(/*! ./img/contrasena.jpg */ "./resources/js/components/img/contrasena.jpg"),
+                                alt: "",
+                                srcset: "",
+                                "data-toggle": "modal",
+                                "data-target": "#exampleModalCenter"
+                              }
+                            })
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c(
                       "div",
-                      {
-                        staticClass:
-                          "icono-logout-min d-flex align-items-center mr-5"
-                      },
+                      { staticClass: "mr-5 align-items-center d-flex" },
                       [
-                        _c("img", {
-                          attrs: {
-                            src: __webpack_require__(/*! ./img/logout3.png */ "./resources/js/components/img/logout3.png"),
-                            alt: "",
-                            srcset: ""
-                          },
-                          on: { click: _vm.logout }
-                        }),
-                        _vm._v(" "),
-                        _c("img", {
-                          staticClass: "ml-2",
-                          attrs: {
-                            src: __webpack_require__(/*! ./img/contrasena.jpg */ "./resources/js/components/img/contrasena.jpg"),
-                            alt: "",
-                            srcset: "",
-                            "data-toggle": "modal",
-                            "data-target": "#exampleModalCenter"
-                          }
-                        })
+                        _vm.cargando2
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "spinner-border text-success  cargando-min",
+                                attrs: { role: "status" }
+                              },
+                              [
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("Loading...")
+                                ])
+                              ]
+                            )
+                          : _vm._e()
                       ]
                     )
                   ]
@@ -5728,32 +5801,57 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
+                _vm.cargando2 == false
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-xl-1 icono-logout d-flex align-items-center"
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: __webpack_require__(/*! ./img/logout3.png */ "./resources/js/components/img/logout3.png"),
+                            alt: "",
+                            srcset: ""
+                          },
+                          on: { click: _vm.logout }
+                        }),
+                        _vm._v(" "),
+                        _c("img", {
+                          staticClass: "ml-2",
+                          attrs: {
+                            src: __webpack_require__(/*! ./img/contrasena.jpg */ "./resources/js/components/img/contrasena.jpg"),
+                            alt: "",
+                            srcset: "",
+                            "data-toggle": "modal",
+                            "data-target": "#exampleModalCenter"
+                          }
+                        })
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass:
-                      "col-xl-1 icono-logout d-flex align-items-center"
+                    staticClass: "col-xl-1 align-items-center d-flex cargando2"
                   },
                   [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(/*! ./img/logout3.png */ "./resources/js/components/img/logout3.png"),
-                        alt: "",
-                        srcset: ""
-                      },
-                      on: { click: _vm.logout }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticClass: "ml-2",
-                      attrs: {
-                        src: __webpack_require__(/*! ./img/contrasena.jpg */ "./resources/js/components/img/contrasena.jpg"),
-                        alt: "",
-                        srcset: "",
-                        "data-toggle": "modal",
-                        "data-target": "#exampleModalCenter"
-                      }
-                    })
+                    _vm.cargando2
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "spinner-border text-success",
+                            attrs: { role: "status" }
+                          },
+                          [
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("Loading...")
+                            ])
+                          ]
+                        )
+                      : _vm._e()
                   ]
                 )
               ]
@@ -6044,26 +6142,39 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(23),
                   _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cerrar")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: { click: _vm.cambiarPassword }
-                      },
-                      [_vm._v("Cambiar contrasena")]
-                    )
-                  ])
+                  _vm.cargando == false
+                    ? _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Cerrar")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: { type: "button" },
+                            on: { click: _vm.cambiarPassword }
+                          },
+                          [_vm._v("Cambiar contrasena")]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.cargando
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "modal-footer d-flex justify-content-center"
+                        },
+                        [_vm._m(24)]
+                      )
+                    : _vm._e()
                 ])
               ]
             )
@@ -6107,51 +6218,19 @@ var staticRenderFns = [
         _c("div", { staticClass: "carousel-inner main-foto" }, [
           _c("div", { staticClass: "carousel-item active" }, [
             _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo-2-compressor.jpg */ "./resources/js/components/img/bingo-2-compressor.jpg"),
-                alt: "",
-                srcset: ""
-              }
+              attrs: { src: __webpack_require__(/*! ./img/header-1.png */ "./resources/js/components/img/header-1.png"), alt: "", srcset: "" }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "carousel-item" }, [
             _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/header-cuenta.jpeg */ "./resources/js/components/img/header-cuenta.jpeg"),
-                alt: "",
-                srcset: ""
-              }
+              attrs: { src: __webpack_require__(/*! ./img/header-2.png */ "./resources/js/components/img/header-2.png"), alt: "", srcset: "" }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "carousel-item" }, [
             _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/header-selfie.jpeg */ "./resources/js/components/img/header-selfie.jpeg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "carousel-item" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/header-anecdotario.jpeg */ "./resources/js/components/img/header-anecdotario.jpeg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "carousel-item" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/header-trivia.jpeg */ "./resources/js/components/img/header-trivia.jpeg"),
-                alt: "",
-                srcset: ""
-              }
+              attrs: { src: __webpack_require__(/*! ./img/header-3.png */ "./resources/js/components/img/header-3.png"), alt: "", srcset: "" }
             })
           ])
         ]),
@@ -6247,11 +6326,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "banner-body p-3" }, [
-      _c("h5", [
-        _vm._v(
-          "  Demostrá cuánto sabés del banco con tus compañeros y ganá un premio!"
-        )
-      ])
+      _c("h5", [_vm._v("  Demostrá cuánto sabe tu equipo, y ganá un premio!")])
     ])
   },
   function() {
@@ -6461,6 +6536,16 @@ var staticRenderFns = [
         }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border text-warning", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
   }
 ]
 render._withStripped = true
@@ -6532,7 +6617,7 @@ var render = function() {
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
-        _vm.mostrarTrivia === false
+        _vm.ocultarTrivia == false && _vm.mostrarTrivia == false
           ? _c(
               "div",
               { staticClass: "comenzar-trivia d-flex justify-content-center" },
@@ -23815,17 +23900,6 @@ module.exports = "/images/anecdota2.jpg?cf05f0b86dbb7af2175a82601eb84a35";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/bingo-2-compressor.jpg":
-/*!************************************************************!*\
-  !*** ./resources/js/components/img/bingo-2-compressor.jpg ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/bingo-2-compressor.jpg?bc2f235b60e25adbe66e8b092cd08d40";
-
-/***/ }),
-
 /***/ "./resources/js/components/img/bingo-3.jpg":
 /*!*************************************************!*\
   !*** ./resources/js/components/img/bingo-3.jpg ***!
@@ -23903,47 +23977,36 @@ module.exports = "/images/fuego2.jpg?3f264efb0871ec3676fc28fbb1a90231";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/header-anecdotario.jpeg":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/img/header-anecdotario.jpeg ***!
-  \*************************************************************/
+/***/ "./resources/js/components/img/header-1.png":
+/*!**************************************************!*\
+  !*** ./resources/js/components/img/header-1.png ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/header-anecdotario.jpeg?732aa3d645df59f9d5ea941970e1bfc3";
+module.exports = "/images/header-1.png?77521c18f102ed6af3b5fe82e1b8450c";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/header-cuenta.jpeg":
-/*!********************************************************!*\
-  !*** ./resources/js/components/img/header-cuenta.jpeg ***!
-  \********************************************************/
+/***/ "./resources/js/components/img/header-2.png":
+/*!**************************************************!*\
+  !*** ./resources/js/components/img/header-2.png ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/header-cuenta.jpeg?fa60d1c212310b18403912a713f88709";
+module.exports = "/images/header-2.png?14be77f77be648fa616646e262d710ec";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/header-selfie.jpeg":
-/*!********************************************************!*\
-  !*** ./resources/js/components/img/header-selfie.jpeg ***!
-  \********************************************************/
+/***/ "./resources/js/components/img/header-3.png":
+/*!**************************************************!*\
+  !*** ./resources/js/components/img/header-3.png ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/header-selfie.jpeg?37da5836fdbad63be0168494272ba3c6";
-
-/***/ }),
-
-/***/ "./resources/js/components/img/header-trivia.jpeg":
-/*!********************************************************!*\
-  !*** ./resources/js/components/img/header-trivia.jpeg ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/header-trivia.jpeg?c5270523941c096b58b849b5fb5e79c0";
+module.exports = "/images/header-3.png?2b9c5c90dd476a88658c5075f7be772b";
 
 /***/ }),
 

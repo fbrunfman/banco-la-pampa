@@ -13,12 +13,16 @@
                             <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
                         </router-link>
                     </div>
-                    <div class="icono-logout-min d-flex align-items-center mr-5" >
+                    <div class="icono-logout-min d-flex align-items-center mr-5" v-if="cargando2 == false" >
                         <img src="./img/logout3.png" alt="" srcset="" @click="logout">
                         <img class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                     </div>
+                    <div class="mr-5 align-items-center d-flex">
+                        <div class="spinner-border text-success  cargando-min" role="status" v-if="cargando2">
+                                <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                 </div>
-
                 <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
                     <nav class="navbar navbar-expand-md sticky-top navbar-light">
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
@@ -59,9 +63,14 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col-xl-1 icono-logout d-flex align-items-center" >
+                <div class="col-xl-1 icono-logout d-flex align-items-center" v-if="cargando2 == false" >
                     <img src="./img/logout3.png" alt="" srcset="" @click="logout">
                     <img  class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                </div>
+                <div class="col-xl-1 align-items-center d-flex cargando2">
+                    <div class="spinner-border text-success" role="status" v-if="cargando2">
+                            <span class="sr-only">Loading...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,19 +93,13 @@
         <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
-                 <img src="./img/bingo-2-compressor.jpg" alt="" srcset="">
+                 <img src="./img/header-1.png" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/header-cuenta.jpeg" alt="" srcset="">
+                  <img src="./img/header-2.png" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/header-selfie.jpeg" alt="" srcset="">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/header-anecdotario.jpeg" alt="" srcset="">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/header-trivia.jpeg" alt="" srcset="">
+                  <img src="./img/header-3.png" alt="" srcset="">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -137,7 +140,7 @@
                         </div>
                         <div class="fondo-banner">
                             <div class="banner-body p-3">
-                                <h5>  Demostrá cuánto sabés del banco con tus compañeros y ganá un premio!</h5>
+                                <h5>  Demostrá cuánto sabe tu equipo, y ganá un premio!</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
                                 <span class="sumar" @click="irTrivia">+</span>
@@ -253,9 +256,14 @@
                             <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contrasena" required>
                             <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contrasena" required>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" v-if="cargando == false">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contrasena</button>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center" v-if="cargando">
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -278,7 +286,9 @@ export default {
             collapseOnUno: false,
             verMas: true,
             verMasUno: true,
-            modal: false
+            modal: false,
+            cargando: false,
+            cargando2: false
         }
     },
     computed: {
@@ -323,15 +333,20 @@ export default {
             this.verMasUno = !this.verMasUno
         },
         logout() {
+            this.cargando2 = true
             console.log('holaaa');
             this.$store.dispatch('destroyToken')
              .then(response => {
+                 this.cargando2 = false
                 this.$router.push('/login')
                  this.$store.commit('login', false)
             })
+            .catch((error) => {
+                this.cargando2 = false
+            })
         },
         cambiarPassword() {
-
+            this.cargando = true
              var datos = new FormData(this.$refs.formulario)
              Axios.post('/api/post-credentials', datos, {
                  headers: {
@@ -340,10 +355,12 @@ export default {
              })
                 .then(response => {
                    this.$swal('Se cambió la contraseña exitósamente')
+                   this.cargando = false
 
                 })
                 .catch((error) => {
                     this.$swal('Error al cambiar la contraseña')
+                    this.cargando = false
                 })
         },
         irBingo() {
@@ -491,6 +508,10 @@ nav ul li a {
     }
 }
 
+.cargando2 {
+    background-color:  #ffc23a;
+}
+
 .icono-logout-min {
     img {
         display: none;
@@ -500,6 +521,10 @@ nav ul li a {
             opacity: 0.8;
         }
     }
+}
+
+.cargando-min {
+    display: none;
 }
 
 
@@ -549,6 +574,12 @@ nav ul li a {
         img {
             display: none;
         }
+    }
+    .cargando-min {
+        display: block;
+    }
+    .cargando2 {
+        display: none;
     }
     .icono-logout-min {
         img {

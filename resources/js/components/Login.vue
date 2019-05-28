@@ -24,8 +24,13 @@
                             <div class="d-flex justify-content-center mt-2">
                                 <input type="password" name="dni"  class="form-control col-10" v-model="password" required>
                             </div>
-                            <div class="text-right boton-ingresar contenedor-boton">
+                            <div class="text-right boton-ingresar contenedor-boton" v-if="cargando == false">
                                 <button class="btn btn-success my-4 col-lg-4" type="submit">INGRESAR</button>
+                            </div>
+                            <div class="loading d-flex justify-content-center mt-3">
+                                <div class="spinner-border text-warning" role="status" v-if="cargando">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -42,7 +47,8 @@ export default {
     data() {
         return {
             username: '',
-            password: ''
+            password: '',
+            cargando: false
         }
     },
     mounted () {
@@ -50,11 +56,13 @@ export default {
     },
     methods: {
         login () {
+            this.cargando = true
             this.$store.dispatch('retrieveToken', {
                 username: this.username,
                 password: this.password
             })
             .then(response => {
+                this.cargando = false
                 this.$router.push('/')
                  this.$store.commit('login', false)
                  this.$store.commit('paginaPrincipal', true)
@@ -146,7 +154,7 @@ export default {
     margin: auto;
     max-width: 100%;
     max-height: 100%;
-    overflow: auto;
+    overflow: hidden;
     box-shadow: 2px 2px 16px #d2d2d2;
     border-radius: 5px;
 }

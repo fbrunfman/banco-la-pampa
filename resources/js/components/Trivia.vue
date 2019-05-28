@@ -8,7 +8,7 @@
                 <h2 class="copete-pregunta mb-3">Cuanto sabes sobre el banco?</h2>
                 <span class="copete-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?</span>
             </div>
-            <div class="comenzar-trivia d-flex justify-content-center" v-if="mostrarTrivia === false">
+            <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
                 <div class="btn btn-success boton-comenzar" @click="showTrivia"> ¡Comenzar trivia ahora!</div>
             </div>
             <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
