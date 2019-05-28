@@ -30,7 +30,7 @@ class DataController extends Controller
     		$noveno = preg_split('/\r/', $data[9]);
 
     		$equipo = $data[0];
-    		$password = $data[1];
+    		$legajo = $data[1];
     		$apellido = $data[2];
             $nombre = $data[3];
             $apodo = $data[4];
@@ -48,8 +48,9 @@ class DataController extends Controller
 
     		$empleado = new User();
     		$empleado->equipo = $equipo;
-    		$empleado->password = Hash::make($password);
+    		$empleado->legajo = $legajo;
     		$empleado->apellido = $apellido;
+            $empleado->password = Hash::make($apellido);
             $empleado->nombre = $nombre;
             $empleado->apodo = $apodo;
     		$empleado->funcion = $funcion;

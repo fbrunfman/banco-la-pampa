@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'password', 'apellido', 'nombre', 'apodo', 'funcion', 'area', 'locacion', 'correo', 'fecha_de_inicio', 'equipo', 'capitan'
+        'password', 'apellido', 'nombre', 'apodo', 'funcion', 'area', 'locacion', 'correo', 'fecha_de_inicio', 'equipo', 'capitan', 'legajo'
     ];
 
     /**
@@ -33,6 +33,6 @@ class User extends Authenticatable
 
     public function findForPassport($username)
     {
-        return $this->where('correo', $username)->first();
+        return $this->where('legajo', $username)->first();
     }
 }
