@@ -46,7 +46,10 @@ class UserController extends Controller
 	        $obj_user = User::find($user_id);
 	        $obj_user->password = Hash::make($request_data['password']);;
 	        $obj_user->save(); 
-	        return "ok";
+	        return response()->json([
+	        	'message' => 'Cambio de password exitoso.',
+	        	'code' => 200
+	        ]);
 	      }
 	      else
 	      {           
