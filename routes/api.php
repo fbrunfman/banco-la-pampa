@@ -25,3 +25,5 @@ Route::post('/subir-archivos', 'DataController@subirArchivos');
 
 Route::get('/archivos', 'ArchivoController@index');
 Route::post('/like', 'ArchivoController@like');
+
+Route::get('/usuarios', 'UserController@usuarios');
