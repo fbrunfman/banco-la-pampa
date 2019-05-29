@@ -188,7 +188,7 @@ export default {
 }
 
 .form-check-label {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .trivia-uno {
