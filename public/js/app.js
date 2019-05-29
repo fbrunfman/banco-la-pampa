@@ -2375,12 +2375,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')));
-
     if (this.$store.state.token === null) {
       this.$router.push('/login');
       this.$store.commit('paginaPrincipal', false);
       this.$store.commit('login', true);
+    } else {
+      this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')));
     }
 
     if (this.$route.fullPath === '/login') {
@@ -24496,8 +24496,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/federico/proyectos/banco-la-pampa/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/federico/proyectos/banco-la-pampa/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/mac/Desktop/simplify/banco-la-pampa/banco-la-pampa/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/mac/Desktop/simplify/banco-la-pampa/banco-la-pampa/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
