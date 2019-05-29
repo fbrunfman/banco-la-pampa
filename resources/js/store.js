@@ -5,7 +5,8 @@ export default {
         login: false,
         paginaPrincipal: true,
         infoEmpleado: '',
-        token: localStorage.getItem('access_token') || null
+        token: localStorage.getItem('access_token') || null,
+        loginFailed: false
     },
     mutations: {
         infoEmpleado (state, infoEmpleado) {
@@ -22,8 +23,10 @@ export default {
         },
         destroyToken (state) {
             state.token = null
+        },
+        loginFailed (state, loginFailed) {
+            state.loginFailed = loginFailed
         }
-
     },
     getters: {
         loggedIn(state) {
@@ -48,6 +51,7 @@ export default {
         },
         retrieveToken(context, credentials) {
             return new Promise((resolve, reject) => {
+                context.commit('loginFailed', true)
                 Axios.post('/api/login', {
                     username: credentials.username,
                     password: credentials.password
@@ -56,11 +60,13 @@ export default {
                     const token = response.data.access_token
                     localStorage.setItem('access_token', token)
                     context.commit('retrieveToken', token)
+                    context.commit('loginFailed', false)
                     resolve(response)
                     /* console.log(response); */
                 })
                 .catch((error) => {
                     alert('Usuario o contrasena incorrectos')
+                    context.commit('loginFailed', false)
                 })
             })
         }

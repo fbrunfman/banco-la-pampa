@@ -13,12 +13,16 @@
                             <img class="p-3" src="./img/logo.jpg"  alt="" srcset="">
                         </router-link>
                     </div>
-                    <div class="icono-logout-min d-flex align-items-center mr-5" >
+                    <div class="icono-logout-min d-flex align-items-center mr-5" v-if="cargando2 == false" >
                         <img src="./img/logout3.png" alt="" srcset="" @click="logout">
                         <img class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                     </div>
+                    <div class="mr-5 align-items-center d-flex">
+                        <div class="spinner-border text-success  cargando-min" role="status" v-if="cargando2">
+                                <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                 </div>
-
                 <div class="col-xl-8 col-12 d-flex align-items-center justify-content-center nav-bar">
                     <nav class="navbar navbar-expand-md sticky-top navbar-light">
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
@@ -59,44 +63,34 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col-xl-1 icono-logout d-flex align-items-center" >
+                <div class="col-xl-1 icono-logout d-flex align-items-center" v-if="cargando2 == false" >
                     <img src="./img/logout3.png" alt="" srcset="" @click="logout">
                     <img  class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                </div>
+                <div class="col-xl-1 align-items-center d-flex cargando2">
+                    <div class="spinner-border text-success" role="status" v-if="cargando2">
+                            <span class="sr-only">Loading...</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div v-if="login === false && paginaPrincipal === true">
-<!--         <div class="fotos">
-            <div class="main-foto" v-if="bingo">
-                <img src="./img/bingo-2.jpg" alt="" srcset="">
-            </div>
-            <div class="main-foto" v-if="trivia">
-                <img src="./img/bingo.jpg" alt="" srcset="">
-            </div>
-            <div class="main-foto" v-if="anecdotario">
-                <img src="./img/bingo-2.jpg" alt="" srcset="">
-            </div>
-            <div class="main-foto" v-if="cuenta">
-                <img src="./img/bingo-2.jpg" alt="" srcset="">
-            </div>
-        </div> -->
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-warning consulta" data-toggle="modal" data-target=".bd-example-modal-lg">
+                Consulta los datos de tu equipo
+            </button>
+        </div>
         <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
-                 <img src="./img/bingo-2-compressor.jpg" alt="" srcset="">
+                 <img src="./img/header-1.png" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/header-cuenta.jpeg" alt="" srcset="">
+                  <img src="./img/header-2.png" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/header-selfie.jpeg" alt="" srcset="">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/header-anecdotario.jpeg" alt="" srcset="">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/header-trivia.jpeg" alt="" srcset="">
+                  <img src="./img/header-3.png" alt="" srcset="">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -137,7 +131,7 @@
                         </div>
                         <div class="fondo-banner">
                             <div class="banner-body p-3">
-                                <h5>  Demostrá cuánto sabés del banco con tus compañeros y ganá un premio!</h5>
+                                <h5>  Demostrá cuánto sabe tu equipo, y ganá un premio!</h5>
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
                                 <span class="sumar" @click="irTrivia">+</span>
@@ -253,17 +247,48 @@
                             <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contrasena" required>
                             <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contrasena" required>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" v-if="cargando == false">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contrasena</button>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center" v-if="cargando">
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+         <div class="modal fade bd-example-modal-lg " id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Los datos de tu equipo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="h5">Tu equipo es el número <strong>{{infoEmpleado.equipo}}</strong> </div>
+                            <div class="mt-4 h5">Los integrantes de tu equipo son:</div>
+                            <div class="h6"> &#128073; {{infoEmpleado.nombre}} {{infoEmpleado.apellido}} - Área: {{infoEmpleado.area}} - Función {{infoEmpleado.funcion}}  </div>
+                            <div class="h6"> &#128073; Jose Gutierrez</div>
+                            <div class="h6"> &#128073; Ernesto Gonzalez</div>
+                            <div class="h6"> &#128073; Pepe Gamboa</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     <div>
     <router-view></router-view>
     </div>
+    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4" v-if="paginaPrincipal == true && login == false">
+        <div class="h4 footer-lucuma"> Lúcuma Desarrollo Web - 2019 &copy; </div>
+    </footer>
 
   </div>
 </template>
@@ -277,7 +302,10 @@ export default {
             collapseOn: false,
             collapseOnUno: false,
             verMas: true,
-            verMasUno: true
+            verMasUno: true,
+            modal: false,
+            cargando: false,
+            cargando2: false
         }
     },
     computed: {
@@ -322,14 +350,20 @@ export default {
             this.verMasUno = !this.verMasUno
         },
         logout() {
+            this.cargando2 = true
             console.log('holaaa');
             this.$store.dispatch('destroyToken')
              .then(response => {
+                 this.cargando2 = false
                 this.$router.push('/login')
                  this.$store.commit('login', false)
             })
+            .catch((error) => {
+                this.cargando2 = false
+            })
         },
         cambiarPassword() {
+            this.cargando = true
              var datos = new FormData(this.$refs.formulario)
              Axios.post('/api/post-credentials', datos, {
                  headers: {
@@ -337,7 +371,13 @@ export default {
                  }
              })
                 .then(response => {
-                   console.log('todo bien');
+                   this.$swal('Se cambió la contraseña exitósamente')
+                   this.cargando = false
+
+                })
+                .catch((error) => {
+                    this.$swal('Error al cambiar la contraseña')
+                    this.cargando = false
                 })
         },
         irBingo() {
@@ -400,6 +440,16 @@ nav ul li a {
     width: 100vw;
 }
 
+.footer-page {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
 .banner {
 
     width: 250px;
@@ -419,6 +469,10 @@ nav ul li a {
     position: relative;
     bottom: 48px;
     cursor: pointer;
+}
+
+.footer-lucuma {
+    font-family: 'Roboto Condensed';
 }
 
 .banner-titulo-bingo {
@@ -485,6 +539,10 @@ nav ul li a {
     }
 }
 
+.cargando2 {
+    background-color:  #ffc23a;
+}
+
 .icono-logout-min {
     img {
         display: none;
@@ -494,6 +552,10 @@ nav ul li a {
             opacity: 0.8;
         }
     }
+}
+
+.cargando-min {
+    display: none;
 }
 
 
@@ -518,6 +580,24 @@ nav ul li a {
         border-radius: 15px;
     }
 
+    .logo img {
+        width: 270px;
+    }
+    .icono-logout-min {
+        img {
+            display: block;
+            width: 24px;
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+    .icono-logout-min {
+        img {
+            width: 18px;
+        }
+    }
 }
 
 @media (max-width: 1199px) {
@@ -526,9 +606,16 @@ nav ul li a {
             display: none;
         }
     }
+    .cargando-min {
+        display: block;
+    }
+    .cargando2 {
+        display: none;
+    }
     .icono-logout-min {
         img {
             display: block;
+
         }
     }
     .nombre-usuario {
@@ -553,4 +640,8 @@ nav ul li a {
 
 }
 
+.consulta {
+    font-size: 27px;
+    color: beige;
+}
 </style>
