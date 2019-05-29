@@ -5,23 +5,23 @@
                 <img src="./img/trivia2.jpg" alt="" srcset="">
             </div>
             <div class="copete p-5">
-                <h2 class="copete-pregunta mb-3">Cuanto sabes sobre el banco?</h2>
-                <span class="copete-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?</span>
+                <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros en la trivia y participá por premios!</h2>
+                <!-- <span class="copete-texto"></span> -->
             </div>
             <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
                 <div class="btn btn-success boton-comenzar" @click="showTrivia"> ¡Comenzar trivia ahora!</div>
             </div>
             <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
                 <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
+                    <div class="row no-gutters contenedor-trivia">
+                        <div class="pregunta-uno col-12 d-flex justify-content-center">
                             <div class="contenedor-general d-flex justify-content-center  align-items-center p-3" :class="'contenedor-pregunta-' + i">
                                 <div class="pregunta-texto">
                                     <span class="texto-trivia">{{pregunta.pregunta}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                        <div class="respuestas col-12 d-flex align-items-center"
                             >
                             <div class="respuestas-body">
                                 <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
@@ -37,7 +37,7 @@
                 <div class="h2">Hola {{infoEmpleado.nombre}}, un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!</div>
             </div>
             <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
-                <button @click="enviarRespuestas" class="btn btn-success text-center">Enviar respuestas!</button>
+                <button @click="enviarRespuestas" class="btn btn-success text-center">¡Enviar respuestas!</button>
             </div>
         </div>
     </div>
@@ -158,6 +158,11 @@ export default {
     color: white;
 }
 
+.contenedor-trivia {
+    display: grid;
+    grid-template-columns: 1fr 550px;
+}
+
 .contenedor-pregunta-3 {
     background-color: #5e5b51;
     color: white;
@@ -178,7 +183,7 @@ export default {
 }
 
 .texto-trivia {
-    font-size: 40px;
+    font-size: 37px;
     font-weight: bold;
 }
 
@@ -201,7 +206,7 @@ export default {
         height: 250px;
     }
     .texto-trivia {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -214,6 +219,15 @@ export default {
     width: 266px;
     height: 227px;
     }
+    .contenedor-trivia {
+    display: block;
+}
+}
+
+@media (max-width: 940px) {
+    .contenedor-trivia {
+    display: block;
+}
 }
 
 input[type="radio"] {

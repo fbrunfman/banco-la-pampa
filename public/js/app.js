@@ -2435,6 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$swal('Se cambió la contraseña exitósamente');
 
         _this2.cargando = false;
+        location.reload();
       })["catch"](function (error) {
         _this2.$swal('Error al cambiar la contraseña');
 
@@ -2786,7 +2787,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".login-body[data-v-6bdc8b8e] {\n  padding: 0;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.footer-page[data-v-6bdc8b8e] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.footer-lucuma[data-v-6bdc8b8e] {\n  font-family: \"Roboto Condensed\";\n}\n.header[data-v-6bdc8b8e] {\n  width: 65%;\n  background-color: #ffba20;\n  height: 5vh;\n  position: fixed;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #ad9999;\n}\n.footer[data-v-6bdc8b8e] {\n  width: 65%;\n  left: 0;\n  right: 0;\n  background-color: #000000;\n  height: 5vh;\n  position: fixed;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  bottom: 0;\n  box-shadow: 2px 2px 16px #000000;\n}\n.question img[data-v-6bdc8b8e] {\n  width: 25px;\n}\n.header-login[data-v-6bdc8b8e] {\n  height: 7vh;\n  background-color: #ffba20;\n}\n.logo img[data-v-6bdc8b8e] {\n  width: 720px;\n  height: 199px;\n}\n@media (max-width: 600px) {\n.logo img[data-v-6bdc8b8e] {\n    width: 280px;\n    height: 78px;\n}\n.footer[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.header[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.contenedor-boton[data-v-6bdc8b8e] {\n    margin-left: 45px;\n}\n.question img[data-v-6bdc8b8e] {\n    margin-left: -22px;\n}\n.footer-lucuma[data-v-6bdc8b8e] {\n    font-size: 15px;\n}\n.footer-page[data-v-6bdc8b8e] {\n    padding: 5px !important;\n}\n}\n.login[data-v-6bdc8b8e] {\n  width: 555px;\n  height: 330px;\n  background-color: #e3e3e6;\n  max-width: 100%;\n  max-height: 100%;\n  margin-top: 40px !important;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: hidden;\n  box-shadow: 2px 2px 16px #d2d2d2;\n  border-radius: 5px;\n}\n@media (max-width: 600px) {\n.login[data-v-6bdc8b8e] {\n    width: 252px;\n    height: 288px;\n    overflow: hidden;\n}\n}\n@media (max-width: 770px) {\n.boton-ingresar[data-v-6bdc8b8e] {\n    text-align: inherit !important;\n}\n}\n.page[data-v-6bdc8b8e] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.boton-ingresar[data-v-6bdc8b8e] {\n  margin-right: 47px;\n  margin-bottom: 0;\n}\n.boton-ingresar button[data-v-6bdc8b8e] {\n  margin-bottom: 0 !important;\n}", ""]);
+exports.push([module.i, ".login-body[data-v-6bdc8b8e] {\n  padding: 0;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.footer-page[data-v-6bdc8b8e] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.footer-lucuma[data-v-6bdc8b8e] {\n  font-family: \"Roboto Condensed\";\n}\n.header[data-v-6bdc8b8e] {\n  width: 65%;\n  background-color: #ffba20;\n  height: 5vh;\n  position: fixed;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #ad9999;\n}\n.footer[data-v-6bdc8b8e] {\n  width: 65%;\n  left: 0;\n  right: 0;\n  background-color: #000000;\n  height: 5vh;\n  position: fixed;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  bottom: 0;\n  box-shadow: 2px 2px 16px #000000;\n}\n.question img[data-v-6bdc8b8e] {\n  width: 25px;\n  cursor: pointer;\n}\n.header-login[data-v-6bdc8b8e] {\n  height: 7vh;\n  background-color: #ffba20;\n}\n.logo img[data-v-6bdc8b8e] {\n  width: 720px;\n  height: 199px;\n}\n@media (max-width: 600px) {\n.logo img[data-v-6bdc8b8e] {\n    width: 280px;\n    height: 78px;\n}\n.footer[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.header[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.contenedor-boton[data-v-6bdc8b8e] {\n    margin-left: 45px;\n}\n.question img[data-v-6bdc8b8e] {\n    margin-left: -22px;\n}\n.footer-lucuma[data-v-6bdc8b8e] {\n    font-size: 15px;\n}\n.footer-page[data-v-6bdc8b8e] {\n    padding: 5px !important;\n}\n}\n.login[data-v-6bdc8b8e] {\n  width: 555px;\n  height: 330px;\n  background-color: #e3e3e6;\n  max-width: 100%;\n  max-height: 100%;\n  margin-top: 40px !important;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: hidden;\n  box-shadow: 2px 2px 16px #d2d2d2;\n  border-radius: 5px;\n}\n@media (max-width: 600px) {\n.login[data-v-6bdc8b8e] {\n    width: 252px;\n    height: 288px;\n    overflow: hidden;\n}\n}\n@media (max-width: 770px) {\n.boton-ingresar[data-v-6bdc8b8e] {\n    text-align: inherit !important;\n}\n}\n.page[data-v-6bdc8b8e] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.boton-ingresar[data-v-6bdc8b8e] {\n  margin-right: 47px;\n  margin-bottom: 0;\n}\n.boton-ingresar button[data-v-6bdc8b8e] {\n  margin-bottom: 0 !important;\n}", ""]);
 
 // exports
 
@@ -2843,7 +2844,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 40px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 24px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 37px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 20px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 20px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -6331,7 +6332,7 @@ var render = function() {
                             attrs: { type: "button" },
                             on: { click: _vm.cambiarPassword }
                           },
-                          [_vm._v("Cambiar contrasena")]
+                          [_vm._v("Cambiar contraseña")]
                         )
                       ])
                     : _vm._e(),
@@ -6753,7 +6754,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Cambiar la contrasena")]
+        [_vm._v("Cambiar la contraseña")]
       ),
       _vm._v(" "),
       _c(
@@ -6781,7 +6782,7 @@ var staticRenderFns = [
           type: "password",
           name: "password-actual",
           id: "",
-          placeholder: "Ingresar contrasena actual",
+          placeholder: "Ingresar contraseña actual",
           required: ""
         }
       }),
@@ -6792,7 +6793,7 @@ var staticRenderFns = [
           type: "password",
           name: "password",
           id: "",
-          placeholder: "Ingresar nueva contrasena",
+          placeholder: "Ingresar nueva contraseña",
           required: ""
         }
       }),
@@ -6803,7 +6804,7 @@ var staticRenderFns = [
           type: "password",
           name: "confirma-password",
           id: "",
-          placeholder: "Repetir nueva contrasena",
+          placeholder: "Repetir nueva contraseña",
           required: ""
         }
       })
@@ -6959,99 +6960,105 @@ var render = function() {
                         "trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4"
                     },
                     [
-                      _c("div", { staticClass: "row no-gutters" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "pregunta-uno col-lg-6 col-12 d-flex justify-content-center"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "contenedor-general d-flex justify-content-center  align-items-center p-3",
-                                class: "contenedor-pregunta-" + i
-                              },
-                              [
-                                _c("div", { staticClass: "pregunta-texto" }, [
-                                  _c("span", { staticClass: "texto-trivia" }, [
-                                    _vm._v(_vm._s(pregunta.pregunta))
+                      _c(
+                        "div",
+                        { staticClass: "row no-gutters contenedor-trivia" },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "pregunta-uno col-12 d-flex justify-content-center"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "contenedor-general d-flex justify-content-center  align-items-center p-3",
+                                  class: "contenedor-pregunta-" + i
+                                },
+                                [
+                                  _c("div", { staticClass: "pregunta-texto" }, [
+                                    _c(
+                                      "span",
+                                      { staticClass: "texto-trivia" },
+                                      [_vm._v(_vm._s(pregunta.pregunta))]
+                                    )
                                   ])
-                                ])
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
-                          },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "respuestas-body" },
-                              _vm._l(pregunta.respuestas, function(
-                                respuesta,
-                                j
-                              ) {
-                                return _c(
-                                  "div",
-                                  { key: j, staticClass: "form-check my-4" },
-                                  [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.userResponses[i],
-                                          expression: "userResponses[i]"
-                                        }
-                                      ],
-                                      attrs: {
-                                        type: "radio",
-                                        name: "respuesta" + i,
-                                        id: "pregunta" + j,
-                                        required: ""
-                                      },
-                                      domProps: {
-                                        value: respuesta.id,
-                                        checked: _vm._q(
-                                          _vm.userResponses[i],
-                                          respuesta.id
-                                        )
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          return _vm.$set(
-                                            _vm.userResponses,
-                                            i,
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "respuestas col-12 d-flex align-items-center"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "respuestas-body" },
+                                _vm._l(pregunta.respuestas, function(
+                                  respuesta,
+                                  j
+                                ) {
+                                  return _c(
+                                    "div",
+                                    { key: j, staticClass: "form-check my-4" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.userResponses[i],
+                                            expression: "userResponses[i]"
+                                          }
+                                        ],
+                                        attrs: {
+                                          type: "radio",
+                                          name: "respuesta" + i,
+                                          id: "pregunta" + j,
+                                          required: ""
+                                        },
+                                        domProps: {
+                                          value: respuesta.id,
+                                          checked: _vm._q(
+                                            _vm.userResponses[i],
                                             respuesta.id
                                           )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.userResponses,
+                                              i,
+                                              respuesta.id
+                                            )
+                                          }
                                         }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "label",
-                                      {
-                                        staticClass: "form-check-label",
-                                        attrs: { for: "pregunta" + j }
-                                      },
-                                      [_vm._v(_vm._s(respuesta.respuesta))]
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        )
-                      ])
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "form-check-label",
+                                          attrs: { for: "pregunta" + j }
+                                        },
+                                        [_vm._v(_vm._s(respuesta.respuesta))]
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          )
+                        ]
+                      )
                     ]
                   )
                 : _vm._e()
@@ -7079,7 +7086,7 @@ var render = function() {
                   staticClass: "btn btn-success text-center",
                   on: { click: _vm.enviarRespuestas }
                 },
-                [_vm._v("Enviar respuestas!")]
+                [_vm._v("¡Enviar respuestas!")]
               )
             ])
           : _vm._e()
@@ -7105,13 +7112,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "copete p-5" }, [
       _c("h2", { staticClass: "copete-pregunta mb-3" }, [
-        _vm._v("Cuanto sabes sobre el banco?")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "copete-texto" }, [
-        _vm._v(
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?"
-        )
+        _vm._v("¡Jugá con tus compañeros en la trivia y participá por premios!")
       ])
     ])
   }

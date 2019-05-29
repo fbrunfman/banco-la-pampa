@@ -237,19 +237,19 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Cambiar la contrasena</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Cambiar la contraseña</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contrasena actual" required>
-                            <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contrasena" required>
-                            <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contrasena" required>
+                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contraseña actual" required>
+                            <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contraseña" required>
+                            <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contraseña" required>
                         </div>
                         <div class="modal-footer" v-if="cargando == false">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contrasena</button>
+                            <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contraseña</button>
                         </div>
                         <div class="modal-footer d-flex justify-content-center" v-if="cargando">
                             <div class="spinner-border text-warning" role="status">
@@ -378,11 +378,12 @@ export default {
                 .then(response => {
                    this.$swal('Se cambió la contraseña exitósamente')
                    this.cargando = false
-
+                   location.reload()
                 })
                 .catch((error) => {
                     this.$swal('Error al cambiar la contraseña')
                     this.cargando = false
+
                 })
         },
         irBingo() {

@@ -163,6 +163,7 @@ export default {
 
 .question img {
     width: 25px;
+    cursor: pointer;
 }
 
 .header-login {
