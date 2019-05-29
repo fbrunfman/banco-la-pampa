@@ -59,4 +59,20 @@ class UserController extends Controller
 	    }        
 	  }  
 	}
+
+	public function usuarios(Request $request)
+	{
+		if (Auth::check()) {
+			$users = User::all();
+			if ($request->exists('equipo')) {
+				$equipo = $request->query('equipo');
+				$users = $users->where('equipo', $equipo);
+			}
+
+			return response()->json($users);
+			
+		} else {
+	        return response()->json(array('error' => 'No está logueado'), 400); 
+		}
+	}
 }
