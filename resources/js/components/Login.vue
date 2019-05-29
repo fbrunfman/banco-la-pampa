@@ -54,7 +54,7 @@
             </div>
         </div>
         <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4">
-            <div class="h3 footer-lucuma"> Desarrollado por <strong>Lúcuma Desarrollo Web &reg; </strong> - 2019 </div>
+            <div class="h4 footer-lucuma">Lúcuma Desarrollo Web - 2019 &copy; </div>
         </footer>
     </div>
 </template>
@@ -73,6 +73,7 @@ export default {
     },
     mounted () {
         this.$store.commit('login', true)
+        this.$store.commit('paginaPrincipal', false)
     },
     computed: {
         loginFailed() {
@@ -127,7 +128,7 @@ export default {
 }
 
 .footer-lucuma {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto Condensed';
 }
 
 .header {

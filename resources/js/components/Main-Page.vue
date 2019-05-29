@@ -286,8 +286,8 @@
     <div>
     <router-view></router-view>
     </div>
-    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4" v-if="paginaPrincipal == true">
-        <div class="h3 footer-lucuma"> Desarrollado por <strong>Lúcuma Desarrollo Web &reg; </strong> - 2019 </div>
+    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4" v-if="paginaPrincipal == true && login == false">
+        <div class="h4 footer-lucuma"> Lúcuma Desarrollo Web - 2019 &copy; </div>
     </footer>
 
   </div>
@@ -472,7 +472,7 @@ nav ul li a {
 }
 
 .footer-lucuma {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto Condensed';
 }
 
 .banner-titulo-bingo {
