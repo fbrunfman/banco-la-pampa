@@ -9,17 +9,21 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import StoreData from './store'
-import VueSweetalert2 from 'vue-sweetalert2';
+import VueSweetalert2 from 'vue-sweetalert2'
+import Popover  from 'vue-js-popover'
+
+
 
 
 const options = {
     confirm: '#41b882',
     cancel: '#ff7674'
-  }
+}
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueSweetalert2, options);
+Vue.use(Popover)
 
 
 const store = new Vuex.Store(StoreData)

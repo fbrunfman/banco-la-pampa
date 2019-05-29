@@ -76,20 +76,11 @@
         </div>
     </div>
     <div v-if="login === false && paginaPrincipal === true">
-<!--         <div class="fotos">
-            <div class="main-foto" v-if="bingo">
-                <img src="./img/bingo-2.jpg" alt="" srcset="">
-            </div>
-            <div class="main-foto" v-if="trivia">
-                <img src="./img/bingo.jpg" alt="" srcset="">
-            </div>
-            <div class="main-foto" v-if="anecdotario">
-                <img src="./img/bingo-2.jpg" alt="" srcset="">
-            </div>
-            <div class="main-foto" v-if="cuenta">
-                <img src="./img/bingo-2.jpg" alt="" srcset="">
-            </div>
-        </div> -->
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-warning consulta" data-toggle="modal" data-target=".bd-example-modal-lg">
+                Consulta los datos de tu equipo
+            </button>
+        </div>
         <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
@@ -269,9 +260,35 @@
                 </div>
             </div>
         </form>
+         <div class="modal fade bd-example-modal-lg " id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Los datos de tu equipo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="h5">Tu equipo es el número <strong>{{infoEmpleado.equipo}}</strong> </div>
+                            <div class="mt-4 h5">Los integrantes de tu equipo son:</div>
+                            <div class="h6"> &#128073; {{infoEmpleado.nombre}} {{infoEmpleado.apellido}} - Área: {{infoEmpleado.area}} - Función {{infoEmpleado.funcion}}  </div>
+                            <div class="h6"> &#128073; Jose Gutierrez</div>
+                            <div class="h6"> &#128073; Ernesto Gonzalez</div>
+                            <div class="h6"> &#128073; Pepe Gamboa</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     <div>
     <router-view></router-view>
     </div>
+    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4 ">
+        <div class="h3 footer-lucuma"> Desarrollado por <strong>Lúcuma Desarrollo Web &reg; </strong> - 2019 </div>
+    </footer>
 
   </div>
 </template>
@@ -423,6 +440,7 @@ nav ul li a {
     width: 100vw;
 }
 
+
 .banner {
 
     width: 250px;
@@ -442,6 +460,10 @@ nav ul li a {
     position: relative;
     bottom: 48px;
     cursor: pointer;
+}
+
+.footer-lucuma {
+    font-family: 'Pacifico', cursive;
 }
 
 .banner-titulo-bingo {
@@ -609,4 +631,8 @@ nav ul li a {
 
 }
 
+.consulta {
+    font-size: 27px;
+    color: beige;
+}
 </style>

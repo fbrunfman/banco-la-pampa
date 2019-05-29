@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         $json = (array) json_decode($response->getContent());
         if (array_key_exists('access_token', $json)) {
-            $user = User::where('correo', $username)->first();
+            $user = User::where('legajo', $username)->first();
             unset($user->password);
             $json['usuario'] = $user;
         }
