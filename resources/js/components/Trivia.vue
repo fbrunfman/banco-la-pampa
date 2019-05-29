@@ -183,7 +183,7 @@ export default {
 }
 
 .texto-trivia {
-    font-size: 37px;
+    font-size: 36px;
     font-weight: bold;
 }
 
