@@ -2029,7 +2029,10 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$store.commit('infoEmpleado', response.data.usuario);
 
+        _this.$store.commit('infoEquipo', response.data.miembros_equipo);
+
         localStorage.setItem('infoEmpleado', JSON.stringify(response.data.usuario));
+        localStorage.setItem('infoEquipo', JSON.stringify(response.data.miembros_equipo));
       });
     },
     showAvisoApellido: function showAvisoApellido() {
@@ -2345,7 +2348,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
@@ -2364,6 +2366,9 @@ __webpack_require__.r(__webpack_exports__);
     infoEmpleado: function infoEmpleado() {
       return this.$store.state.infoEmpleado;
     },
+    infoEquipo: function infoEquipo() {
+      return this.$store.state.infoEquipo;
+    },
     login: function login() {
       return this.$store.state.login;
     },
@@ -2381,6 +2386,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.commit('login', true);
     } else {
       this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')));
+      this.$store.commit('infoEquipo', JSON.parse(localStorage.getItem('infoEquipo')));
     }
 
     if (this.$route.fullPath === '/login') {
@@ -6351,7 +6357,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade bd-example-modal-lg ",
+        staticClass: "modal fade bd-example-modal-xl ",
         attrs: {
           id: "modalEquipo",
           tabindex: "-1",
@@ -6364,47 +6370,50 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            staticClass: "modal-dialog modal-dialog-centered modal-xl",
             attrs: { role: "document" }
           },
           [
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(26),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "h5" }, [
-                  _vm._v("Tu equipo es el número "),
-                  _c("strong", [_vm._v(_vm._s(_vm.infoEmpleado.equipo))])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mt-4 h5" }, [
-                  _vm._v("Los integrantes de tu equipo son:")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "h6" }, [
-                  _vm._v(
-                    " 👉 " +
-                      _vm._s(_vm.infoEmpleado.nombre) +
-                      " " +
-                      _vm._s(_vm.infoEmpleado.apellido) +
-                      " - Área: " +
-                      _vm._s(_vm.infoEmpleado.area) +
-                      " - Función " +
-                      _vm._s(_vm.infoEmpleado.funcion) +
-                      "  "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "h6" }, [
-                  _vm._v(" 👉 Jose Gutierrez")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "h6" }, [
-                  _vm._v(" 👉 Ernesto Gonzalez")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "h6" }, [_vm._v(" 👉 Pepe Gamboa")])
-              ]),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c("div", { staticClass: "h5" }, [
+                    _vm._v("Tu equipo es el número "),
+                    _c("strong", [_vm._v(_vm._s(_vm.infoEmpleado.equipo))])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-4 h5" }, [
+                    _vm._v("Los integrantes de tu equipo son:")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(Object.values(_vm.infoEquipo), function(empleado, i) {
+                    return _c("div", { key: i, staticClass: "h6" }, [
+                      _c("div", [
+                        _vm._v("👉 "),
+                        _c("strong", [
+                          _vm._v(
+                            _vm._s(empleado.nombre) +
+                              " " +
+                              _vm._s(empleado.apellido)
+                          )
+                        ]),
+                        _vm._v(
+                          "  - Área: " +
+                            _vm._s(empleado.area) +
+                            " - Función: " +
+                            _vm._s(empleado.funcion) +
+                            " "
+                        )
+                      ])
+                    ])
+                  })
+                ],
+                2
+              ),
               _vm._v(" "),
               _vm._m(27)
             ])
@@ -6456,7 +6465,7 @@ var staticRenderFns = [
           staticClass: "btn btn-warning consulta",
           attrs: {
             "data-toggle": "modal",
-            "data-target": ".bd-example-modal-lg"
+            "data-target": ".bd-example-modal-xl"
           }
         },
         [_vm._v("\n              Consulta los datos de tu equipo\n          ")]
@@ -24412,11 +24421,15 @@ __webpack_require__.r(__webpack_exports__);
     paginaPrincipal: true,
     infoEmpleado: '',
     token: localStorage.getItem('access_token') || null,
-    loginFailed: false
+    loginFailed: false,
+    infoEquipo: ''
   },
   mutations: {
     infoEmpleado: function infoEmpleado(state, _infoEmpleado) {
       state.infoEmpleado = _infoEmpleado;
+    },
+    infoEquipo: function infoEquipo(state, _infoEquipo) {
+      state.infoEquipo = _infoEquipo;
     },
     login: function login(state, _login) {
       state.login = _login;
@@ -24496,8 +24509,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/mac/Desktop/simplify/banco-la-pampa/banco-la-pampa/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/mac/Desktop/simplify/banco-la-pampa/banco-la-pampa/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/federico/proyectos/banco-la-pampa/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/federico/proyectos/banco-la-pampa/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -77,7 +77,7 @@
     </div>
     <div v-if="login === false && paginaPrincipal === true">
         <div class="d-flex justify-content-center mt-4">
-            <button class="btn btn-warning consulta" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <button class="btn btn-warning consulta" data-toggle="modal" data-target=".bd-example-modal-xl">
                 Consulta los datos de tu equipo
             </button>
         </div>
@@ -260,8 +260,8 @@
                 </div>
             </div>
         </form>
-         <div class="modal fade bd-example-modal-lg " id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+         <div class="modal fade bd-example-modal-xl " id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">Los datos de tu equipo</h5>
@@ -272,10 +272,9 @@
                         <div class="modal-body">
                             <div class="h5">Tu equipo es el número <strong>{{infoEmpleado.equipo}}</strong> </div>
                             <div class="mt-4 h5">Los integrantes de tu equipo son:</div>
-                            <div class="h6"> &#128073; {{infoEmpleado.nombre}} {{infoEmpleado.apellido}} - Área: {{infoEmpleado.area}} - Función {{infoEmpleado.funcion}}  </div>
-                            <div class="h6"> &#128073; Jose Gutierrez</div>
-                            <div class="h6"> &#128073; Ernesto Gonzalez</div>
-                            <div class="h6"> &#128073; Pepe Gamboa</div>
+                            <div class="h6" v-for="(empleado, i) in Object.values(infoEquipo)" :key="i">
+                                <div>&#128073; <strong>{{empleado.nombre}} {{empleado.apellido}}</strong>  - Área: {{empleado.area}} - Función: {{empleado.funcion}} </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -312,6 +311,9 @@ export default {
         infoEmpleado(){
             return this.$store.state.infoEmpleado
         },
+        infoEquipo(){
+            return this.$store.state.infoEquipo
+        },
         login() {
             return this.$store.state.login
         },
@@ -330,6 +332,7 @@ export default {
 
         } else {
             this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')))
+            this.$store.commit('infoEquipo', JSON.parse(localStorage.getItem('infoEquipo')))
         }
 
         if (this.$route.fullPath === '/login') {

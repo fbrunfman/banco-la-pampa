@@ -93,7 +93,9 @@ export default {
                  this.$store.commit('login', false)
                  this.$store.commit('paginaPrincipal', true)
                  this.$store.commit('infoEmpleado', response.data.usuario)
+                 this.$store.commit('infoEquipo', response.data.miembros_equipo)
                  localStorage.setItem('infoEmpleado', JSON.stringify(response.data.usuario))
+                 localStorage.setItem('infoEquipo', JSON.stringify(response.data.miembros_equipo))
             })
 
         },

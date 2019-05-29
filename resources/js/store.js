@@ -6,11 +6,15 @@ export default {
         paginaPrincipal: true,
         infoEmpleado: '',
         token: localStorage.getItem('access_token') || null,
-        loginFailed: false
+        loginFailed: false,
+        infoEquipo: ''
     },
     mutations: {
         infoEmpleado (state, infoEmpleado) {
             state.infoEmpleado = infoEmpleado
+        },
+        infoEquipo (state, infoEquipo) {
+            state.infoEquipo = infoEquipo
         },
         login (state, login) {
             state.login = login
