@@ -286,7 +286,7 @@
     <div>
     <router-view></router-view>
     </div>
-    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4 ">
+    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4" v-if="paginaPrincipal == true">
         <div class="h3 footer-lucuma"> Desarrollado por <strong>Lúcuma Desarrollo Web &reg; </strong> - 2019 </div>
     </footer>
 
@@ -440,6 +440,15 @@ nav ul li a {
     width: 100vw;
 }
 
+.footer-page {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
 
 .banner {
 

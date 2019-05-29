@@ -53,6 +53,9 @@
                 </div>
             </div>
         </div>
+        <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4">
+            <div class="h3 footer-lucuma"> Desarrollado por <strong>Lúcuma Desarrollo Web &reg; </strong> - 2019 </div>
+        </footer>
     </div>
 </template>
 
@@ -111,6 +114,20 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
+}
+
+.footer-page {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.footer-lucuma {
+    font-family: 'Pacifico', cursive;
 }
 
 .header {
@@ -175,6 +192,14 @@ export default {
 
     .question img {
         margin-left: -22px;
+    }
+
+    .footer-lucuma {
+        font-size: 15px;
+    }
+
+    .footer-page {
+        padding: 5px !important;
     }
 }
 

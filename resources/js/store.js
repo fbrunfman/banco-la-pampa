@@ -60,6 +60,7 @@ export default {
                     const token = response.data.access_token
                     localStorage.setItem('access_token', token)
                     context.commit('retrieveToken', token)
+                    context.commit('loginFailed', false)
                     resolve(response)
                     /* console.log(response); */
                 })

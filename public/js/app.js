@@ -1987,6 +1987,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Login',
@@ -2776,7 +2779,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".login-body[data-v-6bdc8b8e] {\n  padding: 0;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.header[data-v-6bdc8b8e] {\n  width: 65%;\n  background-color: #ffba20;\n  height: 5vh;\n  position: fixed;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #ad9999;\n}\n.footer[data-v-6bdc8b8e] {\n  width: 65%;\n  left: 0;\n  right: 0;\n  background-color: #000000;\n  height: 5vh;\n  position: fixed;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  bottom: 0;\n  box-shadow: 2px 2px 16px #000000;\n}\n.question img[data-v-6bdc8b8e] {\n  width: 25px;\n}\n.header-login[data-v-6bdc8b8e] {\n  height: 7vh;\n  background-color: #ffba20;\n}\n.logo img[data-v-6bdc8b8e] {\n  width: 720px;\n  height: 199px;\n}\n@media (max-width: 600px) {\n.logo img[data-v-6bdc8b8e] {\n    width: 280px;\n    height: 78px;\n}\n.footer[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.header[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.contenedor-boton[data-v-6bdc8b8e] {\n    margin-left: 45px;\n}\n.question img[data-v-6bdc8b8e] {\n    margin-left: -22px;\n}\n}\n.login[data-v-6bdc8b8e] {\n  width: 555px;\n  height: 330px;\n  background-color: #e3e3e6;\n  max-width: 100%;\n  max-height: 100%;\n  margin-top: 40px !important;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: hidden;\n  box-shadow: 2px 2px 16px #d2d2d2;\n  border-radius: 5px;\n}\n@media (max-width: 600px) {\n.login[data-v-6bdc8b8e] {\n    width: 252px;\n    height: 288px;\n    overflow: hidden;\n}\n}\n@media (max-width: 770px) {\n.boton-ingresar[data-v-6bdc8b8e] {\n    text-align: inherit !important;\n}\n}\n.page[data-v-6bdc8b8e] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.boton-ingresar[data-v-6bdc8b8e] {\n  margin-right: 47px;\n  margin-bottom: 0;\n}\n.boton-ingresar button[data-v-6bdc8b8e] {\n  margin-bottom: 0 !important;\n}", ""]);
+exports.push([module.i, ".login-body[data-v-6bdc8b8e] {\n  padding: 0;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.footer-page[data-v-6bdc8b8e] {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.footer-lucuma[data-v-6bdc8b8e] {\n  font-family: \"Pacifico\", cursive;\n}\n.header[data-v-6bdc8b8e] {\n  width: 65%;\n  background-color: #ffba20;\n  height: 5vh;\n  position: fixed;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #ad9999;\n}\n.footer[data-v-6bdc8b8e] {\n  width: 65%;\n  left: 0;\n  right: 0;\n  background-color: #000000;\n  height: 5vh;\n  position: fixed;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  bottom: 0;\n  box-shadow: 2px 2px 16px #000000;\n}\n.question img[data-v-6bdc8b8e] {\n  width: 25px;\n}\n.header-login[data-v-6bdc8b8e] {\n  height: 7vh;\n  background-color: #ffba20;\n}\n.logo img[data-v-6bdc8b8e] {\n  width: 720px;\n  height: 199px;\n}\n@media (max-width: 600px) {\n.logo img[data-v-6bdc8b8e] {\n    width: 280px;\n    height: 78px;\n}\n.footer[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.header[data-v-6bdc8b8e] {\n    width: 100%;\n}\n.contenedor-boton[data-v-6bdc8b8e] {\n    margin-left: 45px;\n}\n.question img[data-v-6bdc8b8e] {\n    margin-left: -22px;\n}\n.footer-lucuma[data-v-6bdc8b8e] {\n    font-size: 15px;\n}\n.footer-page[data-v-6bdc8b8e] {\n    padding: 5px !important;\n}\n}\n.login[data-v-6bdc8b8e] {\n  width: 555px;\n  height: 330px;\n  background-color: #e3e3e6;\n  max-width: 100%;\n  max-height: 100%;\n  margin-top: 40px !important;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: hidden;\n  box-shadow: 2px 2px 16px #d2d2d2;\n  border-radius: 5px;\n}\n@media (max-width: 600px) {\n.login[data-v-6bdc8b8e] {\n    width: 252px;\n    height: 288px;\n    overflow: hidden;\n}\n}\n@media (max-width: 770px) {\n.boton-ingresar[data-v-6bdc8b8e] {\n    text-align: inherit !important;\n}\n}\n.page[data-v-6bdc8b8e] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.boton-ingresar[data-v-6bdc8b8e] {\n  margin-right: 47px;\n  margin-bottom: 0;\n}\n.boton-ingresar button[data-v-6bdc8b8e] {\n  margin-bottom: 0 !important;\n}", ""]);
 
 // exports
 
@@ -2795,7 +2798,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.footer-lucuma[data-v-13672230] {\n  font-family: \"Pacifico\", cursive;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 24px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}\n.consulta[data-v-13672230] {\n  font-size: 27px;\n  color: beige;\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.footer-page[data-v-13672230] {\n  position: relative;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.footer-lucuma[data-v-13672230] {\n  font-family: \"Pacifico\", cursive;\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 24px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}\n.consulta[data-v-13672230] {\n  font-size: 27px;\n  color: beige;\n}", ""]);
 
 // exports
 
@@ -5620,7 +5623,9 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(4)
   ])
 }
 var staticRenderFns = [
@@ -5667,6 +5672,25 @@ var staticRenderFns = [
     return _c("div", { staticClass: "d-flex justify-content-center" }, [
       _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("APELLIDO")])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "footer",
+      {
+        staticClass:
+          "footer-page d-flex justify-content-center p-4 bg-warning mt-4"
+      },
+      [
+        _c("div", { staticClass: "h3 footer-lucuma" }, [
+          _vm._v(" Desarrollado por "),
+          _c("strong", [_vm._v("Lúcuma Desarrollo Web ® ")]),
+          _vm._v(" - 2019 ")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -6392,7 +6416,16 @@ var render = function() {
     _vm._v(" "),
     _c("div", [_c("router-view")], 1),
     _vm._v(" "),
-    _vm._m(28)
+    _vm.paginaPrincipal == true
+      ? _c(
+          "footer",
+          {
+            staticClass:
+              "footer-page d-flex justify-content-center p-4 bg-warning mt-4"
+          },
+          [_vm._m(28)]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -6818,20 +6851,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "footer",
-      {
-        staticClass:
-          "footer-page d-flex justify-content-center p-4 bg-warning mt-4 "
-      },
-      [
-        _c("div", { staticClass: "h3 footer-lucuma" }, [
-          _vm._v(" Desarrollado por "),
-          _c("strong", [_vm._v("Lúcuma Desarrollo Web ® ")]),
-          _vm._v(" - 2019 ")
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "h3 footer-lucuma" }, [
+      _vm._v(" Desarrollado por "),
+      _c("strong", [_vm._v("Lúcuma Desarrollo Web ® ")]),
+      _vm._v(" - 2019 ")
+    ])
   }
 ]
 render._withStripped = true
@@ -24447,6 +24471,7 @@ __webpack_require__.r(__webpack_exports__);
           var token = response.data.access_token;
           localStorage.setItem('access_token', token);
           context.commit('retrieveToken', token);
+          context.commit('loginFailed', false);
           resolve(response);
           /* console.log(response); */
         })["catch"](function (error) {
