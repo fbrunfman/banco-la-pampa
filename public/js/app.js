@@ -2375,12 +2375,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')));
-
     if (this.$store.state.token === null) {
       this.$router.push('/login');
       this.$store.commit('paginaPrincipal', false);
       this.$store.commit('login', true);
+    } else {
+      this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')));
     }
 
     if (this.$route.fullPath === '/login') {
