@@ -32,7 +32,9 @@ class AuthController extends Controller
         if (array_key_exists('access_token', $json)) {
             $user = User::where('legajo', $username)->first();
             unset($user->password);
+            $miembros_equipo = User::all()->where('equipo', $user->equipo);
             $json['usuario'] = $user;
+            $json['miembros_equipo'] = $miembros_equipo;
         }
         $response->setContent(json_encode($json));
 
