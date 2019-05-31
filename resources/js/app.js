@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
+import 'babel-polyfill'
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
