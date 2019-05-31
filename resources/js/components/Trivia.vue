@@ -5,8 +5,18 @@
                 <img src="./img/trivia2.jpg" alt="" srcset="">
             </div>
             <div class="copete p-5">
-                <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros en la trivia y participá por premios!</h2>
-                <!-- <span class="copete-texto"></span> -->
+                <h2 class="copete-pregunta mb-3 text-center">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
+                <div class="d-flex justify-content-center">
+                    <div class="w-50 card text-center ">
+                        <div class="h5 text-center "> <strong>REGLAMENTO TRIVIA</strong> </div>
+                        <div class="my-2">&#128073; El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
+                        <div class="my-2">&#128073; Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
+                        <div class="my-2">&#128073; La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga </div>
+                        <div class="my-2">&#128073; En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
+                        <div class="my-2">&#128073; Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
+                        <div><strong>&#128073; Tienen tiempo hasta el 06/06 &#128072;</strong></div>
+                    </div>
+                </div>
             </div>
             <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
                 <div class="btn btn-success boton-comenzar" @click="showTrivia"> ¡Comenzar trivia ahora!</div>
@@ -37,8 +47,26 @@
                 <div class="h2">Hola {{infoEmpleado.nombre}}, un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!</div>
             </div>
             <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
-                <button @click="enviarRespuestas" class="btn btn-success text-center">¡Enviar respuestas!</button>
+                <button class="btn btn-success text-center my-2" data-toggle="modal" data-target="#trivia">¡Enviar respuestas!</button>
             </div>
+            <div class="modal fade" id="trivia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">¿Confirmás enviar estas respuestas?</h5>
+
+                        </div>
+                        <div class="modal-body">
+                            <span>Recordá que una vez realizada la trivia tu equipo no podrá volver a hacerla</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" @click="enviarRespuestas">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -109,8 +137,7 @@ export default {
             })
             .then(response => {
                 this.$swal('Tus respuestas fueron enviadas exitosamente')
-                this.$store.commit('paginaPrincipal', true)
-                this.$router.push('/')
+                $('#trivia').modal('hide')
             })
 
         }
@@ -228,6 +255,10 @@ export default {
     .contenedor-trivia {
     display: block;
 }
+}
+
+.w-50.card.text-center {
+    box-shadow: 2px 2px 6px #1a1a13;
 }
 
 input[type="radio"] {

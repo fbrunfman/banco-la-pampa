@@ -81,7 +81,7 @@
                 Consulta los datos de tu equipo
             </button>
         </div>
-        <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel" data-interval="5000">
+        <div id="carouselExampleControls" class="carousel slide mt-4" >
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
                  <img src="./img/header-1.png" alt="" srcset="">
@@ -93,11 +93,11 @@
                   <img src="./img/header-3.png" alt="" srcset="">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+                <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
                 <span class="sr-only">Anterior</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" @click="startCarousel"  ref="carousel">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Siguiente</span>
             </a>
@@ -176,36 +176,38 @@
         <div class="nodevades justify-content-center">
           <div class="inner-container no-gutters">
             <div class="row no-gutters justify-content-center">
-              <div class="banner-novedad mx-4 my-2">
-                <div class="titulo-novedad p-3">
-                    <h3>Novedades:</h3>
-                    <h5>Se larga el sitio 60 Aniversario Banco De La Pampa</h5>
-                </div>
-                <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
-                </div>
-                 <div class="d-flex justify-content-center p-4 d-md-none">
-                    <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-                        <span v-if="verMasUno">Ver +</span>
-                        <span v-if="verMasUno === false">Esconder</span>
-                    </button>
-                </div>
-                <div v-if="collapseOnUno" class="collapse" id="collapseExample1">
-                    <div class="banner-body p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                <router-link to="trivia">
+                    <div class="banner-novedad mx-4 my-2">
+                        <div class="titulo-novedad p-3">
+                            <h3>Novedades:</h3>
+                            <h5>¿Cuánto sabes sobre el Banco?</h5>
+                        </div>
+                        <div class="novedad-img">
+                            <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="d-flex justify-content-center p-4 d-md-none">
+                            <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                <span v-if="verMasUno">Ver +</span>
+                                <span v-if="verMasUno === false">Esconder</span>
+                            </button>
+                        </div>
+                        <div v-if="collapseOnUno" class="collapse" id="collapseExample1">
+                            <div class="banner-body p-3">
+                                <span> Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!</span>
+                            </div>
+                        </div>
+                        <div class="banner-body no-collapse  p-3">
+                                <span class="h5"> Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!</span>
+                        </div>
+                        <!-- <div class="boton-sumar justify-content-end mr-2">
+                            <span class="sumar">+</span>
+                        </div> -->
                     </div>
-                </div>
-                 <div class="banner-body no-collapse  p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
-                </div>
-                <!-- <div class="boton-sumar justify-content-end mr-2">
-                    <span class="sumar">+</span>
-                </div> -->
-              </div>
-              <div class="banner-novedad mx-4 my-2">
+                </router-link>
+              <div class="banner-novedad mx-4 my-2" data-toggle="modal" data-target=".bd-example-modal-xl">
                 <div class="titulo-novedad p-3">
                     <h3>Novedades:</h3>
-                    <h5>Titulo novedad uno</h5>
+                    <h5>Conocé a tu equipo</h5>
                 </div>
                 <div class="novedad-img">
                      <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
@@ -218,11 +220,11 @@
                 </div>
                 <div v-if="collapseOn" class="collapse" id="collapseExample">
                     <div class="banner-body p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                        <span>Consultá los datos de tu equipo y contactate con ellos! </span>
                     </div>
                 </div>
                  <div class="banner-body no-collapse  p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                        <span class="h5"> Consultá los datos de tu equipo y contactate con ellos!</span>
                 </div>
                <!--  <div class="boton-sumar  justify-content-end mr-2">
                     <span class="sumar">+</span>
@@ -273,7 +275,7 @@
                             <div class="h5">Tu equipo es el número <strong>{{infoEmpleado.equipo}}</strong> </div>
                             <div class="mt-4 h5">Los integrantes de tu equipo son:</div>
                             <div class="h6" v-for="(empleado, i) in Object.values(infoEquipo)" :key="i">
-                                <div>&#128073; <strong>{{empleado.nombre}} {{empleado.apellido}}</strong>  - Área: {{empleado.area}} - Función: {{empleado.funcion}} </div>
+                                <div>&#128073; <strong>{{empleado.nombre}} {{empleado.apellido}}</strong>  - Área: {{empleado.area}} - Email: {{empleado.correo}} </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -285,9 +287,6 @@
     <div>
     <router-view></router-view>
     </div>
-    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4" v-if="paginaPrincipal == true && login == false">
-        <div class="h4 footer-lucuma"> Lúcuma Desarrollo Web - 2019 &copy; </div>
-    </footer>
 
   </div>
 </template>
@@ -325,6 +324,8 @@ export default {
         }
     },
     mounted() {
+
+        setInterval(this.startCarousel, 8000)
         if (this.$store.state.token === null) {
             this.$router.push('/login')
             this.$store.commit('paginaPrincipal', false)
@@ -340,7 +341,6 @@ export default {
             this.$store.commit('login', true)
             this.$router.push('/login')
         }
-
     },
     methods: {
         cambiarPagina() {
@@ -353,6 +353,11 @@ export default {
          activarCollapseUno() {
             this.collapseOnUno = !this.collapseOnUno
             this.verMasUno = !this.verMasUno
+        },
+        startCarousel() {
+            this.$refs.carousel.click()
+            console.log('llega carousel');
+            return
         },
         logout() {
             this.cargando2 = true
@@ -378,7 +383,7 @@ export default {
                 .then(response => {
                    this.$swal('Se cambió la contraseña exitósamente')
                    this.cargando = false
-                   location.reload()
+                    $('#exampleModalCenter').modal('hide')
                 })
                 .catch((error) => {
                     this.$swal('Error al cambiar la contraseña')
@@ -522,6 +527,9 @@ nav ul li a {
     border-radius: 15px 60px 15px 60px;
     background-color: #d4d4d4;
     box-shadow: 2px 2px 16px #292727;
+    :hover {
+        cursor: pointer;
+    }
 }
 
 .titulo-novedad {
@@ -649,5 +657,10 @@ nav ul li a {
 .consulta {
     font-size: 27px;
     color: beige;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 </style>
