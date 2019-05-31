@@ -2477,6 +2477,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Proximamente',
   mounted: function mounted() {
@@ -2500,8 +2502,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
 /* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_1__);
-//
-//
 //
 //
 //
@@ -2622,32 +2622,36 @@ __webpack_require__.r(__webpack_exports__);
     enviarRespuestas: function enviarRespuestas() {
       var _this2 = this;
 
-      delete this.preguntas.hecha;
-      var counter = 0;
-      console.log(this.preguntas[0].respuestas);
+      if (this.infoEmpleado.equipo !== 0) {
+        delete this.preguntas.hecha;
+        var counter = 0;
+        console.log(this.preguntas[0].respuestas);
 
-      for (var i = 0; i < Object.values(this.preguntas).length; i++) {
-        var resps = this.preguntas[i].respuestas;
+        for (var i = 0; i < Object.values(this.preguntas).length; i++) {
+          var resps = this.preguntas[i].respuestas;
 
-        if (resps.filter(function (respuesta) {
-          return respuesta.es_correcta == 1;
-        })[0].id == this.userResponses[i]) {
-          counter++;
+          if (resps.filter(function (respuesta) {
+            return respuesta.es_correcta == 1;
+          })[0].id == this.userResponses[i]) {
+            counter++;
+          }
         }
+
+        this.respuestasCorrectas = counter;
+        var url = '/api/guardar-puntaje';
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
+          equipo_id: this.infoEmpleado.equipo,
+          mes: 1,
+          //se harcodea el mes en curso\
+          puntaje: this.respuestasCorrectas
+        }).then(function (response) {
+          _this2.$swal('Tus respuestas fueron enviadas exitosamente');
+
+          $('#trivia').modal('hide');
+        });
+      } else {
+        this.$swal('Se completó la trivia exitósamente');
       }
-
-      this.respuestasCorrectas = counter;
-      var url = '/api/guardar-puntaje';
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
-        equipo_id: this.infoEmpleado.equipo,
-        mes: 1,
-        //se harcodea el mes en curso\
-        puntaje: this.respuestasCorrectas
-      }).then(function (response) {
-        _this2.$swal('Tus respuestas fueron enviadas exitosamente');
-
-        $('#trivia').modal('hide');
-      });
     }
   }
 });
@@ -13883,7 +13887,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.footer-page[data-v-13672230] {\n  position: relative;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.footer-lucuma[data-v-13672230] {\n  font-family: \"Roboto Condensed\";\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.banner-novedad[data-v-13672230] :hover {\n  cursor: pointer;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 145px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  box-shadow: 2px 2px 8px #c2c2c2;\n}\n.icono-logout img[data-v-13672230] {\n  width: 30px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 25px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 24px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 28px;\n}\n.consulta[data-v-13672230] {\n  font-size: 27px;\n  color: beige;\n}\na[data-v-13672230] {\n  text-decoration: none;\n  color: black;\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n  box-shadow: 2px 2px 16px #757575;\n}\n.botones[data-v-13672230] {\n  box-shadow: 2px 2px 16px grey;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.footer-page[data-v-13672230] {\n  position: relative;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 248px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.footer-lucuma[data-v-13672230] {\n  font-family: \"Roboto Condensed\";\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n  box-shadow: 2px 2px 16px #292727;\n}\n.banner-novedad[data-v-13672230] :hover {\n  cursor: pointer;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 163px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.icono-logout img[data-v-13672230] {\n  width: 45px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 30px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n.consulta-datos[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.inner-consulta[data-v-13672230] {\n  background-color: #e3e3e3;\n  cursor: pointer;\n  font-size: 16px;\n  font-weight: bold;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 30px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n.inner-consulta[data-v-13672230] {\n    font-size: 12px;\n    margin-bottom: 18px;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 18px;\n  font-weight: bold;\n}\n.consulta[data-v-13672230] {\n  font-size: 27px;\n  color: beige;\n}\na[data-v-13672230] {\n  text-decoration: none;\n  color: black;\n}", ""]);
 
 // exports
 
@@ -13902,7 +13906,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@media (max-width: 1200px) {\nimg[data-v-c8ee1200] {\n    width: 244px;\n    height: 250px;\n}\n}", ""]);
+exports.push([module.i, ".contenedor[data-v-c8ee1200] {\n  width: 384px;\n  font-weight: bold;\n  max-width: 384px;\n  color: white;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n  background-color: #389438;\n  margin: 0;\n  top: 0;\n  left: 0;\n  position: relative;\n  margin-top: 120px;\n}\n@media (max-width: 900px) {\n.contenedor[data-v-c8ee1200] {\n    width: 272px;\n    max-width: 272px;\n    min-width: 272px;\n    height: 224px;\n    margin-top: 0;\n}\n}", ""]);
 
 // exports
 
@@ -13921,7 +13925,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 36px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 20px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.w-50.card.text-center[data-v-2f3251a4] {\n  box-shadow: 2px 2px 6px #1a1a13;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  box-shadow: 2px 2px 16px #2b2a2a;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 36px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 20px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.w-50.card.text-center[data-v-2f3251a4] {\n  box-shadow: 2px 2px 6px #1a1a13;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -16758,12 +16762,13 @@ var render = function() {
   return _c("div", { staticClass: "contenedor" }, [
     _vm.login === false
       ? _c("div", { staticClass: "contenedor-main" }, [
-          _c("div", { staticClass: "header d-flex justify-content-center" }, [
+          _c("div", { staticClass: "header row" }, [
+            _c("div", { staticClass: "col-xl-4" }),
+            _vm._v(" "),
             _c(
               "div",
               {
-                staticClass:
-                  "nombre-usuario text-center btn btn-outline-warning my-1"
+                staticClass: "nombre-usuario text-center my-1 col-xl-4 col-12"
               },
               [
                 _vm._v(
@@ -16772,7 +16777,9 @@ var render = function() {
                     ", disfrutá el 60 Aniversario de tu banco!"
                 )
               ]
-            )
+            ),
+            _vm._v(" "),
+            _vm._m(0)
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "inner-container" }, [
@@ -16818,7 +16825,7 @@ var render = function() {
                           [
                             _c("img", {
                               attrs: {
-                                src: __webpack_require__(/*! ./img/logout3.png */ "./resources/js/components/img/logout3.png"),
+                                src: __webpack_require__(/*! ./img/exit.svg */ "./resources/js/components/img/exit.svg"),
                                 alt: "",
                                 srcset: ""
                               },
@@ -16828,7 +16835,7 @@ var render = function() {
                             _c("img", {
                               staticClass: "ml-2",
                               attrs: {
-                                src: __webpack_require__(/*! ./img/contrasena.jpg */ "./resources/js/components/img/contrasena.jpg"),
+                                src: __webpack_require__(/*! ./img/reset.svg */ "./resources/js/components/img/reset.svg"),
                                 alt: "",
                                 srcset: "",
                                 "data-toggle": "modal",
@@ -16877,7 +16884,7 @@ var render = function() {
                           "navbar navbar-expand-md sticky-top navbar-light"
                       },
                       [
-                        _vm._m(0),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -17016,7 +17023,7 @@ var render = function() {
                       [
                         _c("img", {
                           attrs: {
-                            src: __webpack_require__(/*! ./img/logout3.png */ "./resources/js/components/img/logout3.png"),
+                            src: __webpack_require__(/*! ./img/exit.svg */ "./resources/js/components/img/exit.svg"),
                             alt: "",
                             srcset: ""
                           },
@@ -17026,7 +17033,7 @@ var render = function() {
                         _c("img", {
                           staticClass: "ml-2",
                           attrs: {
-                            src: __webpack_require__(/*! ./img/contrasena.jpg */ "./resources/js/components/img/contrasena.jpg"),
+                            src: __webpack_require__(/*! ./img/reset.svg */ "./resources/js/components/img/reset.svg"),
                             alt: "",
                             srcset: "",
                             "data-toggle": "modal",
@@ -17067,8 +17074,6 @@ var render = function() {
     _vm._v(" "),
     _vm.login === false && _vm.paginaPrincipal === true
       ? _c("div", [
-          _vm._m(1),
-          _vm._v(" "),
           _c(
             "div",
             {
@@ -17248,7 +17253,7 @@ var render = function() {
                         _c("img", {
                           staticClass: "imagen-novedad",
                           attrs: {
-                            src: __webpack_require__(/*! ./img/fuego2.jpg */ "./resources/js/components/img/fuego2.jpg"),
+                            src: __webpack_require__(/*! ./img/novedad-trivia.jpg */ "./resources/js/components/img/novedad-trivia.jpg"),
                             alt: "",
                             srcset: ""
                           }
@@ -17544,6 +17549,35 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
+      "div",
+      {
+        staticClass:
+          "text-center consulta-datos col-xl-4 col-12 no-gutters d-flex justify-content-end"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "inner-consulta py-2 col-xl-8 col-12",
+            attrs: {
+              "data-toggle": "modal",
+              "data-target": ".bd-example-modal-xl"
+            }
+          },
+          [
+            _vm._v(
+              "\n                  CONSULTÁ LOS DATOS DE TU EQUIPO\n              "
+            )
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
       "button",
       {
         staticClass: "navbar-toggler",
@@ -17551,24 +17585,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-center mt-4" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-warning consulta",
-          attrs: {
-            "data-toggle": "modal",
-            "data-target": ".bd-example-modal-xl"
-          }
-        },
-        [_vm._v("\n              Consulta los datos de tu equipo\n          ")]
-      )
-    ])
   },
   function() {
     var _vm = this
@@ -17741,7 +17757,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "novedad-img" }, [
       _c("img", {
         staticClass: "imagen-novedad",
-        attrs: { src: __webpack_require__(/*! ./img/fuego2.jpg */ "./resources/js/components/img/fuego2.jpg"), alt: "", srcset: "" }
+        attrs: { src: __webpack_require__(/*! ./img/novedad-equipo.jpg */ "./resources/js/components/img/novedad-equipo.jpg"), alt: "", srcset: "" }
       })
     ])
   },
@@ -17908,14 +17924,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ./img/proximamente-compressor.png */ "./resources/js/components/img/proximamente-compressor.png"),
-          alt: "",
-          srcset: ""
-        }
-      })
+    return _c("div", { staticClass: "d-flex justify-content-center my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "d-flex justify-content-center align-items-center contenedor"
+        },
+        [_c("h2", [_c("strong", [_vm._v("PRÓXIMAMENTE")])])]
+      )
     ])
   }
 ]
@@ -17960,7 +17977,7 @@ var render = function() {
                     staticClass: "btn btn-success boton-comenzar",
                     on: { click: _vm.showTrivia }
                   },
-                  [_vm._v(" ¡Comenzar trivia ahora!")]
+                  [_vm._v(" Comenzar TRIVIA AHORA")]
                 )
               ]
             )
@@ -18091,7 +18108,7 @@ var render = function() {
                 _vm._v(
                   "Hola " +
                     _vm._s(_vm.infoEmpleado.nombre) +
-                    ", un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!"
+                    ", un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!"
                 )
               ])
             ])
@@ -18181,52 +18198,48 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "copete p-5" }, [
-      _c("h2", { staticClass: "copete-pregunta mb-3 text-center" }, [
+      _c("h2", { staticClass: "copete-pregunta mb-3" }, [
         _vm._v(
           "¡Jugá con tus compañeros de equipo en la trivia y participá por premios!"
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "d-flex justify-content-center" }, [
-        _c("div", { staticClass: "w-50 card text-center " }, [
-          _c("div", { staticClass: "h5 text-center " }, [
-            _c("strong", [_vm._v("REGLAMENTO TRIVIA")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              "👉 El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              "👉 Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá"
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              "👉 La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              "👉 En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              "👉 Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("strong", [_vm._v("👉 Tienen tiempo hasta el 06/06 👈")])
-          ])
-        ])
+      _c("h3", { staticClass: "reglamento-titulo text-success p-4" }, [
+        _c("strong", [_vm._v(" Reglamento Trivia ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "reglas ml-3" }, [
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá"
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [_c("strong", [_vm._v(" Tienen tiempo hasta el 06/06")])])
       ])
     ])
   },
@@ -35380,17 +35393,6 @@ module.exports = "/images/bingo.jpg?006952b237dc16d51470ebdb5deb9b84";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/contrasena.jpg":
-/*!****************************************************!*\
-  !*** ./resources/js/components/img/contrasena.jpg ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/contrasena.jpg?96a1536258d3ec830a62d3591e8d2563";
-
-/***/ }),
-
 /***/ "./resources/js/components/img/cuenta.jpg":
 /*!************************************************!*\
   !*** ./resources/js/components/img/cuenta.jpg ***!
@@ -35413,6 +35415,17 @@ module.exports = "/images/cuenta2.jpg?c4078c84eec6941b614f281d7c04b2af";
 
 /***/ }),
 
+/***/ "./resources/js/components/img/exit.svg":
+/*!**********************************************!*\
+  !*** ./resources/js/components/img/exit.svg ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/exit.svg?e300aac38232b7af0b546fa398de5584";
+
+/***/ }),
+
 /***/ "./resources/js/components/img/foto.jpg":
 /*!**********************************************!*\
   !*** ./resources/js/components/img/foto.jpg ***!
@@ -35421,17 +35434,6 @@ module.exports = "/images/cuenta2.jpg?c4078c84eec6941b614f281d7c04b2af";
 /***/ (function(module, exports) {
 
 module.exports = "/images/foto.jpg?cdc821c4ea9043875b0cc6215d06773c";
-
-/***/ }),
-
-/***/ "./resources/js/components/img/fuego2.jpg":
-/*!************************************************!*\
-  !*** ./resources/js/components/img/fuego2.jpg ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/fuego2.jpg?3f264efb0871ec3676fc28fbb1a90231";
 
 /***/ }),
 
@@ -35479,14 +35481,25 @@ module.exports = "/images/logo.jpg?b63333eaf14989c44beccef080204686";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/logout3.png":
-/*!*************************************************!*\
-  !*** ./resources/js/components/img/logout3.png ***!
-  \*************************************************/
+/***/ "./resources/js/components/img/novedad-equipo.jpg":
+/*!********************************************************!*\
+  !*** ./resources/js/components/img/novedad-equipo.jpg ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logout3.png?4177dd8ea5fca92d6d2ccfcce25f30ff";
+module.exports = "/images/novedad-equipo.jpg?859193f6a6ef84b490331d1f78c79b91";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/novedad-trivia.jpg":
+/*!********************************************************!*\
+  !*** ./resources/js/components/img/novedad-trivia.jpg ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/novedad-trivia.jpg?a40e500c20b9e1e39a975993f0564bdd";
 
 /***/ }),
 
@@ -35501,14 +35514,14 @@ module.exports = "/images/protagonista.jpg?f84e16facb3b8f9a4b2a0da32f18004c";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/proximamente-compressor.png":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/img/proximamente-compressor.png ***!
-  \*****************************************************************/
+/***/ "./resources/js/components/img/reset.svg":
+/*!***********************************************!*\
+  !*** ./resources/js/components/img/reset.svg ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/proximamente-compressor.png?f91d07458380c02944bf015749ffec49";
+module.exports = "/images/reset.svg?07f96c6098fd3a6f369b597cb8c9beac";
 
 /***/ }),
 

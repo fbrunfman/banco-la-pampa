@@ -5,21 +5,19 @@
                 <img src="./img/trivia2.jpg" alt="" srcset="">
             </div>
             <div class="copete p-5">
-                <h2 class="copete-pregunta mb-3 text-center">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
-                <div class="d-flex justify-content-center">
-                    <div class="w-50 card text-center ">
-                        <div class="h5 text-center "> <strong>REGLAMENTO TRIVIA</strong> </div>
-                        <div class="my-2">&#128073; El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
-                        <div class="my-2">&#128073; Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
-                        <div class="my-2">&#128073; La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga </div>
-                        <div class="my-2">&#128073; En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
-                        <div class="my-2">&#128073; Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
-                        <div><strong>&#128073; Tienen tiempo hasta el 06/06 &#128072;</strong></div>
-                    </div>
+                <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
+                <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
+                <div class="reglas ml-3">
+                    <div class="my-2"> El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
+                    <div class="my-2"> Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
+                    <div class="my-2"> La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga </div>
+                    <div class="my-2"> En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
+                    <div class="my-2"> Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
+                    <div><strong> Tienen tiempo hasta el 06/06</strong></div>
                 </div>
             </div>
             <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
-                <div class="btn btn-success boton-comenzar" @click="showTrivia"> ¡Comenzar trivia ahora!</div>
+                <div class="btn btn-success boton-comenzar" @click="showTrivia"> Comenzar TRIVIA AHORA</div>
             </div>
             <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
                 <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
@@ -44,7 +42,7 @@
                 </div>
             </div>
             <div class="alert alert-warning text-center" v-if="ocultarTrivia == true">
-                <div class="h2">Hola {{infoEmpleado.nombre}}, un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!</div>
+                <div class="h2">Hola {{infoEmpleado.nombre}}, un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!</div>
             </div>
             <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
                 <button class="btn btn-success text-center my-2" data-toggle="modal" data-target="#trivia">¡Enviar respuestas!</button>
@@ -117,29 +115,34 @@ export default {
             this.mostrarTrivia = true
         },
         enviarRespuestas() {
-            delete this.preguntas.hecha
-            var counter = 0
-            console.log(this.preguntas[0].respuestas);
+            if (this.infoEmpleado.equipo !== 0) {
+                delete this.preguntas.hecha
+                var counter = 0
+                console.log(this.preguntas[0].respuestas);
 
-            for (var i = 0; i < Object.values(this.preguntas).length; i++) {
-                var resps = this.preguntas[i].respuestas
-                if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
-                    counter++
+                for (var i = 0; i < Object.values(this.preguntas).length; i++) {
+                    var resps = this.preguntas[i].respuestas
+                    if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
+                        counter++
+                    }
+
                 }
+                this.respuestasCorrectas = counter
+                var url = '/api/guardar-puntaje'
+                Axios.post(url, {
+                    equipo_id: this.infoEmpleado.equipo,
+                    mes: 1, //se harcodea el mes en curso\
+                    puntaje: this.respuestasCorrectas
+                })
+                .then(response => {
+                    this.$swal('Tus respuestas fueron enviadas exitosamente')
+                    $('#trivia').modal('hide')
+                })
 
             }
-            this.respuestasCorrectas = counter
-            var url = '/api/guardar-puntaje'
-            Axios.post(url, {
-                equipo_id: this.infoEmpleado.equipo,
-                mes: 1, //se harcodea el mes en curso\
-                puntaje: this.respuestasCorrectas
-            })
-            .then(response => {
-                this.$swal('Tus respuestas fueron enviadas exitosamente')
-                $('#trivia').modal('hide')
-            })
-
+            else {
+                  this.$swal('Se completó la trivia exitósamente')
+            }
         }
     }
 }
@@ -168,6 +171,10 @@ export default {
     background-color: #2eb92e;
     color: white;
 
+}
+
+.reglamento-titulo {
+    background-color: #dedede;
 }
 
 .boton-comenzar {

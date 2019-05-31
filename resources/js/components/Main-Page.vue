@@ -1,9 +1,14 @@
 <template>
   <div class="contenedor">
     <div v-if="login === false" class="contenedor-main">
-        <div class="header d-flex justify-content-center">
-            <div class="nombre-usuario text-center btn btn-outline-warning my-1"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
-
+        <div class="header row">
+            <div class="col-xl-4"></div>
+            <div class="nombre-usuario text-center my-1 col-xl-4 col-12"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
+            <div class="text-center consulta-datos col-xl-4 col-12 no-gutters d-flex justify-content-end">
+                <div class="inner-consulta py-2 col-xl-8 col-12" data-toggle="modal" data-target=".bd-example-modal-xl">
+                    CONSULTÁ LOS DATOS DE TU EQUIPO
+                </div>
+            </div>
         </div>
         <div class="inner-container">
             <div class="row botones no-gutters d-flex justify-content-between">
@@ -14,8 +19,8 @@
                         </router-link>
                     </div>
                     <div class="icono-logout-min d-flex align-items-center mr-5" v-if="cargando2 == false" >
-                        <img src="./img/logout3.png" alt="" srcset="" @click="logout">
-                        <img class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                        <img src="./img/exit.svg" alt="" srcset="" @click="logout">
+                        <img class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                     </div>
                     <div class="mr-5 align-items-center d-flex">
                         <div class="spinner-border text-success  cargando-min" role="status" v-if="cargando2">
@@ -64,8 +69,8 @@
                     </nav>
                 </div>
                 <div class="col-xl-1 icono-logout d-flex align-items-center" v-if="cargando2 == false" >
-                    <img src="./img/logout3.png" alt="" srcset="" @click="logout">
-                    <img  class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                    <img src="./img/exit.svg" alt="" srcset="" @click="logout">
+                    <img  class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
                 </div>
                 <div class="col-xl-1 align-items-center d-flex cargando2">
                     <div class="spinner-border text-success" role="status" v-if="cargando2">
@@ -76,11 +81,6 @@
         </div>
     </div>
     <div v-if="login === false && paginaPrincipal === true">
-        <div class="d-flex justify-content-center mt-4">
-            <button class="btn btn-warning consulta" data-toggle="modal" data-target=".bd-example-modal-xl">
-                Consulta los datos de tu equipo
-            </button>
-        </div>
         <div id="carouselExampleControls" class="carousel slide mt-4" >
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
@@ -183,7 +183,7 @@
                             <h5>¿Cuánto sabes sobre el Banco?</h5>
                         </div>
                         <div class="novedad-img">
-                            <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
+                            <img class="imagen-novedad" src="./img/novedad-trivia.jpg" alt="" srcset="">
                         </div>
                         <div class="d-flex justify-content-center p-4 d-md-none">
                             <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
@@ -210,7 +210,7 @@
                     <h5>Conocé a tu equipo</h5>
                 </div>
                 <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
+                     <img class="imagen-novedad" src="./img/novedad-equipo.jpg" alt="" srcset="">
                 </div>
                 <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -538,17 +538,17 @@ nav ul li a {
 }
 
 .imagen-novedad {
-  height: 145px;
+  height: 163px;
   width: 592px;
 }
 
 .icono-logout {
     background-color:  #ffc23a;
         :hover {
-            box-shadow: 2px 2px 8px rgb(194, 194, 194);
+            opacity: 0.8;
         }
     img {
-        width: 30px;
+        width: 45px;
         cursor: pointer;
     }
 }
@@ -560,7 +560,7 @@ nav ul li a {
 .icono-logout-min {
     img {
         display: none;
-        width: 25px;
+        width: 30px;
         cursor: pointer;
         :hover {
             opacity: 0.8;
@@ -572,6 +572,16 @@ nav ul li a {
     display: none;
 }
 
+.consulta-datos  :hover {
+    opacity: 0.8;
+}
+
+.inner-consulta {
+    background-color: #e3e3e3;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
 
 @media (max-width: 767px) {
     .separador {
@@ -600,7 +610,7 @@ nav ul li a {
     .icono-logout-min {
         img {
             display: block;
-            width: 24px;
+            width: 30px;
         }
     }
 
@@ -635,6 +645,11 @@ nav ul li a {
     .nombre-usuario {
         font-size: 16px !important;
     }
+    .inner-consulta {
+        font-size: 12px;
+        margin-bottom: 18px;
+
+    }
 
 }
 
@@ -650,7 +665,8 @@ nav ul li a {
 
 .nombre-usuario {
     color: white;
-    font-size: 28px;
+    font-size: 18px;
+    font-weight: bold;
 
 }
 
