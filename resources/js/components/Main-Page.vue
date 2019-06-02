@@ -427,12 +427,9 @@ export default {
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
-    box-shadow: 2px 2px 16px #757575;
+
 }
 
-.botones {
-    box-shadow: 2px 2px 16px grey;
-}
 
 .separador {
     height: 37px;
@@ -466,9 +463,9 @@ nav ul li a {
     width: 250px;
     height: 415px;
     background-color: rgb(212, 212, 212);
-    box-shadow: 2px 2px 16px #292727;
+
     img {
-        width: 248px;
+        width: 250px;
     }
     border-radius: 15px 60px 15px 60px;
 }
@@ -519,6 +516,7 @@ nav ul li a {
 }
 .contenedor {
     overflow-x: hidden;
+    font-family: 'Open Sans';
 }
 
 .banner-novedad {
@@ -526,7 +524,7 @@ nav ul li a {
     height: 370px;
     border-radius: 15px 60px 15px 60px;
     background-color: #d4d4d4;
-    box-shadow: 2px 2px 16px #292727;
+
     :hover {
         cursor: pointer;
     }

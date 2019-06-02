@@ -164,7 +164,7 @@ export default {
     min-width: 384px;
     height: 370px;
     border-radius: 15px 60px 15px 60px;
-    box-shadow: 2px 2px 16px #2b2a2a;
+
 }
 
 .contenedor-pregunta-0 {
@@ -264,9 +264,6 @@ export default {
 }
 }
 
-.w-50.card.text-center {
-    box-shadow: 2px 2px 6px #1a1a13;
-}
 
 input[type="radio"] {
     background-color: #ddd;
