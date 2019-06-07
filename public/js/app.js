@@ -2393,6 +2393,13 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push('/login');
     }
   },
+  watch: {
+    infoEmpleado: function infoEmpleado() {
+      if (this.infoEmpleado.cambio_password == 0) {
+        $('#exampleModalCenter').modal();
+      }
+    }
+  },
   methods: {
     cambiarPagina: function cambiarPagina() {
       this.$store.commit('paginaPrincipal', true);
@@ -16833,6 +16840,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("img", {
+                              ref: "cambio_password",
                               staticClass: "ml-2",
                               attrs: {
                                 src: __webpack_require__(/*! ./img/reset.svg */ "./resources/js/components/img/reset.svg"),
@@ -17031,6 +17039,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("img", {
+                          ref: "cambio_password",
                           staticClass: "ml-2",
                           attrs: {
                             src: __webpack_require__(/*! ./img/reset.svg */ "./resources/js/components/img/reset.svg"),

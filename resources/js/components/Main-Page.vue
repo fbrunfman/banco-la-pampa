@@ -20,7 +20,7 @@
                     </div>
                     <div class="icono-logout-min d-flex align-items-center mr-5" v-if="cargando2 == false" >
                         <img src="./img/exit.svg" alt="" srcset="" @click="logout">
-                        <img class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                        <img class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter" ref="cambio_password">
                     </div>
                     <div class="mr-5 align-items-center d-flex">
                         <div class="spinner-border text-success  cargando-min" role="status" v-if="cargando2">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-xl-1 icono-logout d-flex align-items-center" v-if="cargando2 == false" >
                     <img src="./img/exit.svg" alt="" srcset="" @click="logout">
-                    <img  class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                    <img  class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter" ref="cambio_password">
                 </div>
                 <div class="col-xl-1 align-items-center d-flex cargando2">
                     <div class="spinner-border text-success" role="status" v-if="cargando2">
@@ -340,6 +340,13 @@ export default {
             this.$store.commit('paginaPrincipal', false)
             this.$store.commit('login', true)
             this.$router.push('/login')
+        }
+    },
+    watch: {
+        infoEmpleado() {
+            if (this.infoEmpleado.cambio_password == 0) {
+               $('#exampleModalCenter').modal()
+            }
         }
     },
     methods: {
