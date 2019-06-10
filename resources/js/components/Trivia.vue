@@ -5,23 +5,31 @@
                 <img src="./img/trivia2.jpg" alt="" srcset="">
             </div>
             <div class="copete p-5">
-                <h2 class="copete-pregunta mb-3">Cuanto sabes sobre el banco?</h2>
-                <span class="copete-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quo animi deleniti eos est vero dolores repudiandae, sit mollitia nihil soluta. Accusamus quidem facere eveniet dolores nemo facilis! Deserunt, architecto?</span>
+                <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
+                <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
+                <div class="reglas ml-3">
+                    <div class="my-2"> El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
+                    <div class="my-2"> Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
+                    <div class="my-2"> La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga </div>
+                    <div class="my-2"> En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
+                    <div class="my-2"> Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
+                    <div><strong> Tienen tiempo hasta el 06/06</strong></div>
+                </div>
             </div>
             <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
-                <div class="btn btn-success boton-comenzar" @click="showTrivia"> ¡Comenzar trivia ahora!</div>
+                <div class="btn btn-success boton-comenzar" @click="showTrivia"> Comenzar TRIVIA AHORA</div>
             </div>
             <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
                 <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
-                    <div class="row no-gutters">
-                        <div class="pregunta-uno col-lg-6 col-12 d-flex justify-content-center">
+                    <div class="row no-gutters contenedor-trivia">
+                        <div class="pregunta-uno col-12 d-flex justify-content-center">
                             <div class="contenedor-general d-flex justify-content-center  align-items-center p-3" :class="'contenedor-pregunta-' + i">
                                 <div class="pregunta-texto">
                                     <span class="texto-trivia">{{pregunta.pregunta}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="respuestas col-lg-6 col-12 d-flex justify-content-center align-items-center"
+                        <div class="respuestas col-12 d-flex align-items-center"
                             >
                             <div class="respuestas-body">
                                 <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
@@ -34,11 +42,29 @@
                 </div>
             </div>
             <div class="alert alert-warning text-center" v-if="ocultarTrivia == true">
-                <div class="h2">Hola {{infoEmpleado.nombre}}, un integrate de tu equipo ya respondio las preguntas. Buena Suerte!!</div>
+                <div class="h2">Hola {{infoEmpleado.nombre}}, un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!</div>
             </div>
             <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
-                <button @click="enviarRespuestas" class="btn btn-success text-center">Enviar respuestas!</button>
+                <button class="btn btn-success text-center my-2" data-toggle="modal" data-target="#trivia">¡Enviar respuestas!</button>
             </div>
+            <div class="modal fade" id="trivia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">¿Confirmás enviar estas respuestas?</h5>
+
+                        </div>
+                        <div class="modal-body">
+                            <span>Recordá que una vez realizada la trivia tu equipo no podrá volver a hacerla</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" @click="enviarRespuestas">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -89,30 +115,34 @@ export default {
             this.mostrarTrivia = true
         },
         enviarRespuestas() {
-            delete this.preguntas.hecha
-            var counter = 0
-            console.log(this.preguntas[0].respuestas);
+            if (this.infoEmpleado.equipo !== 0) {
+                delete this.preguntas.hecha
+                var counter = 0
+                console.log(this.preguntas[0].respuestas);
 
-            for (var i = 0; i < Object.values(this.preguntas).length; i++) {
-                var resps = this.preguntas[i].respuestas
-                if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
-                    counter++
+                for (var i = 0; i < Object.values(this.preguntas).length; i++) {
+                    var resps = this.preguntas[i].respuestas
+                    if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
+                        counter++
+                    }
+
                 }
+                this.respuestasCorrectas = counter
+                var url = '/api/guardar-puntaje'
+                Axios.post(url, {
+                    equipo_id: this.infoEmpleado.equipo,
+                    mes: 1, //se harcodea el mes en curso\
+                    puntaje: this.respuestasCorrectas
+                })
+                .then(response => {
+                    this.$swal('Tus respuestas fueron enviadas exitosamente')
+                    $('#trivia').modal('hide')
+                })
 
             }
-            this.respuestasCorrectas = counter
-            var url = '/api/guardar-puntaje'
-            Axios.post(url, {
-                equipo_id: this.infoEmpleado.equipo,
-                mes: 1, //se harcodea el mes en curso\
-                puntaje: this.respuestasCorrectas
-            })
-            .then(response => {
-                this.$swal('Tus respuestas fueron enviadas exitosamente')
-                this.$store.commit('paginaPrincipal', true)
-                this.$router.push('/')
-            })
-
+            else {
+                  this.$swal('Se completó la trivia exitósamente')
+            }
         }
     }
 }
@@ -134,13 +164,17 @@ export default {
     min-width: 384px;
     height: 370px;
     border-radius: 15px 60px 15px 60px;
-    box-shadow: 2px 2px 16px #2b2a2a;
+
 }
 
 .contenedor-pregunta-0 {
     background-color: #2eb92e;
     color: white;
 
+}
+
+.reglamento-titulo {
+    background-color: #dedede;
 }
 
 .boton-comenzar {
@@ -156,6 +190,11 @@ export default {
 .contenedor-pregunta-2 {
     background-color: #7a8baa;
     color: white;
+}
+
+.contenedor-trivia {
+    display: grid;
+    grid-template-columns: 1fr 550px;
 }
 
 .contenedor-pregunta-3 {
@@ -178,12 +217,12 @@ export default {
 }
 
 .texto-trivia {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: bold;
 }
 
 .form-check-label {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .trivia-uno {
@@ -201,7 +240,7 @@ export default {
         height: 250px;
     }
     .texto-trivia {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -214,7 +253,17 @@ export default {
     width: 266px;
     height: 227px;
     }
+    .contenedor-trivia {
+    display: block;
 }
+}
+
+@media (max-width: 940px) {
+    .contenedor-trivia {
+    display: block;
+}
+}
+
 
 input[type="radio"] {
     background-color: #ddd;

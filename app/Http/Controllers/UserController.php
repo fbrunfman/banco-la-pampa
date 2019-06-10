@@ -21,11 +21,11 @@ class UserController extends Controller
 	  $validator = Validator::make($data, [
 	    'password-actual' => 'required',
 	    'password' => 'required|same:password',
-	    'confirma-password' => 'required|same:password',     
+	    'confirma-password' => 'required|same:password',
 	  ], $messages);
 
 	  return $validator;
-	}  
+	}
 
     public function postCredentials(Request $request)
 	{
@@ -38,25 +38,26 @@ class UserController extends Controller
 	      return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
 	    }
 	    else
-	    {  
-	      $current_password = Auth::User()->password;           
+	    {
+	      $current_password = Auth::User()->password;
 	      if(Hash::check($request_data['password-actual'], $current_password))
-	      {           
-	        $user_id = Auth::User()->id;                       
+	      {
+	        $user_id = Auth::User()->id;
 	        $obj_user = User::find($user_id);
-	        $obj_user->password = Hash::make($request_data['password']);;
-	        $obj_user->save(); 
+            $obj_user->password = Hash::make($request_data['password']);;
+            $obj_user->cambio_password = 1;
+	        $obj_user->save();
 	        return response()->json([
 	        	'message' => 'Cambio de password exitoso.',
 	        	'code' => 200
 	        ]);
 	      }
 	      else
-	      {           
+	      {
 	        $error = array('password-actual' => 'Por favor, ingresa la correcta contraseña actual');
-	        return response()->json(array('error' => $error), 400);   
+	        return response()->json(array('error' => $error), 400);
 	      }
-	    }        
-	  }  
+	    }
+	  }
 	}
 }

@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "vue-image-lightbox": "^6.2.0",
         "vue-js-popover": "^1.1.8",
         "vue-router": "^3.0.6",

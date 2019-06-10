@@ -1,9 +1,14 @@
 <template>
   <div class="contenedor">
     <div v-if="login === false" class="contenedor-main">
-        <div class="header d-flex justify-content-center">
-            <div class="nombre-usuario text-center btn btn-outline-warning my-1"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
-
+        <div class="header row">
+            <div class="col-xl-4"></div>
+            <div class="nombre-usuario text-center my-1 col-xl-4 col-12"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
+            <div class="text-center consulta-datos col-xl-4 col-12 no-gutters d-flex justify-content-end">
+                <div class="inner-consulta py-2 col-xl-8 col-12" data-toggle="modal" data-target=".bd-example-modal-xl">
+                    CONSULTÁ LOS DATOS DE TU EQUIPO
+                </div>
+            </div>
         </div>
         <div class="inner-container">
             <div class="row botones no-gutters d-flex justify-content-between">
@@ -14,8 +19,8 @@
                         </router-link>
                     </div>
                     <div class="icono-logout-min d-flex align-items-center mr-5" v-if="cargando2 == false" >
-                        <img src="./img/logout3.png" alt="" srcset="" @click="logout">
-                        <img class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                        <img src="./img/exit.svg" alt="" srcset="" @click="logout">
+                        <img class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter" ref="cambio_password">
                     </div>
                     <div class="mr-5 align-items-center d-flex">
                         <div class="spinner-border text-success  cargando-min" role="status" v-if="cargando2">
@@ -64,8 +69,8 @@
                     </nav>
                 </div>
                 <div class="col-xl-1 icono-logout d-flex align-items-center" v-if="cargando2 == false" >
-                    <img src="./img/logout3.png" alt="" srcset="" @click="logout">
-                    <img  class="ml-2" src="./img/contrasena.jpg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter">
+                    <img src="./img/exit.svg" alt="" srcset="" @click="logout">
+                    <img  class="ml-2" src="./img/reset.svg" alt="" srcset="" data-toggle="modal" data-target="#exampleModalCenter" ref="cambio_password">
                 </div>
                 <div class="col-xl-1 align-items-center d-flex cargando2">
                     <div class="spinner-border text-success" role="status" v-if="cargando2">
@@ -76,12 +81,7 @@
         </div>
     </div>
     <div v-if="login === false && paginaPrincipal === true">
-        <div class="d-flex justify-content-center mt-4">
-            <button class="btn btn-warning consulta" data-toggle="modal" data-target=".bd-example-modal-lg">
-                Consulta los datos de tu equipo
-            </button>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel" data-interval="5000">
+        <div id="carouselExampleControls" class="carousel slide mt-4" >
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
                  <img src="./img/header-1.png" alt="" srcset="">
@@ -93,11 +93,11 @@
                   <img src="./img/header-3.png" alt="" srcset="">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+                <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
                 <span class="sr-only">Anterior</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" @click="startCarousel"  ref="carousel">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Siguiente</span>
             </a>
@@ -176,39 +176,41 @@
         <div class="nodevades justify-content-center">
           <div class="inner-container no-gutters">
             <div class="row no-gutters justify-content-center">
-              <div class="banner-novedad mx-4 my-2">
-                <div class="titulo-novedad p-3">
-                    <h3>Novedades:</h3>
-                    <h5>Se larga el sitio 60 Aniversario Banco De La Pampa</h5>
-                </div>
-                <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
-                </div>
-                 <div class="d-flex justify-content-center p-4 d-md-none">
-                    <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-                        <span v-if="verMasUno">Ver +</span>
-                        <span v-if="verMasUno === false">Esconder</span>
-                    </button>
-                </div>
-                <div v-if="collapseOnUno" class="collapse" id="collapseExample1">
-                    <div class="banner-body p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                <router-link to="trivia">
+                    <div class="banner-novedad mx-4 my-2">
+                        <div class="titulo-novedad p-3">
+                            <h3>Novedades:</h3>
+                            <h5>¿Cuánto sabes sobre el Banco?</h5>
+                        </div>
+                        <div class="novedad-img">
+                            <img class="imagen-novedad" src="./img/novedad-trivia.jpg" alt="" srcset="">
+                        </div>
+                        <div class="d-flex justify-content-center p-4 d-md-none">
+                            <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                <span v-if="verMasUno">Ver +</span>
+                                <span v-if="verMasUno === false">Esconder</span>
+                            </button>
+                        </div>
+                        <div v-if="collapseOnUno" class="collapse" id="collapseExample1">
+                            <div class="banner-body p-3">
+                                <span> Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!</span>
+                            </div>
+                        </div>
+                        <div class="banner-body no-collapse  p-3">
+                                <span class="h5"> Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!</span>
+                        </div>
+                        <!-- <div class="boton-sumar justify-content-end mr-2">
+                            <span class="sumar">+</span>
+                        </div> -->
                     </div>
-                </div>
-                 <div class="banner-body no-collapse  p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
-                </div>
-                <!-- <div class="boton-sumar justify-content-end mr-2">
-                    <span class="sumar">+</span>
-                </div> -->
-              </div>
-              <div class="banner-novedad mx-4 my-2">
+                </router-link>
+              <div class="banner-novedad mx-4 my-2" data-toggle="modal" data-target=".bd-example-modal-xl">
                 <div class="titulo-novedad p-3">
                     <h3>Novedades:</h3>
-                    <h5>Titulo novedad uno</h5>
+                    <h5>Conocé a tu equipo</h5>
                 </div>
                 <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/fuego2.jpg" alt="" srcset="">
+                     <img class="imagen-novedad" src="./img/novedad-equipo.jpg" alt="" srcset="">
                 </div>
                 <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -218,11 +220,11 @@
                 </div>
                 <div v-if="collapseOn" class="collapse" id="collapseExample">
                     <div class="banner-body p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                        <span>Consultá los datos de tu equipo y contactate con ellos! </span>
                     </div>
                 </div>
                  <div class="banner-body no-collapse  p-3">
-                        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio fugit facilis saepe aperiam quos! Qui earum esse commodi nostrum explicabo molestiae vitae ratione eveniet rerum suscipit? Vero animi tempora officiis.</span>
+                        <span class="h5"> Consultá los datos de tu equipo y contactate con ellos!</span>
                 </div>
                <!--  <div class="boton-sumar  justify-content-end mr-2">
                     <span class="sumar">+</span>
@@ -237,19 +239,19 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Cambiar la contrasena</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Cambiar la contraseña</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contrasena actual" required>
-                            <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contrasena" required>
-                            <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contrasena" required>
+                            <input type="password" class="form-control my-2" name="password-actual" id="" placeholder="Ingresar contraseña actual" required>
+                            <input type="password" class="form-control my-2" name="password" id="" placeholder="Ingresar nueva contraseña" required>
+                            <input type="password" class="form-control my-2" name="confirma-password" id="" placeholder="Repetir nueva contraseña" required>
                         </div>
                         <div class="modal-footer" v-if="cargando == false">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contrasena</button>
+                            <button type="button" @click="cambiarPassword" class="btn btn-success" >Cambiar contraseña</button>
                         </div>
                         <div class="modal-footer d-flex justify-content-center" v-if="cargando">
                             <div class="spinner-border text-warning" role="status">
@@ -260,8 +262,8 @@
                 </div>
             </div>
         </form>
-         <div class="modal fade bd-example-modal-lg " id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+         <div class="modal fade bd-example-modal-xl " id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">Los datos de tu equipo</h5>
@@ -272,10 +274,9 @@
                         <div class="modal-body">
                             <div class="h5">Tu equipo es el número <strong>{{infoEmpleado.equipo}}</strong> </div>
                             <div class="mt-4 h5">Los integrantes de tu equipo son:</div>
-                            <div class="h6"> &#128073; {{infoEmpleado.nombre}} {{infoEmpleado.apellido}} - Área: {{infoEmpleado.area}} - Función {{infoEmpleado.funcion}}  </div>
-                            <div class="h6"> &#128073; Jose Gutierrez</div>
-                            <div class="h6"> &#128073; Ernesto Gonzalez</div>
-                            <div class="h6"> &#128073; Pepe Gamboa</div>
+                            <div class="h6" v-for="(empleado, i) in Object.values(infoEquipo)" :key="i">
+                                <div>&#128073; <strong>{{empleado.nombre}} {{empleado.apellido}}</strong>  - Área: {{empleado.area}} - Email: {{empleado.correo}} </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -286,9 +287,6 @@
     <div>
     <router-view></router-view>
     </div>
-    <footer class="footer-page d-flex justify-content-center p-4 bg-warning mt-4" v-if="paginaPrincipal == true && login == false">
-        <div class="h4 footer-lucuma"> Lúcuma Desarrollo Web - 2019 &copy; </div>
-    </footer>
 
   </div>
 </template>
@@ -312,6 +310,9 @@ export default {
         infoEmpleado(){
             return this.$store.state.infoEmpleado
         },
+        infoEquipo(){
+            return this.$store.state.infoEquipo
+        },
         login() {
             return this.$store.state.login
         },
@@ -323,6 +324,8 @@ export default {
         }
     },
     mounted() {
+
+        setInterval(this.startCarousel, 8000)
         if (this.$store.state.token === null) {
             this.$router.push('/login')
             this.$store.commit('paginaPrincipal', false)
@@ -330,13 +333,21 @@ export default {
 
         } else {
             this.$store.commit('infoEmpleado', JSON.parse(localStorage.getItem('infoEmpleado')))
+            this.$store.commit('infoEquipo', JSON.parse(localStorage.getItem('infoEquipo')))
         }
+
         if (this.$route.fullPath === '/login') {
             this.$store.commit('paginaPrincipal', false)
             this.$store.commit('login', true)
             this.$router.push('/login')
         }
-
+    },
+    watch: {
+        infoEmpleado() {
+            if (this.infoEmpleado.cambio_password == 0) {
+               $('#exampleModalCenter').modal()
+            }
+        }
     },
     methods: {
         cambiarPagina() {
@@ -349,6 +360,11 @@ export default {
          activarCollapseUno() {
             this.collapseOnUno = !this.collapseOnUno
             this.verMasUno = !this.verMasUno
+        },
+        startCarousel() {
+            this.$refs.carousel.click()
+            console.log('llega carousel');
+            return
         },
         logout() {
             this.cargando2 = true
@@ -374,11 +390,12 @@ export default {
                 .then(response => {
                    this.$swal('Se cambió la contraseña exitósamente')
                    this.cargando = false
-
+                    $('#exampleModalCenter').modal('hide')
                 })
                 .catch((error) => {
                     this.$swal('Error al cambiar la contraseña')
                     this.cargando = false
+
                 })
         },
         irBingo() {
@@ -417,12 +434,9 @@ export default {
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
-    box-shadow: 2px 2px 16px #757575;
+
 }
 
-.botones {
-    box-shadow: 2px 2px 16px grey;
-}
 
 .separador {
     height: 37px;
@@ -456,9 +470,9 @@ nav ul li a {
     width: 250px;
     height: 415px;
     background-color: rgb(212, 212, 212);
-    box-shadow: 2px 2px 16px #292727;
+
     img {
-        width: 248px;
+        width: 250px;
     }
     border-radius: 15px 60px 15px 60px;
 }
@@ -509,6 +523,7 @@ nav ul li a {
 }
 .contenedor {
     overflow-x: hidden;
+    font-family: 'Open Sans';
 }
 
 .banner-novedad {
@@ -516,7 +531,10 @@ nav ul li a {
     height: 370px;
     border-radius: 15px 60px 15px 60px;
     background-color: #d4d4d4;
-    box-shadow: 2px 2px 16px #292727;
+
+    :hover {
+        cursor: pointer;
+    }
 }
 
 .titulo-novedad {
@@ -525,17 +543,17 @@ nav ul li a {
 }
 
 .imagen-novedad {
-  height: 145px;
+  height: 163px;
   width: 592px;
 }
 
 .icono-logout {
     background-color:  #ffc23a;
         :hover {
-            box-shadow: 2px 2px 8px rgb(194, 194, 194);
+            opacity: 0.8;
         }
     img {
-        width: 30px;
+        width: 45px;
         cursor: pointer;
     }
 }
@@ -547,7 +565,7 @@ nav ul li a {
 .icono-logout-min {
     img {
         display: none;
-        width: 25px;
+        width: 30px;
         cursor: pointer;
         :hover {
             opacity: 0.8;
@@ -559,6 +577,16 @@ nav ul li a {
     display: none;
 }
 
+.consulta-datos  :hover {
+    opacity: 0.8;
+}
+
+.inner-consulta {
+    background-color: #e3e3e3;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
 
 @media (max-width: 767px) {
     .separador {
@@ -587,7 +615,7 @@ nav ul li a {
     .icono-logout-min {
         img {
             display: block;
-            width: 24px;
+            width: 30px;
         }
     }
 
@@ -622,6 +650,11 @@ nav ul li a {
     .nombre-usuario {
         font-size: 16px !important;
     }
+    .inner-consulta {
+        font-size: 12px;
+        margin-bottom: 18px;
+
+    }
 
 }
 
@@ -637,12 +670,18 @@ nav ul li a {
 
 .nombre-usuario {
     color: white;
-    font-size: 28px;
+    font-size: 18px;
+    font-weight: bold;
 
 }
 
 .consulta {
     font-size: 27px;
     color: beige;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 </style>
