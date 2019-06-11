@@ -1,71 +1,86 @@
 <template>
-    <div class="contenedor">
-        <div class="inner-container no-gutters">
-            <div class="titulo-trivia mt-3">
-                <img src="./img/trivia2.jpg" alt="" srcset="">
-            </div>
-            <div class="copete p-5">
-                <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
-                <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
-                <div class="reglas ml-3">
-                    <div class="my-2"> El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
-                    <div class="my-2"> Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
-                    <div class="my-2"> La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga </div>
-                    <div class="my-2"> En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
-                    <div class="my-2"> Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
-                    <div><strong> Tienen tiempo hasta el 06/06</strong></div>
+    <div>
+        <div class="contenedor">
+            <div class="inner-container no-gutters">
+                <div class="titulo-trivia mt-3">
+                    <img src="./img/trivia2.jpg" alt="" srcset="">
                 </div>
-            </div>
-            <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
-                <div class="btn btn-success boton-comenzar" @click="showTrivia"> Comenzar TRIVIA AHORA</div>
-            </div>
-            <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
-                <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
-                    <div class="row no-gutters contenedor-trivia">
-                        <div class="pregunta-uno col-12 d-flex justify-content-center">
-                            <div class="contenedor-general d-flex justify-content-center  align-items-center p-3" :class="'contenedor-pregunta-' + i">
-                                <div class="pregunta-texto">
-                                    <span class="texto-trivia">{{pregunta.pregunta}}</span>
+                <div class="copete p-5">
+                    <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
+                    <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
+                    <div class="reglas ml-3">
+                        <div class="my-2"> El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
+                        <div class="my-2"> Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
+                        <div class="my-2"> La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga </div>
+                        <div class="my-2"> En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
+                        <div class="my-2"> Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
+                        <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
+                    </div>
+                </div>
+                <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
+                    <div class="btn btn-success boton-comenzar" data-toggle="modal" data-target="#exampleModalCenter2" > Comenzar TRIVIA AHORA</div>
+                </div>
+                <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
+                    <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
+                        <div class="row no-gutters contenedor-trivia">
+                            <div class="pregunta-uno col-12 d-flex justify-content-center">
+                                <div class="contenedor-general d-flex justify-content-center  align-items-center p-3" :class="'contenedor-pregunta-' + i">
+                                    <div class="pregunta-texto">
+                                        <span class="texto-trivia">{{pregunta.pregunta}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="respuestas col-12 d-flex align-items-center"
-                            >
-                            <div class="respuestas-body">
-                                <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
-                                    <input v-model="userResponses[i]" type="radio" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" required>
-                                    <label class="form-check-label" :for="'pregunta' + j">{{respuesta.respuesta}}</label>
+                            <div class="respuestas col-12 d-flex align-items-center"
+                                >
+                                <div class="respuestas-body">
+                                    <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
+                                        <input v-model="userResponses[i]" type="radio" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" required>
+                                        <label class="form-check-label" :for="'pregunta' + j">{{respuesta.respuesta}}</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="alert alert-warning text-center" v-if="ocultarTrivia == true">
-                <div class="h2">Hola {{infoEmpleado.nombre}}, un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!</div>
-            </div>
-            <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
-                <button class="btn btn-success text-center my-2" data-toggle="modal" data-target="#trivia">¡Enviar respuestas!</button>
-            </div>
-            <div class="modal fade" id="trivia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">¿Confirmás enviar estas respuestas?</h5>
+                <div class="alert alert-warning text-center" v-if="ocultarTrivia == true">
+                    <div class="h2">Hola {{infoEmpleado.nombre}}, un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!</div>
+                </div>
+                <div class="enviar text-center mb-5" v-if="ocultarTrivia == false && mostrarTrivia">
+                    <button class="btn btn-success text-center my-2" data-toggle="modal" data-target="#trivia">¡Enviar respuestas!</button>
+                </div>
+                <div class="modal fade" id="trivia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">¿Confirmás enviar estas respuestas?</h5>
 
+                            </div>
+                            <div class="modal-body">
+                                <span>Recordá que una vez realizada la trivia tu equipo no podrá volver a hacerla</span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" @click="enviarRespuestas">Confirmar</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <span>Recordá que una vez realizada la trivia tu equipo no podrá volver a hacerla</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-xl" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content p-2">
+                        <div class="modal-body text-center">
+                            <h3 class="my-2">Este jueves 13/06 comenzará la 1°Trivia</h3>
+                            <h3 class="my-2">Contactate con tus compañeros de equipo para poder jugar!</h3>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" @click="enviarRespuestas">Confirmar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
     </div>
 </template>
 
@@ -81,7 +96,8 @@ export default {
             userResponses: [],
             respuestasCorrectas: '',
             ocultarTrivia: false,
-            mostrarTrivia: false
+            mostrarTrivia: false,
+            proximamente: true
         }
     },
     mounted () {
@@ -304,8 +320,6 @@ input[type="radio"]:checked:after {
                 0 1px 1px hsla(0,0%,100%,.8),
                 0 0 2px 2px hsla(0,70%,70%,.4);
 }
-
-
 
 
 </style>

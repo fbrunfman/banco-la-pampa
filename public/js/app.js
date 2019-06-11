@@ -2580,6 +2580,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2590,7 +2605,8 @@ __webpack_require__.r(__webpack_exports__);
       userResponses: [],
       respuestasCorrectas: '',
       ocultarTrivia: false,
-      mostrarTrivia: false
+      mostrarTrivia: false,
+      proximamente: true
     };
   },
   mounted: function mounted() {
@@ -17966,229 +17982,245 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contenedor" }, [
-    _c(
-      "div",
-      { staticClass: "inner-container no-gutters" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm.ocultarTrivia == false && _vm.mostrarTrivia == false
-          ? _c(
-              "div",
-              { staticClass: "comenzar-trivia d-flex justify-content-center" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "btn btn-success boton-comenzar",
-                    on: { click: _vm.showTrivia }
-                  },
-                  [_vm._v(" Comenzar TRIVIA AHORA")]
-                )
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm._l(Object.values(_vm.preguntas), function(pregunta, i) {
-          return _c(
-            "div",
-            { key: i, staticClass: "trivia-body", class: "trivia-body-" + i },
-            [
-              _vm.ocultarTrivia == false && _vm.mostrarTrivia
-                ? _c(
+  return _c("div", [
+    _c("div", { staticClass: "contenedor" }, [
+      _c(
+        "div",
+        { staticClass: "inner-container no-gutters" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm.ocultarTrivia == false && _vm.mostrarTrivia == false
+            ? _c(
+                "div",
+                {
+                  staticClass: "comenzar-trivia d-flex justify-content-center"
+                },
+                [
+                  _c(
                     "div",
                     {
-                      staticClass:
-                        "trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4"
+                      staticClass: "btn btn-success boton-comenzar",
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#exampleModalCenter2"
+                      }
                     },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "row no-gutters contenedor-trivia" },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "pregunta-uno col-12 d-flex justify-content-center"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "contenedor-general d-flex justify-content-center  align-items-center p-3",
-                                  class: "contenedor-pregunta-" + i
-                                },
-                                [
-                                  _c("div", { staticClass: "pregunta-texto" }, [
+                    [_vm._v(" Comenzar TRIVIA AHORA")]
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(Object.values(_vm.preguntas), function(pregunta, i) {
+            return _c(
+              "div",
+              { key: i, staticClass: "trivia-body", class: "trivia-body-" + i },
+              [
+                _vm.ocultarTrivia == false && _vm.mostrarTrivia
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "row no-gutters contenedor-trivia" },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "pregunta-uno col-12 d-flex justify-content-center"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "contenedor-general d-flex justify-content-center  align-items-center p-3",
+                                    class: "contenedor-pregunta-" + i
+                                  },
+                                  [
                                     _c(
-                                      "span",
-                                      { staticClass: "texto-trivia" },
-                                      [_vm._v(_vm._s(pregunta.pregunta))]
+                                      "div",
+                                      { staticClass: "pregunta-texto" },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "texto-trivia" },
+                                          [_vm._v(_vm._s(pregunta.pregunta))]
+                                        )
+                                      ]
                                     )
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "respuestas col-12 d-flex align-items-center"
-                            },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "respuestas-body" },
-                                _vm._l(pregunta.respuestas, function(
-                                  respuesta,
-                                  j
-                                ) {
-                                  return _c(
-                                    "div",
-                                    { key: j, staticClass: "form-check my-4" },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.userResponses[i],
-                                            expression: "userResponses[i]"
-                                          }
-                                        ],
-                                        attrs: {
-                                          type: "radio",
-                                          name: "respuesta" + i,
-                                          id: "pregunta" + j,
-                                          required: ""
-                                        },
-                                        domProps: {
-                                          value: respuesta.id,
-                                          checked: _vm._q(
-                                            _vm.userResponses[i],
-                                            respuesta.id
-                                          )
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            return _vm.$set(
-                                              _vm.userResponses,
-                                              i,
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "respuestas col-12 d-flex align-items-center"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "respuestas-body" },
+                                  _vm._l(pregunta.respuestas, function(
+                                    respuesta,
+                                    j
+                                  ) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        key: j,
+                                        staticClass: "form-check my-4"
+                                      },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.userResponses[i],
+                                              expression: "userResponses[i]"
+                                            }
+                                          ],
+                                          attrs: {
+                                            type: "radio",
+                                            name: "respuesta" + i,
+                                            id: "pregunta" + j,
+                                            required: ""
+                                          },
+                                          domProps: {
+                                            value: respuesta.id,
+                                            checked: _vm._q(
+                                              _vm.userResponses[i],
                                               respuesta.id
                                             )
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.$set(
+                                                _vm.userResponses,
+                                                i,
+                                                respuesta.id
+                                              )
+                                            }
                                           }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "label",
-                                        {
-                                          staticClass: "form-check-label",
-                                          attrs: { for: "pregunta" + j }
-                                        },
-                                        [_vm._v(_vm._s(respuesta.respuesta))]
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _vm.ocultarTrivia == true
-          ? _c("div", { staticClass: "alert alert-warning text-center" }, [
-              _c("div", { staticClass: "h2" }, [
-                _vm._v(
-                  "Hola " +
-                    _vm._s(_vm.infoEmpleado.nombre) +
-                    ", un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!"
-                )
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.ocultarTrivia == false && _vm.mostrarTrivia
-          ? _c("div", { staticClass: "enviar text-center mb-5" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success text-center my-2",
-                  attrs: { "data-toggle": "modal", "data-target": "#trivia" }
-                },
-                [_vm._v("¡Enviar respuestas!")]
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "modal fade",
-            attrs: {
-              id: "trivia",
-              tabindex: "-1",
-              role: "dialog",
-              "aria-labelledby": "exampleModalCenterTitle",
-              "aria-hidden": "true"
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "modal-dialog modal-dialog-centered",
-                attrs: { role: "document" }
-              },
-              [
-                _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "button" },
-                        on: { click: _vm.enviarRespuestas }
-                      },
-                      [_vm._v("Confirmar")]
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "label",
+                                          {
+                                            staticClass: "form-check-label",
+                                            attrs: { for: "pregunta" + j }
+                                          },
+                                          [_vm._v(_vm._s(respuesta.respuesta))]
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
                     )
-                  ])
-                ])
+                  : _vm._e()
               ]
             )
-          ]
-        )
-      ],
-      2
-    )
+          }),
+          _vm._v(" "),
+          _vm.ocultarTrivia == true
+            ? _c("div", { staticClass: "alert alert-warning text-center" }, [
+                _c("div", { staticClass: "h2" }, [
+                  _vm._v(
+                    "Hola " +
+                      _vm._s(_vm.infoEmpleado.nombre) +
+                      ", un integrante de tu equipo ya respondió las preguntas. Buena Suerte!!"
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.ocultarTrivia == false && _vm.mostrarTrivia
+            ? _c("div", { staticClass: "enviar text-center mb-5" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success text-center my-2",
+                    attrs: { "data-toggle": "modal", "data-target": "#trivia" }
+                  },
+                  [_vm._v("¡Enviar respuestas!")]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "trivia",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalCenterTitle",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" }
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cancelar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: { click: _vm.enviarRespuestas }
+                        },
+                        [_vm._v("Confirmar")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(4)
   ])
 }
 var staticRenderFns = [
@@ -18232,7 +18264,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "my-2" }, [
           _vm._v(
-            " La persona que responda lo hará por todo su equipo y ya no habrá opción para que otro lo haga "
+            " La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga "
           )
         ]),
         _vm._v(" "),
@@ -18246,9 +18278,7 @@ var staticRenderFns = [
           _vm._v(
             " Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! "
           )
-        ]),
-        _vm._v(" "),
-        _c("div", [_c("strong", [_vm._v(" Tienen tiempo hasta el 06/06")])])
+        ])
       ])
     ])
   },
@@ -18275,6 +18305,59 @@ var staticRenderFns = [
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade bd-example-modal-xl",
+        attrs: {
+          id: "exampleModalCenter2",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-xl",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content p-2" }, [
+              _c("div", { staticClass: "modal-body text-center" }, [
+                _c("h3", { staticClass: "my-2" }, [
+                  _vm._v("Este jueves 13/06 comenzará la 1°Trivia")
+                ]),
+                _vm._v(" "),
+                _c("h3", { staticClass: "my-2" }, [
+                  _vm._v(
+                    "Contactate con tus compañeros de equipo para poder jugar!"
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Cerrar")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
