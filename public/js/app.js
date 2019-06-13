@@ -2344,6 +2344,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
@@ -2442,7 +2445,7 @@ __webpack_require__.r(__webpack_exports__);
           'Authorization': 'Bearer ' + this.token
         }
       }).then(function (response) {
-        _this2.$swal('Se cambió la contraseña exitósamente');
+        _this2.$swal('Se cambió la contraseña exitosamente');
 
         _this2.cargando = false;
         $('#exampleModalCenter').modal('hide');
@@ -2509,7 +2512,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
 /* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_1__);
-//
 //
 //
 //
@@ -13910,7 +13912,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.footer-page[data-v-13672230] {\n  position: relative;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 250px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.footer-lucuma[data-v-13672230] {\n  font-family: \"Roboto Condensed\";\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n  font-family: \"Open Sans\";\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n}\n.banner-novedad[data-v-13672230] :hover {\n  cursor: pointer;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 163px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.icono-logout img[data-v-13672230] {\n  width: 45px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 30px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n.consulta-datos[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.inner-consulta[data-v-13672230] {\n  background-color: #e3e3e3;\n  cursor: pointer;\n  font-size: 16px;\n  font-weight: bold;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 30px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n.inner-consulta[data-v-13672230] {\n    font-size: 12px;\n    margin-bottom: 18px;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 18px;\n  font-weight: bold;\n}\n.consulta[data-v-13672230] {\n  font-size: 27px;\n  color: beige;\n}\na[data-v-13672230] {\n  text-decoration: none;\n  color: black;\n}", ""]);
+exports.push([module.i, ".logo img[data-v-13672230] {\n  width: 325px;\n}\n.nav-bar[data-v-13672230] {\n  background-color: #ffc23a;\n  font-size: 14px;\n}\n.header[data-v-13672230] {\n  background-color: #505050;\n  left: 0;\n  right: 0;\n  margin: auto;\n  max-width: 100%;\n  max-height: 100%;\n  overflow: auto;\n}\n.separador[data-v-13672230] {\n  height: 37px;\n  border: 0.5px solid #564a4a57;\n}\nh6[data-v-13672230] {\n  font-weight: bold;\n}\nnav ul li a[data-v-13672230] {\n  color: #626262;\n}\n.main-foto img[data-v-13672230] {\n  width: 100vw;\n}\n.footer-page[data-v-13672230] {\n  position: relative;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  padding: 1rem;\n  background-color: #efefef;\n  text-align: center;\n}\n.banner[data-v-13672230] {\n  width: 250px;\n  height: 415px;\n  background-color: #d4d4d4;\n  border-radius: 15px 60px 15px 60px;\n}\n.banner img[data-v-13672230] {\n  width: 250px;\n}\n.sumar[data-v-13672230] {\n  font-size: 38px;\n  color: #ffc23a;\n  text-shadow: 2px 2px 2px #888888;\n  position: relative;\n  bottom: 48px;\n  cursor: pointer;\n}\n.footer-lucuma[data-v-13672230] {\n  font-family: \"Roboto Condensed\";\n}\n.banner-titulo-bingo[data-v-13672230] {\n  background-color: #56bf2e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-trivia[data-v-13672230] {\n  background-color: #ffc23a;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-anecdotario[data-v-13672230] {\n  background-color: #5d5f5c;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.banner-titulo-cuenta[data-v-13672230] {\n  background-color: #8e8e8e;\n  color: white;\n  padding: 20px;\n  border-radius: 15px 60px 0px 0px;\n  min-height: 114px;\n}\n.contenedor[data-v-13672230] {\n  overflow-x: hidden;\n  font-family: \"Open Sans\";\n  padding: 15px;\n}\n.banner-novedad[data-v-13672230] {\n  width: 592px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n  background-color: #d4d4d4;\n}\n.banner-novedad[data-v-13672230] :hover {\n  cursor: pointer;\n}\n.titulo-novedad[data-v-13672230] {\n  background-color: #ece5d9;\n  border-radius: 15px 60px 0px 0;\n}\n.imagen-novedad[data-v-13672230] {\n  height: 163px;\n  width: 592px;\n}\n.icono-logout[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.icono-logout img[data-v-13672230] {\n  width: 45px;\n  cursor: pointer;\n}\n.cargando2[data-v-13672230] {\n  background-color: #ffc23a;\n}\n.icono-logout-min img[data-v-13672230] {\n  display: none;\n  width: 30px;\n  cursor: pointer;\n}\n.icono-logout-min img[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.cargando-min[data-v-13672230] {\n  display: none;\n}\n.consulta-datos[data-v-13672230] :hover {\n  opacity: 0.8;\n}\n.inner-consulta[data-v-13672230] {\n  background-color: #e3e3e3;\n  cursor: pointer;\n  font-size: 16px;\n  font-weight: bold;\n}\n@media (max-width: 767px) {\n.separador[data-v-13672230] {\n    border: none;\n    height: 8px !important;\n}\n.banner-novedad[data-v-13672230] {\n    width: 290px;\n    height: auto;\n}\n.imagen-novedad[data-v-13672230] {\n    width: 290px;\n}\n.no-collapse[data-v-13672230] {\n    display: none;\n    background-color: #ffe4e4;\n    border-radius: 15px;\n}\n.logo img[data-v-13672230] {\n    width: 270px;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n    width: 30px;\n}\n}\n@media (max-width: 600px) {\n.icono-logout-min img[data-v-13672230] {\n    width: 18px;\n}\n}\n@media (max-width: 1199px) {\n.icono-logout img[data-v-13672230] {\n    display: none;\n}\n.cargando-min[data-v-13672230] {\n    display: block;\n}\n.cargando2[data-v-13672230] {\n    display: none;\n}\n.icono-logout-min img[data-v-13672230] {\n    display: block;\n}\n.nombre-usuario[data-v-13672230] {\n    font-size: 16px !important;\n}\n.inner-consulta[data-v-13672230] {\n    font-size: 12px;\n    margin-bottom: 18px;\n}\n}\n.carousel-controls[data-v-13672230] {\n  position: relative;\n  width: 300px;\n  margin: 0 auto;\n}\n.carousel-indicators[data-v-13672230] {\n  top: 0px;\n}\n.nombre-usuario[data-v-13672230] {\n  color: white;\n  font-size: 18px;\n  font-weight: bold;\n}\n.consulta[data-v-13672230] {\n  font-size: 27px;\n  color: beige;\n}\na[data-v-13672230] {\n  text-decoration: none;\n  color: black;\n}", ""]);
 
 // exports
 
@@ -16791,7 +16793,8 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "nombre-usuario text-center my-1 col-xl-4 col-12"
+                staticClass:
+                  "nombre-usuario text-center my-1 col-xl-4 col-12 d-flex align-items-center"
               },
               [
                 _vm._v(
@@ -17618,6 +17621,12 @@ var staticRenderFns = [
     return _c("div", { staticClass: "carousel-inner main-foto" }, [
       _c("div", { staticClass: "carousel-item active" }, [
         _c("img", {
+          attrs: { src: __webpack_require__(/*! ./img/contacta.png */ "./resources/js/components/img/contacta.png"), alt: "", srcset: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "carousel-item" }, [
+        _c("img", {
           attrs: { src: __webpack_require__(/*! ./img/header-1.png */ "./resources/js/components/img/header-1.png"), alt: "", srcset: "" }
         })
       ]),
@@ -18003,10 +18012,7 @@ var render = function() {
                     "div",
                     {
                       staticClass: "btn btn-success boton-comenzar",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#exampleModalCenter2"
-                      }
+                      on: { click: _vm.showTrivia }
                     },
                     [_vm._v(" Comenzar TRIVIA AHORA")]
                   )
@@ -35482,6 +35488,17 @@ module.exports = "/images/bingo-3.jpg?099916ed06b1a74f02609f906edb2b01";
 /***/ (function(module, exports) {
 
 module.exports = "/images/bingo.jpg?006952b237dc16d51470ebdb5deb9b84";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/contacta.png":
+/*!**************************************************!*\
+  !*** ./resources/js/components/img/contacta.png ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/contacta.png?085eb99cdc51b0cdef48b3f52b5a3328";
 
 /***/ }),
 

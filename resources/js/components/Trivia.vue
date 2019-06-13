@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
-                    <div class="btn btn-success boton-comenzar" data-toggle="modal" data-target="#exampleModalCenter2" > Comenzar TRIVIA AHORA</div>
+                    <div class="btn btn-success boton-comenzar" @click="showTrivia" > Comenzar TRIVIA AHORA</div>
                 </div>
                 <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
                     <div class="trivia-uno p-4 inner-container no-gutters d-flex justify-content-center my-4" v-if="ocultarTrivia == false && mostrarTrivia">
@@ -53,7 +53,6 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">¿Confirmás enviar estas respuestas?</h5>
-
                             </div>
                             <div class="modal-body">
                                 <span>Recordá que una vez realizada la trivia tu equipo no podrá volver a hacerla</span>

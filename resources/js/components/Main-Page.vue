@@ -3,7 +3,7 @@
     <div v-if="login === false" class="contenedor-main">
         <div class="header row">
             <div class="col-xl-4"></div>
-            <div class="nombre-usuario text-center my-1 col-xl-4 col-12"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
+            <div class="nombre-usuario text-center my-1 col-xl-4 col-12 d-flex align-items-center"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
             <div class="text-center consulta-datos col-xl-4 col-12 no-gutters d-flex justify-content-end">
                 <div class="inner-consulta py-2 col-xl-8 col-12" data-toggle="modal" data-target=".bd-example-modal-xl">
                     CONSULTÁ LOS DATOS DE TU EQUIPO
@@ -84,6 +84,9 @@
         <div id="carouselExampleControls" class="carousel slide mt-4" >
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
+                 <img src="./img/contacta.png" alt="" srcset="">
+                </div>
+                <div class="carousel-item">
                  <img src="./img/header-1.png" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
@@ -388,7 +391,7 @@ export default {
                  }
              })
                 .then(response => {
-                   this.$swal('Se cambió la contraseña exitósamente')
+                   this.$swal('Se cambió la contraseña exitosamente')
                    this.cargando = false
                     $('#exampleModalCenter').modal('hide')
                 })
@@ -524,6 +527,7 @@ nav ul li a {
 .contenedor {
     overflow-x: hidden;
     font-family: 'Open Sans';
+    padding: 15px;
 }
 
 .banner-novedad {
