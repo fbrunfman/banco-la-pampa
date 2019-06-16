@@ -39,7 +39,6 @@ class CreateUsersTable extends Migration
             $table->string('fecha_de_ingreso');
             $table->integer('equipo');
             $table->boolean('capitan')->nullable();
-            $table->boolean('cambio_password')->default('0');
         });
     }
 
