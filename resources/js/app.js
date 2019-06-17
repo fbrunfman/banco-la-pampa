@@ -58,7 +58,8 @@ const routes = [
     { path: '/concurso-selfie', component: require('./components/Concurso-Selfie.vue').default, meta: {requiresAuth: true} },
     { path: '/tu-foto-cuenta', component: require('./components/Tu-Foto-Cuenta.vue').default, meta: {requiresAuth: true} },
     { path: '/proximamente', component: require('./components/Proximamente').default, meta: {requiresAuth: true} },
-    { path: '/login', component: require('./components/Login.vue').default, meta: {requiresVisitor: true} }
+    { path: '/login', component: require('./components/Login.vue').default, meta: {requiresVisitor: true} },
+    { path: '/editar-usuarios', component: require('./components/Editar-Usuarios.vue').default, meta: {requiresAuth: true} },
   ]
 
 /**
