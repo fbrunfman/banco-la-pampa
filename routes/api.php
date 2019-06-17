@@ -26,4 +26,7 @@ Route::post('/subir-archivos', 'DataController@subirArchivos');
 Route::get('/archivos', 'ArchivoController@index');
 Route::post('/like', 'ArchivoController@like');
 
-Route::middleware('auth:api')->post('/usuarios', 'UserController@usuarios');
+Route::post('/crear-usuario', 'UserController@crearUsuario');
+Route::post('/borrar-usuario', 'UserController@borrarUsuario');
+Route::post('/editar-usuario', 'UserController@editarUsuario');
+Route::post('/traer-usuario', 'UserController@traerUsuario');

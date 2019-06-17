@@ -60,4 +60,108 @@ class UserController extends Controller
 	    }
 	  }
 	}
+
+	public function crearUsuario(Request $request)
+	{
+		if (!($request->user == 'admin' && $request->password == 'admin')) {
+			return;
+		}
+
+		$usuario = new User();
+
+		$usuario->nombre = $request->nombre;
+		$usuario->apellido = $request->apellido;
+		$usuario->password = Hash::make($request->apellido);
+		$usuario->apodo = $request->apodo;
+		$usuario->funcion = $request->funcion;
+		$usuario->area = $request->area;
+		$usuario->locacion = $request->locacion;
+		$usuario->correo = $request->correo;
+		$usuario->fecha_de_ingreso = $request->fecha_de_ingreso;
+		$usuario->equipo = $request->equipo;
+		$usuario->capitan = 0;
+		$usuario->legajo = $request->legajo;
+
+		if (!$usuario->save()) {
+			return response()->json([
+				'codigo' => 400,
+				'msg' => 'error'
+			]);
+		} else {
+			return response()->json([
+				'codigo' => 200,
+				'msg' => 'ok'
+			]);
+		}
+
+	}
+
+	public function borrarUsuario(Request $request)
+	{
+		if (!($request->user == 'admin' && $request->password == 'admin')) {
+			return;
+		}
+
+		$usuario = User::where('legajo', $request->legajo)->first();
+
+		if (!$usuario->delete()) {
+			return response()->json([
+				'codigo' => 400,
+				'msg' => 'error'
+			]);
+		} else {
+			return response()->json([
+				'codigo' => 200,
+				'msg' => 'ok'
+			]);
+		}
+
+	}
+
+	public function editarUsuario(Request $request)
+	{
+		if (!($request->user == 'admin' && $request->password == 'admin')) {
+			return;
+		}
+
+		$usuario = User::where('legajo', $request->legajo)->first();
+
+		$usuario->nombre = $request->nombre;
+		$usuario->apellido = $request->apellido;
+		$usuario->password = Hash::make($request->apellido);
+		$usuario->apodo = $request->apodo;
+		$usuario->funcion = $request->funcion;
+		$usuario->area = $request->area;
+		$usuario->locacion = $request->locacion;
+		$usuario->correo = $request->correo;
+		$usuario->fecha_de_ingreso = $request->fecha_de_ingreso;
+		$usuario->equipo = $request->equipo;
+		$usuario->capitan = 0;
+		$usuario->legajo = $request->legajo;
+
+		if (!$usuario->save()) {
+			return response()->json([
+				'codigo' => 400,
+				'msg' => 'error'
+			]);
+		} else {
+			return response()->json([
+				'codigo' => 200,
+				'msg' => 'ok'
+			]);
+		}
+	}
+
+	public function traerUsuario(Request $request)
+	{
+		if (!($request->user == 'admin' && $request->password == 'admin')) {
+			return;
+		}
+
+		$usuario = User::where('legajo', $request->legajo)->first();
+
+		return response()->json($usuario);
+			
+	}
+
 }
