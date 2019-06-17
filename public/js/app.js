@@ -1927,6 +1927,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2041,13 +2043,139 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Editar Usuarios',
+  name: 'EditarUsuarios',
   data: function data() {
     return {
       user: '',
       password: '',
-      logeado: false
+      legajo: '',
+      logeado: false,
+      traerUsuario: false,
+      usuario: '',
+      nombre: '',
+      apellido: '',
+      apodo: '',
+      funcion: '',
+      area: '',
+      locacion: '',
+      correo: '',
+      fecha_de_ingreso: '',
+      equipo: ''
     };
   },
   mounted: function mounted() {
@@ -2063,9 +2191,45 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     crearUsuario: function crearUsuario() {
-      var datos = new FormData(this.$refs.crear - usuario);
-      Axios.post('/api/post-credentials', datos).then(function (response) {
+      var datos = new FormData(this.$refs.crearUsuario);
+      datos.append('user', this.user);
+      datos.append('password', this.password);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/crear-usuario', datos).then(function (response) {
+        alert('Usuario ingresado correctamente');
+      })["catch"](function (error) {
+        alert('Ocurrio un error');
+      });
+    },
+    editarUsuario: function editarUsuario() {
+      var _this = this;
+
+      var datos = new FormData(this.$refs.editarUsuario);
+      datos.append('user', this.user);
+      datos.append('password', this.password);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/editar-usuario', datos).then(function (response) {
+        alert('Usuario editado correctamente');
+        _this.traerUsuario = false;
+      });
+    },
+    getUser: function getUser() {
+      var _this2 = this;
+
+      var datos = new FormData(this.$refs.editarUsuario);
+      datos.append('user', this.user);
+      datos.append('password', this.password);
+      datos.append('legajo', this.legajo);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/traer-usuario', datos).then(function (response) {
         console.log('todo bien');
+        _this2.traerUsuario = true;
+        _this2.usuario = response.data;
+      });
+    },
+    borrarUsuario: function borrarUsuario() {
+      var datos = new FormData(this.$refs.borrarUsuario);
+      datos.append('user', this.user);
+      datos.append('password', this.password);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/borrar-usuario', datos).then(function (response) {
+        alert('Usuario borrado correctamente');
       });
     }
   }
@@ -16802,7 +16966,7 @@ var render = function() {
     _c(
       "form",
       {
-        ref: "crear-usuario",
+        ref: "crearUsuario",
         on: {
           submit: function($event) {
             $event.preventDefault()
@@ -16861,6 +17025,570 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        ref: "editarUsuario",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal fade bd-example-modal-xl ",
+            attrs: {
+              id: "editarUsuario",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "CrearUsuario",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered modal-xl",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  !_vm.traerUsuario
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "modal-body d-flex justify-content-center"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "d-flex justify-content-center flex-row align-items-center"
+                            },
+                            [
+                              _c("span", { staticClass: "mr-2" }, [
+                                _vm._v("Legajo:")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.legajo,
+                                    expression: "legajo"
+                                  }
+                                ],
+                                staticClass: "form-control col-6",
+                                attrs: { type: "text", id: "" },
+                                domProps: { value: _vm.legajo },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.legajo = $event.target.value
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.traerUsuario
+                    ? _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(6),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.nombre,
+                                  expression: "usuario.nombre"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "nombre", id: "" },
+                              domProps: { value: _vm.usuario.nombre },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "nombre",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(7),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.apellido,
+                                  expression: "usuario.apellido"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "apellido", id: "" },
+                              domProps: { value: _vm.usuario.apellido },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "apellido",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(8),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.apodo,
+                                  expression: "usuario.apodo"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "apodo", id: "" },
+                              domProps: { value: _vm.usuario.apodo },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "apodo",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(9),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.funcion,
+                                  expression: "usuario.funcion"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "funcion", id: "" },
+                              domProps: { value: _vm.usuario.funcion },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "funcion",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(10),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.area,
+                                  expression: "usuario.area"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "area", id: "" },
+                              domProps: { value: _vm.usuario.area },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "area",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(11),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.locacion,
+                                  expression: "usuario.locacion"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "locacion", id: "" },
+                              domProps: { value: _vm.usuario.locacion },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "locacion",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(12),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.correo,
+                                  expression: "usuario.correo"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "correo", id: "" },
+                              domProps: { value: _vm.usuario.correo },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "correo",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(13),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.fecha_de_ingreso,
+                                  expression: "usuario.fecha_de_ingreso"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: {
+                                type: "date",
+                                name: "fecha_de_ingreso",
+                                id: ""
+                              },
+                              domProps: { value: _vm.usuario.fecha_de_ingreso },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "fecha_de_ingreso",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(14),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.equipo,
+                                  expression: "usuario.equipo"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "equipo", id: "" },
+                              domProps: { value: _vm.usuario.equipo },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "equipo",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center flex-row align-items-center my-2"
+                          },
+                          [
+                            _vm._m(15),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.usuario.legajo,
+                                  expression: "usuario.legajo"
+                                }
+                              ],
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "legajo", id: "" },
+                              domProps: { value: _vm.usuario.legajo },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.usuario,
+                                    "legajo",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Cerrar")]
+                    ),
+                    _vm._v(" "),
+                    _vm.traerUsuario
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "button", "data-dismiss": "modal" },
+                            on: { click: _vm.editarUsuario }
+                          },
+                          [_vm._v("Guardar")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.traerUsuario
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "button" },
+                            on: { click: _vm.getUser }
+                          },
+                          [_vm._v("Traer usuario")]
+                        )
+                      : _vm._e()
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        ref: "borrarUsuario",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal fade bd-example-modal-xl ",
+            attrs: {
+              id: "borrarUsuario",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalCenterTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered modal-xl",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(16),
+                  _vm._v(" "),
+                  _vm._m(17),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Cerrar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: { click: _vm.borrarUsuario }
+                      },
+                      [_vm._v("Borrar usuario")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
     )
   ])
 }
@@ -16884,21 +17612,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-2 d-flex justify-content-center " }, [
-      _c("div", { staticClass: "btn btn-warning" }, [
-        _c("h3", [_vm._v("Editar usuario")])
-      ])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "my-2 d-flex justify-content-center",
+        attrs: { "data-toggle": "modal", "data-target": "#editarUsuario" }
+      },
+      [
+        _c("div", { staticClass: "btn btn-warning" }, [
+          _c("h3", [_vm._v("Editar usuario")])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-2 d-flex justify-content-center " }, [
-      _c("div", { staticClass: "btn btn-danger " }, [
-        _c("h3", [_vm._v("Borrar usuario")])
-      ])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "my-2 d-flex justify-content-center",
+        attrs: { "data-toggle": "modal", "data-target": "#borrarUsuario" }
+      },
+      [
+        _c("div", { staticClass: "btn btn-danger " }, [
+          _c("h3", [_vm._v("Borrar usuario")])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -17069,7 +17811,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("input", {
             staticClass: "form-control col-6",
-            attrs: { type: "text", name: "fecha_de_ingreso", id: "" }
+            attrs: { type: "date", name: "fecha_de_ingreso", id: "" }
           })
         ]
       ),
@@ -17092,6 +17834,160 @@ var staticRenderFns = [
         ]
       ),
       _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "d-flex justify-content-center flex-row align-items-center my-2"
+        },
+        [
+          _c("div", { staticClass: "col-2" }, [
+            _c("span", { staticClass: "mr-2" }, [_vm._v("Legajo:")])
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control col-6",
+            attrs: { type: "text", name: "legajo", id: "" }
+          })
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("Editar usuario")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Nombre:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Apellido:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Apodo:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Función:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Area:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Locación:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Email:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Fecha de ingreso:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Equipo:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("span", { staticClass: "mr-2" }, [_vm._v("Legajo:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("Borrar usuario")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
       _c(
         "div",
         {
