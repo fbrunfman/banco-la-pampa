@@ -62,4 +62,47 @@ class ArchivoController extends Controller
     	]);
 
 	}
+
+    public function dislike(Request $request)
+    {
+        $archivo_id = $request->archivo_id;
+        $user_id = $request->user_id;
+
+        $archivo_usuarios = ArchivoUsuarios::where([['archivo_id', $archivo_id],['user_id', $user_id]])->first();
+
+
+        if (!$archivo_usuarios) {
+            return response()->json([
+                'error' => 'No se encuentra la relacion entre archivo y usuario',
+                'code' => 3
+            ]);
+        }
+
+        $archivo = Archivo::find($archivo_id);
+
+        if (!$archivo) {
+            return response()->json([
+                'error' => 'Archivo no encontrado',
+                'code' => 1
+            ]);
+        }
+
+        $archivo->likes -= 1;
+
+        if (!$archivo->save()) {
+            return response()->json([
+                'error' => 'Error al guardar el archivo',
+                'code' => 2
+            ]);
+        }
+
+
+        $archivo_usuarios->delete();
+
+        return response()->json([
+            'message' => 'Like borrado correctamente',
+            'code' => 200
+        ]);
+
+    }
 }
