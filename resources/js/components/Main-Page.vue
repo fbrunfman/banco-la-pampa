@@ -5,7 +5,7 @@
             <div class="col-xl-4"></div>
             <div class="nombre-usuario text-center my-1 col-xl-4 col-12 d-flex align-items-center"> ¡Hola {{infoEmpleado.nombre}}, disfrutá el 60 Aniversario de tu banco!</div>
             <div class="text-center consulta-datos col-xl-4 col-12 no-gutters d-flex justify-content-end">
-                <div class="inner-consulta py-2 col-xl-8 col-12" data-toggle="modal" data-target=".bd-example-modal-xl">
+                <div class="inner-consulta py-2 col-xl-10 col-12 d-flex align-items-center justify-content-center" data-toggle="modal" data-target=".bd-example-modal-xl">
                     CONSULTÁ LOS DATOS DE TU EQUIPO
                 </div>
             </div>

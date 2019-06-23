@@ -1831,12 +1831,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Anecdotario',
   data: function data() {
     return {
-      archivos: []
+      archivos: [],
+      alreadyLike: false
     };
   },
   computed: {
@@ -1853,18 +1886,32 @@ __webpack_require__.r(__webpack_exports__);
     getVideos: function getVideos() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/archivos').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/archivos').then(function (response) {
         console.log('todo bien');
         _this.archivos = response.data;
       });
     },
     addLike: function addLike(i) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/like', {
-        archivo_id: this.archivos[i].id,
-        user_id: this.infoEmpleado.id
-      }).then(function (response) {
-        console.log('todo bien');
-      });
+      var _this2 = this;
+
+      console.log(this.archivos[i].archivo_usuarios.some(function (archivo) {
+        return archivo.user_id == _this2.infoEmpleado.id;
+      }));
+
+      if (this.archivos[i].archivo_usuarios.some(function (archivo) {
+        return archivo.user_id == _this2.infoEmpleado.id;
+      })) {
+        return;
+      } else if (this.alreadyLike == false) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/like', {
+          archivo_id: this.archivos[i].id,
+          user_id: this.infoEmpleado.id
+        }).then(function (response) {
+          _this2.getVideos();
+
+          _this2.alreadyLike = true;
+        });
+      }
     }
   }
 });
@@ -2875,6 +2922,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2925,15 +2974,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      seccion: ''
+      seccion: '',
+      user: '',
+      password: '',
+      login: false
     };
   },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
+  },
+  methods: {
+    checkLogin: function checkLogin() {
+      if (this.user === 'admin' && this.password === 'admin') {
+        this.login = true;
+      } else {
+        alert('Usuario o contraseña incorrecta');
+      }
+    },
+    subirArchivo: function subirArchivo() {
+      var _this = this;
+
+      var datos = new FormData(this.$refs.formulario);
+      datos.append('username', this.user);
+      datos.append('password', this.password);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/subir-archivos', datos).then(function (response) {
+        _this.$swal('Archivo guardado');
+      });
+    }
   }
 });
 
@@ -14299,7 +14384,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 13px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.info-video2[data-v-002e034c] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.bloque-video[data-v-002e034c] {\n  display: grid;\n  grid-template-columns: 298px;\n}\n.contenedor-fotos2[data-v-002e034c] {\n  margin: 0 auto;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.modal-body[data-v-002e034c] {\n  overflow: auto;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  height: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 13px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.modal-contenedor[data-v-002e034c] {\n  max-height: 450px;\n}\n.numero-likes[data-v-002e034c] {\n  font-size: 16px;\n  border-radius: 1000px;\n  border: 2px solid white;\n  padding: 6px;\n  width: 38px;\n  font-weight: bold;\n  box-shadow: 0 5px 10px #00000085;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n.numero-likes[data-v-002e034c]:hover, .numero-likes[data-v-002e034c]:focus {\n  box-shadow: 0 0 5px #00000085;\n}\n.info-video2[data-v-002e034c] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.bloque-video[data-v-002e034c] {\n  display: grid;\n  grid-template-columns: 298px;\n}\n.contenedor-fotos2[data-v-002e034c] {\n  margin: 0 auto;\n}", ""]);
 
 // exports
 
@@ -16702,7 +16787,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "protagonistas-fotos p-3" }, [
       _c("div", { staticClass: "inner-container no-gutters" }, [
-        _vm.archivos > 4
+        _vm.archivos.length > 4
           ? _c(
               "div",
               { staticClass: "row no-gutters" },
@@ -16734,7 +16819,27 @@ var render = function() {
                             "info-video d-flex justify-content-between"
                         },
                         [
-                          _vm._m(3, true),
+                          _c(
+                            "div",
+                            { staticClass: "protagonista-info text-left ml-2" },
+                            [
+                              _c("div", { staticClass: "nombre" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    _vm._s(archivo.user.nombre) +
+                                      " " +
+                                      _vm._s(archivo.user.apellido)
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "sucursal" }, [
+                                _c("span", [
+                                  _vm._v("Area: " + _vm._s(archivo.user.area))
+                                ])
+                              ])
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -16758,8 +16863,93 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "span",
-                                { staticStyle: { "font-size": "16px" } },
+                                {
+                                  staticClass: "numero-likes",
+                                  staticStyle: { "font-size": "16px" },
+                                  attrs: {
+                                    "data-toggle": "modal",
+                                    "data-target": "#verLikesMin-" + i
+                                  }
+                                },
                                 [_vm._v(_vm._s(archivo.likes))]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "ver-likes modal fade bd-example-modal-xl",
+                          attrs: {
+                            id: "verLikesMin-" + i,
+                            tabindex: "-1",
+                            role: "dialog",
+                            "aria-labelledby": "exampleModalCenterTitle",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "modal-dialog modal-dialog-centered modal-xl",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "modal-content modal-contenedor"
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-header" }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "modal-body text-secondary modal-body"
+                                    },
+                                    _vm._l(archivo.archivo_usuarios, function(
+                                      user,
+                                      i
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        { key: i, staticClass: "d-flex p-3" },
+                                        [
+                                          _c("img", {
+                                            staticClass: "like mr-2",
+                                            attrs: {
+                                              src:
+                                                "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(user.user.nombre) +
+                                                " " +
+                                                _vm._s(user.user.apellido)
+                                            )
+                                          ]),
+                                          _vm._v(
+                                            " - Area: " +
+                                              _vm._s(user.user.area) +
+                                              "\n                                        "
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(3, true)
+                                ]
                               )
                             ]
                           )
@@ -16775,59 +16965,174 @@ var render = function() {
               "div",
               { staticClass: "row no-gutters" },
               _vm._l(_vm.archivos, function(archivo, i) {
-                return _c("div", { key: i, staticClass: "contenedor-fotos2" }, [
-                  _c("div", { staticClass: "bloque-video2" }, [
-                    _c("div", { staticClass: "protagonista-foto" }, [
-                      _c("iframe", {
-                        attrs: {
-                          allowfullscreen: "",
-                          width: "1200",
-                          height: "900",
-                          src: archivo.nombre
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "info-video2 d-flex justify-content-between p-2"
-                      },
-                      [
-                        _vm._m(4, true),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "icono-like d-flex flex-row align-items-center ml-2 mr-2"
-                          },
-                          [
-                            _c("img", {
-                              staticClass: "like mr-2",
-                              attrs: {
-                                src:
-                                  "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.addLike(i)
+                return _c(
+                  "div",
+                  { key: i, staticClass: "contenedor-fotos2 my-4" },
+                  [
+                    _c("div", { staticClass: "bloque-video2" }, [
+                      _c("div", { staticClass: "protagonista-foto" }, [
+                        _c("iframe", {
+                          attrs: {
+                            allowfullscreen: "",
+                            width: "800",
+                            height: "600",
+                            src: archivo.nombre
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "info-video2 d-flex justify-content-between p-2"
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "protagonista-info text-left ml-2" },
+                            [
+                              _c("div", { staticClass: "nombre" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    _vm._s(archivo.user.nombre) +
+                                      " " +
+                                      _vm._s(archivo.user.apellido)
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "sucursal" }, [
+                                _c("span", [
+                                  _vm._v("Area: " + _vm._s(archivo.user.area))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "icono-like d-flex flex-row align-items-center ml-2 mr-2"
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "like mr-2",
+                                attrs: {
+                                  src:
+                                    "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.addLike(i)
+                                  }
                                 }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "numero-likes",
+                                  staticStyle: { "font-size": "16px" },
+                                  attrs: {
+                                    "data-toggle": "modal",
+                                    "data-target": "#verLikes-" + i
+                                  }
+                                },
+                                [_vm._v(_vm._s(archivo.likes))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "ver-likes modal fade bd-example-modal-xl",
+                              attrs: {
+                                id: "verLikes-" + i,
+                                tabindex: "-1",
+                                role: "dialog",
+                                "aria-labelledby": "exampleModalCenterTitle",
+                                "aria-hidden": "true"
                               }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              { staticStyle: { "font-size": "16px" } },
-                              [_vm._v(_vm._s(archivo.likes))]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ])
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered modal-xl",
+                                  attrs: { role: "document" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "modal-content modal-contenedor"
+                                    },
+                                    [
+                                      _c("div", {
+                                        staticClass: "modal-header"
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "modal-body text-secondary modal-body"
+                                        },
+                                        _vm._l(
+                                          archivo.archivo_usuarios,
+                                          function(user, i) {
+                                            return _c(
+                                              "div",
+                                              {
+                                                key: i,
+                                                staticClass: "d-flex p-3"
+                                              },
+                                              [
+                                                _c("img", {
+                                                  staticClass: "like mr-2",
+                                                  attrs: {
+                                                    src:
+                                                      "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    _vm._s(user.user.nombre) +
+                                                      " " +
+                                                      _vm._s(user.user.apellido)
+                                                  )
+                                                ]),
+                                                _vm._v(
+                                                  " - Area: " +
+                                                    _vm._s(user.user.area) +
+                                                    "\n                                            "
+                                                )
+                                              ]
+                                            )
+                                          }
+                                        ),
+                                        0
+                                      ),
+                                      _vm._v(" "),
+                                      _vm._m(4, true)
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
               }),
               0
             )
@@ -16860,7 +17165,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "copete-body" }, [
         _vm._v(
-          "Animate a contarnos en un vídeo casero, alguna anécdota que hayas vivido vos y/o tus compañeros en el Banco. El mismo deberá tener una duración máxima de 2 minutos.Dale like a las anécdotas que más te gusten! La anécdota ganadora tendrá un premio!!!"
+          "Animate a contarnos en un vídeo casero, alguna anécdota que hayas vivido vos y/o tus compañeros en el Banco. El mismo deberá tener una duración máxima de 2 minutos. Dale like a las anécdotas que más te gusten! La anécdota ganadora tendrá un premio!!!"
         )
       ]),
       _vm._v(" "),
@@ -16883,36 +17188,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "protagonista-info text-left ml-2" }, [
-      _c("div", { staticClass: "nombre" }, [
-        _c("span", [_vm._v("Jose Perez")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sucursal" }, [
-        _c("span", [_vm._v("SUCURSAL XasdadasdasdXX")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sucursal" }, [
-        _c("span", [_vm._v("Area XasdadasdasdXX")])
-      ])
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "protagonista-info text-left ml-2" }, [
-      _c("div", { staticClass: "nombre" }, [
-        _c("span", [_vm._v("Jose Perez")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sucursal" }, [
-        _c("span", [_vm._v("SUCURSAL XasdadasdasdXX")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sucursal" }, [
-        _c("span", [_vm._v("Area XasdadasdasdXX")])
-      ])
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
     ])
   }
 ]
@@ -19354,7 +19653,8 @@ var staticRenderFns = [
         _c(
           "div",
           {
-            staticClass: "inner-consulta py-2 col-xl-8 col-12",
+            staticClass:
+              "inner-consulta py-2 col-xl-10 col-12 d-flex align-items-center justify-content-center",
             attrs: {
               "data-toggle": "modal",
               "data-target": ".bd-example-modal-xl"
@@ -19715,116 +20015,239 @@ var render = function() {
       _c("div", { staticClass: "w-50 formulario-archivo" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("form", { ref: "formulario", attrs: { action: "" } }, [
-          _c(
-            "div",
-            { staticClass: "form d-flex justify-content-center flex-column" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex align-items-center my-2 justify-content-center"
-                },
-                [
-                  _c("span", { staticClass: "mr-2 col-3" }, [
-                    _vm._v("Seccion: ")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
+        !_vm.login
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "login form d-flex justify-content-center flex-column"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex align-items-center my-2 justify-content-center"
+                  },
+                  [
+                    _c("span", { staticClass: "mr-2 col-3" }, [
+                      _vm._v("Usuario: ")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.seccion,
-                          expression: "seccion"
+                          value: _vm.user,
+                          expression: "user"
                         }
                       ],
                       staticClass: "form-control col-6",
-                      attrs: { name: "", id: "" },
+                      attrs: { type: "text", name: "", id: "" },
+                      domProps: { value: _vm.user },
                       on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.seccion = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.user = $event.target.value
                         }
                       }
-                    },
-                    [
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Anecdotario")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Tu Foto Cuenta")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [
-                        _vm._v("Concurso selfie")
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _vm.seccion == 1
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "d-flex align-items-center my-2 justify-content-center"
-                    },
-                    [
-                      _c("span", { staticClass: "mr-2 col-3" }, [
-                        _vm._v("Link: ")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control col-6",
-                        attrs: { type: "text", name: "", id: "" }
-                      })
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.seccion == 2 || _vm.seccion == 3
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "d-flex align-items-center my-2 justify-content-center"
-                    },
-                    [
-                      _c("span", { staticClass: "mr-2 col-3" }, [
-                        _vm._v("Subir imagen: ")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control col-6",
-                        attrs: { type: "file", name: "", id: "" }
-                      })
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._m(3)
-            ]
-          )
-        ])
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex align-items-center my-2 justify-content-center"
+                  },
+                  [
+                    _c("span", { staticClass: "mr-2 col-3" }, [
+                      _vm._v("Contraseña: ")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.password,
+                          expression: "password"
+                        }
+                      ],
+                      staticClass: "form-control col-6",
+                      attrs: { type: "password", name: "", id: "" },
+                      domProps: { value: _vm.password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.password = $event.target.value
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "boton d-flex justify-content-center my-2" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        on: { click: _vm.checkLogin }
+                      },
+                      [_vm._v("Ingresar")]
+                    )
+                  ]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.login
+          ? _c(
+              "form",
+              {
+                ref: "formulario",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "form d-flex justify-content-center flex-column"
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex align-items-center my-2 justify-content-center"
+                      },
+                      [
+                        _c("span", { staticClass: "mr-2 col-3" }, [
+                          _vm._v("Seccion: ")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.seccion,
+                                expression: "seccion"
+                              }
+                            ],
+                            staticClass: "form-control col-6",
+                            attrs: { name: "seccion", id: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.seccion = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Anecdotario")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2" } }, [
+                              _vm._v("Tu Foto Cuenta")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3" } }, [
+                              _vm._v("Concurso selfie")
+                            ])
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.seccion == 1
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex align-items-center my-2 justify-content-center"
+                          },
+                          [
+                            _c("span", { staticClass: "mr-2 col-3" }, [
+                              _vm._v("Link: ")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control col-6",
+                              attrs: { type: "text", name: "link", id: "" }
+                            })
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.seccion == 2 || _vm.seccion == 3
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex align-items-center my-2 justify-content-center"
+                          },
+                          [
+                            _c("span", { staticClass: "mr-2 col-3" }, [
+                              _vm._v("Subir imagen: ")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control col-6",
+                              attrs: { type: "file", name: "archivo", id: "" }
+                            })
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "boton d-flex justify-content-center my-2",
+                        on: { click: _vm.subirArchivo }
+                      },
+                      [
+                        _c("button", { staticClass: "btn btn-success" }, [
+                          _vm._v("SUBIR")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          : _vm._e()
       ])
     ]
   )
@@ -19852,7 +20275,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control col-6",
-          attrs: { type: "text", name: "", id: "" }
+          attrs: { type: "text", name: "subido_por", id: "" }
         })
       ]
     )
@@ -19869,19 +20292,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control col-6",
-          attrs: { type: "number", name: "", id: "" }
+          attrs: { type: "number", name: "mes", id: "" }
         })
       ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "boton d-flex justify-content-center my-2" },
-      [_c("button", { staticClass: "btn btn-success" }, [_vm._v("SUBIR")])]
     )
   }
 ]
