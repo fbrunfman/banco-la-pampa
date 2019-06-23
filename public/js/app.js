@@ -1763,6 +1763,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1807,11 +1809,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Anecdotario',
+  data: function data() {
+    return {
+      archivos: []
+    };
+  },
+  computed: {
+    infoEmpleado: function infoEmpleado() {
+      return this.$store.state.infoEmpleado;
+    }
+  },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
+    this.getVideos();
+  },
+  methods: {
+    getVideos: function getVideos() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/archivos').then(function (response) {
+        console.log('todo bien');
+        _this.archivos = response.data;
+      });
+    },
+    addLike: function addLike(i) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/like', {
+        archivo_id: this.archivos[i].id,
+        user_id: this.infoEmpleado.id
+      }).then(function (response) {
+        console.log('todo bien');
+      });
+    }
   }
 });
 
@@ -2150,12 +2204,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'EditarUsuarios',
@@ -2190,6 +2238,9 @@ __webpack_require__.r(__webpack_exports__);
         alert('Usuario o contraseña inválidos');
       }
     },
+    resetEdit: function resetEdit() {
+      this.traerUsuario = false;
+    },
     crearUsuario: function crearUsuario() {
       var datos = new FormData(this.$refs.crearUsuario);
       datos.append('user', this.user);
@@ -2206,6 +2257,7 @@ __webpack_require__.r(__webpack_exports__);
       var datos = new FormData(this.$refs.editarUsuario);
       datos.append('user', this.user);
       datos.append('password', this.password);
+      datos.append('legajo', this.legajo);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/editar-usuario', datos).then(function (response) {
         alert('Usuario editado correctamente');
         _this.traerUsuario = false;
@@ -2662,10 +2714,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home',
@@ -2781,7 +2829,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push('/trivia');
     },
     irAnecdotario: function irAnecdotario() {
-      this.$router.push('/proximamente');
+      this.$router.push('/anecdotario');
     },
     irCuenta: function irCuenta() {
       this.$router.push('/proximamente');
@@ -2810,6 +2858,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Proximamente',
+  mounted: function mounted() {
+    this.$store.commit('login', false);
+    this.$store.commit('paginaPrincipal', false);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Subir-Archivos.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      seccion: ''
+    };
+  },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
@@ -2916,6 +3037,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2927,7 +3051,8 @@ __webpack_require__.r(__webpack_exports__);
       respuestasCorrectas: '',
       ocultarTrivia: false,
       mostrarTrivia: false,
-      proximamente: true
+      proximamente: true,
+      desactivarTrivia: true
     };
   },
   mounted: function mounted() {
@@ -14174,7 +14299,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 13px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.bloque-video[data-v-002e034c] {\n  display: grid;\n  grid-template-columns: 298px;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-002e034c] {\n  width: 100vw;\n}\n.copete[data-v-002e034c] {\n  display: grid;\n}\n.copete a[data-v-002e034c] {\n  color: #efb607;\n}\n.copete-titulo[data-v-002e034c] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-002e034c] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-002e034c] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-002e034c] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-002e034c] {\n  width: 22px;\n  cursor: pointer;\n}\n.info-video[data-v-002e034c] {\n  font-size: 13px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.info-video2[data-v-002e034c] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n}\n.bloque-video[data-v-002e034c] {\n  display: grid;\n  grid-template-columns: 298px;\n}\n.contenedor-fotos2[data-v-002e034c] {\n  margin: 0 auto;\n}", ""]);
 
 // exports
 
@@ -14276,6 +14401,25 @@ exports.push([module.i, ".contenedor[data-v-c8ee1200] {\n  width: 384px;\n  font
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".formulario-archivo[data-v-8016ee54] {\n  background-color: #e9e8e8;\n  box-shadow: 0px 5px 10px #00000030;\n  margin-top: 50px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Trivia.vue?vue&type=style&index=0&id=2f3251a4&lang=scss&scoped=true& ***!
@@ -14288,7 +14432,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 36px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 20px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 36px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 20px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -15038,6 +15182,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Proximamente.vue?vue&type=style&index=0&id=c8ee1200&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Proximamente.vue?vue&type=style&index=0&id=c8ee1200&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16528,22 +16702,135 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "protagonistas-fotos p-3" }, [
       _c("div", { staticClass: "inner-container no-gutters" }, [
-        _c(
-          "div",
-          { staticClass: "row no-gutters" },
-          _vm._l(9, function(i) {
-            return _c(
+        _vm.archivos > 4
+          ? _c(
               "div",
-              {
-                key: i,
-                staticClass:
-                  "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2"
-              },
-              [_vm._m(3, true)]
+              { staticClass: "row no-gutters" },
+              _vm._l(_vm.archivos, function(archivo, i) {
+                return _c(
+                  "div",
+                  {
+                    key: i,
+                    staticClass:
+                      "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2"
+                  },
+                  [
+                    _c("div", { staticClass: "bloque-video" }, [
+                      _c("div", { staticClass: "protagonista-foto" }, [
+                        _c("iframe", {
+                          attrs: {
+                            allowfullscreen: "",
+                            width: "300",
+                            height: "255",
+                            src: archivo.nombre
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "info-video d-flex justify-content-between"
+                        },
+                        [
+                          _vm._m(3, true),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "icono-like d-flex flex-row align-items-center ml-2 mr-2"
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "like mr-2",
+                                attrs: {
+                                  src:
+                                    "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.addLike(i)
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticStyle: { "font-size": "16px" } },
+                                [_vm._v(_vm._s(archivo.likes))]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              }),
+              0
             )
-          }),
-          0
-        )
+          : _c(
+              "div",
+              { staticClass: "row no-gutters" },
+              _vm._l(_vm.archivos, function(archivo, i) {
+                return _c("div", { key: i, staticClass: "contenedor-fotos2" }, [
+                  _c("div", { staticClass: "bloque-video2" }, [
+                    _c("div", { staticClass: "protagonista-foto" }, [
+                      _c("iframe", {
+                        attrs: {
+                          allowfullscreen: "",
+                          width: "1200",
+                          height: "900",
+                          src: archivo.nombre
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "info-video2 d-flex justify-content-between p-2"
+                      },
+                      [
+                        _vm._m(4, true),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "icono-like d-flex flex-row align-items-center ml-2 mr-2"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "like mr-2",
+                              attrs: {
+                                src:
+                                  "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addLike(i)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticStyle: { "font-size": "16px" } },
+                              [_vm._v(_vm._s(archivo.likes))]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
       ])
     ])
   ])
@@ -16573,17 +16860,12 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "copete-body" }, [
         _vm._v(
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quasi, itaque molestiae nostrum nisi ut consectetur, quas illum commodi provident quod blanditiis ipsa vel distinctio molestias. Laborum eum sit expedita?"
+          "Animate a contarnos en un vídeo casero, alguna anécdota que hayas vivido vos y/o tus compañeros en el Banco. El mismo deberá tener una duración máxima de 2 minutos.Dale like a las anécdotas que más te gusten! La anécdota ganadora tendrá un premio!!!"
         )
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "copete-contacto mt-2 mb-4" }, [
-        _vm._v(" Envianos tu video a "),
-        _c("strong", [
-          _c("a", { attrs: { href: "mailto:" } }, [
-            _vm._v(" xxxxxx@xxxxxx.com")
-          ])
-        ])
+        _c("strong", [_vm._v("Envianos tu video por whatsapp al 11-4199-8282")])
       ])
     ])
   },
@@ -16601,49 +16883,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bloque-video" }, [
-      _c("div", { staticClass: "protagonista-foto" }, [
-        _c("iframe", {
-          attrs: {
-            width: "300",
-            height: "255",
-            src: "https://www.youtube.com/embed/tgbNymZ7vqY"
-          }
-        })
+    return _c("div", { staticClass: "protagonista-info text-left ml-2" }, [
+      _c("div", { staticClass: "nombre" }, [
+        _c("span", [_vm._v("Jose Perez")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "info-video d-flex justify-content-between" }, [
-        _c("div", { staticClass: "protagonista-info text-left ml-2" }, [
-          _c("div", { staticClass: "nombre" }, [
-            _c("span", [_vm._v("Jose Perez")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sucursal" }, [
-            _c("span", [_vm._v("SUCURSAL XasdadasdasdXX")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sucursal" }, [
-            _c("span", [_vm._v("Area XasdadasdasdXX")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "icono-like d-flex flex-row align-items-center ml-2 mr-2"
-          },
-          [
-            _c("img", {
-              staticClass: "like mr-2",
-              attrs: {
-                src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticStyle: { "font-size": "16px" } }, [_vm._v("20")])
-          ]
-        )
+      _c("div", { staticClass: "sucursal" }, [
+        _c("span", [_vm._v("SUCURSAL XasdadasdasdXX")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sucursal" }, [
+        _c("span", [_vm._v("Area XasdadasdasdXX")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "protagonista-info text-left ml-2" }, [
+      _c("div", { staticClass: "nombre" }, [
+        _c("span", [_vm._v("Jose Perez")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sucursal" }, [
+        _c("span", [_vm._v("SUCURSAL XasdadasdasdXX")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sucursal" }, [
+        _c("span", [_vm._v("Area XasdadasdasdXX")])
       ])
     ])
   }
@@ -17059,7 +17327,34 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(5),
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLongTitle" }
+                      },
+                      [_vm._v("Editar usuario")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: {
+                          type: "button",
+                          "data-dismiss": "modal",
+                          "aria-label": "Close"
+                        },
+                        on: { click: _vm.resetEdit }
+                      },
+                      [
+                        _c("span", { attrs: { "aria-hidden": "true" } }, [
+                          _vm._v("×")
+                        ])
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   !_vm.traerUsuario
                     ? _c(
@@ -17116,7 +17411,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(6),
+                            _vm._m(5),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17153,7 +17448,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(7),
+                            _vm._m(6),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17190,7 +17485,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(8),
+                            _vm._m(7),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17227,7 +17522,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(9),
+                            _vm._m(8),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17264,7 +17559,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(10),
+                            _vm._m(9),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17301,7 +17596,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(11),
+                            _vm._m(10),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17338,7 +17633,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(12),
+                            _vm._m(11),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17375,7 +17670,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(13),
+                            _vm._m(12),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17416,7 +17711,7 @@ var render = function() {
                               "d-flex justify-content-center flex-row align-items-center my-2"
                           },
                           [
-                            _vm._m(14),
+                            _vm._m(13),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -17444,43 +17739,6 @@ var render = function() {
                               }
                             })
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "d-flex justify-content-center flex-row align-items-center my-2"
-                          },
-                          [
-                            _vm._m(15),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.usuario.legajo,
-                                  expression: "usuario.legajo"
-                                }
-                              ],
-                              staticClass: "form-control col-6",
-                              attrs: { type: "text", name: "legajo", id: "" },
-                              domProps: { value: _vm.usuario.legajo },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.usuario,
-                                    "legajo",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
                         )
                       ])
                     : _vm._e(),
@@ -17490,7 +17748,8 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-dismiss": "modal" }
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: { click: _vm.resetEdit }
                       },
                       [_vm._v("Cerrar")]
                     ),
@@ -17559,9 +17818,9 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(16),
+                  _vm._m(14),
                   _vm._v(" "),
-                  _vm._m(17),
+                  _vm._m(15),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-footer" }, [
                     _c(
@@ -17857,31 +18116,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Editar usuario")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2" }, [
       _c("span", { staticClass: "mr-2" }, [_vm._v("Nombre:")])
     ])
@@ -17948,14 +18182,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2" }, [
       _c("span", { staticClass: "mr-2" }, [_vm._v("Equipo:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("span", { staticClass: "mr-2" }, [_vm._v("Legajo:")])
     ])
   },
   function() {
@@ -18225,7 +18451,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("span", { staticClass: "mt-3 mr-4 col-10" }, [_vm._v("APELLIDO")])
+      _c("span", { staticClass: "mt-3 mr-4 col-10" }, [
+        _vm._v("APELLIDO / CONTRASEÑA")
+      ])
     ])
   },
   function() {
@@ -18477,7 +18705,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "router-link",
-                                  { attrs: { to: "proximamente" } },
+                                  { attrs: { to: "anecdotario" } },
                                   [
                                     _c("li", { staticClass: "nav-item" }, [
                                       _c(
@@ -18776,19 +19004,19 @@ var render = function() {
                 "div",
                 { staticClass: "row no-gutters justify-content-center" },
                 [
-                  _c("router-link", { attrs: { to: "trivia" } }, [
+                  _c("router-link", { attrs: { to: "anecdotario" } }, [
                     _c("div", { staticClass: "banner-novedad mx-4 my-2" }, [
                       _c("div", { staticClass: "titulo-novedad p-3" }, [
                         _c("h3", [_vm._v("Novedades:")]),
                         _vm._v(" "),
-                        _c("h5", [_vm._v("¿Cuánto sabes sobre el Banco?")])
+                        _c("h5", [_vm._v("Anecdotario:")])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "novedad-img" }, [
                         _c("img", {
                           staticClass: "imagen-novedad",
                           attrs: {
-                            src: __webpack_require__(/*! ./img/novedad-trivia.jpg */ "./resources/js/components/img/novedad-trivia.jpg"),
+                            src: __webpack_require__(/*! ./img/novedad-anecdotario.jpg */ "./resources/js/components/img/novedad-anecdotario.jpg"),
                             alt: "",
                             srcset: ""
                           }
@@ -18839,7 +19067,7 @@ var render = function() {
                               _c("div", { staticClass: "banner-body p-3" }, [
                                 _c("span", [
                                   _vm._v(
-                                    " Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!"
+                                    " Contanos tu anécdota más divertida en un video"
                                   )
                                 ])
                               ])
@@ -18853,7 +19081,7 @@ var render = function() {
                         [
                           _c("span", { staticClass: "h5" }, [
                             _vm._v(
-                              " Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!"
+                              " Contanos tu anécdota más divertida en un video"
                             )
                           ])
                         ]
@@ -18861,67 +19089,100 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "banner-novedad mx-4 my-2",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": ".bd-example-modal-xl"
-                      }
-                    },
-                    [
-                      _vm._m(16),
-                      _vm._v(" "),
-                      _vm._m(17),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "d-flex justify-content-center p-4 d-md-none"
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary d-md-none",
-                              attrs: {
-                                type: "button",
-                                "data-toggle": "collapse",
-                                "data-target": "#collapseExample",
-                                "aria-expanded": "false",
-                                "aria-controls": "collapseExample"
+                  _c("router-link", { attrs: { to: "trivia" } }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "banner-novedad mx-4 my-2",
+                        attrs: {
+                          "data-toggle": "modal",
+                          "data-target": ".bd-example-modal-xl"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "titulo-novedad p-3" }, [
+                          _c("h3", [_vm._v("Novedades:")]),
+                          _vm._v(" "),
+                          _c("h5", [_vm._v("Trivia:")])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "novedad-img" }, [
+                          _c("img", {
+                            staticClass: "imagen-novedad",
+                            attrs: {
+                              src: __webpack_require__(/*! ./img/novedad-ganadores.jpg */ "./resources/js/components/img/novedad-ganadores.jpg"),
+                              alt: "",
+                              srcset: ""
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center p-4 d-md-none"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary d-md-none",
+                                attrs: {
+                                  type: "button",
+                                  "data-toggle": "collapse",
+                                  "data-target": "#collapseExample",
+                                  "aria-expanded": "false",
+                                  "aria-controls": "collapseExample"
+                                },
+                                on: { click: _vm.activarCollapse }
                               },
-                              on: { click: _vm.activarCollapse }
-                            },
-                            [
-                              _vm.verMas
-                                ? _c("span", [_vm._v("Ver +")])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.verMas === false
-                                ? _c("span", [_vm._v("Esconder")])
-                                : _vm._e()
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.collapseOn
-                        ? _c(
-                            "div",
-                            {
-                              staticClass: "collapse",
-                              attrs: { id: "collapseExample" }
-                            },
-                            [_vm._m(18)]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm._m(19)
-                    ]
-                  )
+                              [
+                                _vm.verMas
+                                  ? _c("span", [_vm._v("Ver +")])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.verMas === false
+                                  ? _c("span", [_vm._v("Esconder")])
+                                  : _vm._e()
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.collapseOn
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "collapse",
+                                attrs: { id: "collapseExample" }
+                              },
+                              [
+                                _c("div", { staticClass: "banner-body p-3" }, [
+                                  _c("span", [
+                                    _vm._v(
+                                      "Enterate quiénes son los ganadores de la Trivia N°1 "
+                                    )
+                                  ])
+                                ])
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "banner-body no-collapse  p-3" },
+                          [
+                            _c("span", { staticClass: "h5" }, [
+                              _vm._v(
+                                " Enterate quiénes son los ganadores de la Trivia N°1 "
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ])
                 ],
                 1
               )
@@ -18962,9 +19223,9 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(20),
+                  _vm._m(16),
                   _vm._v(" "),
-                  _vm._m(21),
+                  _vm._m(17),
                   _vm._v(" "),
                   _vm.cargando == false
                     ? _c("div", { staticClass: "modal-footer" }, [
@@ -18996,7 +19257,7 @@ var render = function() {
                           staticClass:
                             "modal-footer d-flex justify-content-center"
                         },
-                        [_vm._m(22)]
+                        [_vm._m(18)]
                       )
                     : _vm._e()
                 ])
@@ -19028,7 +19289,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(23),
+              _vm._m(19),
               _vm._v(" "),
               _c(
                 "div",
@@ -19068,7 +19329,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(24)
+              _vm._m(20)
             ])
           ]
         )
@@ -19128,12 +19389,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "carousel-inner main-foto" }, [
       _c("div", { staticClass: "carousel-item active" }, [
         _c("img", {
-          attrs: { src: __webpack_require__(/*! ./img/contacta.png */ "./resources/js/components/img/contacta.png"), alt: "", srcset: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "carousel-item" }, [
-        _c("img", {
           attrs: { src: __webpack_require__(/*! ./img/header-1.png */ "./resources/js/components/img/header-1.png"), alt: "", srcset: "" }
         })
       ]),
@@ -19141,12 +19396,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "carousel-item" }, [
         _c("img", {
           attrs: { src: __webpack_require__(/*! ./img/header-2.png */ "./resources/js/components/img/header-2.png"), alt: "", srcset: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "carousel-item" }, [
-        _c("img", {
-          attrs: { src: __webpack_require__(/*! ./img/header-3.png */ "./resources/js/components/img/header-3.png"), alt: "", srcset: "" }
         })
       ])
     ])
@@ -19278,47 +19527,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "banner-body p-3" }, [
       _c("h5", [
         _vm._v("Envianos una foto significativa por estos 60 años de historia")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "titulo-novedad p-3" }, [
-      _c("h3", [_vm._v("Novedades:")]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Conocé a tu equipo")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "novedad-img" }, [
-      _c("img", {
-        staticClass: "imagen-novedad",
-        attrs: { src: __webpack_require__(/*! ./img/novedad-equipo.jpg */ "./resources/js/components/img/novedad-equipo.jpg"), alt: "", srcset: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-body p-3" }, [
-      _c("span", [
-        _vm._v("Consultá los datos de tu equipo y contactate con ellos! ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-body no-collapse  p-3" }, [
-      _c("span", { staticClass: "h5" }, [
-        _vm._v(" Consultá los datos de tu equipo y contactate con ellos!")
       ])
     ])
   },
@@ -19483,6 +19691,206 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "contenedor d-flex justify-content-center align-items-center"
+    },
+    [
+      _c("div", { staticClass: "w-50 formulario-archivo" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("form", { ref: "formulario", attrs: { action: "" } }, [
+          _c(
+            "div",
+            { staticClass: "form d-flex justify-content-center flex-column" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex align-items-center my-2 justify-content-center"
+                },
+                [
+                  _c("span", { staticClass: "mr-2 col-3" }, [
+                    _vm._v("Seccion: ")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.seccion,
+                          expression: "seccion"
+                        }
+                      ],
+                      staticClass: "form-control col-6",
+                      attrs: { name: "", id: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.seccion = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Anecdotario")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Tu Foto Cuenta")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [
+                        _vm._v("Concurso selfie")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.seccion == 1
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex align-items-center my-2 justify-content-center"
+                    },
+                    [
+                      _c("span", { staticClass: "mr-2 col-3" }, [
+                        _vm._v("Link: ")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control col-6",
+                        attrs: { type: "text", name: "", id: "" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.seccion == 2 || _vm.seccion == 3
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex align-items-center my-2 justify-content-center"
+                    },
+                    [
+                      _c("span", { staticClass: "mr-2 col-3" }, [
+                        _vm._v("Subir imagen: ")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control col-6",
+                        attrs: { type: "file", name: "", id: "" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._m(3)
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "titulo text-center p-2" }, [
+      _c("h3", [_vm._v("Subir Archivos")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex align-items-center my-2 justify-content-center" },
+      [
+        _c("span", { staticClass: "mr-2 col-3" }, [
+          _vm._v("Subido por (legajo): ")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control col-6",
+          attrs: { type: "text", name: "", id: "" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex align-items-center my-2 justify-content-center" },
+      [
+        _c("span", { staticClass: "mr-2 col-3" }, [_vm._v("Mes: ")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control col-6",
+          attrs: { type: "number", name: "", id: "" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "boton d-flex justify-content-center my-2" },
+      [_c("button", { staticClass: "btn btn-success" }, [_vm._v("SUBIR")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Trivia.vue?vue&type=template&id=2f3251a4&scoped=true& ***!
@@ -19506,9 +19914,25 @@ var render = function() {
         [
           _vm._m(0),
           _vm._v(" "),
-          _vm._m(1),
+          !_vm.desactivarTrivia
+            ? _c("div", { staticClass: "copete p-5" }, [
+                _c("h2", { staticClass: "copete-pregunta mb-3" }, [
+                  _vm._v(
+                    "¡Jugá con tus compañeros de equipo en la trivia y participá por premios!"
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _vm.ocultarTrivia == false && _vm.mostrarTrivia == false
+          _vm._m(3),
+          _vm._v(" "),
+          _vm.ocultarTrivia == false &&
+          _vm.mostrarTrivia == false &&
+          !_vm.desactivarTrivia
             ? _c(
                 "div",
                 {
@@ -19699,9 +20123,9 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(2),
+                    _vm._m(4),
                     _vm._v(" "),
-                    _vm._m(3),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
                       _c(
@@ -19733,7 +20157,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -19751,49 +20175,60 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copete p-5" }, [
-      _c("h2", { staticClass: "copete-pregunta mb-3" }, [
+    return _c("h3", { staticClass: "reglamento-titulo text-success p-4" }, [
+      _c("strong", [_vm._v(" Reglamento Trivia ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "reglas ml-3" }, [
+      _c("div", { staticClass: "my-2" }, [
         _vm._v(
-          "¡Jugá con tus compañeros de equipo en la trivia y participá por premios!"
+          " El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! "
         )
       ]),
       _vm._v(" "),
-      _c("h3", { staticClass: "reglamento-titulo text-success p-4" }, [
-        _c("strong", [_vm._v(" Reglamento Trivia ")])
+      _c("div", { staticClass: "my-2" }, [
+        _vm._v(
+          " Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá"
+        )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "reglas ml-3" }, [
-        _c("div", { staticClass: "my-2" }, [
-          _vm._v(
-            " El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "my-2" }, [
-          _vm._v(
-            " Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá"
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "my-2" }, [
-          _vm._v(
-            " La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "my-2" }, [
-          _vm._v(
-            " En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "my-2" }, [
-          _vm._v(
-            " Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! "
-          )
-        ])
+      _c("div", { staticClass: "my-2" }, [
+        _vm._v(
+          " La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-2" }, [
+        _vm._v(
+          " En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-2" }, [
+        _vm._v(
+          " Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! "
+        )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "ganadores d-flex justify-content-center" },
+      [
+        _c("img", {
+          staticClass: "img-ganadores",
+          attrs: { src: __webpack_require__(/*! ./img/ganadores.jpg */ "./resources/js/components/img/ganadores.jpg"), alt: "", srcset: "" }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -36228,6 +36663,12 @@ var routes = [{
   meta: {
     requiresAuth: true
   }
+}, {
+  path: '/subir-archivos',
+  component: __webpack_require__(/*! ./components/Subir-Archivos.vue */ "./resources/js/components/Subir-Archivos.vue")["default"],
+  meta: {
+    requiresAuth: true
+  }
 }];
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -36873,6 +37314,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Subir-Archivos.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/Subir-Archivos.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Subir_Archivos_vue_vue_type_template_id_8016ee54_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true& */ "./resources/js/components/Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true&");
+/* harmony import */ var _Subir_Archivos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Subir-Archivos.vue?vue&type=script&lang=js& */ "./resources/js/components/Subir-Archivos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true& */ "./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Subir_Archivos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Subir_Archivos_vue_vue_type_template_id_8016ee54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Subir_Archivos_vue_vue_type_template_id_8016ee54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "8016ee54",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Subir-Archivos.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Subir-Archivos.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/Subir-Archivos.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Subir-Archivos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true& ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=style&index=0&id=8016ee54&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_style_index_0_id_8016ee54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_template_id_8016ee54_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Subir-Archivos.vue?vue&type=template&id=8016ee54&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_template_id_8016ee54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Subir_Archivos_vue_vue_type_template_id_8016ee54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Trivia.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Trivia.vue ***!
@@ -37091,17 +37619,6 @@ module.exports = "/images/bingo.jpg?006952b237dc16d51470ebdb5deb9b84";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/contacta.png":
-/*!**************************************************!*\
-  !*** ./resources/js/components/img/contacta.png ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/contacta.png?085eb99cdc51b0cdef48b3f52b5a3328";
-
-/***/ }),
-
 /***/ "./resources/js/components/img/cuenta.jpg":
 /*!************************************************!*\
   !*** ./resources/js/components/img/cuenta.jpg ***!
@@ -37146,6 +37663,17 @@ module.exports = "/images/foto.jpg?cdc821c4ea9043875b0cc6215d06773c";
 
 /***/ }),
 
+/***/ "./resources/js/components/img/ganadores.jpg":
+/*!***************************************************!*\
+  !*** ./resources/js/components/img/ganadores.jpg ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/ganadores.jpg?e26be1a47b372499673eba4aa3955da3";
+
+/***/ }),
+
 /***/ "./resources/js/components/img/header-1.png":
 /*!**************************************************!*\
   !*** ./resources/js/components/img/header-1.png ***!
@@ -37168,17 +37696,6 @@ module.exports = "/images/header-2.png?14be77f77be648fa616646e262d710ec";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/header-3.png":
-/*!**************************************************!*\
-  !*** ./resources/js/components/img/header-3.png ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/header-3.png?2b9c5c90dd476a88658c5075f7be772b";
-
-/***/ }),
-
 /***/ "./resources/js/components/img/logo.jpg":
 /*!**********************************************!*\
   !*** ./resources/js/components/img/logo.jpg ***!
@@ -37190,25 +37707,25 @@ module.exports = "/images/logo.jpg?b63333eaf14989c44beccef080204686";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/novedad-equipo.jpg":
-/*!********************************************************!*\
-  !*** ./resources/js/components/img/novedad-equipo.jpg ***!
-  \********************************************************/
+/***/ "./resources/js/components/img/novedad-anecdotario.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/novedad-anecdotario.jpg ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/novedad-equipo.jpg?859193f6a6ef84b490331d1f78c79b91";
+module.exports = "/images/novedad-anecdotario.jpg?0e5337901f062407658997a6da43d067";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/novedad-trivia.jpg":
-/*!********************************************************!*\
-  !*** ./resources/js/components/img/novedad-trivia.jpg ***!
-  \********************************************************/
+/***/ "./resources/js/components/img/novedad-ganadores.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/novedad-ganadores.jpg ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/novedad-trivia.jpg?a40e500c20b9e1e39a975993f0564bdd";
+module.exports = "/images/novedad-ganadores.jpg?5dc9a9ba447bb317ae0d117524edc4dc";
 
 /***/ }),
 

@@ -5,7 +5,7 @@
                 <div class="titulo-trivia mt-3">
                     <img src="./img/trivia2.jpg" alt="" srcset="">
                 </div>
-                <div class="copete p-5">
+                <div class="copete p-5" v-if="!desactivarTrivia">
                     <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
                     <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
                     <div class="reglas ml-3">
@@ -17,7 +17,10 @@
                         <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
                     </div>
                 </div>
-                <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false">
+                <div class="ganadores d-flex justify-content-center">
+                    <img src="./img/ganadores.jpg"  class="img-ganadores" alt="" srcset="">
+                </div>
+                <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false && !desactivarTrivia">
                     <div class="btn btn-success boton-comenzar" @click="showTrivia" > Comenzar TRIVIA AHORA</div>
                 </div>
                 <div class="trivia-body" v-for="(pregunta, i) in Object.values(preguntas)" :key="i" :class="'trivia-body-' + i">
@@ -96,7 +99,8 @@ export default {
             respuestasCorrectas: '',
             ocultarTrivia: false,
             mostrarTrivia: false,
-            proximamente: true
+            proximamente: true,
+            desactivarTrivia: true,
         }
     },
     mounted () {
@@ -277,6 +281,12 @@ export default {
     .contenedor-trivia {
     display: block;
 }
+}
+
+.ganadores {
+    .img-ganadores {
+        max-width: 100%;
+    }
 }
 
 

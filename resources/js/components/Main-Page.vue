@@ -47,7 +47,7 @@
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <router-link to="proximamente">
+                                <router-link to="anecdotario">
                                     <li class="nav-item">
                                         <a class="nav-link text-center" href=""><strong>ANECDOTARIO</strong></a>
                                     </li>
@@ -84,16 +84,10 @@
         <div id="carouselExampleControls" class="carousel slide mt-4" >
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
-                 <img src="./img/contacta.png" alt="" srcset="">
-                </div>
-                <div class="carousel-item">
                  <img src="./img/header-1.png" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
                   <img src="./img/header-2.png" alt="" srcset="">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/header-3.png" alt="" srcset="">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
@@ -179,14 +173,14 @@
         <div class="nodevades justify-content-center">
           <div class="inner-container no-gutters">
             <div class="row no-gutters justify-content-center">
-                <router-link to="trivia">
+                <router-link to="anecdotario">
                     <div class="banner-novedad mx-4 my-2">
                         <div class="titulo-novedad p-3">
                             <h3>Novedades:</h3>
-                            <h5>¿Cuánto sabes sobre el Banco?</h5>
+                            <h5>Anecdotario:</h5>
                         </div>
                         <div class="novedad-img">
-                            <img class="imagen-novedad" src="./img/novedad-trivia.jpg" alt="" srcset="">
+                            <img class="imagen-novedad" src="./img/novedad-anecdotario.jpg" alt="" srcset="">
                         </div>
                         <div class="d-flex justify-content-center p-4 d-md-none">
                             <button @click="activarCollapseUno" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
@@ -196,24 +190,25 @@
                         </div>
                         <div v-if="collapseOnUno" class="collapse" id="collapseExample1">
                             <div class="banner-body p-3">
-                                <span> Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!</span>
+                                <span> Contanos tu anécdota más divertida en un video</span>
                             </div>
                         </div>
                         <div class="banner-body no-collapse  p-3">
-                                <span class="h5"> Ya se encuentra la Trivia N°1 para que respondas con tu equipo! Pueden ganar muchos premios!</span>
+                                <span class="h5"> Contanos tu anécdota más divertida en un video</span>
                         </div>
                         <!-- <div class="boton-sumar justify-content-end mr-2">
                             <span class="sumar">+</span>
                         </div> -->
                     </div>
                 </router-link>
+            <router-link to="trivia">
               <div class="banner-novedad mx-4 my-2" data-toggle="modal" data-target=".bd-example-modal-xl">
                 <div class="titulo-novedad p-3">
                     <h3>Novedades:</h3>
-                    <h5>Conocé a tu equipo</h5>
+                    <h5>Trivia:</h5>
                 </div>
                 <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/novedad-equipo.jpg" alt="" srcset="">
+                     <img class="imagen-novedad" src="./img/novedad-ganadores.jpg" alt="" srcset="">
                 </div>
                 <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -223,16 +218,17 @@
                 </div>
                 <div v-if="collapseOn" class="collapse" id="collapseExample">
                     <div class="banner-body p-3">
-                        <span>Consultá los datos de tu equipo y contactate con ellos! </span>
+                        <span>Enterate quiénes son los ganadores de la Trivia N°1 </span>
                     </div>
                 </div>
                  <div class="banner-body no-collapse  p-3">
-                        <span class="h5"> Consultá los datos de tu equipo y contactate con ellos!</span>
+                        <span class="h5"> Enterate quiénes son los ganadores de la Trivia N°1 </span>
                 </div>
                <!--  <div class="boton-sumar  justify-content-end mr-2">
                     <span class="sumar">+</span>
                 </div> -->
               </div>
+             </router-link>
             </div>
           </div>
         </div>
@@ -408,7 +404,7 @@ export default {
             this.$router.push('/trivia')
         },
         irAnecdotario() {
-            this.$router.push('/proximamente')
+            this.$router.push('/anecdotario')
         },
         irCuenta() {
             this.$router.push('/proximamente')

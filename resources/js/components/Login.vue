@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <span class="mt-3 mr-4 col-10">APELLIDO</span>
+                                <span class="mt-3 mr-4 col-10">APELLIDO / CONTRASEÑA</span>
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="d-flex justify-content-center mt-2 col-10 ml-4">

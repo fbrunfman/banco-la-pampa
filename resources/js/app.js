@@ -60,6 +60,7 @@ const routes = [
     { path: '/proximamente', component: require('./components/Proximamente').default, meta: {requiresAuth: true} },
     { path: '/login', component: require('./components/Login.vue').default, meta: {requiresVisitor: true} },
     { path: '/editar-usuarios', component: require('./components/Editar-Usuarios.vue').default, meta: {requiresAuth: true} },
+    { path: '/subir-archivos', component: require('./components/Subir-Archivos.vue').default, meta: {requiresAuth: true} },
   ]
 
 /**

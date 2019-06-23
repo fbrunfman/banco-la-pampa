@@ -114,7 +114,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Editar usuario</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="resetEdit">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -179,15 +179,9 @@
                                     </div>
                                     <input type="text" name="equipo"  v-model="usuario.equipo" class="form-control col-6" id="">
                                 </div>
-                                <div class="d-flex justify-content-center flex-row align-items-center my-2">
-                                    <div class="col-2">
-                                        <span class="mr-2">Legajo:</span>
-                                    </div>
-                                    <input type="text" name="legajo" class="form-control col-6" v-model="usuario.legajo" id="">
-                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="resetEdit">Cerrar</button>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal" @click="editarUsuario" v-if="traerUsuario">Guardar</button>
                                 <button type="button" class="btn btn-primary" @click="getUser" v-if="!traerUsuario">Traer usuario</button>
                             </div>
@@ -260,6 +254,9 @@ export default {
                 alert('Usuario o contraseña inválidos')
             }
         },
+        resetEdit() {
+            this.traerUsuario = false
+        },
         crearUsuario() {
               var datos = new FormData(this.$refs.crearUsuario)
               datos.append('user', this.user)
@@ -276,6 +273,7 @@ export default {
             var datos = new FormData(this.$refs.editarUsuario)
             datos.append('user', this.user)
             datos.append('password', this.password)
+            datos.append('legajo', this.legajo)
             Axios.post('/api/editar-usuario', datos)
             .then(response => {
                 alert('Usuario editado correctamente')
