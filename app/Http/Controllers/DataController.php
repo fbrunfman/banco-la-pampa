@@ -76,7 +76,9 @@ class DataController extends Controller
             return 'Error de autenticación';
         }
 
-        $subidoPor = $request->subido_por;
+        $legajo = $request->subido_por;
+
+        $subidoPor = User::where('legajo', $legajo)->first()->id;
 
         if (is_null($subidoPor)) {
             return 'El campo subido por es requerido';
