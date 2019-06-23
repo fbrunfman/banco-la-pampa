@@ -12,6 +12,12 @@ class ArchivoController extends Controller
 	{
 		$archivos = Archivo::with('archivoUsuarios.user')->get();
 
+        if ($request->exists('seccion')) {
+                $seccion_id = $request->query('seccion');
+
+                $archivos = $archivos->where('seccion_id', $seccion_id);
+            }
+
 		return response()->json($archivos);
 	}
 
@@ -55,5 +61,5 @@ class ArchivoController extends Controller
     		'code' => 200
     	]);
 
-    }
+	}
 }
