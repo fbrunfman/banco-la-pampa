@@ -25,6 +25,7 @@ Route::post('/subir-archivos', 'DataController@subirArchivos');
 
 Route::post('/archivos', 'ArchivoController@index');
 Route::post('/like', 'ArchivoController@like');
+Route::post('/dislike', 'ArchivoController@dislike');
 
 Route::post('/crear-usuario', 'UserController@crearUsuario');
 Route::post('/borrar-usuario', 'UserController@borrarUsuario');
