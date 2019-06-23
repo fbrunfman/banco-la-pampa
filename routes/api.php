@@ -23,7 +23,7 @@ Route::post('/guardar-puntaje', 'PreguntaController@guardarPuntaje');
 Route::post('/subir-data-empleados', 'DataController@subirDataEmpleados');
 Route::post('/subir-archivos', 'DataController@subirArchivos');
 
-Route::get('/archivos', 'ArchivoController@index');
+Route::post('/archivos', 'ArchivoController@index');
 Route::post('/like', 'ArchivoController@like');
 
 Route::post('/crear-usuario', 'UserController@crearUsuario');
