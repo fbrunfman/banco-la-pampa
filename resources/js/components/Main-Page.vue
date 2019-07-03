@@ -35,7 +35,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="collapse_target">
                             <ul class="navbar-nav">
-                                <router-link to="proximamente">
+                                <router-link to="bingo">
                                     <li class="nav-item">
                                         <a class="nav-link text-center" href=""><strong>EL BINGO DE LOS PROTAGONISTAS</strong> </a>
                                     </li>
@@ -84,7 +84,7 @@
         <div id="carouselExampleControls" class="carousel slide mt-4" >
             <div class="carousel-inner main-foto">
                 <div class="carousel-item active">
-                 <img src="./img/contacta.png" alt="" srcset="">
+                 <img src="./img/bannerbingo.jpg" alt="" srcset="">
                 </div>
                 <div class="carousel-item">
                  <img src="./img/header-1.png" alt="" srcset="">
@@ -170,6 +170,22 @@
                             </div>
                             <div class="boton-sumar d-flex justify-content-end mr-2">
                                 <span class="sumar" @click="irCuenta">+</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="banner mx-4 my-2">
+                        <div class="banner-titulo-cuenta">
+                            <h3>Bingo de los Protagonistas</h3>
+                        </div>
+                        <div class="banner-img">
+                            <img src="./img/novedad-bingo.jpg" alt="" srcset="">
+                        </div>
+                        <div class="fondo-banner">
+                            <div class="banner-body p-3">
+                                <h5>Enterate los protagonistas de esta semana</h5>
+                            </div>
+                            <div class="boton-sumar d-flex justify-content-end mr-2">
+                                <span class="sumar" @click="irBingo">+</span>
                             </div>
                         </div>
                     </div>
@@ -402,7 +418,7 @@ export default {
                 })
         },
         irBingo() {
-            this.$router.push('/proximamente')
+            this.$router.push('/bingo')
         },
         irTrivia() {
             this.$router.push('/trivia')

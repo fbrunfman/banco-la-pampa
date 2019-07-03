@@ -6,34 +6,63 @@
             </div>
         </div>
         <div class="copete p-3">
-            <h3 class="copete-titulo">Por que no conocernos?</h3>
-            <span class="copete-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quasi, itaque molestiae nostrum nisi ut consectetur, quas illum commodi provident quod blanditiis ipsa vel distinctio molestias. Laborum eum sit expedita?</span>
-            <span class="copete-contacto mt-2 mb-4"> Envianos tu foto a <a href="mailto:"> xxxxxx@xxxxxx.com</a></span>
+            <h3 class="copete-titulo">COMENZÓ EL BINGO DE LOS PROTAGONISTAS</h3>
+            <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Bingo </strong></h3>
+            <div class="reglas ml-3">
+                <div class="my-2"> Todos los que forman parte del Banco de la Pampa recibirán un cartón para poder participar de "El Bingo de los Protagonistas". </div>
+                <div class="my-2"> Cada semana, se presentarán los "Protagonistas de la Semana".</div>
+                <div class="my-2"> Quienes tengan alguno de los protagonistas en su cartón, deberán tildarlo en el círculo de la foto correspondiente. </div>
+                <div class="my-2"> Las primeras 9 personas que completen su cartón y envíen un mail con el número de serie que figura en el mismo a contacto@60aniversario.com.ar con el asunto SOY GANADOR DEL BINGO, serán los ganadores.  </div>
+                <div class="my-2"> Se irán publicando los ganadores en las novedades del sitio. </div>
+                <div class="my-2">Todos los que hayan participado de "El Bingo de los Protagonistas" recibirán un premio del 60° Aniversario.</div>
+                <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
+            </div>
         </div>
         <div class="protagonistas-titulo p-3">
-            <h3> <strong> Protagonistas de la semana</strong></h3>
+            <h3> <strong> Protagonistas de la semana del 1 al 5 de Julio</strong></h3>
         </div>
         <div class="protagonistas-fotos p-3" >
             <div class="inner-container no-gutters">
-                <div class="row no-gutters">
-                    <div class="contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2" v-for="i in 9" :key="i">
-                        <div class="">
-                            <div class="protagonista-foto">
-                                <img src="./img/protagonista.jpg" alt="" srcset="">
-                            </div>
-                            <div class="protagonista-info">
-                                <div class="nombre"><span>Jose Perez</span></div>
-                                <div class="sucursal"><span>SUCURSAL XXX / AREA XXXXX</span></div>
-                            </div>
-                        </div>
+                <div class="contenedor-general-fotos">
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/bingo1foto1.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/bingo1foto2.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/bingo1foto3.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/bingo1foto4.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/bingo1foto5.jpg" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="contenedor-general-fotos-mobile">
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/CELULAR1-01.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/CELULAR2-01.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/CELULAR3-01.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/CELULAR4-01.jpg" alt="" srcset="">
+                    </div>
+                    <div class="contenedor-fotos my-3 mx-3">
+                        <img src="./img/CELULAR5-01.jpg" alt="" srcset="">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="protagonistas-titulo p-3">
+       <!--  <div class="protagonistas-titulo p-3">
             <h3> <strong> Protagonistas de las semanan anteriores</strong></h3>
-        </div>
-        <div class="semana-fotos" v-for="i in 10" :key="i">
+        </div> -->
+        <!-- <div class="semana-fotos" v-for="i in 10" :key="i">
             <h5 class="my-2 semana-texto p-3"><strong>Semana 20/05</strong></h5>
             <div class="protagonistas-fotos p-3" >
                 <div class="inner-container no-gutters">
@@ -52,7 +81,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -100,4 +129,25 @@ export default {
     box-shadow: 2px 2px 6px #8c8a8a;
     background-color: gainsboro;
 }
+
+.reglamento-titulo {
+    background-color: #dedede;
+}
+
+.contenedor-general-fotos-mobile {
+    display: none;
+}
+
+@media (max-width: 940px) {
+    .contenedor-general-fotos-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+    .contenedor-general-fotos {
+        display: none;
+    }
+}
+
+
 </style>
