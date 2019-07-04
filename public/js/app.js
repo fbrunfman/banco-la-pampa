@@ -1901,8 +1901,8 @@ __webpack_require__.r(__webpack_exports__);
       if (this.archivos[i].archivo_usuarios.some(function (archivo) {
         return archivo.user_id == _this2.infoEmpleado.id;
       })) {
-        return;
-      } else if (this.alreadyLike == false) {
+        this.deleteLike(i);
+      } else {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/like', {
           archivo_id: this.archivos[i].id,
           user_id: this.infoEmpleado.id
@@ -1912,6 +1912,18 @@ __webpack_require__.r(__webpack_exports__);
           _this2.alreadyLike = true;
         });
       }
+    },
+    deleteLike: function deleteLike(i) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/dislike', {
+        archivo_id: this.archivos[i].id,
+        user_id: this.infoEmpleado.id
+      }).then(function (response) {
+        _this3.getVideos();
+
+        _this3.alreadyLike = false;
+      });
     }
   }
 });
@@ -17160,7 +17172,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "copete p-3" }, [
       _c("h3", { staticClass: "copete-titulo" }, [
-        _vm._v("Contanos tu anecdota mas divertida en un video")
+        _vm._v("Contanos tu anécdota más divertida en un video")
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "copete-body" }, [
@@ -17180,7 +17192,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
       _c("h3", [
-        _c("strong", [_vm._v("Dale like a las anecdotas que mas te gustan")])
+        _c("strong", [_vm._v("Dale like a las anécdotas que más te gustan")])
       ])
     ])
   },
@@ -19600,7 +19612,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "mt-4 h5" }, [
-                    _vm._v("Los integrantes de tu equipo son:")
+                    _vm._v("Los integrantes de tu equipo son :")
                   ]),
                   _vm._v(" "),
                   _vm._l(Object.values(_vm.infoEquipo), function(empleado, i) {

@@ -6,12 +6,12 @@
             </div>
         </div>
         <div class="copete p-3">
-            <h3 class="copete-titulo">Contanos tu anecdota mas divertida en un video</h3>
+            <h3 class="copete-titulo">Contanos tu anécdota más divertida en un video</h3>
             <span class="copete-body">Animate a contarnos en un vídeo casero, alguna anécdota que hayas vivido vos y/o tus compañeros en el Banco. El mismo deberá tener una duración máxima de 2 minutos. Dale like a las anécdotas que más te gusten! La anécdota ganadora tendrá un premio!!!</span>
             <span class="copete-contacto mt-2 mb-4"> <strong>Envianos tu video por whatsapp al 11-4199-8282</strong> </span>
         </div>
         <div class="protagonistas-titulo p-3">
-            <h3> <strong>Dale like a las anecdotas que mas te gustan</strong></h3>
+            <h3> <strong>Dale like a las anécdotas que más te gustan</strong></h3>
         </div>
         <div class="protagonistas-fotos p-3" >
             <div class="inner-container no-gutters">
@@ -131,9 +131,9 @@ export default {
             if (this.archivos[i].archivo_usuarios.some(archivo => {
                 return archivo.user_id == this.infoEmpleado.id
             })) {
-                return
+                this.deleteLike(i)
             }
-            else if (this.alreadyLike == false) {
+            else {
                 Axios.post('/api/like', {
                     archivo_id: this.archivos[i].id,
                     user_id: this.infoEmpleado.id
@@ -143,6 +143,16 @@ export default {
                     this.alreadyLike = true
                 })
             }
+        },
+        deleteLike(i) {
+            Axios.post('/api/dislike', {
+                    archivo_id: this.archivos[i].id,
+                    user_id: this.infoEmpleado.id
+                })
+                .then(response => {
+                    this.getVideos();
+                    this.alreadyLike = false;
+                })
         }
     }
 }

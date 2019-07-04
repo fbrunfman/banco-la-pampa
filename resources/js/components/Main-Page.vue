@@ -272,7 +272,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="h5">Tu equipo es el número <strong>{{infoEmpleado.equipo}}</strong> </div>
-                            <div class="mt-4 h5">Los integrantes de tu equipo son:</div>
+                            <div class="mt-4 h5">Los integrantes de tu equipo son :</div>
                             <div class="h6" v-for="(empleado, i) in Object.values(infoEquipo)" :key="i">
                                 <div>&#128073; <strong>{{empleado.nombre}} {{empleado.apellido}}</strong>  - Área: {{empleado.area}} - Email: {{empleado.correo}} </div>
                             </div>
