@@ -62,8 +62,8 @@ export default {
     name: 'Login',
     data() {
         return {
-            username: '',
-            password: '',
+                username: '',
+                password: '',
             cargando: false,
             avisoApellido: false
         }

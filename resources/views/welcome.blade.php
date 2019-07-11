@@ -29,6 +29,6 @@
         </div>
       </div>
 
-    <script src="{{ asset('js/app.js?v=12345')}}"></script>
+    <script src="{{ asset('js/app.js?v=123456666888')}}"></script>
     </body>
 </html>

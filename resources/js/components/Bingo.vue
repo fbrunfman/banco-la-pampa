@@ -19,27 +19,24 @@
             </div>
         </div>
         <div class="protagonistas-titulo p-3">
-            <h3> <strong> Protagonistas de la semana del 1 al 5 de Julio</strong></h3>
+            <h3> <strong> Protagonistas de la semana del 10 al 15 de Julio</strong></h3>
         </div>
         <div class="protagonistas-fotos p-3" >
             <div class="inner-container no-gutters">
-                <div class="contenedor-general-fotos">
+                <div class="contenedor-general-fotos text-center">
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo1foto1.jpg" alt="" srcset="">
+                        <img src="./img/bingo/2-1-01.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo1foto2.jpg" alt="" srcset="">
+                        <img src="./img/bingo/2-2-01.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo1foto3.jpg" alt="" srcset="">
+                        <img src="./img/bingo/2-3-01.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo1foto4.jpg" alt="" srcset="">
+                        <img src="./img/bingo/2-4-01.jpg" alt="" srcset="">
                     </div>
-                    <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo1foto5.jpg" alt="" srcset="">
-                    </div>
-                </div>
+                </div><!--
                 <div class="contenedor-general-fotos-mobile">
                     <div class="contenedor-fotos my-3 mx-3">
                         <img src="./img/CELULAR1-01.jpg" alt="" srcset="">
@@ -56,6 +53,46 @@
                     <div class="contenedor-fotos my-3 mx-3">
                         <img src="./img/CELULAR5-01.jpg" alt="" srcset="">
                     </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="contenedor-bingo-pasado">
+            <div class="protagonistas-titulo anterior p-2" data-toggle="collapse" data-target="#collapseSemanaUno" aria-expanded="false" aria-controls="collapseSemanaUno">
+                <h3 class="titulo-anterior"> <strong> Protagonistas de la semana del 1 al 5 de Julio</strong></h3>
+            </div>
+            <div class="protagonistas-fotos p-3 collapse" id="collapseSemanaUno">
+                <div class="inner-container no-gutters">
+                    <div class="contenedor-general-fotos text-center">
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/1-CO1-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/1-CO2-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/1-CO3-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/1-CO4-01.jpg" alt="" srcset="">
+                        </div>
+                    </div><!--
+                    <div class="contenedor-general-fotos-mobile">
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/CELULAR1-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/CELULAR2-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/CELULAR3-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/CELULAR4-01.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/CELULAR5-01.jpg" alt="" srcset="">
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -138,7 +175,9 @@ export default {
     display: none;
 }
 
-@media (max-width: 940px) {
+
+
+/* @media (max-width: 940px) {
     .contenedor-general-fotos-mobile {
     display: flex;
     flex-direction: column;
@@ -148,6 +187,28 @@ export default {
         display: none;
     }
 }
+ */
+.contenedor-fotos img {
+    width: 75%;
+}
 
+.contenedor-bingo-pasado {
+    margin-top: -1rem;
+    cursor: pointer;
+    :hover {
+        background-color: rgb(192, 190, 190);
+    }
+}
+
+.titulo-anterior {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.anterior {
+    :hover {
+        opacity: .8;
+    }
+}
 
 </style>

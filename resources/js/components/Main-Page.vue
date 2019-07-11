@@ -170,22 +170,6 @@
                             </div>
                         </div>
                     </div>
-                     <div class="banner mx-4 my-2">
-                        <div class="banner-titulo-cuenta">
-                            <h3>Bingo de los Protagonistas</h3>
-                        </div>
-                        <div class="banner-img">
-                            <img src="./img/novedad-bingo.jpg" alt="" srcset="">
-                        </div>
-                        <div class="fondo-banner">
-                            <div class="banner-body p-3">
-                                <h5>Enterate los protagonistas de esta semana</h5>
-                            </div>
-                            <div class="boton-sumar d-flex justify-content-end mr-2">
-                                <span class="sumar" @click="irBingo">+</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -220,14 +204,14 @@
                         </div> -->
                     </div>
                 </router-link>
-            <router-link to="trivia">
+            <router-link to="bingo">
               <div class="banner-novedad mx-4 my-2" data-toggle="modal" data-target=".bd-example-modal-xl">
                 <div class="titulo-novedad p-3">
                     <h3>Novedades:</h3>
-                    <h5>Trivia:</h5>
+                    <h5>Bingo de los protagonistas:</h5>
                 </div>
                 <div class="novedad-img">
-                     <img class="imagen-novedad" src="./img/novedad-ganadores.jpg" alt="" srcset="">
+                     <img class="imagen-novedad" src="./img/novedad-bingo.jpg" alt="" srcset="">
                 </div>
                 <div class="d-flex justify-content-center p-4 d-md-none">
                     <button @click="activarCollapse" class="btn btn-primary d-md-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -237,11 +221,11 @@
                 </div>
                 <div v-if="collapseOn" class="collapse" id="collapseExample">
                     <div class="banner-body p-3">
-                        <span>Enterate quiénes son los ganadores de la Trivia N°1 </span>
+                        <span>Enterate los protagonistas de la semana </span>
                     </div>
                 </div>
                  <div class="banner-body no-collapse  p-3">
-                        <span class="h5"> Enterate quiénes son los ganadores de la Trivia N°1 </span>
+                        <span class="h5"> Enterate los protagonistas de la semana </span>
                 </div>
                <!--  <div class="boton-sumar  justify-content-end mr-2">
                     <span class="sumar">+</span>
