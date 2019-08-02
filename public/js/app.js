@@ -2063,11 +2063,155 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Bingo',
+  data: function data() {
+    return {
+      mostrarBingo1: false,
+      mostrarBingo2: false,
+      mostrarBingo3: false,
+      mostrarBingo4: false
+    };
+  },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
+  },
+  methods: {
+    showPast1: function showPast1() {
+      this.mostrarBingo1 = !this.mostrarBingo1;
+    },
+    showPast2: function showPast2() {
+      this.mostrarBingo2 = !this.mostrarBingo2;
+    },
+    showPast3: function showPast3() {
+      this.mostrarBingo3 = !this.mostrarBingo3;
+    },
+    showPast4: function showPast4() {
+      this.mostrarBingo4 = !this.mostrarBingo4;
+    }
   }
 });
 
@@ -3206,6 +3350,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3217,7 +3363,7 @@ __webpack_require__.r(__webpack_exports__);
       respuestasCorrectas: '',
       ocultarTrivia: false,
       mostrarTrivia: false,
-      proximamente: true,
+      proximamente: false,
       desactivarTrivia: true
     };
   },
@@ -3240,7 +3386,7 @@ __webpack_require__.r(__webpack_exports__);
     traerPreguntas: function traerPreguntas() {
       var _this = this;
 
-      var url = '/api/preguntas?mes=' + 1
+      var url = '/api/preguntas?mes=' + 2
       /* se harcodea el mes*/
       + '&hecha=' + this.infoEmpleado.equipo;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
@@ -3259,11 +3405,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.infoEmpleado.equipo !== 0) {
         delete this.preguntas.hecha;
-        var counter = 0;
-        console.log(this.preguntas[0].respuestas);
+        var counter = 0; // console.log(this.preguntas[0].respuestas);
 
         for (var i = 0; i < Object.values(this.preguntas).length; i++) {
-          var resps = this.preguntas[i].respuestas;
+          var resps = Object.values(this.preguntas)[i].respuestas;
 
           if (resps.filter(function (respuesta) {
             return respuesta.es_correcta == 1;
@@ -3276,7 +3421,7 @@ __webpack_require__.r(__webpack_exports__);
         var url = '/api/guardar-puntaje';
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
           equipo_id: this.infoEmpleado.equipo,
-          mes: 1,
+          mes: 2,
           //se harcodea el mes en curso\
           puntaje: this.respuestasCorrectas
         }).then(function (response) {
@@ -14484,7 +14629,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-be4da558] {\n  width: 100vw;\n}\n.copete[data-v-be4da558] {\n  display: grid;\n}\n.copete a[data-v-be4da558] {\n  color: #efb607;\n}\n.copete-titulo[data-v-be4da558] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-be4da558] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-be4da558] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-be4da558] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.reglamento-titulo[data-v-be4da558] {\n  background-color: #dedede;\n}\n.contenedor-general-fotos-mobile[data-v-be4da558] {\n  display: none;\n}\n\n/* @media (max-width: 940px) {\n    .contenedor-general-fotos-mobile {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    }\n    .contenedor-general-fotos {\n        display: none;\n    }\n}\n */\n.contenedor-fotos img[data-v-be4da558] {\n  width: 75%;\n}\n.contenedor-bingo-pasado[data-v-be4da558] {\n  margin-top: -1rem;\n  cursor: pointer;\n}\n.contenedor-bingo-pasado[data-v-be4da558] :hover {\n  background-color: #c0bebe;\n}\n.titulo-anterior[data-v-be4da558] {\n  margin: 0;\n  font-size: 1.1rem;\n}\n.anterior[data-v-be4da558] :hover {\n  opacity: 0.8;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-be4da558] {\n  width: 100vw;\n}\n.copete[data-v-be4da558] {\n  display: grid;\n}\n.copete a[data-v-be4da558] {\n  color: #efb607;\n}\n.copete-titulo[data-v-be4da558] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-be4da558] {\n  background-color: gainsboro;\n  color: #009e00;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-be4da558] {\n  max-width: 260px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-be4da558] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.reglamento-titulo[data-v-be4da558] {\n  background-color: #dedede;\n}\n.contenedor-general-fotos-mobile[data-v-be4da558] {\n  display: none;\n}\n@media (max-width: 940px) {\n.contenedor-general-fotos-mobile[data-v-be4da558] {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n}\n.contenedor-general-fotos[data-v-be4da558] {\n    display: none;\n}\n.pasado-uno[data-v-be4da558] {\n    display: none;\n}\n}\n.contenedor-fotos img[data-v-be4da558] {\n  width: 75%;\n}\n.contenedor-bingo-pasado[data-v-be4da558] {\n  margin-top: -1rem;\n  cursor: pointer;\n}\n.titulo-anterior[data-v-be4da558] {\n  margin: 0;\n  font-size: 1.1rem;\n}\n.anterior[data-v-be4da558] :hover {\n  opacity: 0.8;\n}", ""]);
 
 // exports
 
@@ -14598,7 +14743,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete-pregunta[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  background-color: #e44737;\n  color: white;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 36px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 20px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.reglas[data-v-2f3251a4] {\n  color: #5a5858;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  /*  background-color: #e44737;\n   color: white; */\n  display: none;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.trivia-body-5[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 22px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 13px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -17317,203 +17462,795 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "contenedor mt-3" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _vm._m(3),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-target": "#collapseSemanaCuatro",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaCuatro"
+          },
+          on: { click: _vm.showPast4 }
+        },
+        [_vm._m(4)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo4
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaCuatro" }
+            },
+            [_vm._m(5)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-target": "#collapseSemanaTres",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaTres"
+          },
+          on: { click: _vm.showPast3 }
+        },
+        [_vm._m(6)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo3
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaTres" }
+            },
+            [_vm._m(7)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-target": "#collapseSemanaDos",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaDos"
+          },
+          on: { click: _vm.showPast2 }
+        },
+        [_vm._m(8)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo2
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaDos" }
+            },
+            [_vm._m(9)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
+            "data-target": "#collapseSemanaUno",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaUno"
+          },
+          on: { click: _vm.showPast1 }
+        },
+        [_vm._m(10)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo1
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaUno" }
+            },
+            [_vm._m(11)]
+          )
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contenedor mt-3" }, [
-      _c("div", { staticClass: "max-container no-gutters" }, [
-        _c("div", { staticClass: "main-banner" }, [
+    return _c("div", { staticClass: "max-container no-gutters" }, [
+      _c("div", { staticClass: "main-banner" }, [
+        _c("img", {
+          staticClass: "main-foto",
+          attrs: { src: __webpack_require__(/*! ./img/bingo.jpg */ "./resources/js/components/img/bingo.jpg"), alt: "", srcset: "" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "copete p-3" }, [
+      _c("h3", { staticClass: "copete-titulo" }, [
+        _vm._v("COMENZÓ EL BINGO DE LOS PROTAGONISTAS")
+      ]),
+      _vm._v(" "),
+      _c("h3", { staticClass: "reglamento-titulo text-success p-4" }, [
+        _c("strong", [_vm._v(" Reglamento Bingo ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "reglas ml-3" }, [
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            ' Todos los que forman parte del Banco de la Pampa recibirán un cartón para poder participar de "El Bingo de los Protagonistas". '
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            ' Cada semana, se presentarán los "Protagonistas de la Semana".'
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " Quienes tengan alguno de los protagonistas en su cartón, deberán tildarlo en el círculo de la foto correspondiente. "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " Las primeras 9 personas que completen su cartón y envíen un mail con el número de serie que figura en el mismo a contacto@60aniversario.com.ar con el asunto SOY GANADOR DEL BINGO, serán los ganadores.  "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            " Se irán publicando los ganadores en las novedades del sitio. "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-2" }, [
+          _vm._v(
+            'Todos los que hayan participado de "El Bingo de los Protagonistas" recibirán un premio del 60° Aniversario.'
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
+      _c("h3", [
+        _c("strong", [
+          _vm._v(" Protagonistas de la semana del 29 de Julio al 02 de Agosto")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "protagonistas-fotos p-3" }, [
+      _c("div", { staticClass: "inner-container no-gutters" }, [
+        _c("div", { staticClass: "contenedor-general-fotos  text-center" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5-01-01.jpg */ "./resources/js/components/img/bingo/semana5/5-01-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5-02-01.jpg */ "./resources/js/components/img/bingo/semana5/5-02-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5-03-01.jpg */ "./resources/js/components/img/bingo/semana5/5-03-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5-04-01.jpg */ "./resources/js/components/img/bingo/semana5/5-04-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL1.jpg */ "./resources/js/components/img/bingo/semana5/5CEL1.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL2.jpg */ "./resources/js/components/img/bingo/semana5/5CEL2.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL3.jpg */ "./resources/js/components/img/bingo/semana5/5CEL3.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL4.jpg */ "./resources/js/components/img/bingo/semana5/5CEL4.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL5.jpg */ "./resources/js/components/img/bingo/semana5/5CEL5.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL6.jpg */ "./resources/js/components/img/bingo/semana5/5CEL6.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL7.jpg */ "./resources/js/components/img/bingo/semana5/5CEL7.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [
+        _vm._v(" Protagonistas de la semana del 22 al 26 de Julio")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana4/1-01.jpg */ "./resources/js/components/img/bingo/semana4/1-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana4/2-01.jpg */ "./resources/js/components/img/bingo/semana4/2-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana4/3-01.jpg */ "./resources/js/components/img/bingo/semana4/3-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana4/4-01.jpg */ "./resources/js/components/img/bingo/semana4/4-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
           _c("img", {
-            staticClass: "main-foto",
-            attrs: { src: __webpack_require__(/*! ./img/bingo.jpg */ "./resources/js/components/img/bingo.jpg"), alt: "", srcset: "" }
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL1.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL1.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL2.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL2.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL3.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL3.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL4.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL4.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL5.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL5.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL6.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL6.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana4/4-CEL7.jpg */ "./resources/js/components/img/bingo/semana4/4-CEL7.jpg"),
+              alt: "",
+              srcset: ""
+            }
           })
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "copete p-3" }, [
-        _c("h3", { staticClass: "copete-titulo" }, [
-          _vm._v("COMENZÓ EL BINGO DE LOS PROTAGONISTAS")
-        ]),
-        _vm._v(" "),
-        _c("h3", { staticClass: "reglamento-titulo text-success p-4" }, [
-          _c("strong", [_vm._v(" Reglamento Bingo ")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "reglas ml-3" }, [
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              ' Todos los que forman parte del Banco de la Pampa recibirán un cartón para poder participar de "El Bingo de los Protagonistas". '
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              ' Cada semana, se presentarán los "Protagonistas de la Semana".'
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              " Quienes tengan alguno de los protagonistas en su cartón, deberán tildarlo en el círculo de la foto correspondiente. "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              " Las primeras 9 personas que completen su cartón y envíen un mail con el número de serie que figura en el mismo a contacto@60aniversario.com.ar con el asunto SOY GANADOR DEL BINGO, serán los ganadores.  "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              " Se irán publicando los ganadores en las novedades del sitio. "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "my-2" }, [
-            _vm._v(
-              'Todos los que hayan participado de "El Bingo de los Protagonistas" recibirán un premio del 60° Aniversario.'
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "protagonistas-titulo p-3" }, [
-        _c("h3", [
-          _c("strong", [
-            _vm._v(" Protagonistas de la semana del 10 al 15 de Julio")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "protagonistas-fotos p-3" }, [
-        _c("div", { staticClass: "inner-container no-gutters" }, [
-          _c("div", { staticClass: "contenedor-general-fotos text-center" }, [
-            _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-              _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ./img/bingo/2-1-01.jpg */ "./resources/js/components/img/bingo/2-1-01.jpg"),
-                  alt: "",
-                  srcset: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-              _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ./img/bingo/2-2-01.jpg */ "./resources/js/components/img/bingo/2-2-01.jpg"),
-                  alt: "",
-                  srcset: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-              _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ./img/bingo/2-3-01.jpg */ "./resources/js/components/img/bingo/2-3-01.jpg"),
-                  alt: "",
-                  srcset: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-              _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ./img/bingo/2-4-01.jpg */ "./resources/js/components/img/bingo/2-4-01.jpg"),
-                  alt: "",
-                  srcset: ""
-                }
-              })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contenedor-bingo-pasado" }, [
-        _c(
-          "div",
-          {
-            staticClass: "protagonistas-titulo anterior p-2",
-            attrs: {
-              "data-toggle": "collapse",
-              "data-target": "#collapseSemanaUno",
-              "aria-expanded": "false",
-              "aria-controls": "collapseSemanaUno"
-            }
-          },
-          [
-            _c("h3", { staticClass: "titulo-anterior" }, [
-              _c("strong", [
-                _vm._v(" Protagonistas de la semana del 1 al 5 de Julio")
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "protagonistas-fotos p-3 collapse",
-            attrs: { id: "collapseSemanaUno" }
-          },
-          [
-            _c("div", { staticClass: "inner-container no-gutters" }, [
-              _c(
-                "div",
-                { staticClass: "contenedor-general-fotos text-center" },
-                [
-                  _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(/*! ./img/bingo/1-CO1-01.jpg */ "./resources/js/components/img/bingo/1-CO1-01.jpg"),
-                        alt: "",
-                        srcset: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(/*! ./img/bingo/1-CO2-01.jpg */ "./resources/js/components/img/bingo/1-CO2-01.jpg"),
-                        alt: "",
-                        srcset: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(/*! ./img/bingo/1-CO3-01.jpg */ "./resources/js/components/img/bingo/1-CO3-01.jpg"),
-                        alt: "",
-                        srcset: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(/*! ./img/bingo/1-CO4-01.jpg */ "./resources/js/components/img/bingo/1-CO4-01.jpg"),
-                        alt: "",
-                        srcset: ""
-                      }
-                    })
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [
+        _vm._v(" Protagonistas de la semana del 15 al 19 de Julio")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana3/3ersemana-1.jpg */ "./resources/js/components/img/bingo/semana3/3ersemana-1.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana3/3ersemana-2.jpg */ "./resources/js/components/img/bingo/semana3/3ersemana-2.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana3/3ersemana-3.jpg */ "./resources/js/components/img/bingo/semana3/3ersemana-3.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana3/3ersemana-4.jpg */ "./resources/js/components/img/bingo/semana3/3ersemana-4.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL1.jpg */ "./resources/js/components/img/bingo/semana3/CEL1.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL2.jpg */ "./resources/js/components/img/bingo/semana3/CEL2.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL3.jpg */ "./resources/js/components/img/bingo/semana3/CEL3.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL4.jpg */ "./resources/js/components/img/bingo/semana3/CEL4.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL5.jpg */ "./resources/js/components/img/bingo/semana3/CEL5.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL6.jpg */ "./resources/js/components/img/bingo/semana3/CEL6.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana3/CEL7.jpg */ "./resources/js/components/img/bingo/semana3/CEL7.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [_vm._v(" Protagonistas de la semana del 8 al 12 de Julio")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/2-1-01.jpg */ "./resources/js/components/img/bingo/2-1-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/2-2-01.jpg */ "./resources/js/components/img/bingo/2-2-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/2-3-01.jpg */ "./resources/js/components/img/bingo/2-3-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/2-4-01.jpg */ "./resources/js/components/img/bingo/2-4-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-01.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-02.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-02.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-03.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-03.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-04.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-04.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-05.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-05.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-06.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-06.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/bingo-celu/CEL-07.jpg */ "./resources/js/components/img/bingo/bingo-celu/CEL-07.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [_vm._v(" Protagonistas de la semana del 1 al 5 de Julio")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        { staticClass: "contenedor-general-fotos-anterior text-center" },
+        [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/1-CO1-01.jpg */ "./resources/js/components/img/bingo/1-CO1-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/1-CO2-01.jpg */ "./resources/js/components/img/bingo/1-CO2-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/1-CO3-01.jpg */ "./resources/js/components/img/bingo/1-CO3-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/1-CO4-01.jpg */ "./resources/js/components/img/bingo/1-CO4-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -20443,9 +21180,13 @@ var render = function() {
           _vm._v(" "),
           !_vm.desactivarTrivia
             ? _c("div", { staticClass: "copete p-5" }, [
-                _c("h2", { staticClass: "copete-pregunta mb-3" }, [
+                _c("h1", { staticClass: "copete-pregunta mb-3" }, [
+                  _vm._v('TRIVIA II : "No te tenía en esa"')
+                ]),
+                _vm._v(" "),
+                _c("h2", [
                   _vm._v(
-                    "¡Jugá con tus compañeros de equipo en la trivia y participá por premios!"
+                    "Se acerca el Día del Amigo y qué mejor que conocernos más entre todos."
                   )
                 ]),
                 _vm._v(" "),
@@ -20713,25 +21454,31 @@ var staticRenderFns = [
     return _c("div", { staticClass: "reglas ml-3" }, [
       _c("div", { staticClass: "my-2" }, [
         _vm._v(
-          " El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! "
+          " Todos los equipos que respondan correctamente, participarán de un sorteo para definir al Equipo Ganador."
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "my-2" }, [
         _vm._v(
-          " Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá"
+          " Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá."
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "my-2" }, [
         _vm._v(
-          " La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga "
+          " La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga."
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "my-2" }, [
         _vm._v(
-          " En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. "
+          " Todos los equipos que respondan correctamente, recibirán un premio del 60° Aniversario.  "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-2" }, [
+        _vm._v(
+          " Al finalizar la Trivia, se publicarán las respuestas correctas, los equipos que respondieron correctamente, y el Equipo Ganador. "
         )
       ]),
       _vm._v(" "),
@@ -20752,7 +21499,7 @@ var staticRenderFns = [
       [
         _c("img", {
           staticClass: "img-ganadores",
-          attrs: { src: __webpack_require__(/*! ./img/ganadores.jpg */ "./resources/js/components/img/ganadores.jpg"), alt: "", srcset: "" }
+          attrs: { src: __webpack_require__(/*! ./img/ganadores2.jpg */ "./resources/js/components/img/ganadores2.jpg"), alt: "", srcset: "" }
         })
       ]
     )
@@ -38245,6 +38992,446 @@ module.exports = "/images/2-4-01.jpg?51d14a4a040ebe7e1da98c219db8507b";
 
 /***/ }),
 
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-01.jpg?0bfc9c3aab13c7bd387f9244a9d236f0";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-02.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-02.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-02.jpg?63cb40520c0b513c9cc912df79ef7d21";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-03.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-03.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-03.jpg?d96f0a8cf14a508c2e1bb03d4ebf769d";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-04.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-04.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-04.jpg?aa6de4bb5612f96a748ed720a6fd99d0";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-05.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-05.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-05.jpg?d61069849cfc0e594d06440675bdd67c";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-06.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-06.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-06.jpg?8c0347806ae23dca963f8fe5c3361b77";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/bingo-celu/CEL-07.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/bingo-celu/CEL-07.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL-07.jpg?da9158ae8264516ad01e876c2083a01a";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/3ersemana-1.jpg":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/3ersemana-1.jpg ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3ersemana-1.jpg?56d80efcede9a70a0aea247154375bc8";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/3ersemana-2.jpg":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/3ersemana-2.jpg ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3ersemana-2.jpg?0de47c703d5e4e10996c8fbc81469be5";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/3ersemana-3.jpg":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/3ersemana-3.jpg ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3ersemana-3.jpg?e93d02dd3fc08c44b156b9be44022c2e";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/3ersemana-4.jpg":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/3ersemana-4.jpg ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3ersemana-4.jpg?ca0656aa81776a37ce7569f03023517f";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL1.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL1.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL1.jpg?7af566342c226fb9c0551181ef674b91";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL2.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL2.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL2.jpg?982dde211ed4d9f67a1528826d0eb8a0";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL3.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL3.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL3.jpg?e68783f66911f1e1a46de0fc8809c014";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL4.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL4.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL4.jpg?46167c43fa09d4e9a86035ae3bb16efa";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL5.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL5.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL5.jpg?c129660e3ef2fc30fa9aa118078fecf5";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL6.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL6.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL6.jpg?e4a68cc26e8864e2b92b8153d2621349";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana3/CEL7.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana3/CEL7.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CEL7.jpg?4b09280143d13f2819ff447c72026b29";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/1-01.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/1-01.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1-01.jpg?dba52f506643c519a34b628b20a38890";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/2-01.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/2-01.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/2-01.jpg?1063e0660356b621b1ef360939fe55f8";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/3-01.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/3-01.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3-01.jpg?6fd11ae569c5b22faf0accbc5a9c761c";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-01.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-01.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-01.jpg?40d9d022184966ad9612182eebb7c0e3";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL1.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL1.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL1.jpg?04a8d82516d3ff40f2c74627d16de5c5";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL2.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL2.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL2.jpg?d311ba4e9d739fcd43051647e5a10fee";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL3.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL3.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL3.jpg?62ce5af5bdf7c1001051c1f6e8c42bde";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL4.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL4.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL4.jpg?49fe00d647ea7c0a53777a0b16cb613f";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL5.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL5.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL5.jpg?afa403868852e780b409dd1eb20ed480";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL6.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL6.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL6.jpg?07cb9ec99359b8dda615835a26b4af6e";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana4/4-CEL7.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana4/4-CEL7.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4-CEL7.jpg?c8c8c0985f4c7fe4ad1ada847c215194";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5-01-01.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5-01-01.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5-01-01.jpg?bb2a17c7f60116685e860593a33dca11";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5-02-01.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5-02-01.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5-02-01.jpg?1b8509d1956aba46bfd12c788cc30686";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5-03-01.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5-03-01.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5-03-01.jpg?0d22b9bcd561648dc2f1798cd307f203";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5-04-01.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5-04-01.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5-04-01.jpg?4742215768a5ba751b2bdc00f69ba078";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL1.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL1.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL1.jpg?710c70d70ac908c47dec9d05dd8f4960";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL2.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL2.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL2.jpg?c7ac5c3605cf353b1fa956ad48bff66e";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL3.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL3.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL3.jpg?26f22a9caa8b54a1a15304bb6dda8ca4";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL4.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL4.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL4.jpg?c466aa5ec6a1244beb5357dff98bcac4";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL5.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL5.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL5.jpg?e19f941e1d9b748280fdee827c2fda22";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL6.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL6.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL6.jpg?c5fc6aaaca708700ad7228949ec9228d";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana5/5CEL7.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana5/5CEL7.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5CEL7.jpg?35ac9bf084e3e4e76187b611fc5626a4";
+
+/***/ }),
+
 /***/ "./resources/js/components/img/cuenta.jpg":
 /*!************************************************!*\
   !*** ./resources/js/components/img/cuenta.jpg ***!
@@ -38289,14 +39476,14 @@ module.exports = "/images/foto.jpg?cdc821c4ea9043875b0cc6215d06773c";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/ganadores.jpg":
-/*!***************************************************!*\
-  !*** ./resources/js/components/img/ganadores.jpg ***!
-  \***************************************************/
+/***/ "./resources/js/components/img/ganadores2.jpg":
+/*!****************************************************!*\
+  !*** ./resources/js/components/img/ganadores2.jpg ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/ganadores.jpg?e26be1a47b372499673eba4aa3955da3";
+module.exports = "/images/ganadores2.jpg?9c30145432cc084b386674a65b84b0cf";
 
 /***/ }),
 

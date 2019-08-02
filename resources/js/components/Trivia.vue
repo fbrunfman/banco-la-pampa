@@ -6,19 +6,21 @@
                     <img src="./img/trivia2.jpg" alt="" srcset="">
                 </div>
                 <div class="copete p-5" v-if="!desactivarTrivia">
-                    <h2 class="copete-pregunta mb-3">¡Jugá con tus compañeros de equipo en la trivia y participá por premios!</h2>
+                    <h1 class="copete-pregunta mb-3">TRIVIA II : "No te tenía en esa"</h1>
+                    <h2>Se acerca el Día del Amigo y qué mejor que conocernos más entre todos.</h2>
                     <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
                     <div class="reglas ml-3">
-                        <div class="my-2"> El equipo que responda correctamente la mayor cantidad de preguntas, será el ganador de los premios! </div>
-                        <div class="my-2"> Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá</div>
-                        <div class="my-2"> La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga </div>
-                        <div class="my-2"> En caso de empate con otros equipos, ganará el primero que haya completado y enviado la Trivia. </div>
+                        <div class="my-2"> Todos los equipos que respondan correctamente, participarán de un sorteo para definir al Equipo Ganador.</div>
+                        <div class="my-2"> Sólo podrá enviarse una sola Trivia resuelta por cada equipo, por lo tanto, deberán comunicarse y decidir quién responderá.</div>
+                        <div class="my-2"> La persona que responda lo hará por todo su equipo, es decir lo que TODOS DECIDAN, y ya no habrá opción para que otro lo haga.</div>
+                        <div class="my-2"> Todos los equipos que respondan correctamente, recibirán un premio del 60° Aniversario.  </div>
+                        <div class="my-2"> Al finalizar la Trivia, se publicarán las respuestas correctas, los equipos que respondieron correctamente, y el Equipo Ganador. </div>
                         <div class="my-2"> Aclaración: piensen bien antes de responder, ya que, una vez enviadas sus respuestas, no podrán corregirlas! </div>
                         <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
                     </div>
                 </div>
                 <div class="ganadores d-flex justify-content-center">
-                    <img src="./img/ganadores.jpg"  class="img-ganadores" alt="" srcset="">
+                    <img src="./img/ganadores2.jpg"  class="img-ganadores" alt="" srcset="">
                 </div>
                 <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false && !desactivarTrivia">
                     <div class="btn btn-success boton-comenzar" @click="showTrivia" > Comenzar TRIVIA AHORA</div>
@@ -99,7 +101,7 @@ export default {
             respuestasCorrectas: '',
             ocultarTrivia: false,
             mostrarTrivia: false,
-            proximamente: true,
+            proximamente: false,
             desactivarTrivia: true,
         }
     },
@@ -121,7 +123,7 @@ export default {
     },
     methods: {
         traerPreguntas() {
-            var url = '/api/preguntas?mes=' + 1 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
+            var url = '/api/preguntas?mes=' + 2 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
             Axios.get(url)
                     .then(response => {
                         this.preguntas = response.data
@@ -137,10 +139,10 @@ export default {
             if (this.infoEmpleado.equipo !== 0) {
                 delete this.preguntas.hecha
                 var counter = 0
-                console.log(this.preguntas[0].respuestas);
+                // console.log(this.preguntas[0].respuestas);
 
                 for (var i = 0; i < Object.values(this.preguntas).length; i++) {
-                    var resps = this.preguntas[i].respuestas
+                    var resps = Object.values(this.preguntas)[i].respuestas
                     if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
                         counter++
                     }
@@ -150,7 +152,7 @@ export default {
                 var url = '/api/guardar-puntaje'
                 Axios.post(url, {
                     equipo_id: this.infoEmpleado.equipo,
-                    mes: 1, //se harcodea el mes en curso\
+                    mes: 2, //se harcodea el mes en curso\
                     puntaje: this.respuestasCorrectas
                 })
                 .then(response => {
@@ -172,7 +174,7 @@ export default {
     width: 100vw;
 }
 
-.copete-pregunta {
+.copete {
     font-weight: bold;
     color: #efb607;
 }
@@ -206,6 +208,10 @@ export default {
     color: white;
 }
 
+.reglas {
+    color: rgb(90, 88, 88);
+}
+
 .contenedor-pregunta-2 {
     background-color: #7a8baa;
     color: white;
@@ -227,16 +233,21 @@ export default {
 }
 
 .contenedor-pregunta-5 {
-    background-color: #e44737;
-    color: white;
+   /*  background-color: #e44737;
+    color: white; */
+    display: none;
 }
 
 .trivia-body-6 {
     display: none;
 }
 
+.trivia-body-5 {
+    display: none;
+}
+
 .texto-trivia {
-    font-size: 36px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -259,7 +270,7 @@ export default {
         height: 250px;
     }
     .texto-trivia {
-        font-size: 20px;
+        font-size: 13px;
         font-weight: bold;
     }
 
