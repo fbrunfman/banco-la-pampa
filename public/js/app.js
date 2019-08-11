@@ -2185,6 +2185,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Bingo',
   data: function data() {
@@ -2192,7 +2235,8 @@ __webpack_require__.r(__webpack_exports__);
       mostrarBingo1: false,
       mostrarBingo2: false,
       mostrarBingo3: false,
-      mostrarBingo4: false
+      mostrarBingo4: false,
+      mostrarBingo5: false
     };
   },
   mounted: function mounted() {
@@ -2211,6 +2255,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showPast4: function showPast4() {
       this.mostrarBingo4 = !this.mostrarBingo4;
+    },
+    showPast5: function showPast5() {
+      this.mostrarBingo5 = !this.mostrarBingo5;
     }
   }
 });
@@ -3351,7 +3398,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3386,7 +3432,7 @@ __webpack_require__.r(__webpack_exports__);
     traerPreguntas: function traerPreguntas() {
       var _this = this;
 
-      var url = '/api/preguntas?mes=' + 2
+      var url = '/api/preguntas?mes=' + 3
       /* se harcodea el mes*/
       + '&hecha=' + this.infoEmpleado.equipo;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
@@ -3421,7 +3467,7 @@ __webpack_require__.r(__webpack_exports__);
         var url = '/api/guardar-puntaje';
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
           equipo_id: this.infoEmpleado.equipo,
-          mes: 2,
+          mes: 3,
           //se harcodea el mes en curso\
           puntaje: this.respuestasCorrectas
         }).then(function (response) {
@@ -14743,7 +14789,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.reglas[data-v-2f3251a4] {\n  color: #5a5858;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  /*  background-color: #e44737;\n   color: white; */\n  display: none;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.trivia-body-5[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 22px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 13px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.reglas[data-v-2f3251a4] {\n  color: #5a5858;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  /*  background-color: #e44737;\n   color: white; */\n  display: none;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.trivia-body-5[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 16px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 7px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -17478,13 +17524,41 @@ var render = function() {
           staticClass: "protagonistas-titulo anterior p-2",
           attrs: {
             "data-toggle": "collapse",
+            "data-target": "#collapseSemanaCinco",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaCinco"
+          },
+          on: { click: _vm.showPast5 }
+        },
+        [_vm._m(4)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo5
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaCinco" }
+            },
+            [_vm._m(5)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
             "data-target": "#collapseSemanaCuatro",
             "aria-expanded": "false",
             "aria-controls": "collapseSemanaCuatro"
           },
           on: { click: _vm.showPast4 }
         },
-        [_vm._m(4)]
+        [_vm._m(6)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo4
@@ -17494,7 +17568,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCuatro" }
             },
-            [_vm._m(5)]
+            [_vm._m(7)]
           )
         : _vm._e()
     ]),
@@ -17512,7 +17586,7 @@ var render = function() {
           },
           on: { click: _vm.showPast3 }
         },
-        [_vm._m(6)]
+        [_vm._m(8)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo3
@@ -17522,7 +17596,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaTres" }
             },
-            [_vm._m(7)]
+            [_vm._m(9)]
           )
         : _vm._e()
     ]),
@@ -17540,7 +17614,7 @@ var render = function() {
           },
           on: { click: _vm.showPast2 }
         },
-        [_vm._m(8)]
+        [_vm._m(10)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo2
@@ -17550,7 +17624,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaDos" }
             },
-            [_vm._m(9)]
+            [_vm._m(11)]
           )
         : _vm._e()
     ]),
@@ -17568,7 +17642,7 @@ var render = function() {
           },
           on: { click: _vm.showPast1 }
         },
-        [_vm._m(10)]
+        [_vm._m(12)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo1
@@ -17578,7 +17652,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaUno" }
             },
-            [_vm._m(11)]
+            [_vm._m(13)]
           )
         : _vm._e()
     ])
@@ -17657,7 +17731,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
       _c("h3", [
         _c("strong", [
-          _vm._v(" Protagonistas de la semana del 29 de Julio al 02 de Agosto")
+          _vm._v(" Protagonistas de la semana del 05 al 09 de Agosto")
         ])
       ])
     ])
@@ -17669,6 +17743,133 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-fotos p-3" }, [
       _c("div", { staticClass: "inner-container no-gutters" }, [
         _c("div", { staticClass: "contenedor-general-fotos  text-center" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-1-01.jpg */ "./resources/js/components/img/bingo/semana6/6-1-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-2-01.jpg */ "./resources/js/components/img/bingo/semana6/6-2-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-3-01.jpg */ "./resources/js/components/img/bingo/semana6/6-3-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-4-01.jpg */ "./resources/js/components/img/bingo/semana6/6-4-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-01.jpg */ "./resources/js/components/img/bingo/semana6/6-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-02.jpg */ "./resources/js/components/img/bingo/semana6/6-02.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-03.jpg */ "./resources/js/components/img/bingo/semana6/6-03.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-04.jpg */ "./resources/js/components/img/bingo/semana6/6-04.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-05.jpg */ "./resources/js/components/img/bingo/semana6/6-05.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana6/6-06.jpg */ "./resources/js/components/img/bingo/semana6/6-06.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [
+        _vm._v(" Protagonistas de la semana del 29 de Julio al 02 de Agosto")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
           _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
             _c("img", {
               attrs: {
@@ -17708,78 +17909,78 @@ var staticRenderFns = [
               }
             })
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL1.jpg */ "./resources/js/components/img/bingo/semana5/5CEL1.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL1.jpg */ "./resources/js/components/img/bingo/semana5/5CEL1.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL2.jpg */ "./resources/js/components/img/bingo/semana5/5CEL2.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL3.jpg */ "./resources/js/components/img/bingo/semana5/5CEL3.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL4.jpg */ "./resources/js/components/img/bingo/semana5/5CEL4.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL5.jpg */ "./resources/js/components/img/bingo/semana5/5CEL5.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL6.jpg */ "./resources/js/components/img/bingo/semana5/5CEL6.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana5/5CEL7.jpg */ "./resources/js/components/img/bingo/semana5/5CEL7.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ])
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL2.jpg */ "./resources/js/components/img/bingo/semana5/5CEL2.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL3.jpg */ "./resources/js/components/img/bingo/semana5/5CEL3.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL4.jpg */ "./resources/js/components/img/bingo/semana5/5CEL4.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL5.jpg */ "./resources/js/components/img/bingo/semana5/5CEL5.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL6.jpg */ "./resources/js/components/img/bingo/semana5/5CEL6.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana5/5CEL7.jpg */ "./resources/js/components/img/bingo/semana5/5CEL7.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ])
       ])
     ])
@@ -21181,13 +21382,7 @@ var render = function() {
           !_vm.desactivarTrivia
             ? _c("div", { staticClass: "copete p-5" }, [
                 _c("h1", { staticClass: "copete-pregunta mb-3" }, [
-                  _vm._v('TRIVIA II : "No te tenía en esa"')
-                ]),
-                _vm._v(" "),
-                _c("h2", [
-                  _vm._v(
-                    "Se acerca el Día del Amigo y qué mejor que conocernos más entre todos."
-                  )
+                  _vm._v('TRIVIA III : "No te tenía en esa II"')
                 ]),
                 _vm._v(" "),
                 _vm._m(1),
@@ -21195,8 +21390,6 @@ var render = function() {
                 _vm._m(2)
               ])
             : _vm._e(),
-          _vm._v(" "),
-          _vm._m(3),
           _vm._v(" "),
           _vm.ocultarTrivia == false &&
           _vm.mostrarTrivia == false &&
@@ -21391,9 +21584,9 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(4),
+                    _vm._m(3),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
                       _c(
@@ -21425,7 +21618,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -21488,21 +21681,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "ganadores d-flex justify-content-center" },
-      [
-        _c("img", {
-          staticClass: "img-ganadores",
-          attrs: { src: __webpack_require__(/*! ./img/ganadores2.jpg */ "./resources/js/components/img/ganadores2.jpg"), alt: "", srcset: "" }
-        })
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -39318,7 +39496,7 @@ module.exports = "/images/4-CEL7.jpg?c8c8c0985f4c7fe4ad1ada847c215194";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/5-01-01.jpg?bb2a17c7f60116685e860593a33dca11";
+module.exports = "/images/5-01-01.jpg?97d78b421efa3a95b858a55fdfe424f4";
 
 /***/ }),
 
@@ -39362,7 +39540,7 @@ module.exports = "/images/5-04-01.jpg?4742215768a5ba751b2bdc00f69ba078";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/5CEL1.jpg?710c70d70ac908c47dec9d05dd8f4960";
+module.exports = "/images/5CEL1.jpg?6b81967eae1e02bb71a42e95e2d1d9af";
 
 /***/ }),
 
@@ -39432,6 +39610,116 @@ module.exports = "/images/5CEL7.jpg?35ac9bf084e3e4e76187b611fc5626a4";
 
 /***/ }),
 
+/***/ "./resources/js/components/img/bingo/semana6/6-01.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-01.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-01.jpg?6eabc601d7b5745bf6887f994a6ffe9a";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-02.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-02.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-02.jpg?214b40b3a0d4be15bd7478a585aedf80";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-03.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-03.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-03.jpg?fb7db49faf02cd010f51b4ab3c7b7d26";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-04.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-04.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-04.jpg?68e52886f7d9bbfc3ead85036e732e20";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-05.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-05.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-05.jpg?eddcc4b7c59e0335a0f39182f655fd14";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-06.jpg":
+/*!************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-06.jpg ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-06.jpg?16c6bbd8c686ac2775b5ba9f5401538d";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-1-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-1-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-1-01.jpg?a812a2bb750a4d69d9ee3cbce2166673";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-2-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-2-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-2-01.jpg?f2b545c802f5eb8b1a74e3b8c0c0391b";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-3-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-3-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-3-01.jpg?81544f48fd993600a1576a505a84d85a";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana6/6-4-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana6/6-4-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/6-4-01.jpg?a67ea758634376aead597275c1fa807a";
+
+/***/ }),
+
 /***/ "./resources/js/components/img/cuenta.jpg":
 /*!************************************************!*\
   !*** ./resources/js/components/img/cuenta.jpg ***!
@@ -39473,17 +39761,6 @@ module.exports = "/images/exit.svg?e300aac38232b7af0b546fa398de5584";
 /***/ (function(module, exports) {
 
 module.exports = "/images/foto.jpg?cdc821c4ea9043875b0cc6215d06773c";
-
-/***/ }),
-
-/***/ "./resources/js/components/img/ganadores2.jpg":
-/*!****************************************************!*\
-  !*** ./resources/js/components/img/ganadores2.jpg ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/ganadores2.jpg?9c30145432cc084b386674a65b84b0cf";
 
 /***/ }),
 

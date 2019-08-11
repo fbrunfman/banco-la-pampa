@@ -6,8 +6,7 @@
                     <img src="./img/trivia2.jpg" alt="" srcset="">
                 </div>
                 <div class="copete p-5" v-if="!desactivarTrivia">
-                    <h1 class="copete-pregunta mb-3">TRIVIA II : "No te tenía en esa"</h1>
-                    <h2>Se acerca el Día del Amigo y qué mejor que conocernos más entre todos.</h2>
+                    <h1 class="copete-pregunta mb-3">TRIVIA III : "No te tenía en esa II"</h1>
                     <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
                     <div class="reglas ml-3">
                         <div class="my-2"> Todos los equipos que respondan correctamente, participarán de un sorteo para definir al Equipo Ganador.</div>
@@ -19,9 +18,9 @@
                         <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
                     </div>
                 </div>
-                <div class="ganadores d-flex justify-content-center">
+               <!--  <div class="ganadores d-flex justify-content-center">
                     <img src="./img/ganadores2.jpg"  class="img-ganadores" alt="" srcset="">
-                </div>
+                </div> -->
                 <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false && !desactivarTrivia">
                     <div class="btn btn-success boton-comenzar" @click="showTrivia" > Comenzar TRIVIA AHORA</div>
                 </div>
@@ -123,7 +122,7 @@ export default {
     },
     methods: {
         traerPreguntas() {
-            var url = '/api/preguntas?mes=' + 2 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
+            var url = '/api/preguntas?mes=' + 3 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
             Axios.get(url)
                     .then(response => {
                         this.preguntas = response.data
@@ -152,7 +151,7 @@ export default {
                 var url = '/api/guardar-puntaje'
                 Axios.post(url, {
                     equipo_id: this.infoEmpleado.equipo,
-                    mes: 2, //se harcodea el mes en curso\
+                    mes: 3, //se harcodea el mes en curso\
                     puntaje: this.respuestasCorrectas
                 })
                 .then(response => {
@@ -247,7 +246,7 @@ export default {
 }
 
 .texto-trivia {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -270,7 +269,7 @@ export default {
         height: 250px;
     }
     .texto-trivia {
-        font-size: 13px;
+        font-size: 7px;
         font-weight: bold;
     }
 
