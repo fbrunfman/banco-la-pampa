@@ -53,7 +53,7 @@
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <router-link to="proximamente">
+                                <router-link to="tu-foto-cuenta">
                                     <li class="nav-item">
                                         <a class="nav-link text-center" href=""> <strong>  TU FOTO CUENTA</strong></a>
                                     </li>
@@ -410,7 +410,7 @@ export default {
             this.$router.push('/anecdotario')
         },
         irCuenta() {
-            this.$router.push('/proximamente')
+            this.$router.push('/tu-foto-cuenta')
         },
 
     }

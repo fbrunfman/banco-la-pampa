@@ -121,7 +121,7 @@ export default {
             Axios.post('/api/archivos')
             .then(response => {
                 console.log('todo bien');
-                this.archivos = response.data
+                this.archivos = response.data.reverse().filter(archivo => archivo.seccion_id === 1)
             })
         },
         addLike(i) {

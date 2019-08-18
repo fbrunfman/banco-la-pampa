@@ -105,9 +105,10 @@ class DataController extends Controller
             return 'Archivo guardado correctamente';
 
         } else {
-            if($request->hasfile('archivo') && $seccion != 1) { 
+            if($request->hasfile('archivo') && $seccion != 1) {
 
               $archivo = $request->file('archivo');
+              $descripcion = $request->descripcion;
               $extension = $archivo->getClientOriginalExtension();
               $nombre = time() . '.' . $extension;
               $archivo->move('archivos/', $nombre);
@@ -116,6 +117,7 @@ class DataController extends Controller
 
               $archivoGuardado->nombre = $nombre;
               $archivoGuardado->ubicacion = 'archivos';
+              $archivoGuardado->descripcion = $descripcion;
               $archivoGuardado->seccion_id = $seccion;
               $archivoGuardado->subido_por = $subidoPor;
 

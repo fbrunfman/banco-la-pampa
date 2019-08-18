@@ -24,6 +24,10 @@
                         <input type="text" name="subido_por" id="" class="form-control col-6">
                     </div>
                     <div class="d-flex align-items-center my-2 justify-content-center">
+                        <span class="mr-2 col-3">Descripción: </span>
+                        <input type="text" name="descripcion" id="" class="form-control col-6">
+                    </div>
+                    <div class="d-flex align-items-center my-2 justify-content-center">
                         <span class="mr-2 col-3">Mes: </span>
                         <input type="number" name="mes" id="" class="form-control col-6">
                     </div>

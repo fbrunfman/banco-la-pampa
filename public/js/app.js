@@ -1888,7 +1888,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/archivos').then(function (response) {
         console.log('todo bien');
-        _this.archivos = response.data;
+        _this.archivos = response.data.reverse().filter(function (archivo) {
+          return archivo.seccion_id === 1;
+        });
       });
     },
     addLike: function addLike(i) {
@@ -2228,6 +2230,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Bingo',
   data: function data() {
@@ -2236,7 +2284,8 @@ __webpack_require__.r(__webpack_exports__);
       mostrarBingo2: false,
       mostrarBingo3: false,
       mostrarBingo4: false,
-      mostrarBingo5: false
+      mostrarBingo5: false,
+      mostrarBingo6: false
     };
   },
   mounted: function mounted() {
@@ -2258,6 +2307,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showPast5: function showPast5() {
       this.mostrarBingo5 = !this.mostrarBingo5;
+    },
+    showPast6: function showPast6() {
+      this.mostrarBingo6 = !this.mostrarBingo6;
     }
   }
 });
@@ -3151,7 +3203,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push('/anecdotario');
     },
     irCuenta: function irCuenta() {
-      this.$router.push('/proximamente');
+      this.$router.push('/tu-foto-cuenta');
     }
   }
 });
@@ -3196,6 +3248,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -3493,6 +3549,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3583,14 +3641,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Tu Foto Cuenta',
+  name: 'TuFotoCuenta',
+  data: function data() {
+    return {
+      archivos: []
+    };
+  },
   methods: {
-    selectImg: function selectImg(i) {}
+    addLike: function addLike(i) {
+      var _this = this;
+
+      console.log(this.archivos[i].archivo_usuarios.some(function (archivo) {
+        return archivo.user_id == _this.infoEmpleado.id;
+      }));
+
+      if (this.archivos[i].archivo_usuarios.some(function (archivo) {
+        return archivo.user_id == _this.infoEmpleado.id;
+      })) {
+        this.deleteLike(i);
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/like', {
+          archivo_id: this.archivos[i].id,
+          user_id: this.infoEmpleado.id
+        }).then(function (response) {
+          _this.getImg();
+
+          _this.alreadyLike = true;
+        });
+      }
+    },
+    deleteLike: function deleteLike(i) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/dislike', {
+        archivo_id: this.archivos[i].id,
+        user_id: this.infoEmpleado.id
+      }).then(function (response) {
+        _this2.getImg();
+
+        _this2.alreadyLike = false;
+      });
+    },
+    getImg: function getImg() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/archivos').then(function (response) {
+        console.log('todo bien');
+        _this3.archivos = response.data.reverse().filter(function (archivo) {
+          return archivo.seccion_id === 2;
+        });
+      });
+    }
   },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit('paginaPrincipal', false);
+    this.getImg();
+  },
+  computed: {
+    infoEmpleado: function infoEmpleado() {
+      return this.$store.state.infoEmpleado;
+    }
   }
 });
 
@@ -14808,7 +14931,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-08787490] {\n  width: 100vw;\n}\n.copete[data-v-08787490] {\n  display: grid;\n}\n.copete a[data-v-08787490] {\n  color: #efb607;\n}\n.info-video[data-v-08787490] {\n  font-size: 12px;\n}\n.copete-titulo[data-v-08787490] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-08787490] {\n  background-color: gainsboro;\n  color: #2db72d;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto img[data-v-08787490] {\n  max-width: 280px;\n  box-shadow: 2px 2px 16px #0f0f0f;\n  border-radius: 8px;\n}\n.semana-texto[data-v-08787490] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-08787490] {\n  width: 23px;\n  cursor: pointer;\n}\n.modal-content[data-v-08787490] {\n  background-color: transparent !important;\n  border: none !important;\n}\n.imagen-click[data-v-08787490] {\n  cursor: pointer;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-08787490] {\n  width: 100vw;\n}\n.copete[data-v-08787490] {\n  display: grid;\n}\n.copete a[data-v-08787490] {\n  color: #efb607;\n}\n.info-video[data-v-08787490] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n  height: 170px;\n}\n.copete-titulo[data-v-08787490] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-08787490] {\n  background-color: gainsboro;\n  color: #2db72d;\n  box-shadow: 2px 2px 8px #313131;\n}\n\n/* .protagonista-foto {\n     width: 250px;\n    height: 250px;\n} */\nimg.foto-concurso[data-v-08787490] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 268px;\n}\n.semana-texto[data-v-08787490] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-08787490] {\n  width: 23px;\n  cursor: pointer;\n}\n.imagen-click[data-v-08787490] {\n  cursor: pointer;\n  width: 100%;\n}\n.numero-likes[data-v-08787490] {\n  font-size: 16px;\n  border-radius: 1000px;\n  border: 2px solid white;\n  padding: 6px;\n  width: 38px;\n  font-weight: bold;\n  box-shadow: 0 5px 10px #00000085;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n@media (max-width: 500px) {\n.info-video[data-v-08787490] {\n    height: 260px;\n}\n}", ""]);
 
 // exports
 
@@ -17524,13 +17647,41 @@ var render = function() {
           staticClass: "protagonistas-titulo anterior p-2",
           attrs: {
             "data-toggle": "collapse",
+            "data-target": "#collapseSemanaSeis",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaSeis"
+          },
+          on: { click: _vm.showPast6 }
+        },
+        [_vm._m(4)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo6
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaSeis" }
+            },
+            [_vm._m(5)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
             "data-target": "#collapseSemanaCinco",
             "aria-expanded": "false",
             "aria-controls": "collapseSemanaCinco"
           },
           on: { click: _vm.showPast5 }
         },
-        [_vm._m(4)]
+        [_vm._m(6)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo5
@@ -17540,7 +17691,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCinco" }
             },
-            [_vm._m(5)]
+            [_vm._m(7)]
           )
         : _vm._e()
     ]),
@@ -17558,7 +17709,7 @@ var render = function() {
           },
           on: { click: _vm.showPast4 }
         },
-        [_vm._m(6)]
+        [_vm._m(8)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo4
@@ -17568,7 +17719,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCuatro" }
             },
-            [_vm._m(7)]
+            [_vm._m(9)]
           )
         : _vm._e()
     ]),
@@ -17586,7 +17737,7 @@ var render = function() {
           },
           on: { click: _vm.showPast3 }
         },
-        [_vm._m(8)]
+        [_vm._m(10)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo3
@@ -17596,7 +17747,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaTres" }
             },
-            [_vm._m(9)]
+            [_vm._m(11)]
           )
         : _vm._e()
     ]),
@@ -17614,7 +17765,7 @@ var render = function() {
           },
           on: { click: _vm.showPast2 }
         },
-        [_vm._m(10)]
+        [_vm._m(12)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo2
@@ -17624,7 +17775,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaDos" }
             },
-            [_vm._m(11)]
+            [_vm._m(13)]
           )
         : _vm._e()
     ]),
@@ -17642,7 +17793,7 @@ var render = function() {
           },
           on: { click: _vm.showPast1 }
         },
-        [_vm._m(12)]
+        [_vm._m(14)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo1
@@ -17652,7 +17803,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaUno" }
             },
-            [_vm._m(13)]
+            [_vm._m(15)]
           )
         : _vm._e()
     ])
@@ -17731,7 +17882,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
       _c("h3", [
         _c("strong", [
-          _vm._v(" Protagonistas de la semana del 05 al 09 de Agosto")
+          _vm._v(" Protagonistas de la semana del 12 al 16 de Agosto")
         ])
       ])
     ])
@@ -17743,6 +17894,143 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-fotos p-3" }, [
       _c("div", { staticClass: "inner-container no-gutters" }, [
         _c("div", { staticClass: "contenedor-general-fotos  text-center" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-1-01.jpg */ "./resources/js/components/img/bingo/semana7/7-1-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-2-01.jpg */ "./resources/js/components/img/bingo/semana7/7-2-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-3-01.jpg */ "./resources/js/components/img/bingo/semana7/7-3-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-4-01.jpg */ "./resources/js/components/img/bingo/semana7/7-4-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL1-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL1-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL2-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL2-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL3-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL3-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL4-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL4-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL5-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL5-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL6-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL6-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL7-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL7-01.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [
+        _vm._v("  Protagonistas de la semana del 05 al 09 de Agosto")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
           _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
             _c("img", {
               attrs: {
@@ -17782,68 +18070,68 @@ var staticRenderFns = [
               }
             })
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana6/6-01.jpg */ "./resources/js/components/img/bingo/semana6/6-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana6/6-01.jpg */ "./resources/js/components/img/bingo/semana6/6-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana6/6-02.jpg */ "./resources/js/components/img/bingo/semana6/6-02.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana6/6-03.jpg */ "./resources/js/components/img/bingo/semana6/6-03.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana6/6-04.jpg */ "./resources/js/components/img/bingo/semana6/6-04.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana6/6-05.jpg */ "./resources/js/components/img/bingo/semana6/6-05.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana6/6-06.jpg */ "./resources/js/components/img/bingo/semana6/6-06.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ])
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana6/6-02.jpg */ "./resources/js/components/img/bingo/semana6/6-02.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana6/6-03.jpg */ "./resources/js/components/img/bingo/semana6/6-03.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana6/6-04.jpg */ "./resources/js/components/img/bingo/semana6/6-04.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana6/6-05.jpg */ "./resources/js/components/img/bingo/semana6/6-05.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana6/6-06.jpg */ "./resources/js/components/img/bingo/semana6/6-06.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ])
       ])
     ])
@@ -20069,7 +20357,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "router-link",
-                                  { attrs: { to: "proximamente" } },
+                                  { attrs: { to: "tu-foto-cuenta" } },
                                   [
                                     _c("li", { staticClass: "nav-item" }, [
                                       _c(
@@ -21186,6 +21474,8 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(2),
                     _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
@@ -21340,6 +21630,23 @@ var staticRenderFns = [
       "div",
       { staticClass: "d-flex align-items-center my-2 justify-content-center" },
       [
+        _c("span", { staticClass: "mr-2 col-3" }, [_vm._v("Descripción: ")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control col-6",
+          attrs: { type: "text", name: "descripcion", id: "" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex align-items-center my-2 justify-content-center" },
+      [
         _c("span", { staticClass: "mr-2 col-3" }, [_vm._v("Mes: ")]),
         _vm._v(" "),
         _c("input", {
@@ -21390,6 +21697,8 @@ var render = function() {
                 _vm._m(2)
               ])
             : _vm._e(),
+          _vm._v(" "),
+          _vm._m(3),
           _vm._v(" "),
           _vm.ocultarTrivia == false &&
           _vm.mostrarTrivia == false &&
@@ -21584,9 +21893,9 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
                     _vm._m(4),
+                    _vm._v(" "),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
                       _c(
@@ -21618,7 +21927,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(5)
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -21681,6 +21990,25 @@ var staticRenderFns = [
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "ganadores d-flex justify-content-center" },
+      [
+        _c("img", {
+          staticClass: "img-ganadores",
+          attrs: {
+            src: __webpack_require__(/*! ./img/equipo-ganador_02.jpg */ "./resources/js/components/img/equipo-ganador_02.jpg"),
+            alt: "",
+            srcset: ""
+          }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -21792,114 +22120,191 @@ var render = function() {
       _c("div", { staticClass: "inner-container no-gutters" }, [
         _c(
           "div",
-          { staticClass: "row no-gutters" },
-          _vm._l(9, function(i) {
+          { staticClass: "row no-gutters d-flex justify-content-center" },
+          _vm._l(_vm.archivos, function(archivo, i) {
             return _c(
               "div",
               {
                 key: i,
                 staticClass:
-                  "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2"
+                  "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2 mx-4 "
               },
               [
                 _c("div", {}, [
+                  _c("div", { staticClass: "protagonista-foto" }, [
+                    _c("img", {
+                      staticClass: "foto-concurso",
+                      attrs: {
+                        src: "./archivos/" + archivo.nombre,
+                        alt: "",
+                        srcset: ""
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "div",
                     {
-                      staticClass: "protagonista-foto",
-                      on: {
-                        click: function($event) {
-                          return _vm.selectImg(i)
-                        }
-                      }
+                      staticClass:
+                        "info-video d-flex justify-content-between p-2"
                     },
                     [
-                      _c("img", {
-                        attrs: {
-                          src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
-                          alt: "",
-                          srcset: "",
-                          "data-toggle": "modal",
-                          "data-target": "#exampleModalCenter"
-                        }
-                      })
+                      _c(
+                        "div",
+                        {
+                          staticClass: "protagonista-info text-left ml-2 mr-2"
+                        },
+                        [
+                          _c("div", { staticClass: "nombre" }, [
+                            _c("span", [
+                              _vm._v(
+                                _vm._s(archivo.user.nombre) +
+                                  "  " +
+                                  _vm._s(archivo.user.apellido)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "sucursal" }, [
+                            _c("span", [
+                              _vm._v("AREA: " + _vm._s(archivo.user.area))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          archivo.descripcion !== ""
+                            ? _c("div", { staticClass: "sucursal" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "Descripción: " +
+                                      _vm._s(archivo.descripcion)
+                                  )
+                                ])
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "icono-like d-flex flex-row align-items-center"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "like mr-2",
+                            attrs: {
+                              src:
+                                "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.addLike(i)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "numero-likes",
+                              attrs: {
+                                "data-toggle": "modal",
+                                "data-target": "#verLikes-" + i
+                              }
+                            },
+                            [_vm._v(_vm._s(archivo.likes))]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "ver-likes modal fade bd-example-modal-xl",
+                          attrs: {
+                            id: "verLikes-" + i,
+                            tabindex: "-1",
+                            role: "dialog",
+                            "aria-labelledby": "exampleModalCenterTitle",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "modal-dialog modal-dialog-centered modal-xl",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "modal-content modal-contenedor"
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-header" }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "modal-body text-secondary modal-body"
+                                    },
+                                    _vm._l(archivo.archivo_usuarios, function(
+                                      user,
+                                      i
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        { key: i, staticClass: "d-flex p-3" },
+                                        [
+                                          _c("img", {
+                                            staticClass: "like mr-2",
+                                            attrs: {
+                                              src:
+                                                "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(user.user.nombre) +
+                                                " " +
+                                                _vm._s(user.user.apellido)
+                                            )
+                                          ]),
+                                          _vm._v(
+                                            " - Area: " +
+                                              _vm._s(user.user.area) +
+                                              "\n                                               "
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(3, true)
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
                     ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(3, true)
-                ]),
-                _vm._v(" "),
-                _vm._m(4, true)
+                  )
+                ])
               ]
             )
           }),
           0
         )
       ])
-    ]),
-    _vm._v(" "),
-    _vm._m(5),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "collapse contenedor-protagonistas",
-        attrs: { id: "collapseExample" }
-      },
-      [
-        _c("div", { staticClass: "protagonistas-fotos p-3 " }, [
-          _c("div", { staticClass: "inner-container no-gutters" }, [
-            _c(
-              "div",
-              { staticClass: "row no-gutters" },
-              _vm._l(9, function(i) {
-                return _c(
-                  "div",
-                  {
-                    key: i,
-                    staticClass:
-                      "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2"
-                  },
-                  [
-                    _c("div", {}, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "protagonista-foto",
-                          on: {
-                            click: function($event) {
-                              return _vm.selectImg(i)
-                            }
-                          }
-                        },
-                        [
-                          _c("img", {
-                            attrs: {
-                              src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
-                              alt: "",
-                              srcset: "",
-                              "data-toggle": "modal",
-                              "data-target": "#exampleModalCenter"
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(7, true)
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(8, true)
-                  ]
-                )
-              }),
-              0
-            )
-          ])
-        ])
-      ]
-    )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -21922,22 +22327,23 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "copete p-3" }, [
       _c("h3", { staticClass: "copete-titulo" }, [
-        _vm._v("Tenes una foto que nos cuente parte de tu historia? Enviala!")
+        _vm._v("Tu foto cuenta: Sumate al álbum del 60° Aniversario.")
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "copete-body" }, [
         _vm._v(
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quasi, itaque molestiae nostrum nisi ut consectetur, quas illum commodi provident quod blanditiis ipsa vel distinctio molestias. Laborum eum sit expedita?"
+          "Envianos una foto de tu autoría o de archivo, que te resulte significativa para estos 60 años de historia del Banco de La Pampa, junto con algún comentario sobre la misma. Contanos tu visión y lo que quieras mostrar!"
         )
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "copete-contacto mt-2 mb-4" }, [
-        _vm._v(" Envianos tu foto a "),
-        _c("strong", [
-          _c("a", { attrs: { href: "mailto:" } }, [
-            _vm._v(" xxxxxx@xxxxxx.com")
-          ])
-        ])
+        _vm._v(
+          " Envianos la foto y tus datos (nombre, apellido y legajo) por whatsapp al 011-4199-8282."
+        )
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "copete-contacto mt-2 mb-4" }, [
+        _vm._v(" Las fotos con más likes serán ganadoras del premio!")
       ])
     ])
   },
@@ -21953,187 +22359,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "info-video d-flex justify-content-between mr-5" },
-      [
-        _c("div", { staticClass: "protagonista-info text-left ml-5" }, [
-          _c("div", { staticClass: "nombre" }, [
-            _c("span", [_vm._v("Jose Perez")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sucursal" }, [
-            _c("span", [
-              _vm._v("SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "icono-like d-flex flex-row align-items-center" },
-          [
-            _c("img", {
-              staticClass: "like mr-2",
-              attrs: {
-                src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-              }
-            }),
-            _vm._v(" "),
-            _c("h6", [_vm._v("20")])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "exampleModalCenter",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalCenterTitle",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" }
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-body" }, [
-                _c("img", {
-                  staticClass: "imagen-click",
-                  attrs: {
-                    src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
-                    alt: "",
-                    srcset: "",
-                    "data-toggle": "modal",
-                    "data-target": "#exampleModalCenter"
-                  }
-                })
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
-      _c("h3", [_c("strong", [_vm._v("Fotos de semanas anteriores")])])
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "protagonistas-titulo-anterior p-3 mt-4",
-        attrs: {
-          "data-toggle": "collapse",
-          "data-target": "#collapseExample",
-          "aria-expanded": "false",
-          "aria-controls": "collapseExample"
-        }
-      },
-      [_c("h5", [_c("strong", [_vm._v("Semana 20/05 ")])])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "info-video d-flex justify-content-between mr-5" },
-      [
-        _c("div", { staticClass: "protagonista-info text-left ml-5" }, [
-          _c("div", { staticClass: "nombre" }, [
-            _c("span", [_vm._v("Jose Perez")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sucursal" }, [
-            _c("span", [
-              _vm._v("SUCURSAL XasdadasdasdXX / AREA XXXXasdasdasdasdX")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "icono-like d-flex flex-row align-items-center" },
-          [
-            _c("img", {
-              staticClass: "like mr-2",
-              attrs: {
-                src: "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-              }
-            }),
-            _vm._v(" "),
-            _c("h6", [_vm._v("20")])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "exampleModalCenter",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalCenterTitle",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" }
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-body" }, [
-                _c("img", {
-                  staticClass: "imagen-click",
-                  attrs: {
-                    src: __webpack_require__(/*! ./img/cuenta2.jpg */ "./resources/js/components/img/cuenta2.jpg"),
-                    alt: "",
-                    srcset: "",
-                    "data-toggle": "modal",
-                    "data-target": "#exampleModalCenter"
-                  }
-                })
-              ])
-            ])
-          ]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -39720,6 +39955,127 @@ module.exports = "/images/6-4-01.jpg?a67ea758634376aead597275c1fa807a";
 
 /***/ }),
 
+/***/ "./resources/js/components/img/bingo/semana7/7-1-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-1-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-1-01.jpg?d1050608d5769402872eba1b78281e8a";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-2-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-2-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-2-01.jpg?90a03dfd855d654ef1bc8767d840bf89";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-3-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-3-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-3-01.jpg?ae8e51daf2b50d5eabd20c73d3f9d2be";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-4-01.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-4-01.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-4-01.jpg?6d7f1821dc439355c3cf5e5f9672840c";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL1-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL1-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL1-01.jpg?d58df141a54cc4b57af27edd5da77a9d";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL2-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL2-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL2-01.jpg?bea1f216292dc267480654fb8f2cad0a";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL3-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL3-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL3-01.jpg?4abd44ad6b73c649965115179586fb75";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL4-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL4-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL4-01.jpg?d1b11fd819c0981ef06ccebb75083db4";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL5-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL5-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL5-01.jpg?bbc631522a850d05fa2b047034c00fdb";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL6-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL6-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL6-01.jpg?baf64994fc95e6ca12062c4b2caa731e";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana7/7-CEL7-01.jpg":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana7/7-CEL7-01.jpg ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/7-CEL7-01.jpg?f94ce969784ffdb9cac8c7fd71d6ad38";
+
+/***/ }),
+
 /***/ "./resources/js/components/img/cuenta.jpg":
 /*!************************************************!*\
   !*** ./resources/js/components/img/cuenta.jpg ***!
@@ -39731,14 +40087,14 @@ module.exports = "/images/cuenta.jpg?27471620ec75e5ed885a5c0b4637772d";
 
 /***/ }),
 
-/***/ "./resources/js/components/img/cuenta2.jpg":
-/*!*************************************************!*\
-  !*** ./resources/js/components/img/cuenta2.jpg ***!
-  \*************************************************/
+/***/ "./resources/js/components/img/equipo-ganador_02.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/equipo-ganador_02.jpg ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/cuenta2.jpg?c4078c84eec6941b614f281d7c04b2af";
+module.exports = "/images/equipo-ganador_02.jpg?a2a44f8f89c307afb918d36df63425e5";
 
 /***/ }),
 
