@@ -2276,6 +2276,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Bingo',
   data: function data() {
@@ -2285,7 +2322,8 @@ __webpack_require__.r(__webpack_exports__);
       mostrarBingo3: false,
       mostrarBingo4: false,
       mostrarBingo5: false,
-      mostrarBingo6: false
+      mostrarBingo6: false,
+      mostrarBingo7: false
     };
   },
   mounted: function mounted() {
@@ -2310,6 +2348,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showPast6: function showPast6() {
       this.mostrarBingo6 = !this.mostrarBingo6;
+    },
+    showPast7: function showPast7() {
+      this.mostrarBingo7 = !this.mostrarBingo7;
     }
   }
 });
@@ -3651,9 +3692,93 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'TuFotoCuenta',
+  name: "TuFotoCuenta",
   data: function data() {
     return {
       archivos: []
@@ -3672,7 +3797,7 @@ __webpack_require__.r(__webpack_exports__);
       })) {
         this.deleteLike(i);
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/like', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/like", {
           archivo_id: this.archivos[i].id,
           user_id: this.infoEmpleado.id
         }).then(function (response) {
@@ -3685,7 +3810,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteLike: function deleteLike(i) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/dislike', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/dislike", {
         archivo_id: this.archivos[i].id,
         user_id: this.infoEmpleado.id
       }).then(function (response) {
@@ -3697,8 +3822,8 @@ __webpack_require__.r(__webpack_exports__);
     getImg: function getImg() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/archivos').then(function (response) {
-        console.log('todo bien');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/archivos").then(function (response) {
+        console.log("todo bien");
         _this3.archivos = response.data.reverse().filter(function (archivo) {
           return archivo.seccion_id === 2;
         });
@@ -3706,8 +3831,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.$store.commit('login', false);
-    this.$store.commit('paginaPrincipal', false);
+    this.$store.commit("login", false);
+    this.$store.commit("paginaPrincipal", false);
     this.getImg();
   },
   computed: {
@@ -14931,7 +15056,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-08787490] {\n  width: 100vw;\n}\n.copete[data-v-08787490] {\n  display: grid;\n}\n.copete a[data-v-08787490] {\n  color: #efb607;\n}\n.info-video[data-v-08787490] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n  height: 170px;\n}\n.copete-titulo[data-v-08787490] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-08787490] {\n  background-color: gainsboro;\n  color: #2db72d;\n  box-shadow: 2px 2px 8px #313131;\n}\n\n/* .protagonista-foto {\n     width: 250px;\n    height: 250px;\n} */\nimg.foto-concurso[data-v-08787490] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 268px;\n}\n.semana-texto[data-v-08787490] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-08787490] {\n  width: 23px;\n  cursor: pointer;\n}\n.imagen-click[data-v-08787490] {\n  cursor: pointer;\n  width: 100%;\n}\n.numero-likes[data-v-08787490] {\n  font-size: 16px;\n  border-radius: 1000px;\n  border: 2px solid white;\n  padding: 6px;\n  width: 38px;\n  font-weight: bold;\n  box-shadow: 0 5px 10px #00000085;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n@media (max-width: 500px) {\n.info-video[data-v-08787490] {\n    height: 260px;\n}\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-08787490] {\n  width: 100vw;\n}\n.copete[data-v-08787490] {\n  display: grid;\n}\n.copete a[data-v-08787490] {\n  color: #efb607;\n}\n.info-video[data-v-08787490] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n  height: 170px;\n}\n.copete-titulo[data-v-08787490] {\n  font-weight: bold;\n  color: #efb607;\n}\n.protagonistas-titulo[data-v-08787490] {\n  background-color: gainsboro;\n  color: #2db72d;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto[data-v-08787490] {\n  cursor: pointer;\n}\n.container-protagonista[data-v-08787490] {\n  width: 360px;\n}\nimg.foto-concurso[data-v-08787490] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 370px;\n}\n.semana-texto[data-v-08787490] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-08787490] {\n  width: 23px;\n  cursor: pointer;\n}\n.imagen-click[data-v-08787490] {\n  cursor: pointer;\n  width: 100%;\n}\n.numero-likes[data-v-08787490] {\n  font-size: 16px;\n  border-radius: 1000px;\n  border: 2px solid white;\n  padding: 6px;\n  width: 38px;\n  font-weight: bold;\n  box-shadow: 0 5px 10px #00000085;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n@media (max-width: 500px) {\n.info-video[data-v-08787490] {\n    height: 260px;\n}\n.container-protagonista[data-v-08787490] {\n    width: 270px !important;\n}\nimg.foto-concurso[data-v-08787490] {\n    -o-object-fit: fill !important;\n       object-fit: fill !important;\n}\n}", ""]);
 
 // exports
 
@@ -17647,13 +17772,41 @@ var render = function() {
           staticClass: "protagonistas-titulo anterior p-2",
           attrs: {
             "data-toggle": "collapse",
+            "data-target": "#collapseSemanaSiete",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaSiete"
+          },
+          on: { click: _vm.showPast7 }
+        },
+        [_vm._m(4)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo7
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaSiete" }
+            },
+            [_vm._m(5)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
             "data-target": "#collapseSemanaSeis",
             "aria-expanded": "false",
             "aria-controls": "collapseSemanaSeis"
           },
           on: { click: _vm.showPast6 }
         },
-        [_vm._m(4)]
+        [_vm._m(6)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo6
@@ -17663,7 +17816,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaSeis" }
             },
-            [_vm._m(5)]
+            [_vm._m(7)]
           )
         : _vm._e()
     ]),
@@ -17681,7 +17834,7 @@ var render = function() {
           },
           on: { click: _vm.showPast5 }
         },
-        [_vm._m(6)]
+        [_vm._m(8)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo5
@@ -17691,7 +17844,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCinco" }
             },
-            [_vm._m(7)]
+            [_vm._m(9)]
           )
         : _vm._e()
     ]),
@@ -17709,7 +17862,7 @@ var render = function() {
           },
           on: { click: _vm.showPast4 }
         },
-        [_vm._m(8)]
+        [_vm._m(10)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo4
@@ -17719,7 +17872,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCuatro" }
             },
-            [_vm._m(9)]
+            [_vm._m(11)]
           )
         : _vm._e()
     ]),
@@ -17737,7 +17890,7 @@ var render = function() {
           },
           on: { click: _vm.showPast3 }
         },
-        [_vm._m(10)]
+        [_vm._m(12)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo3
@@ -17747,7 +17900,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaTres" }
             },
-            [_vm._m(11)]
+            [_vm._m(13)]
           )
         : _vm._e()
     ]),
@@ -17765,7 +17918,7 @@ var render = function() {
           },
           on: { click: _vm.showPast2 }
         },
-        [_vm._m(12)]
+        [_vm._m(14)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo2
@@ -17775,7 +17928,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaDos" }
             },
-            [_vm._m(13)]
+            [_vm._m(15)]
           )
         : _vm._e()
     ]),
@@ -17793,7 +17946,7 @@ var render = function() {
           },
           on: { click: _vm.showPast1 }
         },
-        [_vm._m(14)]
+        [_vm._m(16)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo1
@@ -17803,7 +17956,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaUno" }
             },
-            [_vm._m(15)]
+            [_vm._m(17)]
           )
         : _vm._e()
     ])
@@ -17882,7 +18035,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
       _c("h3", [
         _c("strong", [
-          _vm._v(" Protagonistas de la semana del 12 al 16 de Agosto")
+          _vm._v(" Protagonistas de la semana del 19 al 23 de Agosto")
         ])
       ])
     ])
@@ -17894,6 +18047,113 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-fotos p-3" }, [
       _c("div", { staticClass: "inner-container no-gutters" }, [
         _c("div", { staticClass: "contenedor-general-fotos  text-center" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-1.jpg */ "./resources/js/components/img/bingo/semana8/8-1.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-2.jpg */ "./resources/js/components/img/bingo/semana8/8-2.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-3.jpg */ "./resources/js/components/img/bingo/semana8/8-3.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL1.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL1.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL2.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL2.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL3.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL3.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL4.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL4.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL5.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL5.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [
+        _vm._v("  Protagonistas de la semana del 12 al 16 de Agosto")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
           _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
             _c("img", {
               attrs: {
@@ -17933,78 +18193,78 @@ var staticRenderFns = [
               }
             })
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL1-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL1-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL1-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL1-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL2-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL2-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL3-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL3-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL4-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL4-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL5-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL5-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL6-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL6-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL7-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL7-01.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ])
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL2-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL2-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL3-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL3-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL4-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL4-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL5-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL5-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL6-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL6-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana7/7-CEL7-01.jpg */ "./resources/js/components/img/bingo/semana7/7-CEL7-01.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ])
       ])
     ])
@@ -22124,23 +22384,29 @@ var render = function() {
           _vm._l(_vm.archivos, function(archivo, i) {
             return _c(
               "div",
-              {
-                key: i,
-                staticClass:
-                  "contenedor-fotos col-xl-3 col-md-6 col-12 text-center my-2 mx-4 "
-              },
+              { key: i, staticClass: "contenedor-fotos text-center my-2 mx-4" },
               [
-                _c("div", {}, [
-                  _c("div", { staticClass: "protagonista-foto" }, [
-                    _c("img", {
-                      staticClass: "foto-concurso",
+                _c("div", { staticClass: "container-protagonista" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "protagonista-foto",
                       attrs: {
-                        src: "./archivos/" + archivo.nombre,
-                        alt: "",
-                        srcset: ""
+                        "data-toggle": "modal",
+                        "data-target": "#verImg-" + i
                       }
-                    })
-                  ]),
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "foto-concurso",
+                        attrs: {
+                          src: "./archivos/" + archivo.nombre,
+                          alt: "",
+                          srcset: ""
+                        }
+                      })
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -22159,7 +22425,7 @@ var render = function() {
                             _c("span", [
                               _vm._v(
                                 _vm._s(archivo.user.nombre) +
-                                  "  " +
+                                  " " +
                                   _vm._s(archivo.user.apellido)
                               )
                             ])
@@ -22278,9 +22544,9 @@ var render = function() {
                                             )
                                           ]),
                                           _vm._v(
-                                            " - Area: " +
+                                            "\n                        - Area: " +
                                               _vm._s(user.user.area) +
-                                              "\n                                               "
+                                              "\n                      "
                                           )
                                         ]
                                       )
@@ -22291,6 +22557,133 @@ var render = function() {
                                   _vm._m(3, true)
                                 ]
                               )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "ver-img modal fade bd-example2-modal-xl",
+                          attrs: {
+                            id: "verImg-" + i,
+                            tabindex: "-1",
+                            role: "dialog",
+                            "aria-labelledby": "example2ModalCenterTitle",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "modal-dialog modal-dialog-centered modal-lg",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c("div", { staticClass: "modal-content" }, [
+                                _c("div", { staticClass: "contenedor-img" }, [
+                                  _c("img", {
+                                    staticClass: "foto-concurso2",
+                                    staticStyle: { width: "100%" },
+                                    attrs: {
+                                      src: "./archivos/" + archivo.nombre,
+                                      alt: "",
+                                      srcset: ""
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "descripcion-img info-video d-flex justify-content-between p-2"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "protagonista-info text-left ml-2 mr-2"
+                                      },
+                                      [
+                                        _c("div", { staticClass: "nombre" }, [
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(archivo.user.nombre) +
+                                                " " +
+                                                _vm._s(archivo.user.apellido)
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", { staticClass: "sucursal" }, [
+                                          _c("span", [
+                                            _vm._v(
+                                              "AREA: " +
+                                                _vm._s(archivo.user.area)
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        archivo.descripcion !== ""
+                                          ? _c(
+                                              "div",
+                                              { staticClass: "sucursal" },
+                                              [
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Descripción: " +
+                                                      _vm._s(
+                                                        archivo.descripcion
+                                                      )
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "icono-like d-flex flex-row align-items-center"
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticClass: "like mr-2",
+                                          attrs: {
+                                            src:
+                                              "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.addLike(i)
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "numero-likes",
+                                            attrs: {
+                                              "data-target": "#verLikes-" + i
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(archivo.likes))]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
                             ]
                           )
                         ]
@@ -22338,12 +22731,12 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "copete-contacto mt-2 mb-4" }, [
         _vm._v(
-          " Envianos la foto y tus datos (nombre, apellido y legajo) por whatsapp al 011-4199-8282."
+          "Envianos la foto y tus datos (nombre, apellido y legajo) por whatsapp al 011-4199-8282."
         )
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "copete-contacto mt-2 mb-4" }, [
-        _vm._v(" Las fotos con más likes serán ganadoras del premio!")
+        _vm._v("Las fotos con más likes serán ganadoras del premio!")
       ])
     ])
   },
@@ -40073,6 +40466,94 @@ module.exports = "/images/7-CEL6-01.jpg?baf64994fc95e6ca12062c4b2caa731e";
 /***/ (function(module, exports) {
 
 module.exports = "/images/7-CEL7-01.jpg?f94ce969784ffdb9cac8c7fd71d6ad38";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-1.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-1.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-1.jpg?001db1da6b4089ffb25eff24817f96b9";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-2.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-2.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-2.jpg?db4bc2804337df191a2c31e2a3568a73";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-3.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-3.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-3.jpg?af526ac15e75845e6164dac76b7b6dd9";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-CEL1.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-CEL1.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-CEL1.jpg?d8ad24a08a8e45fc65cf10f2ec483a6a";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-CEL2.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-CEL2.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-CEL2.jpg?245762f63ce3fbba0263ab553ad91bff";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-CEL3.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-CEL3.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-CEL3.jpg?6b9487bfc593133652012a93144e59de";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-CEL4.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-CEL4.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-CEL4.jpg?5ee9a313e12cca7579ba0ed02b308b35";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana8/8-CEL5.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana8/8-CEL5.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/8-CEL5.jpg?3b1033b6cef9113e3cef63b996d2b846";
 
 /***/ }),
 
