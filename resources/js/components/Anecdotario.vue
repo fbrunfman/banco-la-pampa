@@ -29,8 +29,8 @@
                                     <div class="sucursal"><span>Area: {{archivo.user.area}}</span></div>
                                 </div>
                                 <div class="icono-like d-flex flex-row align-items-center ml-2 mr-2">
-                                    <img class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png" @click=" addLike(i)">
-                                    <span style="font-size: 16px;" class="numero-likes" data-toggle="modal" :data-target="'#verLikesMin-' + i">{{archivo.likes}}</span>
+                                    <img v-if="!isToggled" class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png" @click=" addLike(i)">
+                                    <span style="font-size: 16px;" class="numero-likes" data-toggle="modal" :data-target="'#verLikesMin-' + i">{{archivo.archivo_usuarios.length}}</span>
                                 </div>
                             </div>
                              <div class="ver-likes modal fade bd-example-modal-xl" :id="'verLikesMin-' + i" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -67,8 +67,8 @@
                                     <div class="sucursal"><span>Area: {{archivo.user.area}}</span></div>
                                 </div>
                                 <div class="icono-like d-flex flex-row align-items-center ml-2 mr-2">
-                                    <img class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png" @click=" addLike(i)">
-                                    <span style="font-size: 16px;" class="numero-likes" data-toggle="modal" :data-target="'#verLikes-' + i">{{archivo.likes}}</span>
+                                    <img v-if="!isToggled" class="like mr-2" src="https://img.icons8.com/dusk/64/000000/facebook-like.png" @click=" addLike(i)">
+                                    <span style="font-size: 16px;" class="numero-likes" data-toggle="modal" :data-target="'#verLikes-' + i">{{archivo.archivo_usuarios.length}}</span>
                                 </div>
                                 <div class="ver-likes modal fade bd-example-modal-xl" :id="'verLikes-' + i" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -103,7 +103,8 @@ export default {
     data() {
         return {
             archivos: [],
-            alreadyLike: false
+            alreadyLike: false,
+            isToggled: false
         }
     },
     computed: {
@@ -122,12 +123,11 @@ export default {
             .then(response => {
                 console.log('todo bien');
                 this.archivos = response.data.reverse().filter(archivo => archivo.seccion_id === 1)
+                this.isToggled = false
             })
         },
         addLike(i) {
-            console.log(this.archivos[i].archivo_usuarios.some(archivo => {
-                return archivo.user_id == this.infoEmpleado.id
-            }));
+            this.isToggled = true
             if (this.archivos[i].archivo_usuarios.some(archivo => {
                 return archivo.user_id == this.infoEmpleado.id
             })) {
@@ -141,6 +141,7 @@ export default {
                 .then(response => {
                     this.getVideos();
                     this.alreadyLike = true
+
                 })
             }
         },

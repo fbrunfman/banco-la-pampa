@@ -86,6 +86,7 @@ class DataController extends Controller
 
         $mes = $request->mes;
 
+        $descripcion = $request->descripcion;
         $seccion = $request->seccion;
 
         if (is_null($seccion)) {
@@ -98,7 +99,7 @@ class DataController extends Controller
             $archivoGuardado->seccion_id = $seccion;
             $archivoGuardado->subido_por = $subidoPor;
             $archivoGuardado->mes = $mes;
-
+            $archivoGuardado->descripcion = $descripcion;
 
             $archivoGuardado->save();
 

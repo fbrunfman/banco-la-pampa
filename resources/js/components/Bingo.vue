@@ -19,36 +19,73 @@
             </div>
         </div>
         <div class="protagonistas-titulo p-3">
-            <h3> <strong> Protagonistas de la semana del 19 al 23 de Agosto</strong></h3>
+            <h3> <strong> Protagonistas de la semana del 26 al 31 de Agosto</strong></h3>
         </div>
         <div class="protagonistas-fotos p-3" >
             <div class="inner-container no-gutters">
                 <div class="contenedor-general-fotos  text-center">
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-1.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9-1.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-2.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9-2.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-3.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9-3.jpg" alt="" srcset="">
                     </div>
                 </div>
                 <div class="contenedor-general-fotos-mobile">
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-CEL1.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9-CEL1.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-CEL2.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9-CEL2.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-CEL3.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9CEL3.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-CEL4.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9CEL4.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana8/8-CEL5.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana9/9CEL5.jpg" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-bingo-pasado my-5">
+            <div class="protagonistas-titulo anterior p-2" data-toggle="collapse" data-target="#collapseSemanaOcho" aria-expanded="false" aria-controls="collapseSemanaOcho" @click="showPast8">
+                <h3 class="titulo-anterior"> <strong>  Protagonistas de la semana del 19 al 23 de Agosto</strong></h3>
+            </div>
+            <div class="protagonistas-fotos p-3 collapse" id="collapseSemanaOcho" v-if="mostrarBingo8">
+                <div class="inner-container no-gutters">
+                    <div class="contenedor-general-fotos-anterior pasado-uno text-center">
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-1.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-3.jpg" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="contenedor-general-fotos-mobile">
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-CEL1.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-CEL2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-CEL3.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-CEL4.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana8/8-CEL5.jpg" alt="" srcset="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -382,6 +419,7 @@ export default {
             mostrarBingo5: false,
             mostrarBingo6: false,
             mostrarBingo7: false,
+            mostrarBingo8: false,
         }
     },
     mounted () {
@@ -409,6 +447,9 @@ export default {
         },
         showPast7() {
             this.mostrarBingo7 = !this.mostrarBingo7
+        },
+        showPast8() {
+            this.mostrarBingo8 = !this.mostrarBingo8
         },
     }
 }

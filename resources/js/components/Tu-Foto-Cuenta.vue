@@ -46,6 +46,7 @@
                 </div>
                 <div class="icono-like d-flex flex-row align-items-center">
                   <img
+                    v-if="!isToggled"
                     class="like mr-2"
                     src="https://img.icons8.com/dusk/64/000000/facebook-like.png"
                     @click=" addLike(i)"
@@ -54,7 +55,7 @@
                     class="numero-likes"
                     data-toggle="modal"
                     :data-target="'#verLikes-' + i"
-                  >{{archivo.likes}}</span>
+                  >{{archivo.archivo_usuarios.length}}</span>
                 </div>
                 <div
                   class="ver-likes modal fade bd-example-modal-xl"
@@ -119,7 +120,7 @@
                           </div>
                         </div>
                         <div class="icono-like d-flex flex-row align-items-center">
-                          <img
+                          <img v-if="!isToggled"
                             class="like mr-2"
                             src="https://img.icons8.com/dusk/64/000000/facebook-like.png"
                             @click=" addLike(i)"
@@ -127,7 +128,7 @@
                           <span
                             class="numero-likes"
                             :data-target="'#verLikes-' + i"
-                          >{{archivo.likes}}</span>
+                          >{{archivo.archivo_usuarios.length}}</span>
                         </div>
                       </div>
                     </div>
@@ -189,11 +190,13 @@ export default {
   name: "TuFotoCuenta",
   data() {
     return {
-      archivos: []
+      archivos: [],
+      isToggled: false
     };
   },
   methods: {
     addLike(i) {
+        this.isToggled = true
       console.log(
         this.archivos[i].archivo_usuarios.some(archivo => {
           return archivo.user_id == this.infoEmpleado.id;
@@ -230,6 +233,7 @@ export default {
         this.archivos = response.data
           .reverse()
           .filter(archivo => archivo.seccion_id === 2);
+          this.isToggled = false
       });
     }
   },

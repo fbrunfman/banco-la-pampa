@@ -1869,7 +1869,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       archivos: [],
-      alreadyLike: false
+      alreadyLike: false,
+      isToggled: false
     };
   },
   computed: {
@@ -1891,14 +1892,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.archivos = response.data.reverse().filter(function (archivo) {
           return archivo.seccion_id === 1;
         });
+        _this.isToggled = false;
       });
     },
     addLike: function addLike(i) {
       var _this2 = this;
 
-      console.log(this.archivos[i].archivo_usuarios.some(function (archivo) {
-        return archivo.user_id == _this2.infoEmpleado.id;
-      }));
+      this.isToggled = true;
 
       if (this.archivos[i].archivo_usuarios.some(function (archivo) {
         return archivo.user_id == _this2.infoEmpleado.id;
@@ -2313,6 +2313,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Bingo',
   data: function data() {
@@ -2323,7 +2360,8 @@ __webpack_require__.r(__webpack_exports__);
       mostrarBingo4: false,
       mostrarBingo5: false,
       mostrarBingo6: false,
-      mostrarBingo7: false
+      mostrarBingo7: false,
+      mostrarBingo8: false
     };
   },
   mounted: function mounted() {
@@ -2351,6 +2389,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     showPast7: function showPast7() {
       this.mostrarBingo7 = !this.mostrarBingo7;
+    },
+    showPast8: function showPast8() {
+      this.mostrarBingo8 = !this.mostrarBingo8;
     }
   }
 });
@@ -3529,7 +3570,7 @@ __webpack_require__.r(__webpack_exports__);
     traerPreguntas: function traerPreguntas() {
       var _this = this;
 
-      var url = '/api/preguntas?mes=' + 3
+      var url = '/api/preguntas?mes=' + 4
       /* se harcodea el mes*/
       + '&hecha=' + this.infoEmpleado.equipo;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
@@ -3546,17 +3587,31 @@ __webpack_require__.r(__webpack_exports__);
     enviarRespuestas: function enviarRespuestas() {
       var _this2 = this;
 
+      if (this.userResponses.length > 7) {
+        this.userResponses = [];
+        this.$swal('Ingresó más respuestas de las permitidas.');
+        return;
+      }
+
       if (this.infoEmpleado.equipo !== 0) {
         delete this.preguntas.hecha;
         var counter = 0; // console.log(this.preguntas[0].respuestas);
 
         for (var i = 0; i < Object.values(this.preguntas).length; i++) {
           var resps = Object.values(this.preguntas)[i].respuestas;
+          console.log(resps);
 
-          if (resps.filter(function (respuesta) {
-            return respuesta.es_correcta == 1;
-          })[0].id == this.userResponses[i]) {
-            counter++;
+          for (var j = 0; j < resps.length; j++) {
+            console.log(resps[j]);
+
+            if (resps[j].es_correcta == 1) {
+              var found = this.userResponses.includes(resps[j].id);
+              console.log(found);
+
+              if (found) {
+                counter++;
+              }
+            }
           }
         }
 
@@ -3564,7 +3619,7 @@ __webpack_require__.r(__webpack_exports__);
         var url = '/api/guardar-puntaje';
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
           equipo_id: this.infoEmpleado.equipo,
-          mes: 3,
+          mes: 4,
           //se harcodea el mes en curso\
           puntaje: this.respuestasCorrectas
         }).then(function (response) {
@@ -3776,18 +3831,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TuFotoCuenta",
   data: function data() {
     return {
-      archivos: []
+      archivos: [],
+      isToggled: false
     };
   },
   methods: {
     addLike: function addLike(i) {
       var _this = this;
 
+      this.isToggled = true;
       console.log(this.archivos[i].archivo_usuarios.some(function (archivo) {
         return archivo.user_id == _this.infoEmpleado.id;
       }));
@@ -3827,6 +3885,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.archivos = response.data.reverse().filter(function (archivo) {
           return archivo.seccion_id === 2;
         });
+        _this3.isToggled = false;
       });
     }
   },
@@ -15037,7 +15096,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 384px;\n  min-width: 384px;\n  height: 370px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.reglas[data-v-2f3251a4] {\n  color: #5a5858;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  /*  background-color: #e44737;\n   color: white; */\n  display: none;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.trivia-body-5[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 16px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 7px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 227px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
+exports.push([module.i, ".titulo-trivia img[data-v-2f3251a4] {\n  width: 100vw;\n}\n.copete[data-v-2f3251a4] {\n  font-weight: bold;\n  color: #efb607;\n}\n.contenedor-general[data-v-2f3251a4] {\n  width: 384px;\n  max-width: 391px;\n  min-width: 435px;\n  height: 435px;\n  border-radius: 15px 60px 15px 60px;\n}\n.contenedor-pregunta-0[data-v-2f3251a4] {\n  background-color: #2eb92e;\n  color: white;\n}\n.reglamento-titulo[data-v-2f3251a4] {\n  background-color: #dedede;\n}\n.boton-comenzar[data-v-2f3251a4] {\n  font-size: 32px;\n  cursor: pointer;\n}\n.contenedor-pregunta-1[data-v-2f3251a4] {\n  background-color: #f2be00;\n  color: white;\n}\n.reglas[data-v-2f3251a4] {\n  color: #5a5858;\n}\n.contenedor-pregunta-2[data-v-2f3251a4] {\n  background-color: #7a8baa;\n  color: white;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n  display: grid;\n  grid-template-columns: 1fr 550px;\n}\n.contenedor-pregunta-3[data-v-2f3251a4] {\n  background-color: #5e5b51;\n  color: white;\n}\n.contenedor-pregunta-4[data-v-2f3251a4] {\n  background-color: #ecdda5;\n}\n.contenedor-pregunta-5[data-v-2f3251a4] {\n  /*  background-color: #e44737;\n   color: white; */\n  display: none;\n}\n.trivia-body-6[data-v-2f3251a4] {\n  display: none;\n}\n.trivia-body-5[data-v-2f3251a4] {\n  display: none;\n}\n.texto-trivia[data-v-2f3251a4] {\n  font-size: 16px;\n  font-weight: bold;\n}\n.form-check-label[data-v-2f3251a4] {\n  font-size: 17px;\n}\n.trivia-uno[data-v-2f3251a4] {\n  background-color: #ececec;\n}\n.enviar button[data-v-2f3251a4] {\n  font-size: 32px;\n}\n@media (max-width: 700px) {\n.contenedor-pregunta[data-v-2f3251a4] {\n    max-width: 350px;\n    min-width: 350px;\n    height: 250px;\n}\n.texto-trivia[data-v-2f3251a4] {\n    font-size: 7px;\n    font-weight: bold;\n}\n.enviar button[data-v-2f3251a4] {\n    font-size: 22px;\n}\n.contenedor-general[data-v-2f3251a4] {\n    min-width: 244px;\n    max-width: 356px;\n    width: 266px;\n    height: 305px;\n}\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n@media (max-width: 940px) {\n.contenedor-trivia[data-v-2f3251a4] {\n    display: block;\n}\n}\n.ganadores .img-ganadores[data-v-2f3251a4] {\n  max-width: 100%;\n}\ninput[type=radio][data-v-2f3251a4], input[type=checkbox][data-v-2f3251a4] {\n  background-color: #ddd;\n  background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);\n  border-radius: 10px;\n  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6), 0 4px 3px rgba(0, 0, 0, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2), 0 10px 6px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  margin-right: 20px;\n  position: relative;\n  width: 20px;\n  -webkit-appearance: none;\n}\ninput[type=radio][data-v-2f3251a4]:after, input[type=checkbox][data-v-2f3251a4]:after {\n  background-color: #b3b0b0;\n  border-radius: 25px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);\n  content: \"\";\n  display: block;\n  height: 12px;\n  left: 4px;\n  position: relative;\n  top: 4px;\n  width: 12px;\n}\ninput[type=radio][data-v-2f3251a4]:checked:after, input[type=checkbox][data-v-2f3251a4]:checked:after {\n  background-color: #24b11a;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 2px 2px rgba(232, 125, 125, 0.4);\n}", ""]);
 
 // exports
 
@@ -17368,18 +17427,20 @@ var render = function() {
                                 "icono-like d-flex flex-row align-items-center ml-2 mr-2"
                             },
                             [
-                              _c("img", {
-                                staticClass: "like mr-2",
-                                attrs: {
-                                  src:
-                                    "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.addLike(i)
-                                  }
-                                }
-                              }),
+                              !_vm.isToggled
+                                ? _c("img", {
+                                    staticClass: "like mr-2",
+                                    attrs: {
+                                      src:
+                                        "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.addLike(i)
+                                      }
+                                    }
+                                  })
+                                : _vm._e(),
                               _vm._v(" "),
                               _c(
                                 "span",
@@ -17391,7 +17452,11 @@ var render = function() {
                                     "data-target": "#verLikesMin-" + i
                                   }
                                 },
-                                [_vm._v(_vm._s(archivo.likes))]
+                                [
+                                  _vm._v(
+                                    _vm._s(archivo.archivo_usuarios.length)
+                                  )
+                                ]
                               )
                             ]
                           )
@@ -17537,18 +17602,20 @@ var render = function() {
                                 "icono-like d-flex flex-row align-items-center ml-2 mr-2"
                             },
                             [
-                              _c("img", {
-                                staticClass: "like mr-2",
-                                attrs: {
-                                  src:
-                                    "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.addLike(i)
-                                  }
-                                }
-                              }),
+                              !_vm.isToggled
+                                ? _c("img", {
+                                    staticClass: "like mr-2",
+                                    attrs: {
+                                      src:
+                                        "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.addLike(i)
+                                      }
+                                    }
+                                  })
+                                : _vm._e(),
                               _vm._v(" "),
                               _c(
                                 "span",
@@ -17560,7 +17627,11 @@ var render = function() {
                                     "data-target": "#verLikes-" + i
                                   }
                                 },
-                                [_vm._v(_vm._s(archivo.likes))]
+                                [
+                                  _vm._v(
+                                    _vm._s(archivo.archivo_usuarios.length)
+                                  )
+                                ]
                               )
                             ]
                           ),
@@ -17772,13 +17843,41 @@ var render = function() {
           staticClass: "protagonistas-titulo anterior p-2",
           attrs: {
             "data-toggle": "collapse",
+            "data-target": "#collapseSemanaOcho",
+            "aria-expanded": "false",
+            "aria-controls": "collapseSemanaOcho"
+          },
+          on: { click: _vm.showPast8 }
+        },
+        [_vm._m(4)]
+      ),
+      _vm._v(" "),
+      _vm.mostrarBingo8
+        ? _c(
+            "div",
+            {
+              staticClass: "protagonistas-fotos p-3 collapse",
+              attrs: { id: "collapseSemanaOcho" }
+            },
+            [_vm._m(5)]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "contenedor-bingo-pasado my-5" }, [
+      _c(
+        "div",
+        {
+          staticClass: "protagonistas-titulo anterior p-2",
+          attrs: {
+            "data-toggle": "collapse",
             "data-target": "#collapseSemanaSiete",
             "aria-expanded": "false",
             "aria-controls": "collapseSemanaSiete"
           },
           on: { click: _vm.showPast7 }
         },
-        [_vm._m(4)]
+        [_vm._m(6)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo7
@@ -17788,7 +17887,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaSiete" }
             },
-            [_vm._m(5)]
+            [_vm._m(7)]
           )
         : _vm._e()
     ]),
@@ -17806,7 +17905,7 @@ var render = function() {
           },
           on: { click: _vm.showPast6 }
         },
-        [_vm._m(6)]
+        [_vm._m(8)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo6
@@ -17816,7 +17915,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaSeis" }
             },
-            [_vm._m(7)]
+            [_vm._m(9)]
           )
         : _vm._e()
     ]),
@@ -17834,7 +17933,7 @@ var render = function() {
           },
           on: { click: _vm.showPast5 }
         },
-        [_vm._m(8)]
+        [_vm._m(10)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo5
@@ -17844,7 +17943,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCinco" }
             },
-            [_vm._m(9)]
+            [_vm._m(11)]
           )
         : _vm._e()
     ]),
@@ -17862,7 +17961,7 @@ var render = function() {
           },
           on: { click: _vm.showPast4 }
         },
-        [_vm._m(10)]
+        [_vm._m(12)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo4
@@ -17872,7 +17971,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaCuatro" }
             },
-            [_vm._m(11)]
+            [_vm._m(13)]
           )
         : _vm._e()
     ]),
@@ -17890,7 +17989,7 @@ var render = function() {
           },
           on: { click: _vm.showPast3 }
         },
-        [_vm._m(12)]
+        [_vm._m(14)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo3
@@ -17900,7 +17999,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaTres" }
             },
-            [_vm._m(13)]
+            [_vm._m(15)]
           )
         : _vm._e()
     ]),
@@ -17918,7 +18017,7 @@ var render = function() {
           },
           on: { click: _vm.showPast2 }
         },
-        [_vm._m(14)]
+        [_vm._m(16)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo2
@@ -17928,7 +18027,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaDos" }
             },
-            [_vm._m(15)]
+            [_vm._m(17)]
           )
         : _vm._e()
     ]),
@@ -17946,7 +18045,7 @@ var render = function() {
           },
           on: { click: _vm.showPast1 }
         },
-        [_vm._m(16)]
+        [_vm._m(18)]
       ),
       _vm._v(" "),
       _vm.mostrarBingo1
@@ -17956,7 +18055,7 @@ var render = function() {
               staticClass: "protagonistas-fotos p-3 collapse",
               attrs: { id: "collapseSemanaUno" }
             },
-            [_vm._m(17)]
+            [_vm._m(19)]
           )
         : _vm._e()
     ])
@@ -18035,7 +18134,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
       _c("h3", [
         _c("strong", [
-          _vm._v(" Protagonistas de la semana del 19 al 23 de Agosto")
+          _vm._v(" Protagonistas de la semana del 26 al 31 de Agosto")
         ])
       ])
     ])
@@ -18047,6 +18146,113 @@ var staticRenderFns = [
     return _c("div", { staticClass: "protagonistas-fotos p-3" }, [
       _c("div", { staticClass: "inner-container no-gutters" }, [
         _c("div", { staticClass: "contenedor-general-fotos  text-center" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9-1.jpg */ "./resources/js/components/img/bingo/semana9/9-1.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9-2.jpg */ "./resources/js/components/img/bingo/semana9/9-2.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9-3.jpg */ "./resources/js/components/img/bingo/semana9/9-3.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9-CEL1.jpg */ "./resources/js/components/img/bingo/semana9/9-CEL1.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9-CEL2.jpg */ "./resources/js/components/img/bingo/semana9/9-CEL2.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9CEL3.jpg */ "./resources/js/components/img/bingo/semana9/9CEL3.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9CEL4.jpg */ "./resources/js/components/img/bingo/semana9/9CEL4.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+            _c("img", {
+              attrs: {
+                src: __webpack_require__(/*! ./img/bingo/semana9/9CEL5.jpg */ "./resources/js/components/img/bingo/semana9/9CEL5.jpg"),
+                alt: "",
+                srcset: ""
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "titulo-anterior" }, [
+      _c("strong", [
+        _vm._v("  Protagonistas de la semana del 19 al 23 de Agosto")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner-container no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "contenedor-general-fotos-anterior pasado-uno text-center"
+        },
+        [
           _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
             _c("img", {
               attrs: {
@@ -18076,58 +18282,58 @@ var staticRenderFns = [
               }
             })
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL1.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL1.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "contenedor-general-fotos-mobile" }, [
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL1.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL1.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL2.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL2.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL3.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL3.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL4.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL4.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL5.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL5.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ])
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL2.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL2.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL3.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL3.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL4.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL4.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contenedor-fotos my-3 mx-3" }, [
+          _c("img", {
+            attrs: {
+              src: __webpack_require__(/*! ./img/bingo/semana8/8-CEL5.jpg */ "./resources/js/components/img/bingo/semana8/8-CEL5.jpg"),
+              alt: "",
+              srcset: ""
+            }
+          })
         ])
       ])
     ])
@@ -21949,7 +22155,7 @@ var render = function() {
           !_vm.desactivarTrivia
             ? _c("div", { staticClass: "copete p-5" }, [
                 _c("h1", { staticClass: "copete-pregunta mb-3" }, [
-                  _vm._v('TRIVIA III : "No te tenía en esa II"')
+                  _vm._v('TRIVIA IV: "No te tenía en esa vol. 3"')
                 ]),
                 _vm._v(" "),
                 _vm._m(1),
@@ -21957,8 +22163,6 @@ var render = function() {
                 _vm._m(2)
               ])
             : _vm._e(),
-          _vm._v(" "),
-          _vm._m(3),
           _vm._v(" "),
           _vm.ocultarTrivia == false &&
           _vm.mostrarTrivia == false &&
@@ -22055,30 +22259,53 @@ var render = function() {
                                             {
                                               name: "model",
                                               rawName: "v-model",
-                                              value: _vm.userResponses[i],
-                                              expression: "userResponses[i]"
+                                              value: _vm.userResponses,
+                                              expression: "userResponses"
                                             }
                                           ],
                                           attrs: {
-                                            type: "radio",
+                                            type: "checkbox",
                                             name: "respuesta" + i,
                                             id: "pregunta" + j,
                                             required: ""
                                           },
                                           domProps: {
                                             value: respuesta.id,
-                                            checked: _vm._q(
-                                              _vm.userResponses[i],
-                                              respuesta.id
+                                            checked: Array.isArray(
+                                              _vm.userResponses
                                             )
+                                              ? _vm._i(
+                                                  _vm.userResponses,
+                                                  respuesta.id
+                                                ) > -1
+                                              : _vm.userResponses
                                           },
                                           on: {
                                             change: function($event) {
-                                              return _vm.$set(
-                                                _vm.userResponses,
-                                                i,
-                                                respuesta.id
-                                              )
+                                              var $$a = _vm.userResponses,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = respuesta.id,
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    (_vm.userResponses = $$a.concat(
+                                                      [$$v]
+                                                    ))
+                                                } else {
+                                                  $$i > -1 &&
+                                                    (_vm.userResponses = $$a
+                                                      .slice(0, $$i)
+                                                      .concat(
+                                                        $$a.slice($$i + 1)
+                                                      ))
+                                                }
+                                              } else {
+                                                _vm.userResponses = $$c
+                                              }
                                             }
                                           }
                                         }),
@@ -22153,9 +22380,9 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(4),
+                    _vm._m(3),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
                       _c(
@@ -22187,7 +22414,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -22250,25 +22477,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "ganadores d-flex justify-content-center" },
-      [
-        _c("img", {
-          staticClass: "img-ganadores",
-          attrs: {
-            src: __webpack_require__(/*! ./img/equipo-ganador_02.jpg */ "./resources/js/components/img/equipo-ganador_02.jpg"),
-            alt: "",
-            srcset: ""
-          }
-        })
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -22457,18 +22665,20 @@ var render = function() {
                             "icono-like d-flex flex-row align-items-center"
                         },
                         [
-                          _c("img", {
-                            staticClass: "like mr-2",
-                            attrs: {
-                              src:
-                                "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.addLike(i)
-                              }
-                            }
-                          }),
+                          !_vm.isToggled
+                            ? _c("img", {
+                                staticClass: "like mr-2",
+                                attrs: {
+                                  src:
+                                    "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.addLike(i)
+                                  }
+                                }
+                              })
+                            : _vm._e(),
                           _vm._v(" "),
                           _c(
                             "span",
@@ -22479,7 +22689,7 @@ var render = function() {
                                 "data-target": "#verLikes-" + i
                               }
                             },
-                            [_vm._v(_vm._s(archivo.likes))]
+                            [_vm._v(_vm._s(archivo.archivo_usuarios.length))]
                           )
                         ]
                       ),
@@ -22656,18 +22866,20 @@ var render = function() {
                                           "icono-like d-flex flex-row align-items-center"
                                       },
                                       [
-                                        _c("img", {
-                                          staticClass: "like mr-2",
-                                          attrs: {
-                                            src:
-                                              "https://img.icons8.com/dusk/64/000000/facebook-like.png"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.addLike(i)
-                                            }
-                                          }
-                                        }),
+                                        !_vm.isToggled
+                                          ? _c("img", {
+                                              staticClass: "like mr-2",
+                                              attrs: {
+                                                src:
+                                                  "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.addLike(i)
+                                                }
+                                              }
+                                            })
+                                          : _vm._e(),
                                         _vm._v(" "),
                                         _c(
                                           "span",
@@ -22677,7 +22889,13 @@ var render = function() {
                                               "data-target": "#verLikes-" + i
                                             }
                                           },
-                                          [_vm._v(_vm._s(archivo.likes))]
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                archivo.archivo_usuarios.length
+                                              )
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
@@ -40557,6 +40775,94 @@ module.exports = "/images/8-CEL5.jpg?3b1033b6cef9113e3cef63b996d2b846";
 
 /***/ }),
 
+/***/ "./resources/js/components/img/bingo/semana9/9-1.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9-1.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9-1.jpg?13109a7c471b6d26fa109059a00e7132";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9-2.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9-2.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9-2.jpg?3985b0c4a804c9efb2ba6207f7b49957";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9-3.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9-3.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9-3.jpg?2b2c8638578580939e5d31a0fca166c6";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9-CEL1.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9-CEL1.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9-CEL1.jpg?1c3d085f56327620df61735bcd3deff8";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9-CEL2.jpg":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9-CEL2.jpg ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9-CEL2.jpg?5e916a13b9347c4f379ca97453fa8fe4";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9CEL3.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9CEL3.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9CEL3.jpg?cd9828683da90736f10c61e473e72134";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9CEL4.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9CEL4.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9CEL4.jpg?d3a6fab66ad9a71b344632c28d99331d";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/bingo/semana9/9CEL5.jpg":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/img/bingo/semana9/9CEL5.jpg ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/9CEL5.jpg?b5c91acbc54841137fd96b4cb9ecf1a9";
+
+/***/ }),
+
 /***/ "./resources/js/components/img/cuenta.jpg":
 /*!************************************************!*\
   !*** ./resources/js/components/img/cuenta.jpg ***!
@@ -40565,17 +40871,6 @@ module.exports = "/images/8-CEL5.jpg?3b1033b6cef9113e3cef63b996d2b846";
 /***/ (function(module, exports) {
 
 module.exports = "/images/cuenta.jpg?27471620ec75e5ed885a5c0b4637772d";
-
-/***/ }),
-
-/***/ "./resources/js/components/img/equipo-ganador_02.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/components/img/equipo-ganador_02.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/equipo-ganador_02.jpg?a2a44f8f89c307afb918d36df63425e5";
 
 /***/ }),
 

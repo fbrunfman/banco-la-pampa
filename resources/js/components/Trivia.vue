@@ -6,7 +6,7 @@
                     <img src="./img/trivia2.jpg" alt="" srcset="">
                 </div>
                 <div class="copete p-5" v-if="!desactivarTrivia">
-                    <h1 class="copete-pregunta mb-3">TRIVIA III : "No te tenía en esa II"</h1>
+                    <h1 class="copete-pregunta mb-3">TRIVIA IV: "No te tenía en esa vol. 3"</h1>
                     <h3 class="reglamento-titulo text-success p-4"> <strong> Reglamento Trivia </strong></h3>
                     <div class="reglas ml-3">
                         <div class="my-2"> Todos los equipos que respondan correctamente, participarán de un sorteo para definir al Equipo Ganador.</div>
@@ -18,9 +18,9 @@
                         <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
                     </div>
                 </div>
-                <div class="ganadores d-flex justify-content-center">
+<!--                 <div class="ganadores d-flex justify-content-center">
                     <img src="./img/equipo-ganador_02.jpg"  class="img-ganadores" alt="" srcset="">
-                </div>
+                </div> -->
                 <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false && !desactivarTrivia">
                     <div class="btn btn-success boton-comenzar" @click="showTrivia" > Comenzar TRIVIA AHORA</div>
                 </div>
@@ -38,7 +38,7 @@
                                 >
                                 <div class="respuestas-body">
                                     <div class="form-check my-4" v-for="(respuesta, j) in pregunta.respuestas" :key="j">
-                                        <input v-model="userResponses[i]" type="radio" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" required>
+                                        <input v-model="userResponses" type="checkbox" :name="'respuesta' + i " :value="respuesta.id" :id="'pregunta' + j" required>
                                         <label class="form-check-label" :for="'pregunta' + j">{{respuesta.respuesta}}</label>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@ export default {
     },
     methods: {
         traerPreguntas() {
-            var url = '/api/preguntas?mes=' + 3 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
+            var url = '/api/preguntas?mes=' + 4 /* se harcodea el mes*/ + '&hecha=' + this.infoEmpleado.equipo
             Axios.get(url)
                     .then(response => {
                         this.preguntas = response.data
@@ -135,6 +135,12 @@ export default {
             this.mostrarTrivia = true
         },
         enviarRespuestas() {
+            if (this.userResponses.length > 7) {
+                this.userResponses = []
+                this.$swal('Ingresó más respuestas de las permitidas.')
+                return
+            }
+
             if (this.infoEmpleado.equipo !== 0) {
                 delete this.preguntas.hecha
                 var counter = 0
@@ -142,16 +148,23 @@ export default {
 
                 for (var i = 0; i < Object.values(this.preguntas).length; i++) {
                     var resps = Object.values(this.preguntas)[i].respuestas
-                    if (resps.filter(respuesta => respuesta.es_correcta == 1)[0].id == this.userResponses[i]) {
-                        counter++
+                    console.log(resps)
+                    for (let j = 0; j < resps.length; j++) {
+                        console.log(resps[j])
+                        if (resps[j].es_correcta == 1) {
+                            const found = this.userResponses.includes(resps[j].id)
+                            console.log(found);
+                            if (found) {
+                                counter ++
+                            }
+                        }
                     }
-
                 }
                 this.respuestasCorrectas = counter
                 var url = '/api/guardar-puntaje'
                 Axios.post(url, {
                     equipo_id: this.infoEmpleado.equipo,
-                    mes: 3, //se harcodea el mes en curso\
+                    mes: 4, //se harcodea el mes en curso\
                     puntaje: this.respuestasCorrectas
                 })
                 .then(response => {
@@ -180,9 +193,9 @@ export default {
 
 .contenedor-general {
     width: 384px;
-    max-width: 384px;
-    min-width: 384px;
-    height: 370px;
+    max-width: 391px;
+    min-width: 435px;
+    height: 435px;
     border-radius: 15px 60px 15px 60px;
 
 }
@@ -280,7 +293,7 @@ export default {
     min-width: 244px;
     max-width: 356px;
     width: 266px;
-    height: 227px;
+    height: 305px;
     }
     .contenedor-trivia {
     display: block;
@@ -300,7 +313,7 @@ export default {
 }
 
 
-input[type="radio"] {
+input[type="radio"], input[type="checkbox"] {
     background-color: #ddd;
     background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),
                       -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
@@ -319,7 +332,7 @@ input[type="radio"] {
     width: 20px;
     -webkit-appearance: none;
 }
-input[type="radio"]:after {
+input[type="radio"]:after, input[type="checkbox"]:after {
     background-color: rgb(179, 176, 176);
     border-radius: 25px;
     box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
@@ -332,7 +345,7 @@ input[type="radio"]:after {
     top: 4px;
     width: 12px;
 }
-input[type="radio"]:checked:after {
+input[type="radio"]:checked:after, input[type="checkbox"]:checked:after {
     background-color: rgb(36, 177, 26);
     box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
                 inset 0 2px 2px hsla(0,0%,100%,.4),
