@@ -18,9 +18,9 @@
                         <!-- <div><strong> Tienen tiempo hasta el 06/06</strong></div> -->
                     </div>
                 </div>
-<!--                 <div class="ganadores d-flex justify-content-center">
-                    <img src="./img/equipo-ganador_02.jpg"  class="img-ganadores" alt="" srcset="">
-                </div> -->
+                <div class="ganadores d-flex justify-content-center">
+                    <img src="./img/equipo-ganador-03.jpg"  class="img-ganadores" alt="" srcset="">
+                </div>
                 <div class="comenzar-trivia d-flex justify-content-center" v-if="ocultarTrivia == false && mostrarTrivia == false && !desactivarTrivia">
                     <div class="btn btn-success boton-comenzar" @click="showTrivia" > Comenzar TRIVIA AHORA</div>
                 </div>

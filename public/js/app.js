@@ -22164,6 +22164,8 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
           _vm.ocultarTrivia == false &&
           _vm.mostrarTrivia == false &&
           !_vm.desactivarTrivia
@@ -22380,9 +22382,9 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
                     _vm._m(4),
+                    _vm._v(" "),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
                       _c(
@@ -22414,7 +22416,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(5)
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -22477,6 +22479,25 @@ var staticRenderFns = [
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "ganadores d-flex justify-content-center" },
+      [
+        _c("img", {
+          staticClass: "img-ganadores",
+          attrs: {
+            src: __webpack_require__(/*! ./img/equipo-ganador-03.jpg */ "./resources/js/components/img/equipo-ganador-03.jpg"),
+            alt: "",
+            srcset: ""
+          }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -40871,6 +40892,17 @@ module.exports = "/images/9CEL5.jpg?b5c91acbc54841137fd96b4cb9ecf1a9";
 /***/ (function(module, exports) {
 
 module.exports = "/images/cuenta.jpg?27471620ec75e5ed885a5c0b4637772d";
+
+/***/ }),
+
+/***/ "./resources/js/components/img/equipo-ganador-03.jpg":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/img/equipo-ganador-03.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/equipo-ganador-03.jpg?77da52275d2f5feae51db0c5ed6fcf36";
 
 /***/ }),
 
