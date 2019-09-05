@@ -59,7 +59,7 @@
                                     </li>
                                 </router-link>
                                 <div class="separador mx-1"/>
-                                <router-link to="proximamente">
+                                <router-link to="concurso-selfie">
                                     <li class="nav-item">
                                         <a class="nav-link text-center" href=""> <strong>CONCURSO SELFIE</strong> </a>
                                     </li>
