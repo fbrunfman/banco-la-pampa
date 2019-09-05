@@ -19,36 +19,64 @@
             </div>
         </div>
         <div class="protagonistas-titulo p-3">
-            <h3> <strong> Protagonistas de la semana del 26 al 31 de Agosto</strong></h3>
+            <h3> <strong> Protagonistas de la semana del 2 al 6 de Septiembre</strong></h3>
         </div>
         <div class="protagonistas-fotos p-3" >
             <div class="inner-container no-gutters">
                 <div class="contenedor-general-fotos  text-center">
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9-1.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana10/10-1.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9-2.jpg" alt="" srcset="">
-                    </div>
-                    <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9-3.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana10/10-2.jpg" alt="" srcset="">
                     </div>
                 </div>
                 <div class="contenedor-general-fotos-mobile">
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9-CEL1.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana10/10-CEL1.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9-CEL2.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana10/10-CEL3.jpg" alt="" srcset="">
                     </div>
                     <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9CEL3.jpg" alt="" srcset="">
+                        <img src="./img/bingo/semana10/10-CEL2.jpg" alt="" srcset="">
                     </div>
-                    <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9CEL4.jpg" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-bingo-pasado my-5">
+            <div class="protagonistas-titulo anterior p-2" data-toggle="collapse" data-target="#collapseSemanaNueve" aria-expanded="false" aria-controls="collapseSemanaNueve" @click="showPast9">
+                <h3 class="titulo-anterior"> <strong>  Protagonistas de la semana del 26 al 31 de Agosto</strong></h3>
+            </div>
+            <div class="protagonistas-fotos p-3 collapse" id="collapseSemanaNueve" v-if="mostrarBingo9">
+                <div class="inner-container no-gutters">
+                    <div class="contenedor-general-fotos-anterior pasado-uno text-center">
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9-1.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9-2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9-3.jpg" alt="" srcset="">
+                        </div>
                     </div>
-                    <div class="contenedor-fotos my-3 mx-3">
-                        <img src="./img/bingo/semana9/9CEL5.jpg" alt="" srcset="">
+                    <div class="contenedor-general-fotos-mobile">
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9-CEL1.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9-CEL2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9CEL3.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9CEL4.jpg" alt="" srcset="">
+                        </div>
+                        <div class="contenedor-fotos my-3 mx-3">
+                            <img src="./img/bingo/semana9/9CEL5.jpg" alt="" srcset="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -420,6 +448,7 @@ export default {
             mostrarBingo6: false,
             mostrarBingo7: false,
             mostrarBingo8: false,
+            mostrarBingo9: false,
         }
     },
     mounted () {
@@ -450,6 +479,9 @@ export default {
         },
         showPast8() {
             this.mostrarBingo8 = !this.mostrarBingo8
+        },
+        showPast9() {
+            this.mostrarBingo9 = !this.mostrarBingo9
         },
     }
 }
