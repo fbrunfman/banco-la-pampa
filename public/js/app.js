@@ -2407,6 +2407,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2428,11 +2430,199 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Concurso Selfie',
+  name: 'ConcursoSelfie',
+  data: function data() {
+    return {
+      archivos: [],
+      isToggled: false
+    };
+  },
+  methods: {
+    addLike: function addLike(i) {
+      var _this = this;
+
+      this.isToggled = true;
+      console.log(this.archivos[i].archivo_usuarios.some(function (archivo) {
+        return archivo.user_id == _this.infoEmpleado.id;
+      }));
+
+      if (this.archivos[i].archivo_usuarios.some(function (archivo) {
+        return archivo.user_id == _this.infoEmpleado.id;
+      })) {
+        this.deleteLike(i);
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/like", {
+          archivo_id: this.archivos[i].id,
+          user_id: this.infoEmpleado.id
+        }).then(function (response) {
+          _this.getImg();
+
+          _this.alreadyLike = true;
+        });
+      }
+    },
+    deleteLike: function deleteLike(i) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/dislike", {
+        archivo_id: this.archivos[i].id,
+        user_id: this.infoEmpleado.id
+      }).then(function (response) {
+        _this2.getImg();
+
+        _this2.alreadyLike = false;
+      });
+    },
+    getImg: function getImg() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/archivos").then(function (response) {
+        console.log("todo bien");
+        _this3.archivos = response.data.reverse().filter(function (archivo) {
+          return archivo.seccion_id === 3;
+        });
+        _this3.isToggled = false;
+      });
+    }
+  },
   mounted: function mounted() {
     this.$store.commit('login', false);
     this.$store.commit("paginaPrincipal", false);
+    this.getImg();
+  },
+  computed: {
+    infoEmpleado: function infoEmpleado() {
+      return this.$store.state.infoEmpleado;
+    }
   }
 });
 
@@ -15017,7 +15207,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-banner img[data-v-10e2c580] {\n  width: 100%;\n}\n.copete-titulo[data-v-10e2c580] {\n  font-weight: bold;\n  color: #efb607;\n}\n.copete[data-v-10e2c580] {\n  display: grid;\n}\n.copete a[data-v-10e2c580] {\n  color: #efb607;\n}", ""]);
+exports.push([module.i, ".main-banner img[data-v-10e2c580] {\n  width: 100%;\n}\n.copete-titulo[data-v-10e2c580] {\n  font-weight: bold;\n  color: #efb607;\n}\n.copete[data-v-10e2c580] {\n  display: grid;\n}\n.copete a[data-v-10e2c580] {\n  color: #efb607;\n}\n.info-video[data-v-10e2c580] {\n  font-size: 15px;\n  background-color: #e7b912;\n  color: white;\n  box-shadow: 2px 2px 8px grey;\n  height: 170px;\n}\n.protagonistas-titulo[data-v-10e2c580] {\n  background-color: gainsboro;\n  color: #2db72d;\n  box-shadow: 2px 2px 8px #313131;\n}\n.protagonista-foto[data-v-10e2c580] {\n  cursor: pointer;\n}\n.container-protagonista[data-v-10e2c580] {\n  width: 360px;\n}\nimg.foto-concurso[data-v-10e2c580] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 370px;\n}\n.semana-texto[data-v-10e2c580] {\n  box-shadow: 2px 2px 6px #8c8a8a;\n  background-color: gainsboro;\n}\n.like[data-v-10e2c580] {\n  width: 23px;\n  cursor: pointer;\n}\n.imagen-click[data-v-10e2c580] {\n  cursor: pointer;\n  width: 100%;\n}\n.numero-likes[data-v-10e2c580] {\n  font-size: 16px;\n  border-radius: 1000px;\n  border: 2px solid white;\n  padding: 6px;\n  width: 38px;\n  font-weight: bold;\n  box-shadow: 0 5px 10px #00000085;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n@media (max-width: 500px) {\n.info-video[data-v-10e2c580] {\n    height: 260px;\n}\n.container-protagonista[data-v-10e2c580] {\n    width: 270px !important;\n}\nimg.foto-concurso[data-v-10e2c580] {\n    -o-object-fit: fill !important;\n       object-fit: fill !important;\n}\n}", ""]);
 
 // exports
 
@@ -19295,48 +19485,412 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "contenedor mt-3" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { staticClass: "protagonistas-fotos p-3" }, [
+      _c("div", { staticClass: "inner-container no-gutters" }, [
+        _c(
+          "div",
+          { staticClass: "row no-gutters d-flex justify-content-center" },
+          _vm._l(_vm.archivos, function(archivo, i) {
+            return _c(
+              "div",
+              { key: i, staticClass: "contenedor-fotos text-center my-2 mx-4" },
+              [
+                _c("div", { staticClass: "container-protagonista" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "protagonista-foto",
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#verImg-" + i
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "foto-concurso",
+                        attrs: {
+                          src: "./archivos/" + archivo.nombre,
+                          alt: "",
+                          srcset: ""
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "info-video d-flex justify-content-between p-2"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "protagonista-info text-left ml-2 mr-2"
+                        },
+                        [
+                          _c("div", { staticClass: "nombre" }, [
+                            _c("span", [
+                              _vm._v(
+                                _vm._s(archivo.user.nombre) +
+                                  " " +
+                                  _vm._s(archivo.user.apellido)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "sucursal" }, [
+                            _c("span", [
+                              _vm._v("AREA: " + _vm._s(archivo.user.area))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          archivo.descripcion !== ""
+                            ? _c("div", { staticClass: "sucursal" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "Descripción: " +
+                                      _vm._s(archivo.descripcion)
+                                  )
+                                ])
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "icono-like d-flex flex-row align-items-center"
+                        },
+                        [
+                          !_vm.isToggled
+                            ? _c("img", {
+                                staticClass: "like mr-2",
+                                attrs: {
+                                  src:
+                                    "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.addLike(i)
+                                  }
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "numero-likes",
+                              attrs: {
+                                "data-toggle": "modal",
+                                "data-target": "#verLikes-" + i
+                              }
+                            },
+                            [_vm._v(_vm._s(archivo.archivo_usuarios.length))]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "ver-likes modal fade bd-example-modal-xl",
+                          attrs: {
+                            id: "verLikes-" + i,
+                            tabindex: "-1",
+                            role: "dialog",
+                            "aria-labelledby": "exampleModalCenterTitle",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "modal-dialog modal-dialog-centered modal-xl",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "modal-content modal-contenedor"
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-header" }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "modal-body text-secondary modal-body"
+                                    },
+                                    _vm._l(archivo.archivo_usuarios, function(
+                                      user,
+                                      i
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        { key: i, staticClass: "d-flex p-3" },
+                                        [
+                                          _c("img", {
+                                            staticClass: "like mr-2",
+                                            attrs: {
+                                              src:
+                                                "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(user.user.nombre) +
+                                                " " +
+                                                _vm._s(user.user.apellido)
+                                            )
+                                          ]),
+                                          _vm._v(
+                                            "\n                          - Area: " +
+                                              _vm._s(user.user.area) +
+                                              "\n                        "
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(3, true)
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "ver-img modal fade bd-example2-modal-xl",
+                          attrs: {
+                            id: "verImg-" + i,
+                            tabindex: "-1",
+                            role: "dialog",
+                            "aria-labelledby": "example2ModalCenterTitle",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "modal-dialog modal-dialog-centered modal-lg",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c("div", { staticClass: "modal-content" }, [
+                                _c("div", { staticClass: "contenedor-img" }, [
+                                  _c("img", {
+                                    staticClass: "foto-concurso2",
+                                    staticStyle: { width: "100%" },
+                                    attrs: {
+                                      src: "./archivos/" + archivo.nombre,
+                                      alt: "",
+                                      srcset: ""
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "descripcion-img info-video d-flex justify-content-between p-2"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "protagonista-info text-left ml-2 mr-2"
+                                      },
+                                      [
+                                        _c("div", { staticClass: "nombre" }, [
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(archivo.user.nombre) +
+                                                " " +
+                                                _vm._s(archivo.user.apellido)
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", { staticClass: "sucursal" }, [
+                                          _c("span", [
+                                            _vm._v(
+                                              "AREA: " +
+                                                _vm._s(archivo.user.area)
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        archivo.descripcion !== ""
+                                          ? _c(
+                                              "div",
+                                              { staticClass: "sucursal" },
+                                              [
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Descripción: " +
+                                                      _vm._s(
+                                                        archivo.descripcion
+                                                      )
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "icono-like d-flex flex-row align-items-center"
+                                      },
+                                      [
+                                        !_vm.isToggled
+                                          ? _c("img", {
+                                              staticClass: "like mr-2",
+                                              attrs: {
+                                                src:
+                                                  "https://img.icons8.com/dusk/64/000000/facebook-like.png"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.addLike(i)
+                                                }
+                                              }
+                                            })
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "numero-likes",
+                                            attrs: {
+                                              "data-target": "#verLikes-" + i
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                archivo.archivo_usuarios.length
+                                              )
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contenedor mt-3" }, [
-      _c("div", { staticClass: "max-container no-gutters" }, [
-        _c(
-          "div",
-          { staticClass: "main-banner d-flex justify-content-center" },
-          [
-            _c("img", {
-              staticClass: "main-foto",
-              attrs: {
-                src: __webpack_require__(/*! ./img/header-selfie.jpg */ "./resources/js/components/img/header-selfie.jpg"),
-                alt: "",
-                srcset: ""
-              }
-            })
-          ]
-        )
+    return _c("div", { staticClass: "max-container no-gutters" }, [
+      _c("div", { staticClass: "main-banner d-flex justify-content-center" }, [
+        _c("img", {
+          staticClass: "main-foto",
+          attrs: {
+            src: __webpack_require__(/*! ./img/header-selfie.jpg */ "./resources/js/components/img/header-selfie.jpg"),
+            alt: "",
+            srcset: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "copete p-3" }, [
+      _c("h3", { staticClass: "copete-titulo" }, [
+        _vm._v("Concurso Selfie: Primaveral")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "copete p-3" }, [
-        _c("h3", { staticClass: "copete-titulo" }, [
-          _vm._v("Concurso Selfie: Primaveral")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "copete-body" }, [
-          _vm._v(
-            'Se acerca la Primavera, y queremos festejarlo con ustedes!\nPara participar, deberán mandarnos una "selfie" con sus compañeros al whatsapp 011-4199-8282, aclarando nombre apellido y número de legajo de quien la envía.\nLa selfie más original será la ganadora, y habrá premios para todos los integrantes de la misma!!! (*) '
-          ),
-          _c("br"),
-          _vm._v("\nMucha suerte!!! "),
-          _c("br"),
-          _c("br"),
-          _c("br"),
-          _vm._v("\n(*) Hasta 10 personas por foto\n")
-        ])
+      _c("span", { staticClass: "copete-body" }, [
+        _vm._v(
+          'Se acerca la Primavera, y queremos festejarlo con vos!\nPara participar, deberás mandarnos una "selfie" con los compañeros que quieras al whatsapp 011-4199-8282, aclarando tu nombre, apellido y número de legajo. La foto debe representar la llegada de la primavera. '
+        ),
+        _c("br"),
+        _vm._v(
+          "\nLa selfie con más likes será la ganadora, y habrá premios para todos los integrantes de la misma!!! (*)"
+        ),
+        _c("br"),
+        _vm._v("\nMucha suerte!!!\n"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n(*) Hasta 10 personas por foto.\n")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "protagonistas-titulo p-3" }, [
+      _c("h3", [_c("strong", [_vm._v("Fotos de la semana")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
     ])
   }
 ]
